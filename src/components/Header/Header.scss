@@ -1,0 +1,26 @@
+@import "../variables/variables.scss";
+
+.header-searchbar-searchfield {
+  background-color: $primary-color;
+  color: $secondary-color;
+}
+
+::placeholder {
+  color: $secondary-color;
+}
+
+.header-searchbar-searchIcon {
+  background-color: $primary-color;
+}
+
+.header-stats-theme-circle {
+  background-color: #ffc187;
+  position: relative;
+  top: 50%;
+  left: 67%;
+  transition: transform 1s;
+}
+
+.header-stats-theme-circle:hover {
+  transform: translateX(-30px);
+}
