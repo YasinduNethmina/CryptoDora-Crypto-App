@@ -1,26 +1,50 @@
 @import "../variables/variables.scss";
 
-.header-searchbar-searchfield {
+.searchbar-input {
   background-color: $primary-color;
   color: $secondary-color;
 }
 
-::placeholder {
+.searchbar-input > ::placeholder {
   color: $secondary-color;
 }
 
-.header-searchbar-searchIcon {
-  background-color: $primary-color;
+// Background Img
+.stats-theme-slider {
+  position: absolute;
+  width: 5rem;
+  height: 2.6rem;
+  background-image: url("../images/dark-theme.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-color: $primary-color;
 }
 
-.header-stats-theme-circle {
+//Swipe Circle
+.stats-theme-slider::before {
+  position: absolute;
+  content: "";
+  height: 1.7rem;
+  width: 1.7rem;
+  top: 0.5rem;
+  right: 1.7rem;
+  background-color: transparent;
+  border-radius: 100%;
+  transition: 0.4s;
+}
+
+//Swipe Circle
+.stats-theme-input:checked + .stats-theme-slider::before {
   background-color: #ffc187;
-  position: relative;
-  top: 50%;
-  left: 67%;
-  transition: transform 1s;
 }
 
-.header-stats-theme-circle:hover {
-  transform: translateX(-30px);
+//Background Img Animation
+.stats-theme-input:checked + .stats-theme-slider {
+  background-image: url("../images/light-theme.png");
+  transition: 0.4s;
+}
+
+//Swipe Circle Animation
+.stats-theme-input:checked + .stats-theme-slider:before {
+  transform: translateX(-1.2rem);
 }
