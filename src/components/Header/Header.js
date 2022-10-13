@@ -9,16 +9,16 @@ import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDown
 function Header() {
   return (
     <>
-      <div className="header flex w-full justify-between items-center my-1">
+      <div className="header w-full flex justify-between items-center">
         {/* Brand */}
         <Link to="/">
-          <div className="brand flex justify-center items-center ml-2">
+          <div className="brand flex justify-center items-center ml-4">
             <img
-              className="brand-logo w-7 h-8 m-2"
+              className="brand-logo w-7 h-8 mr-2"
               src={require("../images/logo.png")} //require needs webpack to process images
               alt=""
             />
-            <h1 className="brand-title text-3xl text-white font-semibold">
+            <h1 className="brand-title text-3xl text-white font-semibold m-4">
               crypto dora
             </h1>
           </div>
@@ -28,40 +28,31 @@ function Header() {
           <input
             size={25}
             type="text"
-            className="searchbar-input rounded-lg flex w-full px-6 caret-gray-500 py-2 focus:outline-none"
+            className="searchbar-input rounded-lg flex w-full caret-gray-500 py-2 focus:outline-none pl-4 pr-10"
             placeholder="Search your fav crypto..."
-            spellcheck="false"
+            spellCheck="false"
           />
-
-          <SearchIcon
-            className="rounded-xl flex relative right-8 w-10"
-            style={{
-              color: "#9e9e9e",
-              backgroundColor: "#1b2028",
-            }}
-          />
+          <button>
+            <SearchIcon className="rounded-xl flex relative right-8 w-10 bg-[#1B2028] text-[#9E9E9E]" />
+          </button>
         </div>
 
         {/* Stats */}
         <div className="flex justify-center items-center">
-          <button className="stats-notifications">
+          <button className="stats-notifications ">
             <NotificationsOutlinedIcon
-              className="rounded-lg"
+              className="rounded-lg bg-[#1B2028] text-[#9E9E9E]"
               style={{
-                color: "#9E9E9E",
-                backgroundColor: "#1B2028",
                 width: "2.7rem",
                 height: "2.7rem",
                 padding: ".5rem",
               }}
             />
           </button>
-          <button className="stats-profile flex items-center ml-8">
+          <button className="stats-profile flex items-center ml-8 ">
             <PersonOutlineOutlinedIcon
-              className="rounded-lg"
+              className="rounded-lg bg-[#9E9E9E] text-[#1b2028]"
               style={{
-                color: "#1B2028",
-                backgroundColor: "#9E9E9E",
                 width: "2.7rem",
                 height: "2.7rem",
                 padding: ".5rem",
@@ -70,12 +61,7 @@ function Header() {
             <h1 className="stats-profile-name text-white ml-4">
               Courteney Henry
             </h1>
-            <KeyboardArrowDownOutlinedIcon
-              className="ml-4 mr-8"
-              style={{
-                color: "#9E9E9E",
-              }}
-            />
+            <KeyboardArrowDownOutlinedIcon className="ml-4 mr-8 text-[#9e9e9e]" />
           </button>
           <label
             className="stats-theme-label flex w-20 relative bottom-3.5"

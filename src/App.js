@@ -1,14 +1,12 @@
 import "./App.scss";
 import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
 import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-[#31353f] p-0 m-0">
       <Header />
       <Sidebar />
-      <Main />
     </div>
   );
 }

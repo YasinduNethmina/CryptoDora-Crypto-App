@@ -1,15 +1,12 @@
 @import "../variables/variables.scss";
 
-.searchbar-input {
+.searchbar-input,
+.searchbar-input::placeholder {
   background-color: $primary-color;
   color: $secondary-color;
 }
 
-.searchbar-input > ::placeholder {
-  color: $secondary-color;
-}
-
-// Background Img
+// Theme Background Img
 .stats-theme-slider {
   position: absolute;
   width: 5rem;
@@ -20,7 +17,13 @@
   border-color: $primary-color;
 }
 
-//Swipe Circle
+//Theme Background Img Animation
+.stats-theme-input:checked + .stats-theme-slider {
+  background-image: url("../images/light-theme.png");
+  transition: 0.4s;
+}
+
+//Theme Swipe Circle
 .stats-theme-slider::before {
   position: absolute;
   content: "";
@@ -33,18 +36,8 @@
   transition: 0.4s;
 }
 
-//Swipe Circle
+//Theme Swipe Circle Color Change
 .stats-theme-input:checked + .stats-theme-slider::before {
   background-color: #ffc187;
-}
-
-//Background Img Animation
-.stats-theme-input:checked + .stats-theme-slider {
-  background-image: url("../images/light-theme.png");
-  transition: 0.4s;
-}
-
-//Swipe Circle Animation
-.stats-theme-input:checked + .stats-theme-slider:before {
   transform: translateX(-1.2rem);
 }
