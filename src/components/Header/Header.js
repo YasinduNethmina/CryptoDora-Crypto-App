@@ -59,7 +59,7 @@ function Header() {
               }}
             />
             <h1 className="stats-profile-name text-white ml-4">
-              Courteney Henry
+              Vitalik Buterin
             </h1>
             <KeyboardArrowDownOutlinedIcon className="ml-4 mr-8 text-[#9e9e9e]" />
           </button>
