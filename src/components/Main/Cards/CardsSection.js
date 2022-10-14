@@ -4,7 +4,7 @@ import Card from "./Card";
 function CardsSection() {
   return (
     <div className="cards-section ml-10">
-      <h1 className="text-white font-semibold ">
+      <h1 className="text-white font-semibold">
         Today's Cryptocurrency Prices
       </h1>
       <div className="card-section-stats flex text-center mx-4">
@@ -33,21 +33,24 @@ function CardsSection() {
         <Card
           title="Bitcoin"
           symbol="BTC"
-          logo="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=023"
+          logo={require("../images/bitcoin-logo.png")}
+          graph={require("../images/graph-up.png")}
           price="$52,291"
           priceChange="+0.25%"
         />
         <Card
           title="Avalanche"
           symbol="AVAX"
-          logo="https://cryptologos.cc/logos/avalanche-avax-logo.png?v=023"
+          logo={require("../images/avalanche-logo.png")}
+          graph={require("../images/graph-down.png")}
           price="$23.29"
           priceChange="+0.12%"
         />
         <Card
           title="Ethereum"
           symbol="ETH"
-          logo="https://cryptologos.cc/logos/ethereum-eth-logo.png?v=023"
+          logo={require("../images/ethereum-logo.png")}
+          graph={require("../images/graph-up.png")}
           price="$1232.29"
           priceChange="+0.09%"
         />

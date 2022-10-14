@@ -1,7 +1,8 @@
 import React from "react";
 import ArrowDropUpOutlinedIcon from "@mui/icons-material/ArrowDropUpOutlined";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-function Card({ logo, title, symbol }) {
+function Card({ logo, title, symbol, price, priceChange, graph }) {
   return (
     <div className="w-full bg-[#1B2028] rounded-xl mt-5 mx-1">
       <div className="card-heading flex items-center justify-between">
@@ -16,7 +17,14 @@ function Card({ logo, title, symbol }) {
         </div>
         <ArrowDropUpOutlinedIcon className="text-[#1ECB4F] mr-3" />
       </div>
-      <div className="card-bottom"></div>
+
+      <div className="card-bottom flex items-center justify-between my-5 ml-7">
+        <div>
+          <h1 className="text-white font-semibold text-2xl">{price}</h1>
+          <h4 className="text-[#1ECB4F] mt-3">{priceChange}</h4>
+        </div>
+        <img src={graph} className="w-1/2 px-2" alt="" />
+      </div>
     </div>
   );
 }
