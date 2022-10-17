@@ -1,30 +1,31 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import axios from "axios";
+import Stats from "./Stats";
+import CardLoadingState from "./CardLoadingState";
 
 function CardsSection() {
-  //Loading state is a quick fix in order to avoid some state values getting undefined
+  //Loading state to manage the loading animations and just to avoid api data getting undefined
   const [loading, setLoading] = useState(null);
 
-  //api states
+  // Card Data State
   const [cardsApiData, SetCardsApiData] = useState();
-  const [globalApiData, setGlobalApiData] = useState();
+  //Stats Data State
+  const [statsApiData, SetStatsApiData] = useState();
+  //ETH Gas Data State
   const [GasApiData, setGasApiData] = useState();
 
-  //used to refresh the state every 2min in order to get most accurate data realtime
+  //used to refresh the card state every 2min in order to get most accurate data realtime
   const [resetCardData, setResetCardData] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    setInterval(() => {
       setResetCardData(!resetCardData);
       setLoading("");
-      console.log("page updated", loading);
+      console.log("ui updated", new Date());
     }, 120000);
 
     fetchData();
-    console.log("use effect ran", new Date());
-
-    return () => clearInterval(interval);
   }, [resetCardData]);
 
   const fetchData = async () => {
@@ -43,7 +44,7 @@ function CardsSection() {
       );
 
       SetCardsApiData(url1.data);
-      setGlobalApiData(url2.data);
+      SetStatsApiData(url2.data);
       setGasApiData(url3.data);
       setLoading("");
     } catch (err) {
@@ -53,48 +54,45 @@ function CardsSection() {
 
   //loading ui displayed and waiting until all api data fetch to load the app
   if (loading === null) {
-    return <h1>LOADING...</h1>;
+    return (
+      <div className="cards-section ml-10">
+        <Stats loadingState={loading === null ? true : false} />
+        <div className="cards flex justify-between">
+          <CardLoadingState
+            title="Bitcoin"
+            symbol="BTC"
+            logo={require("../images/loading-state-circle.png")}
+            price={require("../images/loading-state-bar.png")}
+            priceChange={require("../images/loading-state-bar.png")}
+          />
+          <CardLoadingState
+            title="Bitcoin"
+            symbol="BTC"
+            logo={require("../images/loading-state-circle.png")}
+            price={require("../images/loading-state-bar.png")}
+            priceChange={require("../images/loading-state-bar.png")}
+          />
+          <CardLoadingState
+            title="Bitcoin"
+            symbol="BTC"
+            logo={require("../images/loading-state-circle.png")}
+            price={require("../images/loading-state-bar.png")}
+            priceChange={require("../images/loading-state-bar.png")}
+          />
+        </div>
+      </div>
+    );
   } else {
     return (
       <div className="cards-section ml-10">
-        <h1 className="text-white font-semibold">
-          Today's Cryptocurrency Prices
-        </h1>
-        <div className="card-section-stats flex text-center mx-4">
-          <h4 className="card-section-stat text-white bg-[#2F9FF8] rounded-full w-40 py-2 mt-6 hover:bg-white hover:text-[#072D4B] cursor-pointer duration-300">
-            Listed Coins:&nbsp;
-            {`${String(globalApiData.data.active_cryptocurrencies).slice(
-              0,
-              2
-            )}.${String(globalApiData.data.active_cryptocurrencies).slice(
-              2,
-              3
-            )}K`}
-          </h4>
-          <h4 className="card-section-stat text-white bg-[#2F9FF8] rounded-full w-32 py-2 mt-6 ml-6 hover:bg-white hover:text-[#072D4B] cursor-pointer duration-300">
-            BTC Vol:{" "}
-            {`${String(globalApiData.data.total_volume.btc).slice(
-              0,
-              2
-            )}.${String(globalApiData.data.total_volume.btc).slice(2, 3)}B`}
-          </h4>
-          <h4 className="card-section-stat text-[#072D4B] bg-white rounded-full w-28 py-2 mt-6 ml-6 hover:bg-[#2F9FF8] hover:text-white cursor-pointer duration-300">
-            BTC:{" "}
-            {String(globalApiData.data.market_cap_percentage.btc).slice(0, 5)}%
-          </h4>
-          <h4 className="card-section-stat text-[#072D4B] bg-white rounded-full w-28 py-2 mt-6 ml-6 hover:bg-[#2F9FF8] hover:text-white cursor-pointer duration-300">
-            ETH:{" "}
-            {String(globalApiData.data.market_cap_percentage.eth).slice(0, 5)}%
-          </h4>
-          <h4 className="card-section-stat text-[#072D4B] bg-white rounded-full w-44 py-2 mt-6 ml-6 hover:bg-[#2F9FF8] hover:text-white cursor-pointer duration-300">
-            ETH Gas: {String(Math.round(GasApiData.avgGas)).slice(0, 2)} Gwei
-          </h4>
-          <button>
-            <h4 className="card-section-stat w-2 font-bold text-white py-2 mt-6 ml-6 hover:text-[#2F9FF8]">
-              ...
-            </h4>
-          </button>
-        </div>
+        <Stats
+          loadingState={loading === null ? true : false}
+          listedCoins={statsApiData.data.active_cryptocurrencies}
+          btcVolume={statsApiData.data.total_volume.btc}
+          btcDominance={statsApiData.data.market_cap_percentage.btc}
+          ethDominance={statsApiData.data.market_cap_percentage.eth}
+          ethGas={GasApiData.avgGas}
+        />
         <div className="cards flex justify-between">
           <Card
             title="Bitcoin"
