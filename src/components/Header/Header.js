@@ -37,11 +37,11 @@ function Header() {
           </button>
         </div>
 
-        {/* Stats */}
+        {/* Profile */}
         <div className="flex justify-center items-center">
           <button className="stats-notifications ">
             <NotificationsOutlinedIcon
-              className="rounded-lg bg-[#1B2028] text-[#9E9E9E]"
+              className="rounded-lg bg-[#1B2028] text-[#9E9E9E] hover:text-[#1b2028] hover:bg-[#9E9E9E]"
               style={{
                 width: "2.7rem",
                 height: "2.7rem",
@@ -51,14 +51,14 @@ function Header() {
           </button>
           <button className="stats-profile flex items-center ml-8 ">
             <PersonOutlineOutlinedIcon
-              className="rounded-lg bg-[#9E9E9E] text-[#1b2028]"
+              className="rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:text-[#9E9E9E] hover:bg-[#1b2028]"
               style={{
                 width: "2.7rem",
                 height: "2.7rem",
                 padding: ".5rem",
               }}
             />
-            <h1 className="stats-profile-name text-white ml-4">
+            <h1 className="stats-profile-name text-white ml-4 transition hover:text-[#9E9E9E]">
               Vitalik Buterin
             </h1>
             <KeyboardArrowDownOutlinedIcon className="ml-4 mr-8 text-[#9e9e9e]" />
