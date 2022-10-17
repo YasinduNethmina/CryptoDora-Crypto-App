@@ -28,7 +28,7 @@ function Card({ logo, title, symbol, price, priceChange }) {
 
       <div className="card-bottom flex items-center justify-between my-5 ml-7">
         <div>
-          <h1 className="text-white font-semibold text-2xl">{price}</h1>
+          <h1 className="text-white font-semibold text-2xl">${price}</h1>
 
           <h4
             style={{ color: priceChangeToNumber < 0 ? "#C82E2E" : "#1ECB4F" }}
