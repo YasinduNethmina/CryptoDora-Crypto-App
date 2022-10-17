@@ -31,7 +31,7 @@ function Error() {
           404
         </h1>
         <div className="bg-red-400 px-2 text-sm rounded rotate-12 relative bottom-20">
-          Page Not Found
+          Page Not Found or Server Limit Exceeded!
         </div>
         <h1 className="text-[#9e9e9e]">
           Redirecting to Home page in {countdown}...

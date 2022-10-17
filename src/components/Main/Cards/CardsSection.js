@@ -3,6 +3,7 @@ import Card from "./Card";
 import axios from "axios";
 import Stats from "./Stats";
 import CardLoadingState from "./CardLoadingState";
+import { Navigate } from "react-router-dom";
 
 function CardsSection() {
   //Loading state to manage the loading animations and just to avoid api data getting undefined
@@ -18,16 +19,11 @@ function CardsSection() {
   //used to refresh the card state every 2min in order to get most accurate data realtime
   const [resetCardData, setResetCardData] = useState(false);
 
-  //used to generate cards randomly
-  let randomNum1 = Math.floor(Math.random() * 2);
-  let randomNum2 = Math.floor(Math.random() * 2);
-
   useEffect(() => {
     setInterval(() => {
       setResetCardData(!resetCardData);
-      setLoading("");
-    }, 120000);
-    console.log("ui updated", new Date());
+      setLoading(null);
+    }, 180000);
     fetchData();
   }, [resetCardData]);
 
@@ -51,7 +47,11 @@ function CardsSection() {
       setGasApiData(url3.data);
       setLoading("");
     } catch (err) {
-      console.log("server limit exceeded!", err);
+      if (err.code === "ERR_NETWORK") {
+        //Server Limit ERROR
+        return <Navigate to="*" />;
+      }
+      console.log("server limit exceeded!", err.code);
     }
   };
 
@@ -70,6 +70,10 @@ function CardsSection() {
       </div>
     );
   } else {
+    //used to generate cards randomly
+    let randomNum1 = Math.floor(Math.random() * 2);
+    let randomNum2 = Math.floor(Math.random() * 2);
+    console.log(randomNum1, randomNum2);
     return (
       //Working State
       <div className="cards-section ml-10">

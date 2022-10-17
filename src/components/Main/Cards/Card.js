@@ -12,7 +12,7 @@ function Card({ logo, title, symbol, price, priceChange }) {
       <div className="card-heading flex items-center justify-between">
         <div className="card-heading-logo flex items-center">
           <div className="flex card-heading-logo-img justify-center items-center w-11 h-11 bg-[#31353f] rounded-xl my-7 ml-7 mr-5">
-            <img className="w-6 h-6" src={logo} alt="btc" />
+            <img className="w-6 h-6" src={logo} alt="coin-logo" />
           </div>
           <div className="card-heading-logo-text ml-2">
             <h1 className="text-white font-semibold">{title}</h1>
