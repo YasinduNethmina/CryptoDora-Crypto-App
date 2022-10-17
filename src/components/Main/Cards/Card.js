@@ -8,7 +8,7 @@ function Card({ logo, title, symbol, price, priceChange }) {
   let priceChangeToNumber = Number(priceChange.slice(0, 5));
 
   return (
-    <div className="w-full transition-transform ease-in-out duration-800 bg-[#1B2028] hover:bg-[#1200] hover:border-gray-300 hover:border-2 hover:scale-105 hover:font-semibold rounded-xl mt-5 mx-1">
+    <div className="w-full transition-transform ease-in-out duration-800 bg-[#1B2028] hover:bg-[#1200] hover:border-gray-300 hover:border-2 hover:scale-105 hover:font-semibold rounded-xl mt-5 mx-1 cursor-default">
       <div className="card-heading flex items-center justify-between">
         <div className="card-heading-logo flex items-center">
           <div className="flex card-heading-logo-img justify-center items-center w-11 h-11 bg-[#31353f] rounded-xl my-7 ml-7 mr-5">
@@ -19,7 +19,7 @@ function Card({ logo, title, symbol, price, priceChange }) {
             <h6 className="text-[#9E9E9E]">{symbol}</h6>
           </div>
         </div>
-        {priceChangeToNumber < 0 ? (
+        {priceChangeToNumber <= 0 ? (
           <ArrowDropDownIcon className="text-[#C82E2E] mr-3" />
         ) : (
           <ArrowDropUpIcon className="text-[#1ECB4F] mr-3" />
@@ -31,12 +31,12 @@ function Card({ logo, title, symbol, price, priceChange }) {
           <h1 className="text-white font-semibold text-2xl">${price}</h1>
 
           <h4
-            style={{ color: priceChangeToNumber < 0 ? "#C82E2E" : "#1ECB4F" }}
+            style={{ color: priceChangeToNumber <= 0 ? "#C82E2E" : "#1ECB4F" }}
           >
             {priceChange}
           </h4>
         </div>
-        {priceChangeToNumber < 0 ? (
+        {priceChangeToNumber <= 0 ? (
           <TrendingDownIcon
             sx={{ fontSize: 60 }}
             className="text-[#C82E2E] relative right-2"
