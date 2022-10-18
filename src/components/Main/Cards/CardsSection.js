@@ -39,7 +39,7 @@ function CardsSection() {
 
       //eth gas data
       const url3 = await axios.get(
-        "https://ethgasstation.info/api/ethgasAPI.json?"
+        "https://api.owlracle.info/v3/eth/gas?apikey=3c29af9606bf48b6b81977e47c453694"
       );
 
       SetCardsApiData(url1.data);
@@ -82,7 +82,7 @@ function CardsSection() {
           btcVolume={statsApiData.data.total_volume.btc}
           btcDominance={statsApiData.data.market_cap_percentage.btc}
           ethDominance={statsApiData.data.market_cap_percentage.eth}
-          ethGas={GasApiData.fast}
+          ethGas={GasApiData.speeds[0].maxFeePerGas}
         />
         <div className="cards flex justify-between">
           {/* Bitcoin Card */}
