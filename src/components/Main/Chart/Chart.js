@@ -33,15 +33,15 @@ function Chart() {
   };
 
   return (
-    <div className="w-11/12 h-full bg-[#1B2028] rounded-xl mt-5">
+    <div className="mt-5 h-full w-11/12 rounded-xl bg-[#1B2028]">
       <div className="flex justify-between">
-        <h1 className="text-xl text-white font-semibold p-8">Chart</h1>
-        <div className="flex mt-7 mr-8 items-start">
+        <h1 className="p-8 text-xl font-semibold text-white">Chart</h1>
+        <div className="mt-7 mr-8 flex items-start">
           {/* Candle Type Switch Section */}
           <button className="">
             <CandlestickChartOutlinedIcon
               style={{ width: "1.6rem", height: "1.6rem" }}
-              className="text-[#9E9E9E] hover:text-[#E4E4E4] rounded-md mr-4"
+              className="mr-4 rounded-md text-[#9E9E9E] hover:text-[#E4E4E4]"
             />
           </button>
 
@@ -50,9 +50,9 @@ function Chart() {
             onClick={handleCurrencyDropDown}
             id="dropdownDefault"
             data-dropdown-toggle="dropdown"
-            className="flex justify-between w-24 h-8 text-[#9E9E9E] hover:text-[#E4E4E4] rounded-md"
+            className="flex h-8 w-24 justify-between rounded-md text-[#9E9E9E] hover:text-[#E4E4E4]"
           >
-            <AttachMoneyIcon className="bg-[#FFC01E] text-gray-900 rounded-full" />
+            <AttachMoneyIcon className="rounded-full bg-[#FFC01E] text-gray-900" />
             <h1 className="mx-2">USD</h1>
             <ArrowDropDownIcon />
           </button>
@@ -62,19 +62,19 @@ function Chart() {
             className={
               currencyDropDown
                 ? "hidden"
-                : "visible flex flex-col absolute right-76 ml-6 mt-10 rounded-md bg-[#31353f] focus:border-none text-[#9E9E9E] px-4 py-2 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                : "right-76 visible absolute ml-6 mt-10 flex flex-col rounded-md bg-[#31353f] px-4 py-2 text-sm font-medium text-[#9E9E9E] shadow-sm focus:border-none focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
             }
           >
-            <button className="hover:bg-[#3A6FF8] hover:text-white hover:rounded px-4">
-              <AttachMoney className="bg-[#FFC01E] text-gray-900 rounded-full mr-2 my-2" />
+            <button className="px-4 hover:rounded hover:bg-[#3A6FF8] hover:text-white">
+              <AttachMoney className="my-2 mr-2 rounded-full bg-[#FFC01E] text-gray-900" />
               USD
             </button>
-            <button className="hover:bg-[#3A6FF8] hover:text-white hover:rounded px-4">
-              <EuroIcon className="bg-blue-400 text-gray-900 rounded-full mr-2 my-2" />
+            <button className="px-4 hover:rounded hover:bg-[#3A6FF8] hover:text-white">
+              <EuroIcon className="my-2 mr-2 rounded-full bg-blue-400 text-gray-900" />
               EUR
             </button>
-            <button className="hover:bg-[#3A6FF8] hover:text-white hover:rounded px-4">
-              <CurrencyYenIcon className="bg-red-400 text-gray-900 rounded-full mr-2 my-2" />
+            <button className="px-4 hover:rounded hover:bg-[#3A6FF8] hover:text-white">
+              <CurrencyYenIcon className="my-2 mr-2 rounded-full bg-red-400 text-gray-900" />
               Yen
             </button>
           </div>
@@ -82,10 +82,10 @@ function Chart() {
       </div>
 
       {/* Crypto Switch Section */}
-      <div className="flex justify-between items-center pl-8">
+      <div className="flex items-center justify-between pl-8">
         <div className="w-1/3">
           <button onClick={handleCryptoDropDown}>
-            <h4 className="text-[#9E9E9E] hover:text-[#E4E4E4] mb-1">
+            <h4 className="mb-1 text-[#9E9E9E] hover:text-[#E4E4E4]">
               Bitcoin/BTC <ArrowDropDownIcon />
             </h4>
           </button>
@@ -93,40 +93,40 @@ function Chart() {
             className={
               cryptoDropDown
                 ? "hidden"
-                : "visible flex flex-col absolute right-76 ml-6 mt-10 rounded-md bg-[#31353f] focus:border-none text-[#9E9E9E] px-4 py-2 text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                : "right-76 visible absolute ml-6 mt-10 flex flex-col rounded-md bg-[#31353f] px-4 py-2 text-sm font-medium text-[#9E9E9E] shadow-sm focus:border-none focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
             }
           >
-            <button className="hover:bg-[#3A6FF8] hover:text-white hover:rounded px-4">
-              <CurrencyBitcoinIcon className="bg-[#FFC01E] text-gray-900 rounded-full mr-2 my-2" />
+            <button className="px-4 hover:rounded hover:bg-[#3A6FF8] hover:text-white">
+              <CurrencyBitcoinIcon className="my-2 mr-2 rounded-full bg-[#FFC01E] text-gray-900" />
               BTC
             </button>
-            <button className="hover:bg-[#3A6FF8] hover:text-white hover:rounded px-4">
-              <EuroIcon className="bg-blue-400 text-gray-900 rounded-full mr-2 my-2" />
+            <button className="px-4 hover:rounded hover:bg-[#3A6FF8] hover:text-white">
+              <EuroIcon className="my-2 mr-2 rounded-full bg-blue-400 text-gray-900" />
               ETH
             </button>
-            <button className="hover:bg-[#3A6FF8] hover:text-white hover:rounded px-4">
-              <CurrencyYenIcon className="bg-red-400 text-gray-900 rounded-full mr-2 my-2" />
-              Yen
+            <button className="px-4 hover:rounded hover:bg-[#3A6FF8] hover:text-white">
+              <CurrencyYenIcon className="my-2 mr-2 rounded-full bg-red-400 text-gray-900" />
+              SOL
             </button>
           </div>
-          <h1 className="text-white font-semibold text-xl">19,257</h1>
+          <h1 className="text-xl font-semibold text-white">19,257</h1>
         </div>
 
         {/* Chart Switch Section */}
-        <div className="w-2/3 flex  justify-around">
-          <button className="text-[#E4E4E4] hover:text-[#ffff] bg-[#3A6FF8] hover:bg-sky-700 rounded-full w-16 h-8">
+        <div className="flex w-2/3  justify-around">
+          <button className="h-8 w-16 rounded-full bg-[#3A6FF8] text-[#E4E4E4] hover:bg-sky-700 hover:text-[#ffff]">
             1h
           </button>
-          <button className="text-[#E4E4E4] hover:text-[#ffff] bg-[#3A6FF8] hover:bg-sky-700 rounded-full w-16 h-8">
+          <button className="h-8 w-16 rounded-full bg-[#3A6FF8] text-[#E4E4E4] hover:bg-sky-700 hover:text-[#ffff]">
             4h
           </button>
-          <button className="text-[#E4E4E4] hover:text-[#ffff] bg-[#3A6FF8] hover:bg-sky-700 rounded-full w-16 h-8">
+          <button className="h-8 w-16 rounded-full bg-[#3A6FF8] text-[#E4E4E4] hover:bg-sky-700 hover:text-[#ffff]">
             1d
           </button>
-          <button className="text-[#E4E4E4] hover:text-[#ffff] bg-[#3A6FF8] hover:bg-sky-700 rounded-full w-16 h-8">
+          <button className="h-8 w-16 rounded-full bg-[#3A6FF8] text-[#E4E4E4] hover:bg-sky-700 hover:text-[#ffff]">
             1w
           </button>
-          <button className="text-[#E4E4E4] hover:text-[#ffff] bg-[#3A6FF8] hover:bg-sky-700 rounded-full w-16 h-8">
+          <button className="h-8 w-16 rounded-full bg-[#3A6FF8] text-[#E4E4E4] hover:bg-sky-700 hover:text-[#ffff]">
             1m
           </button>
         </div>

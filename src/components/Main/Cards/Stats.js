@@ -13,17 +13,17 @@ function Stats({
   return (
     <div>
       {loadingState === true ? (
-        <h1 className="text-white font-semibold animate-pulse">
+        <h1 className="animate-pulse font-semibold text-white">
           Today's Cryptocurrency Prices
         </h1>
       ) : (
-        <h1 className="text-white font-semibold">
+        <h1 className="font-semibold text-white">
           Today's Cryptocurrency Prices
         </h1>
       )}
 
-      <div className="card-section-stats flex text-center mx-4">
-        <h4 className="card-section-stat text-white bg-[#2F9FF8] rounded-full w-40 py-2 mt-6 hover:bg-white hover:text-[#072D4B] cursor-pointer duration-300">
+      <div className="card-section-stats mx-4 flex text-center">
+        <h4 className="card-section-stat mt-6 w-40 cursor-pointer rounded-full bg-[#2F9FF8] py-2 text-white duration-300 hover:bg-white hover:text-[#072D4B]">
           Listed Coins:{" "}
           {loadingState === true ? (
             <SyncIcon className="animate-spin" />
@@ -34,7 +34,7 @@ function Stats({
             )}K`
           )}
         </h4>
-        <h4 className="card-section-stat text-white bg-[#2F9FF8] rounded-full w-32 py-2 mt-6 ml-6 hover:bg-white hover:text-[#072D4B] cursor-pointer duration-300">
+        <h4 className="card-section-stat mt-6 ml-6 w-32 cursor-pointer rounded-full bg-[#2F9FF8] py-2 text-white duration-300 hover:bg-white hover:text-[#072D4B]">
           BTC Vol:{" "}
           {loadingState === true ? (
             <SyncIcon className="animate-spin" />
@@ -42,7 +42,7 @@ function Stats({
             `${String(btcVolume).slice(0, 2)}.${String(btcVolume).slice(2, 3)}B`
           )}
         </h4>
-        <h4 className="card-section-stat text-[#072D4B] bg-white rounded-full w-28 py-2 mt-6 ml-6 hover:bg-[#2F9FF8] hover:text-white cursor-pointer duration-300">
+        <h4 className="card-section-stat mt-6 ml-6 w-28 cursor-pointer rounded-full bg-white py-2 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white">
           BTC:{" "}
           {loadingState === true ? (
             <SyncIcon className="animate-spin" />
@@ -50,7 +50,7 @@ function Stats({
             `${String(btcDominance).slice(0, 5)}%`
           )}
         </h4>
-        <h4 className="card-section-stat text-[#072D4B] bg-white rounded-full w-28 py-2 mt-6 ml-6 hover:bg-[#2F9FF8] hover:text-white cursor-pointer duration-300">
+        <h4 className="card-section-stat mt-6 ml-6 w-28 cursor-pointer rounded-full bg-white py-2 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white">
           ETH:{" "}
           {loadingState === true ? (
             <SyncIcon className="animate-spin" />
@@ -58,7 +58,7 @@ function Stats({
             `${String(ethDominance).slice(0, 5)}%`
           )}
         </h4>
-        <h4 className="card-section-stat text-[#072D4B] bg-white rounded-full w-44 py-2 mt-6 ml-6 hover:bg-[#2F9FF8] hover:text-white cursor-pointer duration-300">
+        <h4 className="card-section-stat mt-6 ml-6 w-44 cursor-pointer rounded-full bg-white py-2 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white">
           ETH Gas:{" "}
           {loadingState === true ? (
             <SyncIcon className="animate-spin" />
@@ -67,7 +67,7 @@ function Stats({
           )}{" "}
         </h4>
         <button>
-          <h4 className="card-section-stat w-2 font-bold text-white py-2 mt-6 ml-6 hover:text-[#2F9FF8]">
+          <h4 className="card-section-stat mt-6 ml-6 w-2 py-2 font-bold text-white hover:text-[#2F9FF8]">
             ...
           </h4>
         </button>

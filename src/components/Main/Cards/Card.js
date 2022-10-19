@@ -8,27 +8,27 @@ function Card({ logo, title, symbol, price, priceChange }) {
   let priceChangeToNumber = Number(priceChange.slice(0, 5));
 
   return (
-    <div className="w-full transition-transform ease-in-out duration-800 bg-[#1B2028] hover:bg-[#1200] hover:border-gray-300 hover:border-2 hover:scale-105 hover:font-semibold rounded-xl mt-5 mx-1 cursor-default">
+    <div className="duration-800 mx-1 mt-5 w-full cursor-default rounded-xl bg-[#1B2028] transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
       <div className="card-heading flex items-center justify-between">
         <div className="card-heading-logo flex items-center">
-          <div className="flex card-heading-logo-img justify-center items-center w-11 h-11 bg-[#31353f] rounded-xl my-7 ml-7 mr-5">
-            <img className="w-6 h-6" src={logo} alt="coin-logo" />
+          <div className="card-heading-logo-img my-7 ml-7 mr-5 flex h-11 w-11 items-center justify-center rounded-xl bg-[#31353f]">
+            <img className="h-6 w-6" src={logo} alt="coin-logo" />
           </div>
           <div className="card-heading-logo-text ml-2">
-            <h1 className="text-white font-semibold">{title}</h1>
+            <h1 className="font-semibold text-white">{title}</h1>
             <h6 className="text-[#9E9E9E]">{symbol}</h6>
           </div>
         </div>
         {priceChangeToNumber <= 0 ? (
-          <ArrowDropDownIcon className="text-[#C82E2E] mr-3" />
+          <ArrowDropDownIcon className="mr-3 text-[#C82E2E]" />
         ) : (
-          <ArrowDropUpIcon className="text-[#1ECB4F] mr-3" />
+          <ArrowDropUpIcon className="mr-3 text-[#1ECB4F]" />
         )}
       </div>
 
-      <div className="card-bottom flex items-center justify-between my-5 ml-7">
+      <div className="card-bottom my-5 ml-7 flex items-center justify-between">
         <div>
-          <h1 className="text-white font-semibold text-2xl">${price}</h1>
+          <h1 className="text-2xl font-semibold text-white">${price}</h1>
 
           <h4
             style={{ color: priceChangeToNumber <= 0 ? "#C82E2E" : "#1ECB4F" }}
@@ -39,12 +39,12 @@ function Card({ logo, title, symbol, price, priceChange }) {
         {priceChangeToNumber <= 0 ? (
           <TrendingDownIcon
             sx={{ fontSize: 60 }}
-            className="text-[#C82E2E] relative right-2"
+            className="relative right-2 text-[#C82E2E]"
           />
         ) : (
           <TrendingUpIcon
             sx={{ fontSize: 60 }}
-            className="text-[#1ECB4F] relative right-2"
+            className="relative right-2 text-[#1ECB4F]"
           />
         )}
       </div>

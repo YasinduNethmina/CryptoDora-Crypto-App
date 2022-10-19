@@ -11,44 +11,44 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
 function Sidebar() {
   return (
-    <div className="sidebar bg-[#1B2028] ml-2 mr-5 rounded-sm">
-      <h1 className="font-semibold text-lg text-white text-center pt-6">
+    <div className="sidebar ml-2 mr-5 rounded-sm bg-[#1B2028]">
+      <h1 className="pt-6 text-center text-lg font-semibold text-white">
         😎 Logoipsum
       </h1>
-      <div className="text-[#9E9E9E] ml-2">
-        <button className="flex hover:bg-[#3A6FF8] hover:text-white rounded w-11/12 border-box py-4  mt-6">
+      <div className="ml-2 text-[#9E9E9E]">
+        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8]  hover:text-white">
           <GridViewRoundedIcon className="mr-5 ml-6" />
           <h1 className="text-left">Overview</h1>
         </button>
-        <button className="flex hover:bg-[#3A6FF8] hover:text-white rounded w-11/12 border-box py-4 mt-6">
+        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white">
           <CandlestickChartOutlinedIcon className="mr-5 ml-6" />
           <h1 className="text-left">CryptoTab</h1>
         </button>
-        <button className="flex hover:bg-[#3A6FF8] hover:text-white rounded w-11/12 border-box py-4 mt-6">
+        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white">
           <AccountBalanceWalletOutlinedIcon className="mr-5 ml-6" />
           <h1 className="text-left">Portfolio</h1>
         </button>
-        <button className="flex hover:bg-[#3A6FF8] hover:text-white rounded w-11/12 border-box py-4 mt-6">
+        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white">
           <DiamondOutlinedIcon className="mr-5 ml-6" />
           <h1 className="text-left">NFTs</h1>
         </button>
-        <button className="flex hover:bg-[#3A6FF8] hover:text-white rounded w-11/12 border-box py-4 mt-6">
+        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white">
           <KeyOutlinedIcon className="mr-5 ml-6" />
           <h1 className="text-left">DeFi</h1>
         </button>
-        <button className="flex hover:bg-[#3A6FF8] hover:text-white rounded w-11/12 border-box py-4 mt-6">
+        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white">
           <ChatOutlinedIcon className="mr-5 ml-6" />
           <h1 className="text-left">Crypto News</h1>
         </button>
-        <button className="flex hover:bg-[#3A6FF8] hover:text-white rounded w-11/12 border-box py-4 mt-6">
+        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white">
           <TrendingUpOutlinedIcon className="mr-5 ml-6" />
           <h1 className="text-left">Trending Coins</h1>
         </button>
-        <button className="flex hover:bg-[#3A6FF8] hover:text-white rounded w-11/12 border-box py-4 mt-96">
+        <button className="border-box mt-96 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white">
           <SettingsOutlinedIcon className="mr-5 ml-6" />
           <h1 className="text-left">Settings</h1>
         </button>
-        <button className="flex hover:bg-[#3A6FF8] hover:text-white rounded w-11/12 border-box py-4 mt-6">
+        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white">
           <LogoutOutlinedIcon className="mr-5 ml-6" />
           <h1 className="text-left">Logout</h1>
         </button>
