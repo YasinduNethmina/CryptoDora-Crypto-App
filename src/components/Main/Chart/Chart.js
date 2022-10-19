@@ -7,7 +7,7 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import EuroIcon from "@mui/icons-material/Euro";
 import AttachMoney from "@mui/icons-material/AttachMoney";
 import CurrencyYenIcon from "@mui/icons-material/CurrencyYen";
-import CurrencyBitcoinIcon from "@mui/icons-material/CurrencyBitcoin";
+import Dropdown from "./Dropdown";
 
 function Chart() {
   const data = {
@@ -58,26 +58,21 @@ function Chart() {
           </button>
 
           {/* Currency DropDown */}
-          <div
-            className={
-              currencyDropDown
-                ? "hidden"
-                : "right-76 visible absolute ml-6 mt-10 flex flex-col rounded-md bg-[#31353f] px-4 py-2 text-sm font-medium text-[#9E9E9E] shadow-sm focus:border-none focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-            }
-          >
-            <button className="px-4 hover:rounded hover:bg-[#3A6FF8] hover:text-white">
+          <Dropdown
+            func={currencyDropDown}
+            logo1={
               <AttachMoney className="my-2 mr-2 rounded-full bg-[#FFC01E] text-gray-900" />
-              USD
-            </button>
-            <button className="px-4 hover:rounded hover:bg-[#3A6FF8] hover:text-white">
-              <EuroIcon className="my-2 mr-2 rounded-full bg-blue-400 text-gray-900" />
-              EUR
-            </button>
-            <button className="px-4 hover:rounded hover:bg-[#3A6FF8] hover:text-white">
-              <CurrencyYenIcon className="my-2 mr-2 rounded-full bg-red-400 text-gray-900" />
-              Yen
-            </button>
-          </div>
+            }
+            logo2={
+              <EuroIcon className="my-2 mr-2 rounded-full bg-red-400 text-gray-900" />
+            }
+            logo3={
+              <CurrencyYenIcon className="my-2 mr-2 rounded-full bg-blue-400 text-gray-900" />
+            }
+            currencyName1="USD"
+            currencyName2="EUR"
+            currencyName3="Yen"
+          />
         </div>
       </div>
 
@@ -89,25 +84,15 @@ function Chart() {
               Bitcoin/BTC <ArrowDropDownIcon />
             </h4>
           </button>
-          <div
-            className={
-              cryptoDropDown
-                ? "hidden"
-                : "right-76 visible absolute ml-6 mt-10 flex flex-col rounded-md bg-[#31353f] px-4 py-2 text-sm font-medium text-[#9E9E9E] shadow-sm focus:border-none focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-            }
-          >
-            <button className="px-4 hover:rounded hover:bg-[#3A6FF8] hover:text-white">
-              <CurrencyBitcoinIcon className="my-2 mr-2 rounded-full bg-[#FFC01E] text-gray-900" />
-              BTC
-            </button>
-            <button className="px-4 hover:rounded hover:bg-[#3A6FF8] hover:text-white">
-              <EuroIcon className="my-2 mr-2 rounded-full bg-blue-400 text-gray-900" />
-              ETH
-            </button>
-            <button className="px-4 hover:rounded hover:bg-[#3A6FF8] hover:text-white">
-              <CurrencyYenIcon className="my-2 mr-2 rounded-full bg-red-400 text-gray-900" />
-              SOL
-            </button>
+
+          {/* Crypto DropDown */}
+          <div className="relative bottom-10 left-12">
+            <Dropdown
+              func={cryptoDropDown}
+              currencyName1="BTC"
+              currencyName2="ETH"
+              currencyName3="SOL"
+            />
           </div>
           <h1 className="text-xl font-semibold text-white">19,257</h1>
         </div>
