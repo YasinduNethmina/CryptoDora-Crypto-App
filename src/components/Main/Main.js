@@ -1,11 +1,15 @@
 import React from "react";
-import CardsSection from "./Cards/CardsSection";
+import Cards from "./Cards/index";
 import "./Main.scss";
+import Chart from "./Chart/Chart";
 
 function Main() {
   return (
-    <div>
-      <CardsSection />
+    <div className="">
+      <Cards />
+      <div className="flex justify-center">
+        <Chart />
+      </div>
     </div>
   );
 }
