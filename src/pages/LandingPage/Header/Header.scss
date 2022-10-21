@@ -11,7 +11,7 @@
   position: absolute;
   width: 5rem;
   height: 2.6rem;
-  background-image: url("../images/dark-theme.png");
+  background-image: url("../../../assets/images/dark-theme.png");
   background-repeat: no-repeat;
   background-size: contain;
   border-color: $primary-color;
@@ -19,7 +19,7 @@
 
 //Theme Background Img Animation
 .stats-theme-input:checked + .stats-theme-slider {
-  background-image: url("../images/light-theme.png");
+  background-image: url("../../../assets/images/light-theme.png");
   transition: 0.4s;
 }
 

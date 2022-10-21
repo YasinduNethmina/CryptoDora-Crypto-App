@@ -15,7 +15,7 @@ function Header() {
           <div className="brand ml-4 flex items-center justify-center">
             <img
               className="brand-logo mr-2 h-8 w-7"
-              src={require("../images/logo.png")} //require needs webpack to process images
+              src={require("../../../assets/brand/logo.png")} //require needs webpack to process images
               alt=""
             />
             <h1 className="brand-title m-4 text-3xl font-semibold text-white">

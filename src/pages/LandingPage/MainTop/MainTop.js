@@ -1,9 +1,9 @@
 import React from "react";
-import Cards from "./Cards/index";
-import "./Main.scss";
+import Cards from "./Cards/Cards";
+import "./MainTop.scss";
 import Chart from "./Chart/Chart";
 
-function Main() {
+function MainTop() {
   return (
     <div className="">
       <Cards />
@@ -14,4 +14,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default MainTop;

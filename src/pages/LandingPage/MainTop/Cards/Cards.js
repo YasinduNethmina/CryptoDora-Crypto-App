@@ -5,7 +5,7 @@ import Stats from "./Stats";
 import CardLoadingState from "./CardLoadingState";
 import { Navigate } from "react-router-dom";
 
-function CardsSection() {
+function Cards() {
   //Loading state to manage the loading animations and just to avoid api data getting undefined
   const [loading, setLoading] = useState(null);
 
@@ -63,9 +63,15 @@ function CardsSection() {
         <Stats loadingState={loading === null ? true : false} />
         {/* Cards Loading State */}
         <div className="cards flex justify-between">
-          <CardLoadingState img={require("../images/loading-state-bar.png")} />
-          <CardLoadingState img={require("../images/loading-state-bar.png")} />
-          <CardLoadingState img={require("../images/loading-state-bar.png")} />
+          <CardLoadingState
+            img={require("../../../../assets/images/loading-state-bar.png")}
+          />
+          <CardLoadingState
+            img={require("../../../../assets/images/loading-state-bar.png")}
+          />
+          <CardLoadingState
+            img={require("../../../../assets/images/loading-state-bar.png")}
+          />
         </div>
       </div>
     );
@@ -89,7 +95,7 @@ function CardsSection() {
           <Card
             title="Bitcoin"
             symbol="BTC"
-            logo={require("../images/bitcoin-logo.png")}
+            logo={require("../../../../assets/images/bitcoin-logo.png")}
             price={`${cardsApiData.bitcoin.usd}`}
             priceChange={`${String(cardsApiData.bitcoin.usd_24h_change).slice(
               0,
@@ -101,7 +107,7 @@ function CardsSection() {
             <Card
               title="Solana"
               symbol="SOL"
-              logo={require("../images/solana-logo.png")}
+              logo={require("../../../../assets/images/solana-logo.png")}
               price={`${cardsApiData.solana.usd}`}
               priceChange={`${String(cardsApiData.solana.usd_24h_change).slice(
                 0,
@@ -112,7 +118,7 @@ function CardsSection() {
             <Card
               title="Dogecoin"
               symbol="DOGE"
-              logo={require("../images/dogecoin-logo.png")}
+              logo={require("../../../../assets/images/dogecoin-logo.png")}
               price={`${cardsApiData.dogecoin.usd}`}
               priceChange={`${String(
                 cardsApiData.dogecoin.usd_24h_change
@@ -124,7 +130,7 @@ function CardsSection() {
             <Card
               title="Ethereum"
               symbol="ETH"
-              logo={require("../images/ethereum-logo.png")}
+              logo={require("../../../../assets/images/ethereum-logo.png")}
               price={`${cardsApiData.ethereum.usd}`}
               priceChange={`${String(
                 cardsApiData.ethereum.usd_24h_change
@@ -134,7 +140,7 @@ function CardsSection() {
             <Card
               title="Polkadot"
               symbol="DOT"
-              logo={require("../images/polkadot-logo.png")}
+              logo={require("../../../../assets/images/polkadot-logo.png")}
               price={`${cardsApiData.polkadot.usd}`}
               priceChange={`${String(
                 cardsApiData.polkadot.usd_24h_change
@@ -147,4 +153,4 @@ function CardsSection() {
   }
 }
 
-export default CardsSection;
+export default Cards;

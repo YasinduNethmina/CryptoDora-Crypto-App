@@ -1,20 +1,25 @@
-import Header from "./components/Header/Header";
-import Sidebar from "./components/Sidebar/Sidebar";
-import Main from "./components/Main/Main";
+import Header from "./pages/LandingPage/Header/Header";
+import Sidebar from "./pages/LandingPage/Sidebar/Sidebar";
+import MainTop from "./pages/LandingPage/MainTop/MainTop";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App m-0 bg-[#31353f] p-0">
-      <Header />
-      <div className="flex w-full">
-        <div className="w-2/12">
-          <Sidebar />
-        </div>
-        <div className="w-7/12">
-          <Main />
+    <QueryClientProvider client={queryClient}>
+      <div className="App m-0 bg-[#31353f] p-0">
+        <Header />
+        <div className="flex w-full">
+          <div className="w-2/12">
+            <Sidebar />
+          </div>
+          <div className="w-7/12">
+            <MainTop />
+          </div>
         </div>
       </div>
-    </div>
+    </QueryClientProvider>
   );
 }
 
