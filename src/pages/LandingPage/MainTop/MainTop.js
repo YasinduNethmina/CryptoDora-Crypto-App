@@ -4,8 +4,8 @@ import "./MainTop.scss";
 import Chart from "./Chart/Chart";
 import { useQueries } from "@tanstack/react-query";
 import axios from "axios";
-import CardLoadingState from "./Cards/CardLoadingState";
-import Stats from "./Cards/Stats";
+import CardLoadingState from "./Cards/Card/CardLoadingState";
+import Stats from "./Stats/Stats";
 import { Navigate } from "react-router-dom";
 
 function MainTop() {

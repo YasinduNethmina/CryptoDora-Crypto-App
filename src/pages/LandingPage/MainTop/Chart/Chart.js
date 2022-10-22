@@ -7,7 +7,7 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import EuroIcon from "@mui/icons-material/Euro";
 import AttachMoney from "@mui/icons-material/AttachMoney";
 import CurrencyYenIcon from "@mui/icons-material/CurrencyYen";
-import Dropdown from "./Dropdown";
+import Dropdown from "./Dropdown/Dropdown";
 
 function Chart() {
   const data = {

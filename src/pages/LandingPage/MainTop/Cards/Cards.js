@@ -1,5 +1,5 @@
-import Card from "./Card";
-import Stats from "./Stats";
+import Card from "./Card/Card";
+import Stats from "../Stats/Stats";
 
 function Cards({ stats, gas, cards, randomNumber }) {
   //used to generate cards randomly with a ternary
