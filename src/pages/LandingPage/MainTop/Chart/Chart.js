@@ -41,7 +41,7 @@ function Chart() {
           <button className="">
             <CandlestickChartOutlinedIcon
               style={{ width: "1.6rem", height: "1.6rem" }}
-              className="mr-4 rounded-md text-[#9E9E9E] hover:text-[#E4E4E4]"
+              className="mr-4 rounded-md text-[#9E9E9E] hover:text-green-400"
             />
           </button>
 
@@ -99,19 +99,19 @@ function Chart() {
 
         {/* Chart Switch Section */}
         <div className="flex w-2/3  justify-around">
-          <button className="h-8 w-16 rounded-full bg-[#3A6FF8] text-[#E4E4E4] hover:bg-sky-700 hover:text-[#ffff]">
+          <button className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff]">
             1h
           </button>
-          <button className="h-8 w-16 rounded-full bg-[#3A6FF8] text-[#E4E4E4] hover:bg-sky-700 hover:text-[#ffff]">
+          <button className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff]">
             4h
           </button>
-          <button className="h-8 w-16 rounded-full bg-[#3A6FF8] text-[#E4E4E4] hover:bg-sky-700 hover:text-[#ffff]">
+          <button className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff]">
             1d
           </button>
-          <button className="h-8 w-16 rounded-full bg-[#3A6FF8] text-[#E4E4E4] hover:bg-sky-700 hover:text-[#ffff]">
+          <button className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff]">
             1w
           </button>
-          <button className="h-8 w-16 rounded-full bg-[#3A6FF8] text-[#E4E4E4] hover:bg-sky-700 hover:text-[#ffff]">
+          <button className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff]">
             1m
           </button>
         </div>

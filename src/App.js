@@ -1,9 +1,16 @@
 import Header from "./pages/LandingPage/Header/Header";
 import Sidebar from "./pages/LandingPage/Sidebar/Sidebar";
 import MainTop from "./pages/LandingPage/MainTop/MainTop";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchInterval: 180000,
+    },
+  },
+});
 
 function App() {
   return (
