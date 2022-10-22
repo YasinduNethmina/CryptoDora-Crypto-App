@@ -14,19 +14,21 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="App m-0 bg-[#31353f] p-0">
-        <Header />
-        <div className="flex w-full">
-          <div className="w-2/12">
-            <Sidebar />
-          </div>
-          <div className="w-7/12">
-            <MainTop />
+    <>
+      <QueryClientProvider client={queryClient}>
+        <div className="App m-0 bg-[#31353f] p-0">
+          <Header />
+          <div className="flex w-full">
+            <div className="w-2/12">
+              <Sidebar />
+            </div>
+            <div className="w-7/12">
+              <MainTop />
+            </div>
           </div>
         </div>
-      </div>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </>
   );
 }
 

@@ -9,7 +9,7 @@ import Stats from "./Cards/Stats";
 import { Navigate } from "react-router-dom";
 
 function MainTop() {
-  const [statsQuery, ethGasQuery, cardsQuery] = useQueries({
+  const [statsQuery, ethGasQuery, cardsQuery, randomNumberQuery] = useQueries({
     queries: [
       {
         queryKey: ["stats"],
@@ -34,13 +34,29 @@ function MainTop() {
             )
             .then((res) => res.data),
       },
+      {
+        queryKey: ["randomNumber"],
+        queryFn: () =>
+          axios
+            .get("http://www.randomnumberapi.com/api/v1.0/random?min=0&max=1")
+            .then((res) => res.data),
+      },
     ],
   });
 
   const isLoading =
-    statsQuery.isLoading || ethGasQuery.isLoading || cardsQuery.isLoading;
+    statsQuery.isLoading ||
+    ethGasQuery.isLoading ||
+    cardsQuery.isLoading ||
+    randomNumberQuery.isLoading;
 
-  if (statsQuery.isLoading || ethGasQuery.isLoading || cardsQuery.isLoading)
+  const isError =
+    statsQuery.error ||
+    ethGasQuery.error ||
+    cardsQuery.error ||
+    randomNumberQuery.error;
+
+  if (isLoading)
     return (
       <div className="cards-section">
         <Stats loadingState={isLoading ? true : false} />
@@ -58,20 +74,20 @@ function MainTop() {
         </div>
       </div>
     );
-  else if (statsQuery.error || ethGasQuery.error || cardsQuery.error)
-    return <Navigate to="*" />;
+  else if (isError) return <Navigate to="*" />;
   else {
     return (
-      <div className="">
+      <>
         <Cards
           stats={statsQuery.data.data}
           gas={ethGasQuery.data}
           cards={cardsQuery.data}
+          randomNumber={randomNumberQuery}
         />
         <div className="flex justify-center">
           <Chart />
         </div>
-      </div>
+      </>
     );
   }
 }
