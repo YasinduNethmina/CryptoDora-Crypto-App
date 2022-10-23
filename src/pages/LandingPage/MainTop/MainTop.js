@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext } from "react";
 import Cards from "./Cards/Cards";
 import "./MainTop.scss";
 import Chart from "./Chart/Chart";
@@ -8,41 +8,49 @@ import CardLoadingState from "./Cards/Card/CardLoadingState";
 import Stats from "./Stats/Stats";
 import { Navigate } from "react-router-dom";
 
+export const coinPriceContext = createContext();
+
 function MainTop() {
-  const [statsQuery, ethGasQuery, cardsQuery, randomNumberQuery] = useQueries({
-    queries: [
-      {
-        queryKey: ["stats"],
-        queryFn: () =>
-          axios
-            .get("https://api.coingecko.com/api/v3/global")
-            .then((res) => res.data),
-      },
-      {
-        queryKey: ["ethGas"],
-        queryFn: () =>
-          axios
-            .get("https://ethgasstation.info/api/ethgasAPI.json?")
-            .then((res) => res.data),
-      },
-      {
-        queryKey: ["cards"],
-        queryFn: () =>
-          axios
-            .get(
-              "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cdogecoin%2Ccardano%2Cpolkadot%2Cbinancecoin&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=false&precision=2"
-            )
-            .then((res) => res.data),
-      },
-      {
-        queryKey: ["randomNumber"],
-        queryFn: () =>
-          axios
-            .get("http://www.randomnumberapi.com/api/v1.0/random?min=0&max=1")
-            .then((res) => res.data),
-      },
-    ],
-  });
+  const [statsQuery, ethGasQuery, cardsQuery, randomNumberQuery, flagCode] =
+    useQueries({
+      queries: [
+        {
+          queryKey: ["stats"],
+          queryFn: () =>
+            axios
+              .get("https://api.coingecko.com/api/v3/global")
+              .then((res) => res.data),
+        },
+        {
+          queryKey: ["ethGas"],
+          queryFn: () =>
+            axios
+              .get("https://ethgasstation.info/api/ethgasAPI.json?")
+              .then((res) => res.data),
+        },
+        {
+          queryKey: ["cards"],
+          queryFn: () =>
+            axios
+              .get(
+                "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cdogecoin%2Ccardano%2Cpolkadot%2Cbinancecoin&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=false&precision=2"
+              )
+              .then((res) => res.data),
+        },
+        {
+          queryKey: ["randomNumber"],
+          queryFn: () =>
+            axios
+              .get("http://www.randomnumberapi.com/api/v1.0/random?min=0&max=1")
+              .then((res) => res.data),
+        },
+        {
+          queryKey: ["flag"],
+          queryFn: () =>
+            axios.get("http://ip-api.com/json").then((res) => res.data),
+        },
+      ],
+    });
 
   const isLoading =
     statsQuery.isLoading ||
@@ -85,7 +93,11 @@ function MainTop() {
           randomNumber={randomNumberQuery}
         />
         <div className="flex justify-center">
-          <Chart />
+          <coinPriceContext.Provider
+            value={[cardsQuery.data, flagCode.data]} //used to get btc price for currencydropdown
+          >
+            <Chart />
+          </coinPriceContext.Provider>
         </div>
       </>
     );

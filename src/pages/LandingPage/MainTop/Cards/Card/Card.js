@@ -5,7 +5,7 @@ import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 
 function Card({ logo, title, symbol, price, priceChange }) {
-  let priceChangeToNumber = Number(priceChange.slice(0, 5));
+  let priceChangeToNumber = Number(priceChange.slice(0, 5)).toFixed(2);
 
   return (
     <>
