@@ -6,7 +6,7 @@ import getSymbolFromCurrency from "currency-symbol-map";
 import ReactCountryFlag from "react-country-flag";
 
 function CurrencyDropdown(props) {
-  const [coinValue, flagCode] = useContext(coinPriceContext); //Bitcoin value imported from the MainTop api as a prop
+  const [coinValue, flagCodeQuery] = useContext(coinPriceContext); //Bitcoin value imported from the MainTop api as a prop
 
   const [currency, setCurrency] = useState("usd");
 
@@ -50,7 +50,7 @@ function CurrencyDropdown(props) {
                 width: "2rem",
                 height: "2rem",
               }}
-              countryCode={flagCode.countryCode}
+              countryCode={flagCodeQuery.countryCode}
               svg
             />
           </label>

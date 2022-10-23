@@ -1,23 +1,69 @@
 import React, { useState } from "react";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import CandlestickChartOutlinedIcon from "@mui/icons-material/CandlestickChartOutlined";
 import CurrencyDropdown from "./CurrencyDropdown/CurrencyDropdown";
 import CryptoDropdown from "./CryptoDropdown/CryptoDropdown";
 
-function Chart() {
+function Chart({ hourlyChart }) {
   const [bitcoinPrice, setBitcoinPrice] = useState(" Default Value ");
   const [currencySymbol, setCurrencySymbol] = useState("usd");
 
+  let hourlyChartMap = hourlyChart.prices.map((price) => {
+    return price[1]; //price[1] because it's the one returns the value
+  });
+
+  let timeArray = []; //store all hours
+  let startTime = new Date().getHours(); //now time
+
+  //Chart Hours Configuration
+  for (let i = 0; i < 24; i++) {
+    if (startTime < 10) {
+      timeArray[i] = `0${startTime}:00`;
+      startTime++;
+    } else if (startTime >= 10 && startTime < 24) {
+      timeArray[i] = `${startTime}:00`;
+      startTime++;
+    } else if (startTime === 24) {
+      startTime = 0;
+      timeArray[i] = `0${startTime}:00`;
+      startTime++;
+    }
+  }
+
+  //Chart Js Config
   const data = {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    labels: [...timeArray],
     datasets: [
       {
-        data: [12, 19, 2, 5, 29],
-        backgroundColor: ["red", "blue", "yellow", "green", "purple", "orange"],
-        borderColor: "red",
+        data: [...hourlyChartMap],
+        fill: true,
+        backgroundColor: "#3a6ff805",
+        borderColor: "#3A6FF8",
+        pointBorderColor: "transparent",
+        borderWidth: 2,
+        tension: 0,
       },
     ],
+  };
+  const options = {
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+      y: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
   };
 
   return (
@@ -48,14 +94,14 @@ function Chart() {
           <div className="w-1/3 justify-start">
             <CryptoDropdown />
 
-            <h1 className="mt-2 ml-1 text-xl font-semibold text-white">
+            <h1 className=" ml-1 text-xl font-semibold text-white">
               {currencySymbol} &nbsp;
               {bitcoinPrice}
             </h1>
           </div>
 
           {/* Chart Switch Section */}
-          <div className="flex w-2/3  justify-around">
+          <div className="flex w-2/3 justify-around">
             <button className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff]">
               1h
             </button>
@@ -76,7 +122,7 @@ function Chart() {
 
         {/* Chart */}
         <div className="">
-          <Bar data={data} />
+          <Line data={data} options={options} />
         </div>
       </div>
     </>
