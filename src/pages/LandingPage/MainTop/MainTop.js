@@ -7,6 +7,7 @@ import axios from "axios";
 import CardLoadingState from "./Cards/Card/CardLoadingState";
 import Stats from "./Stats/Stats";
 import { Navigate } from "react-router-dom";
+import ChartLoadingState from "./Chart/ChartLoadingState";
 
 export const coinPriceContext = createContext();
 
@@ -17,7 +18,11 @@ function MainTop() {
     cardsQuery,
     randomNumberQuery,
     flagCodeQuery,
-    hourlyChartQuery,
+    dailyChartQuery,
+    weeklyChartQuery,
+    monthlyChartQuery,
+    threeMonthChartQuery,
+    maxChartQuery,
   ] = useQueries({
     queries: [
       {
@@ -56,11 +61,47 @@ function MainTop() {
           axios.get("http://ip-api.com/json").then((res) => res.data),
       },
       {
-        queryKey: ["hourlyChart"],
+        queryKey: ["dailyChart"],
         queryFn: () =>
           axios
             .get(
               "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1&interval=hourly"
+            )
+            .then((res) => res.data),
+      },
+      {
+        queryKey: ["weeklyChart"],
+        queryFn: () =>
+          axios
+            .get(
+              "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7&interval=hourly"
+            )
+            .then((res) => res.data),
+      },
+      {
+        queryKey: ["monthlyChart"],
+        queryFn: () =>
+          axios
+            .get(
+              "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=hourly"
+            )
+            .then((res) => res.data),
+      },
+      {
+        queryKey: ["threeMonthChart"],
+        queryFn: () =>
+          axios
+            .get(
+              "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=90&interval=daily"
+            )
+            .then((res) => res.data),
+      },
+      {
+        queryKey: ["maxChart"],
+        queryFn: () =>
+          axios
+            .get(
+              "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=max&interval=daily"
             )
             .then((res) => res.data),
       },
@@ -73,7 +114,11 @@ function MainTop() {
     cardsQuery.isLoading ||
     randomNumberQuery.isLoading ||
     flagCodeQuery.isLoading ||
-    hourlyChartQuery.isLoading;
+    dailyChartQuery.isLoading ||
+    weeklyChartQuery.isLoading ||
+    monthlyChartQuery.isLoading ||
+    threeMonthChartQuery.isLoading ||
+    maxChartQuery.isLoading;
 
   const isError =
     statsQuery.error ||
@@ -81,7 +126,11 @@ function MainTop() {
     cardsQuery.error ||
     randomNumberQuery.error ||
     flagCodeQuery.error ||
-    hourlyChartQuery.error;
+    dailyChartQuery.error ||
+    weeklyChartQuery.error ||
+    monthlyChartQuery.error ||
+    threeMonthChartQuery.error ||
+    maxChartQuery.error;
 
   if (isLoading)
     return (
@@ -99,6 +148,7 @@ function MainTop() {
             img={require("../../../assets/images/loading-state-bar.png")}
           />
         </div>
+        <ChartLoadingState />
       </div>
     );
   else if (isError) return <Navigate to="*" />;
@@ -115,7 +165,13 @@ function MainTop() {
           <coinPriceContext.Provider
             value={[cardsQuery.data, flagCodeQuery.data]} //used to get btc price for currencydropdown
           >
-            <Chart hourlyChart={hourlyChartQuery.data} />
+            <Chart
+              dailyChart={dailyChartQuery.data}
+              weeklyChart={weeklyChartQuery.data}
+              monthlyChart={monthlyChartQuery.data}
+              threeMonthChart={threeMonthChartQuery.data}
+              maxChart={maxChartQuery.data}
+            />
           </coinPriceContext.Provider>
         </div>
       </>
