@@ -76,7 +76,7 @@ function CurrencyDropdown(props) {
           <select
             onClick={handleClick}
             selected
-            className="w-28 cursor-pointer bg-[#1B2028] text-[#9E9E9E] hover:text-white"
+            className="w-28 cursor-pointer bg-[#1B2028] text-[#9E9E9E] outline-none hover:text-white"
             id="currency"
             name="currency"
           >

@@ -1,31 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import CandlestickChartOutlinedIcon from "@mui/icons-material/CandlestickChartOutlined";
 import CurrencyDropdown from "./CurrencyDropdown/CurrencyDropdown";
 import CryptoDropdown from "./CryptoDropdown/CryptoDropdown";
-import "./Chart.scss";
 
 function Chart({
+  //api data passed as props
   dailyChart,
   weeklyChart,
   monthlyChart,
   threeMonthChart,
   maxChart,
 }) {
-  const [bitcoinPrice, setBitcoinPrice] = useState(" Default Value ");
+  //bitcoin current value assigned into this
+  const [bitcoinPrice, setBitcoinPrice] = useState();
+
+  //currency symbol gets from the api whenever the currency changes
   const [currencySymbol, setCurrencySymbol] = useState("usd");
 
+  //All chart data mapping (received from api)
   let dailyChartMap = dailyChart.prices.map((price) => {
-    return price[1]; //price[1] because it's the one returns the value
+    return price[1]; //price[1] because it's the one returns the actual value
   });
 
   let weeklyChartMap = weeklyChart.prices.map((price) => {
-    return price[1]; //price[1] because it's the one returns the value
+    return price[1];
   });
 
   let monthlyChartMap = monthlyChart.prices.map((price) => {
-    return price[1]; //price[1] because it's the one returns the value
+    return price[1];
   });
 
   let threeMonthChartMap = threeMonthChart.prices.map((price) => {
@@ -51,198 +55,49 @@ function Chart({
     "December",
   ];
 
-  let oneDayArray = []; //store 24 hours
-  let oneWeekArray = [
-    //store 7 days with empty arrays, to display all 168 data
+  let allWeekDays = [
     "Sunday",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
     "Monday",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
     "Tuesday",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
     "Wednesday",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
     "Thursday",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
     "Friday",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
     "Saturday",
   ];
+
+  let oneDayArray = []; //store 24 hours that receieves from the loop
+  let oneWeekArray = [];
+
   let oneMonthArray = [];
   let threeMonthArray = [];
   let maxArray = [];
 
   const startDate = new Date();
 
-  //Hourly Chart configuration
+  //oneDay array chart labels setup
   let startTime = startDate.getHours();
-  for (let i = 0; i < 24; i++) {
-    if (i % 2 === 0) {
+  for (let i = 0; i <= 20; i++) {
+    if (i === 0) {
       oneDayArray.push(startTime);
-      startTime++;
-    } else if (startTime >= 23) {
-      startTime = 0;
+    } else if (i % 2 === 0) {
+      if (startTime <= 2) {
+        oneDayArray.push("UTC 0");
+        oneDayArray.push("");
+        startTime = 22;
+        oneDayArray.push(startTime);
+        oneDayArray.push("");
+        startTime -= 2;
+        oneDayArray.push(startTime);
+      } else {
+        startTime -= 2;
+        oneDayArray.push(startTime);
+      }
     } else {
       oneDayArray.push("");
     }
   }
 
-  //used to add zeros and beautify the time
+  //used to add zeros and beautify the time in oneDay array (then returned and passed the new values in newOneDayArray to chart)
   let newOneDayArray = oneDayArray.map((hour) => {
     if (hour < 10 && hour >= 1) {
       return "0" + hour + ":00";
@@ -253,7 +108,24 @@ function Chart({
     }
   });
 
-  //one month
+  //oneWeek array chart labels setup
+  let day = startDate.getDay();
+  for (let i = 0; i <= 168; i++) {
+    if (i === 168) {
+      oneWeekArray.push("Today");
+    }
+    if (i % 24 === 0 && day <= 5 && i < 168) {
+      oneWeekArray.push(allWeekDays[day]);
+      day++;
+    } else if (i % 24 === 0 && day === 6 && i < 168) {
+      oneWeekArray.push(allWeekDays[day]);
+      day = 0;
+    } else {
+      oneWeekArray.push("");
+    }
+  }
+
+  //oneMonth array chart labels setup
   let dateModulo = startDate.getDate();
   for (let i = 0; i <= 720; i++) {
     if (i === 0) {
@@ -270,7 +142,7 @@ function Chart({
     }
   }
 
-  //3 month
+  //threeMonth array chart labels setup
   for (let i = 0; i <= 90; i++) {
     if (i === 0) {
       threeMonthArray.push(allMonths[startDate.getMonth() - 3]);
@@ -285,7 +157,7 @@ function Chart({
     }
   }
 
-  //max
+  //max array chart labels setup
   let yearValue = new Date().getFullYear() - 9;
   for (let i = 0; i <= 3650; i++) {
     if (i % 365 === 0) {
@@ -295,9 +167,9 @@ function Chart({
     }
   }
 
-  //Chart Js Config
+  //Chart Js data
   const oneDayData = {
-    labels: [...newOneDayArray],
+    labels: [...newOneDayArray.reverse()],
     datasets: [
       {
         data: [...dailyChartMap],
@@ -310,8 +182,6 @@ function Chart({
       },
     ],
   };
-
-  console.log("day", ...oneDayArray);
 
   const oneWeekData = {
     labels: [...oneWeekArray],
@@ -373,6 +243,7 @@ function Chart({
     ],
   };
 
+  //chart Js options (used this in all charts)
   const options = {
     scales: {
       x: {
@@ -399,6 +270,53 @@ function Chart({
       },
     },
   };
+
+  //chart button handlers
+  const handleDayChart = () => {
+    document.querySelector(".dayChart").classList.remove("hidden");
+    document.querySelector(".oneWeekChart").classList.add("hidden");
+    document.querySelector(".oneMonthChart").classList.add("hidden");
+    document.querySelector(".threeMonthChart").classList.add("hidden");
+    document.querySelector(".maxChart").classList.add("hidden");
+  };
+
+  const handleWeekChart = () => {
+    document.querySelector(".dayChart").classList.add("hidden");
+    document.querySelector(".oneWeekChart").classList.remove("hidden");
+    document.querySelector(".oneMonthChart").classList.add("hidden");
+    document.querySelector(".threeMonthChart").classList.add("hidden");
+    document.querySelector(".maxChart").classList.add("hidden");
+  };
+
+  const handleMonthChart = () => {
+    document.querySelector(".dayChart").classList.add("hidden");
+    document.querySelector(".oneWeekChart").classList.add("hidden");
+    document.querySelector(".oneMonthChart").classList.remove("hidden");
+    document.querySelector(".threeMonthChart").classList.add("hidden");
+    document.querySelector(".maxChart").classList.add("hidden");
+  };
+
+  const handleThreeMonthChart = () => {
+    document.querySelector(".dayChart").classList.add("hidden");
+    document.querySelector(".oneWeekChart").classList.add("hidden");
+    document.querySelector(".oneMonthChart").classList.add("hidden");
+    document.querySelector(".threeMonthChart").classList.remove("hidden");
+    document.querySelector(".maxChart").classList.add("hidden");
+  };
+
+  const handleMaxChart = () => {
+    document.querySelector(".dayChart").classList.add("hidden");
+    document.querySelector(".oneWeekChart").classList.add("hidden");
+    document.querySelector(".oneMonthChart").classList.add("hidden");
+    document.querySelector(".threeMonthChart").classList.add("hidden");
+    document.querySelector(".maxChart").classList.remove("hidden");
+  };
+
+  //activeRef used to focus the chart button
+  const activeRef = useRef(null);
+  useEffect(() => {
+    activeRef.current.focus();
+  }, []);
 
   return (
     <>
@@ -435,38 +353,54 @@ function Chart({
 
           {/* Chart Switch Section */}
           <div className="mr-5 flex w-2/3 justify-around">
-            <button className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff]">
+            <button
+              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+              onClick={handleDayChart}
+            >
               1d
             </button>
-            <button className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff]">
+            <button
+              className="focus-border-none h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] focus:outline-none"
+              onClick={handleWeekChart}
+              ref={activeRef}
+            >
               1w
             </button>
-            <button className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff]">
+            <button
+              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+              onClick={handleMonthChart}
+            >
               1m
             </button>
-            <button className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff]">
+            <button
+              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+              onClick={handleThreeMonthChart}
+            >
               3m
             </button>
 
-            <button className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff]">
+            <button
+              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+              onClick={handleMaxChart}
+            >
               max
             </button>
           </div>
         </div>
         {/* Chart */}
-        <div className="my-5 mx-5">
+        <div className="dayChart my-5 mx-5 hidden">
           <Line data={oneDayData} options={options} />
         </div>
-        <div className="my-5 mx-5">
+        <div className="oneWeekChart my-5 mx-5">
           <Line data={oneWeekData} options={options} />
         </div>
-        <div className="my-5 mx-5">
+        <div className="oneMonthChart my-5 mx-5 hidden">
           <Line data={oneMonthData} options={options} />
         </div>
-        <div className="my-5 mx-5">
+        <div className="threeMonthChart my-5 mx-5 hidden">
           <Line data={threeMonthData} options={options} />
         </div>
-        <div className="my-5 mx-5">
+        <div className="maxChart my-5 mx-5 hidden">
           <Line data={maxData} options={options} />
         </div>
       </div>
