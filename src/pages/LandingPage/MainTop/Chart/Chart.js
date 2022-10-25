@@ -78,10 +78,10 @@ function Chart({
   let startTime = startDate.getHours();
   for (let i = 0; i <= 20; i++) {
     if (i === 0) {
-      oneDayArray.push(startTime);
+      oneDayArray.push("Now");
     } else if (i % 2 === 0) {
       if (startTime <= 2) {
-        oneDayArray.push("UTC 0");
+        oneDayArray.push("Yesterday");
         oneDayArray.push("");
         startTime = 22;
         oneDayArray.push(startTime);
@@ -103,8 +103,10 @@ function Chart({
       return "0" + hour + ":00";
     } else if (hour <= 0) {
       return "";
-    } else {
+    } else if (hour >= 10 && hour <= 23) {
       return hour + ":00";
+    } else {
+      return hour;
     }
   });
 
