@@ -1,6 +1,6 @@
 import Header from "./pages/LandingPage/Header/Header";
 import Sidebar from "./pages/LandingPage/Sidebar/Sidebar";
-import MainTop from "./pages/LandingPage/MainTop/MainTop";
+import Main from "./pages/LandingPage/Main/Main";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient({
@@ -23,7 +23,7 @@ function App() {
               <Sidebar />
             </div>
             <div className="w-7/12">
-              <MainTop />
+              <Main />
             </div>
           </div>
         </div>

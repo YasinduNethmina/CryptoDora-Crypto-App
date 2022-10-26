@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { coinPriceContext } from "../../MainTop";
+import { coinPriceContext } from "../../Main";
 import getSymbolFromCurrency from "currency-symbol-map";
 import ReactCountryFlag from "react-country-flag";
 

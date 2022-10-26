@@ -1,6 +1,6 @@
 import React, { createContext } from "react";
 import Cards from "./Cards/Cards";
-import "./MainTop.scss";
+import "./Main.scss";
 import Chart from "./Chart/Chart";
 import { useQueries } from "@tanstack/react-query";
 import axios from "axios";
@@ -11,7 +11,7 @@ import ChartLoadingState from "./Chart/ChartLoadingState";
 
 export const coinPriceContext = createContext();
 
-function MainTop() {
+function Main() {
   const [
     statsQuery,
     ethGasQuery,
@@ -179,4 +179,4 @@ function MainTop() {
   }
 }
 
-export default MainTop;
+export default Main;
