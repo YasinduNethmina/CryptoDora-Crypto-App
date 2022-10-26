@@ -356,33 +356,33 @@ function Chart({
           {/* Chart Switch Section */}
           <div className="mr-5 flex w-2/3 justify-around">
             <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
               onClick={handleDayChart}
             >
               1d
             </button>
             <button
-              className="focus-border-none h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] focus:outline-none"
+              className="focus-border-none h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] focus:outline-none"
               onClick={handleWeekChart}
               ref={activeRef}
             >
               1w
             </button>
             <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
               onClick={handleMonthChart}
             >
               1m
             </button>
             <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
               onClick={handleThreeMonthChart}
             >
               3m
             </button>
 
             <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-[#3A6FF8] hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
               onClick={handleMaxChart}
             >
               max

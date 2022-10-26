@@ -11,7 +11,7 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
 function Sidebar() {
   return (
-    <div className="sidebar ml-2 mr-5 rounded-sm bg-[#1B2028]">
+    <div className="sidebar ml-2 mr-5 mt-16 rounded-sm bg-[#1B2028]">
       <h1 className="pt-6 text-center text-lg font-semibold text-white">
         😎 Logoipsum
       </h1>

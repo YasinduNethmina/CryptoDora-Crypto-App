@@ -11,7 +11,7 @@ function Stats({
 }) {
   //stats loading state
   return (
-    <div>
+    <div className="mt-20">
       {loadingState === true ? (
         <h1 className="animate-pulse font-semibold text-white">
           Today's Cryptocurrency Prices
