@@ -8,6 +8,8 @@ import CardLoadingState from "./Cards/Card/CardLoadingState";
 import Stats from "./Stats/Stats";
 import { Navigate } from "react-router-dom";
 import ChartLoadingState from "./Chart/ChartLoadingState";
+import Market from "./Market/Market";
+import News from "./News/News";
 
 export const coinPriceContext = createContext();
 
@@ -23,6 +25,8 @@ function Main() {
     monthlyChartQuery,
     threeMonthChartQuery,
     maxChartQuery,
+    marketQuery,
+    newsQuery,
   ] = useQueries({
     queries: [
       {
@@ -105,6 +109,24 @@ function Main() {
             )
             .then((res) => res.data),
       },
+      {
+        queryKey: ["market"],
+        queryFn: () =>
+          axios
+            .get(
+              "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false"
+            )
+            .then((res) => res.data),
+      },
+      {
+        queryKey: ["news"],
+        queryFn: () =>
+          axios
+            .get(
+              "https://newsapi.org/v2/everything?language=en&from=2022-10-20&to=2024-01-01&domains=coindesk.com&sortBy=popularity&pageSize=25&apiKey=56591b716be3406fa65c0b587fbd74c0"
+            )
+            .then((res) => res.data),
+      },
     ],
   });
 
@@ -118,7 +140,9 @@ function Main() {
     weeklyChartQuery.isLoading ||
     monthlyChartQuery.isLoading ||
     threeMonthChartQuery.isLoading ||
-    maxChartQuery.isLoading;
+    maxChartQuery.isLoading ||
+    marketQuery.isLoading ||
+    newsQuery.isLoading;
 
   const isError =
     statsQuery.error ||
@@ -130,7 +154,9 @@ function Main() {
     weeklyChartQuery.error ||
     monthlyChartQuery.error ||
     threeMonthChartQuery.error ||
-    maxChartQuery.error;
+    maxChartQuery.error ||
+    marketQuery.error ||
+    newsQuery.error;
 
   if (isLoading)
     return (
@@ -174,6 +200,10 @@ function Main() {
             />
           </coinPriceContext.Provider>
         </div>
+        <div className="flex justify-center">
+          <Market list={marketQuery.data} />
+        </div>
+        <News newsData={newsQuery.data.articles} />
       </>
     );
   }

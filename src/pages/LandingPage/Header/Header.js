@@ -85,10 +85,11 @@ function Header() {
           <input
             id="search-input"
             size={25}
-            type="text"
+            type="search"
             className="searchbar-input flex w-full rounded-lg py-2 pl-4 pr-10 caret-gray-500 focus:outline-none"
             placeholder="Search your fav crypto..."
             spellCheck="false"
+            autoComplete="off"
             onChange={handleSearchResults}
           />
           <button>

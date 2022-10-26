@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 
 function SearchResults({ coins, loading, showSearchResults }) {
   //destructured object into arrays again and sliced to get the top 9 results
