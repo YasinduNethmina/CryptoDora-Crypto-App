@@ -47,34 +47,26 @@ function News({ newsData }) {
 
       <div className="NewsTop4">
         <NewsTop
-          title={newsData.articles[randomNumbersToArray[2]].title}
-          img={newsData.articles[randomNumbersToArray[2]].urlToImage}
-          date={newsData.articles[randomNumbersToArray[2]].publishedAt}
-          description={newsData.articles[randomNumbersToArray[2]].description}
+          title={newsData.articles[randomNumbersToArray[3]].title}
+          img={newsData.articles[randomNumbersToArray[3]].urlToImage}
+          date={newsData.articles[randomNumbersToArray[3]].publishedAt}
+          description={newsData.articles[randomNumbersToArray[3]].description}
         />{" "}
       </div>
 
       {/* News Banner 01 */}
       <div className="flex justify-center">
         <NewsBanner
-          title={newsData.articles[randomNumbersToArray[3]].title}
-          img={newsData.articles[randomNumbersToArray[3]].urlToImage}
-          date={newsData.articles[randomNumbersToArray[3]].publishedAt}
-          description={newsData.articles[randomNumbersToArray[3]].description}
-          source={newsData.articles[randomNumbersToArray[3]].source.name}
-        />
-      </div>
-
-      {/* News Cards 01 */}
-      <div className="flex w-full">
-        <NewsCard
           title={newsData.articles[randomNumbersToArray[4]].title}
           img={newsData.articles[randomNumbersToArray[4]].urlToImage}
           date={newsData.articles[randomNumbersToArray[4]].publishedAt}
           description={newsData.articles[randomNumbersToArray[4]].description}
           source={newsData.articles[randomNumbersToArray[4]].source.name}
         />
+      </div>
 
+      {/* News Cards 01 */}
+      <div className="flex w-full">
         <NewsCard
           title={newsData.articles[randomNumbersToArray[5]].title}
           img={newsData.articles[randomNumbersToArray[5]].urlToImage}
@@ -82,10 +74,7 @@ function News({ newsData }) {
           description={newsData.articles[randomNumbersToArray[5]].description}
           source={newsData.articles[randomNumbersToArray[5]].source.name}
         />
-      </div>
 
-      {/* News Cards 02 */}
-      <div className="flex w-full">
         <NewsCard
           title={newsData.articles[randomNumbersToArray[6]].title}
           img={newsData.articles[randomNumbersToArray[6]].urlToImage}
@@ -93,7 +82,10 @@ function News({ newsData }) {
           description={newsData.articles[randomNumbersToArray[6]].description}
           source={newsData.articles[randomNumbersToArray[6]].source.name}
         />
+      </div>
 
+      {/* News Cards 02 */}
+      <div className="flex w-full">
         <NewsCard
           title={newsData.articles[randomNumbersToArray[7]].title}
           img={newsData.articles[randomNumbersToArray[7]].urlToImage}
@@ -101,10 +93,7 @@ function News({ newsData }) {
           description={newsData.articles[randomNumbersToArray[7]].description}
           source={newsData.articles[randomNumbersToArray[7]].source.name}
         />
-      </div>
 
-      {/* News Cards 03 */}
-      <div className="flex w-full">
         <NewsCard
           title={newsData.articles[randomNumbersToArray[8]].title}
           img={newsData.articles[randomNumbersToArray[8]].urlToImage}
@@ -112,7 +101,10 @@ function News({ newsData }) {
           description={newsData.articles[randomNumbersToArray[8]].description}
           source={newsData.articles[randomNumbersToArray[8]].source.name}
         />
+      </div>
 
+      {/* News Cards 03 */}
+      <div className="flex w-full">
         <NewsCard
           title={newsData.articles[randomNumbersToArray[9]].title}
           img={newsData.articles[randomNumbersToArray[9]].urlToImage}
@@ -120,9 +112,7 @@ function News({ newsData }) {
           description={newsData.articles[randomNumbersToArray[9]].description}
           source={newsData.articles[randomNumbersToArray[9]].source.name}
         />
-      </div>
 
-      <div className="NewsCard1">
         <NewsCard
           title={newsData.articles[randomNumbersToArray[10]].title}
           img={newsData.articles[randomNumbersToArray[10]].urlToImage}
@@ -132,13 +122,23 @@ function News({ newsData }) {
         />
       </div>
 
+      <div className="NewsCard1">
+        <NewsCard
+          title={newsData.articles[randomNumbersToArray[11]].title}
+          img={newsData.articles[randomNumbersToArray[11]].urlToImage}
+          date={newsData.articles[randomNumbersToArray[11]].publishedAt}
+          description={newsData.articles[randomNumbersToArray[11]].description}
+          source={newsData.articles[randomNumbersToArray[11]].source.name}
+        />
+      </div>
+
       <div className="NewsCard2">
         <NewsCard
-          title={newsData.articles[randomNumbersToArray[10]].title}
-          img={newsData.articles[randomNumbersToArray[10]].urlToImage}
-          date={newsData.articles[randomNumbersToArray[10]].publishedAt}
-          description={newsData.articles[randomNumbersToArray[10]].description}
-          source={newsData.articles[randomNumbersToArray[10]].source.name}
+          title={newsData.articles[randomNumbersToArray[12]].title}
+          img={newsData.articles[randomNumbersToArray[12]].urlToImage}
+          date={newsData.articles[randomNumbersToArray[12]].publishedAt}
+          description={newsData.articles[randomNumbersToArray[12]].description}
+          source={newsData.articles[randomNumbersToArray[12]].source.name}
         />
       </div>
     </>

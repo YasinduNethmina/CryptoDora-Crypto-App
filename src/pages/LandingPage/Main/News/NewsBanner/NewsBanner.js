@@ -5,7 +5,7 @@ import "./NewsBanner.scss";
 
 function NewsBanner({ title, description, img, date, source }) {
   return (
-    <div className="newsBanner mx-4 h-48 rounded-sm bg-[#1B2028]">
+    <div className="newsBanner mx-4 mb-4 h-48 rounded-sm bg-[#1B2028]">
       <div className="flex">
         <div className="m-4 w-2/3">
           {
@@ -18,7 +18,11 @@ function NewsBanner({ title, description, img, date, source }) {
           </p>
         </div>
         <div className="m-4 h-40 w-1/3">
-          <img className="h-32 object-cover" src={img} alt="" />
+          <img
+            className="h-32 w-full rounded-sm object-cover"
+            src={img}
+            alt=""
+          />
         </div>
       </div>
 

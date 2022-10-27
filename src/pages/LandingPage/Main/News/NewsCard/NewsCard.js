@@ -17,7 +17,11 @@ function NewsCard01({ title, img, date, description, source }) {
           </p>
         </div>
         <div className="m-4 h-40 w-1/3">
-          <img className="h-32 object-cover" src={img} alt="" />
+          <img
+            className="h-32 w-full rounded-sm object-cover"
+            src={img}
+            alt=""
+          />
         </div>
       </div>
 
