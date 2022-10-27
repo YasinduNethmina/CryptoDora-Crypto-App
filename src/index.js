@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.scss";
 import App from "./App";
 import Error from "./pages/ErrorPage/Error";
+import "./common/media/mediaQueries.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -69,19 +69,14 @@ function Header() {
       <div className="header fixed z-50 flex w-full items-center justify-between">
         {/* Brand */}
         <Link to="/">
-          <div className="brand ml-4 flex items-center justify-center">
-            <img
-              className="brand-logo mr-2 h-8 w-7"
-              src={require("../../../assets/brand/logo.png")} //require needs webpack to process images
-              alt=""
-            />
-            <h1 className="brand-title m-4 text-3xl font-semibold text-white">
+          <div className="brand flex items-center justify-center">
+            <h1 className="brand-title m-4 bg-gradient-to-r from-cyan-500 to-blue-500  bg-clip-text text-3xl font-semibold text-transparent">
               crypto dora
             </h1>
           </div>
         </Link>
         {/* Searchbar */}
-        <div className="searchbar flex items-center justify-center">
+        <div className="searchbar ml-20 flex items-center justify-center">
           <input
             id="search-input"
             size={25}

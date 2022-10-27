@@ -19,7 +19,7 @@ function Market({ list }) {
 
   return (
     <>
-      <div className="my-5 h-full w-10/12 justify-center rounded-xl bg-[#1B2028]">
+      <div className="my-5 h-full w-11/12 justify-center rounded-xl bg-[#1B2028]">
         <div className="flex items-center justify-between">
           <h1 className="p-8 text-xl font-semibold text-white">Live Market</h1>
           <button className="m-8 rounded-lg border-2 border-gray-500 px-2 py-1 text-[#9E9E9E] hover:border-gray-800 hover:bg-[#9E9E9E] hover:text-[#1b2028]">
@@ -63,13 +63,13 @@ function Market({ list }) {
             {coinsPriceChangePercentageArray.map((coinChangeValue) => {
               if (coinChangeValue > 0) {
                 return (
-                  <h1 className="relative right-10 mb-4 text-green-500">
+                  <h1 className="relative right-12 mb-4 text-green-500">
                     {coinChangeValue.toFixed(2)}%
                   </h1>
                 );
               } else {
                 return (
-                  <h1 className="relative right-10 mb-4 text-red-500">
+                  <h1 className="relative right-12 mb-4 text-red-500">
                     {coinChangeValue.toFixed(2)}%
                   </h1>
                 );
@@ -80,7 +80,7 @@ function Market({ list }) {
           <div>
             {coinsMarketCapArray.map((coinMarketCapValue) => {
               return coinMarketCapValue > 10000000000 ? (
-                <h1 className="relative right-6 mb-4 text-white">
+                <h1 className="relative right-12 mb-4 text-white">
                   {String(coinMarketCapValue).slice(0, 3)} B
                 </h1>
               ) : (
@@ -95,13 +95,13 @@ function Market({ list }) {
             {coinsSupplyArray.map((coinSupplyValue) => {
               if (coinSupplyValue > 1000000000) {
                 return (
-                  <h1 className="relative left-1 mb-4 text-white">
+                  <h1 className="relative mb-4 text-white">
                     {Math.round(coinSupplyValue / 1000000000)}B
                   </h1>
                 );
               } else {
                 return (
-                  <h1 className="relative left-1 mb-4 text-white">
+                  <h1 className="relative mb-4 text-white">
                     {Math.round(coinSupplyValue / 1000000)}M
                   </h1>
                 );

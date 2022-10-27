@@ -1,5 +1,5 @@
 import Header from "./pages/LandingPage/Header/Header";
-import Sidebar from "./pages/LandingPage/Sidebar/Sidebar";
+import LeftSidebar from "./pages/LandingPage/LeftSidebar/LeftSidebar";
 import Main from "./pages/LandingPage/Main/Main";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -19,10 +19,10 @@ function App() {
         <div className="App m-0 bg-[#31353f] p-0">
           <Header />
           <div className="flex w-full">
-            <div className="w-2/12">
-              <Sidebar />
+            <div className="leftSidebar w-2/12">
+              <LeftSidebar />
             </div>
-            <div className="w-7/12">
+            <div className="main w-7/12">
               <Main />
             </div>
           </div>

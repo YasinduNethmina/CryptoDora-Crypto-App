@@ -9,9 +9,9 @@ import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
-function Sidebar() {
+function LeftSidebar() {
   return (
-    <div className="sidebar ml-2 mr-5 mt-16 rounded-sm bg-[#1B2028]">
+    <div className="sidebar ml-2 mr-5 mt-16 rounded-md bg-[#1B2028]">
       <h1 className="pt-6 text-center text-lg font-semibold text-white">
         😎 Logoipsum
       </h1>
@@ -52,9 +52,10 @@ function Sidebar() {
           <LogoutOutlinedIcon className="mr-5 ml-6" />
           <h1 className="text-left">Logout</h1>
         </button>
+        &nbsp;
       </div>
     </div>
   );
 }
 
-export default Sidebar;
+export default LeftSidebar;

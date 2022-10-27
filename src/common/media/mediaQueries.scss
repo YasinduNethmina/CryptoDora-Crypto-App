@@ -1,0 +1,45 @@
+@media (min-width: 1150px) {
+  .NewsTop1 {
+    width: 23%;
+  }
+  .NewsTop2 {
+    width: 24.5%;
+  }
+}
+
+@media (max-width: 1150px) {
+  .NewsTop1 {
+    display: none;
+  }
+
+  .NewsTop2 {
+    display: none;
+  }
+}
+
+@media (max-width: 1150px) {
+  .main {
+    width: 81%;
+    margin-right: 3%;
+  }
+}
+
+@media (max-width: 1150px) {
+  .main {
+    width: 100%;
+    justify-content: center;
+    margin: 0 2rem;
+  }
+  .leftSidebar {
+    display: none;
+  }
+
+  .card-section-stats {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .stats-heading {
+    display: none;
+  }
+}

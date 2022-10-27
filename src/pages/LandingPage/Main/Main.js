@@ -123,7 +123,7 @@ function Main() {
         queryFn: () =>
           axios
             .get(
-              "https://newsapi.org/v2/everything?language=en&from=2022-10-20&to=2024-01-01&domains=coindesk.com&sortBy=popularity&pageSize=25&apiKey=56591b716be3406fa65c0b587fbd74c0"
+              "https://newsapi.org/v2/everything?language=en&from=2022-10-20&to=2024-01-01&domains=coindesk.com&sortBy=popularity&pageSize=30&apiKey=56591b716be3406fa65c0b587fbd74c0"
             )
             .then((res) => res.data),
       },
@@ -203,7 +203,7 @@ function Main() {
         <div className="flex justify-center">
           <Market list={marketQuery.data} />
         </div>
-        <News newsData={newsQuery.data.articles} />
+        <News newsData={newsQuery.data} />
       </>
     );
   }

@@ -1,7 +1,40 @@
 import React from "react";
+import IosShareIcon from "@mui/icons-material/IosShare";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 
-function NewsCard() {
-  return <div>NewsCard</div>;
+function NewsCard({ title, img, date, description, source }) {
+  return (
+    <div className="m-4 h-48 w-96 bg-[#1B2028]">
+      <div className="flex">
+        <div className="m-4 w-2/3">
+          {
+            <h1 className="text-md font-semibold text-white">
+              {String(title).slice(0, 50)}...
+            </h1>
+          }
+          <p className="mt-2 text-xs text-[#9E9E9E]">
+            {String(description).slice(0, 80)}...
+          </p>
+        </div>
+        <div className="m-4 h-40 w-1/3">
+          <img className="h-32 object-cover" src={img} alt="" />
+        </div>
+      </div>
+
+      <div className="relative bottom-8 mx-4 flex items-center justify-between text-xs text-[#9E9E9E]">
+        <p>{String(source).slice(0, 10)} •</p>
+        <p>{date.slice(0, 10)}</p>
+        <button className="text-white">
+          <IosShareIcon className="text-[#0768B5] hover:text-green-500" />
+          Share
+        </button>
+        <button className="text-white">
+          <BookmarkBorderIcon className="text-[#0768B5] hover:text-green-500" />
+          Read Later
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default NewsCard;

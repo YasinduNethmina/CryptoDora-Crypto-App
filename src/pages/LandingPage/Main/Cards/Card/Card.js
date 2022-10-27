@@ -27,7 +27,7 @@ function Card({ logo, title, symbol, price, priceChange }) {
           )}
         </div>
 
-        <div className="card-bottom my-5 ml-7 flex items-center justify-between">
+        <div className="card-bottom mt-1 mb-2 ml-7 flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-semibold text-white">${price}</h1>
 
