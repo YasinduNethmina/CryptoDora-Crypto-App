@@ -27,7 +27,7 @@ function SearchResults({ coins, loading, showSearchResults }) {
     return <div className="hidden"></div>;
   } else {
     return (
-      <div className="search-results fixed z-40 mr-40 mt-20 hidden w-1/3 rounded-xl border-2 border-sky-400 bg-[#1B2028] px-4 py-2 font-bold text-[#9E9E9E]">
+      <div className="search-results fixed z-20 mr-28 mt-20 hidden w-1/3 rounded-xl border-2 border-sky-400 bg-[#1B2028] px-4 py-2 font-bold text-[#9E9E9E]">
         <button
           className="duration-400 text-white ease-in hover:scale-110 hover:text-sky-400"
           onClick={handleClick}

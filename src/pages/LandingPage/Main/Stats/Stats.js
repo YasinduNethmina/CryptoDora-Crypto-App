@@ -11,8 +11,8 @@ function Stats({
 }) {
   //stats loading state
   return (
-    <div className="mt-16">
-      <div className="card-section-stats mx-4 flex text-center">
+    <div className="mt-16 ">
+      <div className="card-section-stats flex justify-center text-center">
         <h4 className="card-section-stat mt-6 w-44 cursor-pointer rounded-full bg-[#2F9FF8] py-2 text-white duration-300 hover:bg-white hover:text-[#072D4B]">
           Listed Coins :{" "}
           {loadingState === true ? (
