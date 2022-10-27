@@ -12,7 +12,7 @@ function NewsTop({ title, img, date, description }) {
         {String(date).slice(0, 10)}
       </h4>
       <p className="relative bottom-12 ml-4 mr-2 text-[#9E9E9E]">
-        {String(description).slice(0, 120)}...
+        {String(description).slice(0, 80)}...
       </p>
     </div>
   );

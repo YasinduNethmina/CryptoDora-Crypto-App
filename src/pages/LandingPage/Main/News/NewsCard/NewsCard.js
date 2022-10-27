@@ -2,9 +2,9 @@ import React from "react";
 import IosShareIcon from "@mui/icons-material/IosShare";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 
-function NewsCard({ title, img, date, description, source }) {
+function NewsCard01({ title, img, date, description, source }) {
   return (
-    <div className="m-4 h-48 w-96 bg-[#1B2028]">
+    <div className="m-4 w-full rounded-sm bg-[#1B2028]">
       <div className="flex">
         <div className="m-4 w-2/3">
           {
@@ -21,7 +21,7 @@ function NewsCard({ title, img, date, description, source }) {
         </div>
       </div>
 
-      <div className="relative bottom-8 mx-4 flex items-center justify-between text-xs text-[#9E9E9E]">
+      <div className="relative bottom-4 mx-4 flex items-center justify-between text-xs text-[#9E9E9E]">
         <p>{String(source).slice(0, 10)} •</p>
         <p>{date.slice(0, 10)}</p>
         <button className="text-white">
@@ -37,4 +37,4 @@ function NewsCard({ title, img, date, description, source }) {
   );
 }
 
-export default NewsCard;
+export default NewsCard01;

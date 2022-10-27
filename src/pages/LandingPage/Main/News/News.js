@@ -15,7 +15,8 @@ function News({ newsData }) {
 
   return (
     <>
-      <div className="NewsTop1 absolute top-0 right-0 mr-2 mt-20">
+      {/* News Top 01 */}
+      <div className="NewsTop1">
         <NewsTop
           title={newsData.articles[randomNumbersToArray[0]].title}
           img={newsData.articles[randomNumbersToArray[0]].urlToImage}
@@ -23,7 +24,9 @@ function News({ newsData }) {
           description={newsData.articles[randomNumbersToArray[0]].description}
         />
       </div>
-      <div className="NewsTop2 absolute top-96 right-0 mr-2 mt-24">
+
+      {/* Crypto Portfolio */}
+      <div className="NewsTop2">
         <NewsTop
           title={newsData.articles[randomNumbersToArray[1]].title}
           img={newsData.articles[randomNumbersToArray[1]].urlToImage}
@@ -31,26 +34,113 @@ function News({ newsData }) {
           description={newsData.articles[randomNumbersToArray[1]].description}
         />
       </div>
-      <NewsTop
-        title={newsData.articles[randomNumbersToArray[2]].title}
-        img={newsData.articles[randomNumbersToArray[2]].urlToImage}
-        date={newsData.articles[randomNumbersToArray[2]].publishedAt}
-        description={newsData.articles[randomNumbersToArray[2]].description}
-      />
-      <NewsCard
-        title={newsData.articles[randomNumbersToArray[3]].title}
-        img={newsData.articles[randomNumbersToArray[3]].urlToImage}
-        date={newsData.articles[randomNumbersToArray[3]].publishedAt}
-        description={newsData.articles[randomNumbersToArray[3]].description}
-        source={newsData.articles[randomNumbersToArray[3]].source.name}
-      />
-      <NewsBanner
-        title={newsData.articles[randomNumbersToArray[4]].title}
-        img={newsData.articles[randomNumbersToArray[4]].urlToImage}
-        date={newsData.articles[randomNumbersToArray[4]].publishedAt}
-        description={newsData.articles[randomNumbersToArray[4]].description}
-        source={newsData.articles[randomNumbersToArray[4]].source.name}
-      />
+
+      {/* News Top 02 */}
+      <div className="NewsTop3">
+        <NewsTop
+          title={newsData.articles[randomNumbersToArray[2]].title}
+          img={newsData.articles[randomNumbersToArray[2]].urlToImage}
+          date={newsData.articles[randomNumbersToArray[2]].publishedAt}
+          description={newsData.articles[randomNumbersToArray[2]].description}
+        />{" "}
+      </div>
+
+      <div className="NewsTop4">
+        <NewsTop
+          title={newsData.articles[randomNumbersToArray[2]].title}
+          img={newsData.articles[randomNumbersToArray[2]].urlToImage}
+          date={newsData.articles[randomNumbersToArray[2]].publishedAt}
+          description={newsData.articles[randomNumbersToArray[2]].description}
+        />{" "}
+      </div>
+
+      {/* News Banner 01 */}
+      <div className="flex justify-center">
+        <NewsBanner
+          title={newsData.articles[randomNumbersToArray[3]].title}
+          img={newsData.articles[randomNumbersToArray[3]].urlToImage}
+          date={newsData.articles[randomNumbersToArray[3]].publishedAt}
+          description={newsData.articles[randomNumbersToArray[3]].description}
+          source={newsData.articles[randomNumbersToArray[3]].source.name}
+        />
+      </div>
+
+      {/* News Cards 01 */}
+      <div className="flex w-full">
+        <NewsCard
+          title={newsData.articles[randomNumbersToArray[4]].title}
+          img={newsData.articles[randomNumbersToArray[4]].urlToImage}
+          date={newsData.articles[randomNumbersToArray[4]].publishedAt}
+          description={newsData.articles[randomNumbersToArray[4]].description}
+          source={newsData.articles[randomNumbersToArray[4]].source.name}
+        />
+
+        <NewsCard
+          title={newsData.articles[randomNumbersToArray[5]].title}
+          img={newsData.articles[randomNumbersToArray[5]].urlToImage}
+          date={newsData.articles[randomNumbersToArray[5]].publishedAt}
+          description={newsData.articles[randomNumbersToArray[5]].description}
+          source={newsData.articles[randomNumbersToArray[5]].source.name}
+        />
+      </div>
+
+      {/* News Cards 02 */}
+      <div className="flex w-full">
+        <NewsCard
+          title={newsData.articles[randomNumbersToArray[6]].title}
+          img={newsData.articles[randomNumbersToArray[6]].urlToImage}
+          date={newsData.articles[randomNumbersToArray[6]].publishedAt}
+          description={newsData.articles[randomNumbersToArray[6]].description}
+          source={newsData.articles[randomNumbersToArray[6]].source.name}
+        />
+
+        <NewsCard
+          title={newsData.articles[randomNumbersToArray[7]].title}
+          img={newsData.articles[randomNumbersToArray[7]].urlToImage}
+          date={newsData.articles[randomNumbersToArray[7]].publishedAt}
+          description={newsData.articles[randomNumbersToArray[7]].description}
+          source={newsData.articles[randomNumbersToArray[7]].source.name}
+        />
+      </div>
+
+      {/* News Cards 03 */}
+      <div className="flex w-full">
+        <NewsCard
+          title={newsData.articles[randomNumbersToArray[8]].title}
+          img={newsData.articles[randomNumbersToArray[8]].urlToImage}
+          date={newsData.articles[randomNumbersToArray[8]].publishedAt}
+          description={newsData.articles[randomNumbersToArray[8]].description}
+          source={newsData.articles[randomNumbersToArray[8]].source.name}
+        />
+
+        <NewsCard
+          title={newsData.articles[randomNumbersToArray[9]].title}
+          img={newsData.articles[randomNumbersToArray[9]].urlToImage}
+          date={newsData.articles[randomNumbersToArray[9]].publishedAt}
+          description={newsData.articles[randomNumbersToArray[9]].description}
+          source={newsData.articles[randomNumbersToArray[9]].source.name}
+        />
+      </div>
+
+      <div className="NewsCard1">
+        <NewsCard
+          title={newsData.articles[randomNumbersToArray[10]].title}
+          img={newsData.articles[randomNumbersToArray[10]].urlToImage}
+          date={newsData.articles[randomNumbersToArray[10]].publishedAt}
+          description={newsData.articles[randomNumbersToArray[10]].description}
+          source={newsData.articles[randomNumbersToArray[10]].source.name}
+        />
+      </div>
+
+      <div className="NewsCard2">
+        <NewsCard
+          title={newsData.articles[randomNumbersToArray[10]].title}
+          img={newsData.articles[randomNumbersToArray[10]].urlToImage}
+          date={newsData.articles[randomNumbersToArray[10]].publishedAt}
+          description={newsData.articles[randomNumbersToArray[10]].description}
+          source={newsData.articles[randomNumbersToArray[10]].source.name}
+        />
+      </div>
     </>
   );
 }

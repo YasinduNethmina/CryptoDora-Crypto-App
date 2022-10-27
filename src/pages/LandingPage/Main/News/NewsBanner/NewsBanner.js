@@ -5,7 +5,7 @@ import "./NewsBanner.scss";
 
 function NewsBanner({ title, description, img, date, source }) {
   return (
-    <div className="newsBanner m-4 h-48 bg-[#1B2028]">
+    <div className="newsBanner mx-4 h-48 rounded-sm bg-[#1B2028]">
       <div className="flex">
         <div className="m-4 w-2/3">
           {
