@@ -1,0 +1,18 @@
+.partners {
+  animation-name: slider;
+  animation-duration: 35s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+@keyframes slider {
+  0% {
+    width: 20rem;
+    margin-left: 50rem;
+  }
+  100% {
+    width: 20rem;
+    margin-left: -175rem;
+  }
+}

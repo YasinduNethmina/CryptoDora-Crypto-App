@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 body {
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Poppins", "Segoe UI",

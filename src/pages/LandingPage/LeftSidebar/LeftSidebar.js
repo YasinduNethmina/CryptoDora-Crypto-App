@@ -8,6 +8,7 @@ import TrendingUpOutlinedIcon from "@mui/icons-material/TrendingUpOutlined";
 import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import { Link } from "react-router-dom";
 
 function LeftSidebar() {
   return (
@@ -16,23 +17,25 @@ function LeftSidebar() {
         😎 Logoipsum
       </h1>
       <div className="ml-2 text-[#9E9E9E]">
-        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8]  hover:text-white">
+        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8]  hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]">
           <GridViewRoundedIcon className="mr-5 ml-6" />
           <h1 className="text-left">Overview</h1>
         </button>
-        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white">
-          <CandlestickChartOutlinedIcon className="mr-5 ml-6" />
-          <h1 className="text-left">CryptoTab</h1>
-        </button>
-        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white">
+        <Link to="/crypto-tab">
+          <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]">
+            <CandlestickChartOutlinedIcon className="mr-5 ml-6" />
+            <h1 className="text-left">CryptoTab</h1>
+          </button>
+        </Link>
+        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]">
           <AccountBalanceWalletOutlinedIcon className="mr-5 ml-6" />
           <h1 className="text-left">Portfolio</h1>
         </button>
-        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white">
+        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]">
           <DiamondOutlinedIcon className="mr-5 ml-6" />
           <h1 className="text-left">NFTs</h1>
         </button>
-        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white">
+        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]">
           <KeyOutlinedIcon className="mr-5 ml-6" />
           <h1 className="text-left">DeFi</h1>
         </button>

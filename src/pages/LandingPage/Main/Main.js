@@ -11,6 +11,8 @@ import ChartLoadingState from "./Chart/ChartLoadingState";
 import Market from "./Market/Market";
 import News from "./News/News";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Partners from "./Partners/Partners";
+import NewsLoadingState from "./News/NewsLoadingState/NewsLoadingState";
 
 export const coinPriceContext = createContext();
 
@@ -161,7 +163,7 @@ function Main() {
 
   if (isLoading)
     return (
-      <div className="cards-section">
+      <div className="cards-section overflow-hidden">
         <Stats loadingState={isLoading ? true : false} />
         {/* Cards Loading State */}
         <div className="cards flex justify-between">
@@ -176,6 +178,7 @@ function Main() {
           />
         </div>
         <ChartLoadingState />
+        <NewsLoadingState />
       </div>
     );
   else if (isError) return <Navigate to="*" />;
@@ -206,6 +209,7 @@ function Main() {
         </div>
         <News newsData={newsQuery.data} />
 
+        {/* Show More button */}
         <div className="my-10 flex justify-center">
           {" "}
           <button
@@ -214,6 +218,11 @@ function Main() {
           >
             Show More <ExpandMoreIcon />
           </button>
+        </div>
+
+        {/* Partners */}
+        <div>
+          <Partners />
         </div>
       </>
     );

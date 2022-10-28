@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 
 function Footer() {
+  const [subscribe, setSubscribe] = useState(
+    "Subscribe to our newsletter & get all the latest updates!"
+  );
+
+  const handleButton = (e) => {
+    e.preventDefault();
+    setSubscribe("Thanks for subscribing, We'll give you all latest updates!");
+  };
+
   return (
     <div className="bg-[#1B2028] text-sm text-[#9E9E9a]">
       <div className="mt-20 flex justify-around py-10">
@@ -47,22 +56,22 @@ function Footer() {
             Subscribe
           </h4>
 
-          <form action="" className="flex">
+          <form action="submit" req className="flex">
             <input
+              pattern=".+@globex\.com"
               className="h-10 rounded-lg bg-[#31353f] pl-4 outline-none"
               type="email"
               placeholder="enter your email..."
+              required
             />
-            <button type="submit">
+            <button type="submit" onClick={handleButton}>
               <ArrowForwardIcon
                 style={{ fontSize: 38 }}
-                className="ml-2 rounded-lg bg-[#188CFF] text-xl text-[#31353f] hover:bg-gray-600 hover:text-black"
+                className="ml-2 rounded-lg bg-[#188CFF] text-xl text-white hover:bg-gray-600 hover:text-black"
               />
             </button>
           </form>
-          <p className="mt-4">
-            Subscribe to our newsletter & get all the latest updates!
-          </p>
+          <p className="mt-4">{subscribe}</p>
         </div>
       </div>
 
