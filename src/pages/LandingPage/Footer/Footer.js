@@ -56,7 +56,7 @@ function Footer() {
             Subscribe
           </h4>
 
-          <form action="submit" req className="flex">
+          <form action="submit" className="flex">
             <input
               pattern=".+@globex\.com"
               className="h-10 rounded-lg bg-[#31353f] pl-4 outline-none"

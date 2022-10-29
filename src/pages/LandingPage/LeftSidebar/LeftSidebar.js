@@ -17,10 +17,12 @@ function LeftSidebar() {
         😎 Logoipsum
       </h1>
       <div className="ml-2 text-[#9E9E9E]">
-        <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8]  hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]">
-          <GridViewRoundedIcon className="mr-5 ml-6" />
-          <h1 className="text-left">Overview</h1>
-        </button>
+        <Link to="/">
+          <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8]  hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]">
+            <GridViewRoundedIcon className="mr-5 ml-6" />
+            <h1 className="text-left">Overview</h1>
+          </button>
+        </Link>
         <Link to="/crypto-tab">
           <button className="border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]">
             <CandlestickChartOutlinedIcon className="mr-5 ml-6" />

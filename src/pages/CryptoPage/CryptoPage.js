@@ -20,22 +20,20 @@ function CryptoPage() {
   });
 
   return (
-    <>
-      <QueryClientProvider client={queryClient}>
-        <div className="App m-0 bg-[#31353f] p-0">
-          <Header />
-          <div className="flex w-full">
-            <div className="leftSidebar w-2/12">
-              <LeftSidebar />
-            </div>
-            <div className="main w-10/12">
-              <CryptoTab />
-            </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App m-0 bg-[#31353f] p-0">
+        <Header />
+        <div className="flex w-full">
+          <div className="leftSidebar w-2/12">
+            <LeftSidebar />
           </div>
-          <Footer />
+          <div className="main mb-20 w-10/12">
+            <CryptoTab />
+          </div>
         </div>
-      </QueryClientProvider>
-    </>
+        <Footer />
+      </div>
+    </QueryClientProvider>
   );
 }
 
