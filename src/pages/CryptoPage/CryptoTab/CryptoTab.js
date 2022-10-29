@@ -22,7 +22,7 @@ function CryptoTab() {
   });
 
   if (cryptoTabQuery.isLoading) {
-    return <h1>loading</h1>;
+    return;
   } else {
     const handleChange = (e) => {
       setSearch(e.target.value);
@@ -39,7 +39,7 @@ function CryptoTab() {
           <input
             placeholder="search for crypto"
             type="search"
-            className="mr-10 rounded-xl border-2 border-sky-400 bg-[#1b2028] py-1 pl-4 text-[#9e9e9e] outline-none"
+            className="mr-10 rounded-xl border-2 border-sky-400 bg-[#1b2028] py-1 px-4 text-[#9e9e9e] outline-none focus:border-purple-500"
             onChange={handleChange}
           />
         </div>

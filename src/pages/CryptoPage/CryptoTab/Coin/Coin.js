@@ -38,7 +38,11 @@ function Coin({
     <>
       <div className="mx-4 flex justify-between font-semibold text-white">
         <div className="mb-4 flex w-20">
-          {rank < 10 ? <h4>#0{rank}</h4> : <h4>#{rank}</h4>}
+          {rank < 10 ? (
+            <h4 className="text-[#9E9E9E]">#0{rank}</h4>
+          ) : (
+            <h4 className="text-[#9E9E9E]">#{rank}</h4>
+          )}
           <img className="mx-4 h-6 w-6" src={image} alt={name} />
           <h4>{name}</h4>
         </div>
