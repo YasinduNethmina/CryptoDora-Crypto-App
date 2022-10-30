@@ -7,7 +7,7 @@ function Partners() {
       <h1 className="mb-10 bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text pt-20 text-center text-4xl font-bold text-transparent">
         Our Partners.
       </h1>
-      <div className="partners flex">
+      <div className="partners flex h-40">
         <img
           className="w-80"
           src={require("../../../../assets/images/bitfinex-logo.png")}

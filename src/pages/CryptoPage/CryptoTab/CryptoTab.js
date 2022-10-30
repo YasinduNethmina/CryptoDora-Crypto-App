@@ -32,6 +32,10 @@ function CryptoTab() {
       coin.name.toLowerCase().includes(search.toLowerCase())
     );
 
+    const handleScrollTop = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
     return (
       <div className="mb-5 mt-24 h-full w-11/12 justify-center rounded-xl bg-[#1B2028]">
         <div className="flex items-center justify-between">
@@ -64,6 +68,7 @@ function CryptoTab() {
                 circulationSupply={coin.circulating_supply}
                 price={coin.current_price}
               />
+              <button onClick={handleScrollTop}></button>
             </div>
           );
         })}
