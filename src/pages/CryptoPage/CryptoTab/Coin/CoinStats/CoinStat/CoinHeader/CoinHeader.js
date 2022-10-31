@@ -25,7 +25,7 @@ function CoinHeader({ coinStats, coin }) {
     <>
       <div className="mr-4 w-1/3 items-center rounded-xl bg-[#1B2028] text-center text-[#9E9E9E]">
         <Link to="/crypto-tab">
-          <button className="goBackBtn m-4 hover:text-white">
+          <button className="goBackBtn mr-10 mt-4 mb-4 text-left hover:text-white">
             Crypto Tab
             <ArrowForwardIosIcon
               style={{ fontSize: ".85rem" }}
@@ -39,9 +39,13 @@ function CoinHeader({ coinStats, coin }) {
         <div className="mt-6 flex items-center justify-between">
           <div className="ml-4 flex">
             {" "}
-            <img className="w-8" src={coinStats.image.large} alt="coin-logo" />
+            <img
+              className="h-8 w-8"
+              src={coinStats.image.large}
+              alt="coin-logo"
+            />
             <h1 className="mx-4 text-2xl font-semibold text-white">
-              {coinStats.name}
+              {String(coinStats.name).slice(0, 20)}
             </h1>
             <h4 className="mr-4 flex items-center rounded-md bg-[#4e4e4e] px-2 font-bold text-[#c3c3c3]">
               {String(coinStats.symbol).toUpperCase()}
