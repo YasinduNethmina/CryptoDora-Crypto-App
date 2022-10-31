@@ -37,7 +37,7 @@ function CryptoTab() {
     };
 
     return (
-      <div className="mb-5 mt-24 h-full w-11/12 justify-center rounded-xl bg-[#1B2028]">
+      <div className="mb-5 mt-24 h-full justify-center rounded-xl bg-[#1B2028]">
         <div className="flex items-center justify-between">
           <h1 className="p-8 text-xl font-semibold text-white">Live Market</h1>
           <input
@@ -60,6 +60,7 @@ function CryptoTab() {
           return (
             <div className="w-full">
               <Coin
+                id={coin.id}
                 rank={coin.market_cap_rank}
                 name={coin.name}
                 image={coin.image}

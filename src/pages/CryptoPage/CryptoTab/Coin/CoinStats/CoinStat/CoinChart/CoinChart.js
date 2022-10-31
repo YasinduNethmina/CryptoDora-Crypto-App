@@ -1,21 +1,18 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import CandlestickChartOutlinedIcon from "@mui/icons-material/CandlestickChartOutlined";
-import CurrencyDropdown from "./CurrencyDropdown/CurrencyDropdown";
-import CryptoDropdown from "./CryptoDropdown/CryptoDropdown";
 
-function Chart({
-  //api data passed as props
+//had to make the chart component twice due to iterate error, (was not able to fix it yet!)
+function CoinChart({
+  coin,
+  coinStats,
   dailyChart,
   weeklyChart,
   monthlyChart,
   threeMonthChart,
   maxChart,
-  cards,
-  flags,
 }) {
-  //bitcoin current value assigned into this
   const [bitcoinPrice, setBitcoinPrice] = useState();
 
   //currency symbol gets from the api whenever the currency changes
@@ -249,6 +246,9 @@ function Chart({
 
   //chart Js options (used this in all charts)
   const options = {
+    animation: {
+      duration: 0,
+    },
     scales: {
       x: {
         grid: {
@@ -324,74 +324,46 @@ function Chart({
 
   return (
     <>
-      <div className="mt-5 h-full w-11/12 rounded-xl bg-[#1B2028]">
-        <div className="flex justify-between">
-          <h1 className="p-8 text-xl font-semibold text-white">Chart</h1>
-          <div className="mx-6 flex items-center">
-            {/* Candle Type Switch Section */}
-
-            <button className="">
-              <CandlestickChartOutlinedIcon
-                style={{ width: "1.6rem", height: "1.6rem" }}
-                className="mr-4 rounded-md text-[#9E9E9E] hover:text-green-400"
-              />
-            </button>
-
-            {/* Currency DropDown */}
-            <CurrencyDropdown
-              cards={cards}
-              flags={flags}
-              setBitcoinPrice={setBitcoinPrice}
-              setCurrencySymbol={setCurrencySymbol}
-            />
-          </div>
-        </div>
+      <div className="h-full w-2/3 rounded-xl bg-[#1B2028]">
+        <h4 className="ml-6 mt-4 text-2xl font-bold text-white">
+          {String(coin).toUpperCase().slice(0, 1) + String(coin).slice(1)} Chart
+        </h4>
         {/* Crypto DropDown */}
-        <div className="flex items-center justify-between pl-8">
-          <div className="w-1/3 justify-start">
-            <CryptoDropdown />
-
-            <h1 className="ml-1 text-xl font-semibold text-white">
-              {currencySymbol} &nbsp;
-              {bitcoinPrice}
-            </h1>
-          </div>
-
+        <div className="flex justify-around pt-4">
           {/* Chart Switch Section */}
-          <div className="mr-5 flex w-2/3 justify-around">
-            <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
-              onClick={handleDayChart}
-            >
-              1d
-            </button>
-            <button
-              className="focus-border-none h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] focus:outline-none"
-              onClick={handleWeekChart}
-              ref={activeRef}
-            >
-              1w
-            </button>
-            <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
-              onClick={handleMonthChart}
-            >
-              1m
-            </button>
-            <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
-              onClick={handleThreeMonthChart}
-            >
-              3m
-            </button>
 
-            <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
-              onClick={handleMaxChart}
-            >
-              max
-            </button>
-          </div>
+          <button
+            className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+            onClick={handleDayChart}
+          >
+            1d
+          </button>
+          <button
+            className="focus-border-none h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] focus:outline-none"
+            onClick={handleWeekChart}
+            ref={activeRef}
+          >
+            1w
+          </button>
+          <button
+            className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+            onClick={handleMonthChart}
+          >
+            1m
+          </button>
+          <button
+            className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+            onClick={handleThreeMonthChart}
+          >
+            3m
+          </button>
+
+          <button
+            className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+            onClick={handleMaxChart}
+          >
+            max
+          </button>
         </div>
         {/* Chart */}
         <div className="dayChart my-5 mx-5 hidden">
@@ -414,4 +386,4 @@ function Chart({
   );
 }
 
-export default Chart;
+export default CoinChart;

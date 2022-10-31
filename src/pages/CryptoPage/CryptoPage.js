@@ -4,7 +4,6 @@ import Footer from "../LandingPage/Footer/Footer";
 import LeftSidebar from "../LandingPage/LeftSidebar/LeftSidebar";
 import CryptoTab from "./CryptoTab/CryptoTab";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-
 import {
   QueryClient,
   QueryClientProvider,
@@ -32,9 +31,6 @@ function CryptoPage() {
   };
 
   useEffect(() => {
-    let window = document.querySelector("body");
-    window.scrollTo(0, 0);
-
     scrollUp();
   }, []);
 
@@ -55,7 +51,7 @@ function CryptoPage() {
           <div className="leftSidebar w-2/12">
             <LeftSidebar />
           </div>
-          <div className="main mb-20 w-10/12">
+          <div className="main mb-20 mr-6 w-10/12">
             <CryptoTab />
           </div>
         </div>

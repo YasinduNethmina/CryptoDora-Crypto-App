@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Coin({
+  id,
   rank,
   name,
   change,
@@ -34,43 +36,52 @@ function Coin({
       String(Math.round(circulationSupply / 1000000)) + "M";
   }
 
+  const handleClick = () => {
+    console.log(id);
+  };
+
   return (
     <>
-      <div className="mx-4 flex justify-between font-semibold text-white">
-        <div className="mb-4 flex w-20">
-          {rank < 10 ? (
-            <h4 className="text-[#9E9E9E]">#00{rank}</h4>
-          ) : (
-            <h4 className="text-[#9E9E9E]">#0{rank}</h4>
-          )}
-          <img className="mx-4 h-6 w-6" src={image} alt={name} />
-          <h4>{name}</h4>
-        </div>
+      <Link to={`/crypto-tab/${id}`} state={{ data: id }}>
+        <div
+          onClick={handleClick}
+          className="mx-4 flex cursor-pointer items-center justify-between rounded-xl py-2 font-semibold text-white transition ease-in-out hover:-translate-y-1 hover:bg-[#262e39] hover:shadow-2xl"
+        >
+          <div className="flex w-20 items-center pl-2">
+            {rank < 10 ? (
+              <h4 className="text-[#b5b5b5]">#00{rank}</h4>
+            ) : (
+              <h4 className="text-[#9E9E9E]">#0{rank}</h4>
+            )}
+            <img className="mx-4 h-6 w-6" src={image} alt={name} />
+            <h4>{name}</h4>
+          </div>
 
-        <div className=" mb-4 w-20 text-right">
-          {change > 0 ? (
-            <h4 className="text-green-500">{change.toFixed(2)}%</h4>
-          ) : (
-            <h4 className="text-red-500">{change.toFixed(2)}%</h4>
-          )}
-        </div>
+          <div className="w-20 text-right">
+            {change > 0 ? (
+              <h4 className="text-green-500">{change.toFixed(2)}%</h4>
+            ) : (
+              <h4 className="text-red-500">{change.toFixed(2)}%</h4>
+            )}
+          </div>
 
-        <div className="mb-4 w-20 text-left">
-          <h4>{marketCapRound}</h4>
-        </div>
+          <div className="w-20 text-left">
+            <h4>{marketCapRound}</h4>
+          </div>
 
-        <div className="mb-4 w-20 text-left">
-          <h4>{circulationSupplyRound}</h4>
-        </div>
+          <div className="w-20 text-left">
+            <h4>{circulationSupplyRound}</h4>
+          </div>
 
-        <div className="mb-4 w-20 text-left">
-          {price >= 1 ? (
-            <h4>${price.toFixed(1)}</h4>
-          ) : (
-            <h4>${price.toFixed(3)}</h4>
-          )}
+          <div className="w-20 text-left">
+            {price >= 1 ? (
+              <h4>${price.toFixed(1)}</h4>
+            ) : (
+              <h4>${price.toFixed(3)}</h4>
+            )}
+          </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 }

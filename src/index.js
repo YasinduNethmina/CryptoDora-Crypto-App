@@ -6,6 +6,7 @@ import App from "./App";
 import Error from "./pages/ErrorPage/Error";
 import "./common/media/mediaQueries.scss";
 import CryptoPage from "./pages/CryptoPage/CryptoPage";
+import CoinStats from "./pages/CryptoPage/CryptoTab/Coin/CoinStats/CoinStats";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,7 +15,8 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}></Route>
         <Route path="*" element={<Error />}></Route>
-        <Route path="crypto-tab" element={<CryptoPage />}></Route>
+        <Route path="/crypto-tab" element={<CryptoPage />}></Route>
+        <Route path="crypto-tab/:coinId" element={<CoinStats />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

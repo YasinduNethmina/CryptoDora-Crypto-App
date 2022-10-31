@@ -201,6 +201,8 @@ function Main() {
               monthlyChart={monthlyChartQuery.data}
               threeMonthChart={threeMonthChartQuery.data}
               maxChart={maxChartQuery.data}
+              cards={null}
+              flags={null}
             />
           </coinPriceContext.Provider>
         </div>

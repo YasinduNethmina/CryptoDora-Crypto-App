@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import Header from "./Header/Header";
 import LeftSidebar from "./LeftSidebar/LeftSidebar";
 import Main from "./Main/Main";
@@ -14,6 +15,17 @@ const queryClient = new QueryClient({
 });
 
 function LandingPage() {
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    scrollUp();
+  }, []);
+
   return (
     <>
       <QueryClientProvider client={queryClient}>
