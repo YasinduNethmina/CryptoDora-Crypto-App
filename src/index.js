@@ -8,6 +8,7 @@ import "./common/media/mediaQueries.scss";
 import CryptoPage from "./pages/CryptoPage/CryptoPage";
 import CoinStats from "./pages/CryptoPage/CryptoTab/Coin/CoinStats/CoinStats";
 import CryptoBubblePage from "./pages/CryptoBubblePage/CryptoBubblePage";
+import HeatMapPage from "./pages/HeatMapPage/HeatMapPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,6 +20,7 @@ root.render(
         <Route path="/crypto-tab" element={<CryptoPage />}></Route>
         <Route path="crypto-tab/:coinId" element={<CoinStats />}></Route>
         <Route path="/bubbles-tab" element={<CryptoBubblePage />}></Route>
+        <Route path="/heatmap-tab" element={<HeatMapPage />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

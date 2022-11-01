@@ -56,13 +56,13 @@ function LeftSidebar() {
             <h1 className="text-left">Crypto Bubbles</h1>
           </button>
         </Link>
-        <Link to="/heat-map">
+        <Link to="/heatmap-tab">
           <button
             onClick={handleFocus}
             className="sidebarBtn border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
           >
             <MapIcon className="mr-5 ml-6" />
-            <h1 className="text-left">Heatmap</h1>
+            <h1 className="text-left">Crypto Heatmap</h1>
           </button>
         </Link>
         <button

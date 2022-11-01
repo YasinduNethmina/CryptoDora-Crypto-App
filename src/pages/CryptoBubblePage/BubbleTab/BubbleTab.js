@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import { useQueries } from "@tanstack/react-query";
 import CoinBubble from "./CoinBubble/CoinBubble";
@@ -20,7 +20,7 @@ function BubbleTab() {
   });
 
   if (bubbleQuery.isLoading) {
-    return <h1>hgh</h1>;
+    return;
   } else {
     allBubbles = bubbleQuery.data;
 

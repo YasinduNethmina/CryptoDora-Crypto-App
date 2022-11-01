@@ -26,7 +26,7 @@ function NewsBanner({ title, description, img, date, source }) {
         </div>
       </div>
 
-      <div className="relative bottom-8 mx-4 flex items-center justify-between text-xs text-[#9E9E9E]">
+      <div className="relative bottom-10 mx-4 flex items-center justify-between text-xs text-[#9E9E9E]">
         <p>{String(source).slice(0, 10)} •</p>
         <p>{date.slice(0, 10)}</p>
         <button className="text-white">

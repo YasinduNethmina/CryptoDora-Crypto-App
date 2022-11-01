@@ -10,7 +10,7 @@ function CryptoTab() {
   const [cryptoTabQuery] = useQueries({
     queries: [
       {
-        queryKey: ["marketData"],
+        queryKey: ["cryptoTab"],
         queryFn: () =>
           axios
             .get(

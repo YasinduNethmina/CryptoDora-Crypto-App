@@ -58,6 +58,7 @@ function CryptoPage() {
         <Footer />
         {setBackToTopButton && (
           <button
+            className="rounded-lg border-2 border-sky-500"
             onClick={scrollUp}
             style={{
               position: "fixed",

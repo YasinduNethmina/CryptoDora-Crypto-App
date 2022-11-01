@@ -7,7 +7,7 @@ import {
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
-import BubbleTab from "./CryptoTab/BubbleTab";
+import BubbleTab from "./BubbleTab/BubbleTab";
 
 function CryptoBubblePage() {
   const queryClient = new QueryClient({

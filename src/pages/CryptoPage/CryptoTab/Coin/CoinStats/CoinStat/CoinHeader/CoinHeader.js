@@ -215,7 +215,7 @@ function CoinHeader({ coinStats, coin }) {
 
       {/* Coin Stat Description */}
       <div
-        style={{ position: "absolute", right: "2.3rem", top: "50rem" }}
+        style={{ position: "absolute", right: "2.3rem", top: "48rem" }}
         className="coinDescription w-4/5 rounded-xl bg-[#1B2028] p-4 font-mono font-semibold"
       >
         <h4 className="my-4 bg-gradient-to-br from-gray-400 to-zinc-600 bg-clip-text text-3xl text-transparent">
