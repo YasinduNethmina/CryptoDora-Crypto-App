@@ -2,13 +2,13 @@ import React from "react";
 import GridViewRoundedIcon from "@mui/icons-material/GridViewRounded";
 import CandlestickChartOutlinedIcon from "@mui/icons-material/CandlestickChartOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
-import KeyOutlinedIcon from "@mui/icons-material/KeyOutlined";
 import ChatOutlinedIcon from "@mui/icons-material/ChatOutlined";
 import TrendingUpOutlinedIcon from "@mui/icons-material/TrendingUpOutlined";
-import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { Link } from "react-router-dom";
+import BubbleChartIcon from "@mui/icons-material/BubbleChart";
+import MapIcon from "@mui/icons-material/Map";
 
 function LeftSidebar() {
   const handleFocus = () => {
@@ -47,22 +47,24 @@ function LeftSidebar() {
           <AccountBalanceWalletOutlinedIcon className="mr-5 ml-6" />
           <h1 className="text-left">Portfolio</h1>
         </button>
-        <Link to="/nfts-tab">
+        <Link to="/bubbles-tab">
           <button
             onClick={handleFocus}
             className="sidebarBtn border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
           >
-            <DiamondOutlinedIcon className="mr-5 ml-6" />
-            <h1 className="text-left">NFTs</h1>
+            <BubbleChartIcon className="mr-5 ml-6" />
+            <h1 className="text-left">Crypto Bubbles</h1>
           </button>
         </Link>
-        <button
-          onClick={handleFocus}
-          className="sidebarBtn border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
-        >
-          <KeyOutlinedIcon className="mr-5 ml-6" />
-          <h1 className="text-left">DeFi</h1>
-        </button>
+        <Link to="/heat-map">
+          <button
+            onClick={handleFocus}
+            className="sidebarBtn border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+          >
+            <MapIcon className="mr-5 ml-6" />
+            <h1 className="text-left">Heatmap</h1>
+          </button>
+        </Link>
         <button
           onClick={handleFocus}
           className="sidebarBtn border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white"

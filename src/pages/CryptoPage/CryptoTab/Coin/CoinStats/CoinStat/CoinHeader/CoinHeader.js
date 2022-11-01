@@ -75,7 +75,7 @@ function CoinHeader({ coinStats, coin }) {
         {/* Price */}
         <div className="mt-8 flex w-full flex-wrap justify-center">
           <h1 className="mr-4 text-3xl font-bold text-white shadow-cyan-500 transition duration-150 ease-in-out hover:text-green-300">
-            ${coinStats.market_data.current_price.usd}.00
+            ${coinStats.market_data.current_price.usd.toFixed(2)}
           </h1>
           {coinStats.market_data.price_change_percentage_24h > 0 ? (
             <h4 className="flex items-center justify-center rounded-xl bg-green-500 px-2 font-semibold text-white">
@@ -168,7 +168,7 @@ function CoinHeader({ coinStats, coin }) {
             rel="noreferrer"
             className="gple-600 group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 group-hover:to-blue-500 dark:text-white dark:focus:ring-blue-800"
           >
-            <span class="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
+            <span className="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
               <LinkIcon className="rotate-45" />
               HomePage
               <ArrowOutwardIcon />
@@ -181,7 +181,7 @@ function CoinHeader({ coinStats, coin }) {
             target="_blank"
             rel="noreferrer"
           >
-            <span class="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
+            <span className="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
               <SearchIcon />
               Explorers
             </span>
@@ -193,7 +193,7 @@ function CoinHeader({ coinStats, coin }) {
             target="_blank"
             rel="noreferrer"
           >
-            <span class="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
+            <span className="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
               <TwitterIcon />
               Twitter
             </span>
@@ -205,7 +205,7 @@ function CoinHeader({ coinStats, coin }) {
             target="_blank"
             rel="noreferrer"
           >
-            <span class="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
+            <span className="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
               <CodeIcon />
               Source Code
             </span>

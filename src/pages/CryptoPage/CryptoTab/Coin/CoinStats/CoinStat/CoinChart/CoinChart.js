@@ -357,13 +357,6 @@ function CoinChart({
           >
             3m
           </button>
-
-          <button
-            className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
-            onClick={handleMaxChart}
-          >
-            max
-          </button>
         </div>
         {/* Chart */}
         <div className="dayChart my-5 mx-5 hidden">
@@ -377,9 +370,6 @@ function CoinChart({
         </div>
         <div className="threeMonthChart my-5 mx-5 hidden">
           <Line data={threeMonthData} options={options} />
-        </div>
-        <div className="maxChart my-5 mx-5 hidden">
-          <Line data={maxData} options={options} />
         </div>
       </div>
     </>

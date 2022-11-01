@@ -101,7 +101,9 @@ function Market({ list }) {
 
           <div className="mb-6 flex w-full justify-around text-[#9e9e9e]">
             <h4 className="relative left-4">Coin</h4>
-            <h4 className="relative left-2">Change</h4>
+            <h4 className="coinPriceChangePercentage relative left-2">
+              Change
+            </h4>
             <h4 className="relative right-6">M.Cap</h4>
             <h4 className="relative right-8">Supply</h4>
             <h4 className="relative right-4">Price</h4>
@@ -110,22 +112,24 @@ function Market({ list }) {
 
           {filteredCoins.slice(0, 8).map((coin) => {
             return (
-              <div className="flex items-center">
-                <div className="w-10/12">
-                  <Coin
-                    rank={coin.market_cap_rank}
-                    name={String(coin.symbol).toUpperCase()}
-                    image={coin.image}
-                    change={coin.price_change_percentage_24h}
-                    marketCap={coin.market_cap}
-                    circulationSupply={coin.circulating_supply}
-                    price={coin.current_price}
-                  />
+              <Link to="/crypto-tab">
+                <div className="flex items-center">
+                  <div className="w-10/12">
+                    <Coin
+                      rank={coin.market_cap_rank}
+                      name={String(coin.symbol).toUpperCase()}
+                      image={coin.image}
+                      change={coin.price_change_percentage_24h}
+                      marketCap={coin.market_cap}
+                      circulationSupply={coin.circulating_supply}
+                      price={coin.current_price}
+                    />
+                  </div>
+                  <div className="marketChart mr-4 h-12 w-2/12">
+                    <Line data={chartData} options={options} />
+                  </div>
                 </div>
-                <div className="marketChart mr-4 h-12 w-2/12">
-                  <Line data={chartData} options={options} />
-                </div>
-              </div>
+              </Link>
             );
           })}
 
