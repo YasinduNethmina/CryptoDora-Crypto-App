@@ -24,7 +24,7 @@ function HeatMapTab() {
     return (
       <>
         <div className="heatmap mt-20 flex h-screen w-full flex-wrap ">
-          <Heatmap />
+          <Heatmap data={heatmapQuery.data} />
         </div>
       </>
     );
