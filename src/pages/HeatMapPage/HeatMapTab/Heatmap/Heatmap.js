@@ -1,6 +1,7 @@
 import React from "react";
 
 function Heatmap({ data }) {
+  // Don't try to understand this stupid bro, this is the worst idea I had lol! check the rest, not this file 😂
   return (
     <div className="flex h-full w-full justify-around font-bold text-white">
       <div className="h-full w-1/3">
@@ -22,7 +23,7 @@ function Heatmap({ data }) {
               : "flex h-full w-full items-center justify-center border-b-8 border-l-8 border-r-8 border-zinc-800 bg-[#ED7171]"
           }
         >
-          {/* BTC */}
+          {/* BTC Section */}
           <div>
             <h1 className="text-9xl">{data[0].symbol.toUpperCase()}</h1>
             <h4 className="my-4 text-center text-6xl font-semibold">
@@ -40,8 +41,9 @@ function Heatmap({ data }) {
           PoS
         </h4>
 
-        {/* ETH */}
+        {/* POS Section */}
         <div className="flex h-1/2 w-full border-r-8 border-zinc-800 text-center">
+          {/* POS LEFT */}
           <div
             className={
               data[1].price_change_percentage_24h > 0
@@ -57,7 +59,7 @@ function Heatmap({ data }) {
               {data[1].price_change_percentage_24h.toFixed(2)}%
             </h6>
           </div>
-          {/* ETH Right */}
+          {/* POS RIGHT */}
           <div className="font-light">
             <div
               className={
@@ -66,8 +68,10 @@ function Heatmap({ data }) {
                   : "h-1/5 border-b-4 border-zinc-800 bg-[#ED7171] pt-1 text-center"
               }
             >
-              <h1 className=" text-xs">{data[29].symbol.toUpperCase()}</h1>
-              <h4 className=" text-center text-xs">
+              <h1 className="text-xs font-bold">
+                {data[29].symbol.toUpperCase()}
+              </h1>
+              <h4 className="text-center text-xs">
                 ${data[29].current_price.toFixed(2)}
               </h4>
               <h6 className="text-center text-xs">
@@ -82,7 +86,9 @@ function Heatmap({ data }) {
                   : "h-1/5 border-b-4 border-zinc-800 bg-[#ED7171] pt-1 text-center"
               }
             >
-              <h1 className="text-xs">{data[37].symbol.toUpperCase()}</h1>
+              <h1 className="text-xs font-bold">
+                {data[37].symbol.toUpperCase()}
+              </h1>
               <h4 className=" text-center text-xs">
                 ${data[37].current_price.toFixed(2)}
               </h4>
@@ -98,7 +104,9 @@ function Heatmap({ data }) {
                   : "h-1/5 border-b-4 border-zinc-800 bg-[#ED7171] pt-1 text-center"
               }
             >
-              <h1 className="text-xs">{data[44].symbol.toUpperCase()}</h1>
+              <h1 className="text-xs font-bold">
+                {data[44].symbol.toUpperCase()}
+              </h1>
               <h4 className=" text-center text-xs">
                 ${data[44].current_price.toFixed(2)}
               </h4>
@@ -114,7 +122,9 @@ function Heatmap({ data }) {
                   : "h-1/5 border-b-4 border-zinc-800 bg-[#ED7171] pt-1 text-center"
               }
             >
-              <h1 className="text-xs">{data[11].symbol.toUpperCase()}</h1>
+              <h1 className="text-xs font-bold">
+                {data[11].symbol.toUpperCase()}
+              </h1>
               <h4 className=" text-center text-xs">
                 ${data[11].current_price.toFixed(2)}
               </h4>
@@ -130,7 +140,9 @@ function Heatmap({ data }) {
                   : "h-1/5 bg-[#ED7171] pt-1 text-center"
               }
             >
-              <h1 className="text-xs">{data[87].symbol.toUpperCase()}</h1>
+              <h1 className="text-xs font-bold">
+                {data[87].symbol.toUpperCase()}
+              </h1>
               <h4 className=" text-center text-xs">
                 ${data[87].current_price.toFixed(2)}
               </h4>
@@ -141,8 +153,9 @@ function Heatmap({ data }) {
           </div>
         </div>
 
+        {/* POS BOTTOM SECTION (DBFT, OTHER...) */}
         <div className="h-1/2 bg-lime-400 text-xs">
-          {/* Title */}
+          {/* Titles */}
           <div className="flex h-12 items-center bg-zinc-800 text-center text-base">
             <h4 className="w-1/4">DBFT</h4>
             <h4 className="w-1/4">Other</h4>
@@ -151,7 +164,7 @@ function Heatmap({ data }) {
           </div>
           <div className="flex h-full w-full border-b-8 border-r-8 border-zinc-800 bg-green-800 font-light">
             {/* 1 */}
-            <div className="w-1/40 text-center">
+            <div className="w-full text-center">
               <div
                 className={
                   data[3].price_change_percentage_24h > 0
@@ -160,9 +173,13 @@ function Heatmap({ data }) {
                 }
               >
                 <div>
-                  <h4>{data[3].symbol.toUpperCase()}</h4>
+                  <h4 className="text-4xl font-bold">
+                    {data[3].symbol.toUpperCase()}
+                  </h4>
                   <h4 className="my-2"> ${data[3].current_price.toFixed(2)}</h4>
-                  <h6> {data[3].price_change_percentage_24h.toFixed(2)}%</h6>
+                  <h6 className="font-normal">
+                    {data[3].price_change_percentage_24h.toFixed(2)}%
+                  </h6>
                 </div>
               </div>
               <div className="flex h-1/6">
@@ -173,13 +190,7 @@ function Heatmap({ data }) {
                       : "flex w-1/2 items-center justify-center border-r-4 border-zinc-800 bg-[#ED7171] text-xs font-normal"
                   }
                 >
-                  <div
-                    className={
-                      data[22].price_change_percentage_24h > 0
-                        ? "bg-[#7ec17e]"
-                        : "bg-[#ED7171]"
-                    }
-                  >
+                  <div>
                     <h4>{data[22].symbol.toUpperCase()}</h4>
                     <h4 className="">${data[22].current_price.toFixed(2)}</h4>
                     <h6> {data[22].price_change_percentage_24h.toFixed(2)}%</h6>
@@ -216,7 +227,7 @@ function Heatmap({ data }) {
                       : "text-md bg-[#ED7171] text-center"
                   }
                 >
-                  <h4 className="font-semibold">
+                  <h4 className="text-2xl font-bold">
                     {data[9].symbol.toUpperCase()}
                   </h4>
                   <h4 className="font-semibold">
@@ -236,14 +247,13 @@ function Heatmap({ data }) {
                 }
               >
                 <div className="text-md text-center">
-                  <h4 className="font-semibold">
+                  <h4 className="text-2xl font-bold">
                     {data[16].symbol.toUpperCase()}
                   </h4>
                   <h4 className="font-semibold">
                     ${data[16].current_price.toFixed(2)}
                   </h4>
                   <h6 className="font-semibold">
-                    {" "}
                     {data[16].price_change_percentage_24h.toFixed(2)}%
                   </h6>
                 </div>
@@ -289,8 +299,8 @@ function Heatmap({ data }) {
                   <div
                     className={
                       data[34].price_change_percentage_24h > 0
-                        ? "flex h-1/2 items-center justify-center bg-[#7ec17e]"
-                        : "flex h-1/2 items-center justify-center bg-[#ED7171]"
+                        ? "flex h-1/2 items-center justify-center border-t-4 border-zinc-800 bg-[#7ec17e]"
+                        : "flex h-1/2 items-center justify-center border-t-4 border-zinc-800 bg-[#ED7171]"
                     }
                   >
                     <div className="text-md text-center">
@@ -428,7 +438,9 @@ function Heatmap({ data }) {
                   }
                 >
                   <div className="text-center font-semibold">
-                    <h4>{data[8].symbol.toUpperCase()}</h4>
+                    <h4 className="text-2xl font-bold">
+                      {data[8].symbol.toUpperCase()}
+                    </h4>
                     <h4 className="">${data[8].current_price.toFixed(2)}</h4>
                     <h6> {data[8].price_change_percentage_24h.toFixed(2)}%</h6>
                   </div>
@@ -470,15 +482,19 @@ function Heatmap({ data }) {
             <div className="w-1/4">
               <div
                 className={
-                  data[72].price_change_percentage_24h > 0
+                  data[71].price_change_percentage_24h > 0
                     ? "flex h-1/2 items-center justify-center border-b-4 border-zinc-800 bg-[#7ec17e]"
                     : "flex h-1/2 items-center justify-center border-b-4 border-zinc-800 bg-[#ED7171]"
                 }
               >
                 <div className="text-center text-lg font-semibold">
-                  <h4>{data[72].symbol.toUpperCase()}</h4>
-                  <h4 className="">${data[72].current_price.toFixed(2)}</h4>
-                  <h6> {data[72].price_change_percentage_24h.toFixed(2)}%</h6>
+                  <h4 className="text-2xl font-bold">
+                    {data[71].symbol.toUpperCase()}
+                  </h4>
+                  <h4 className="my-1">${data[72].current_price.toFixed(2)}</h4>
+                  <h6 className="font-normal">
+                    {data[71].price_change_percentage_24h.toFixed(2)}%
+                  </h6>
                 </div>
               </div>
               <div
@@ -489,9 +505,13 @@ function Heatmap({ data }) {
                 }
               >
                 <div className="text-center text-lg font-semibold">
-                  <h4>{data[51].symbol.toUpperCase()}</h4>
-                  <h4 className="">${data[51].current_price.toFixed(2)}</h4>
-                  <h6> {data[51].price_change_percentage_24h.toFixed(2)}%</h6>
+                  <h4 className="text-2xl">{data[51].symbol.toUpperCase()}</h4>
+                  <h4 className="my-1 text-sm">
+                    ${data[51].current_price.toFixed(2)}
+                  </h4>
+                  <h6 className="font-normal">
+                    {data[51].price_change_percentage_24h.toFixed(2)}%
+                  </h6>
                 </div>
               </div>
             </div>
@@ -500,6 +520,7 @@ function Heatmap({ data }) {
       </div>
 
       <div className="w-1/3">
+        {/* Ethereum Tokens Section */}
         <h4 className="flex h-12 items-center justify-center bg-zinc-800">
           Ethereum Tokens
         </h4>
@@ -514,9 +535,12 @@ function Heatmap({ data }) {
                 }
               >
                 <div className="text-md text-center">
-                  <h4>{data[4].symbol.toUpperCase()}</h4>
+                  <h4 className="text-4xl">{data[4].symbol.toUpperCase()}</h4>
                   <h4 className="">${data[4].current_price.toFixed(2)}</h4>
-                  <h6> {data[4].price_change_percentage_24h.toFixed(2)}%</h6>
+                  <h6 className="font-normal">
+                    {" "}
+                    {data[4].price_change_percentage_24h.toFixed(2)}%
+                  </h6>
                 </div>
               </div>
               <div
@@ -527,9 +551,12 @@ function Heatmap({ data }) {
                 }
               >
                 <div className="text-md text-center">
-                  <h4>{data[13].symbol.toUpperCase()}</h4>
+                  <h4 className="text-4xl">{data[13].symbol.toUpperCase()}</h4>
                   <h4 className="">${data[13].current_price.toFixed(2)}</h4>
-                  <h6> {data[13].price_change_percentage_24h.toFixed(2)}%</h6>
+                  <h6 className="font-normal">
+                    {" "}
+                    {data[13].price_change_percentage_24h.toFixed(2)}%
+                  </h6>
                 </div>
               </div>
             </div>
@@ -549,9 +576,13 @@ function Heatmap({ data }) {
                   }
                 >
                   <div className="text-md text-center">
-                    <h4>{data[17].symbol.toUpperCase()}</h4>
+                    <h4 className="text-2xl font-bold">
+                      {data[17].symbol.toUpperCase()}
+                    </h4>
                     <h4 className="">${data[17].current_price.toFixed(2)}</h4>
-                    <h6> {data[17].price_change_percentage_24h.toFixed(2)}%</h6>
+                    <h6 className="font-normal">
+                      {data[17].price_change_percentage_24h.toFixed(2)}%
+                    </h6>
                   </div>
                 </div>
 
@@ -563,9 +594,11 @@ function Heatmap({ data }) {
                   }
                 >
                   <div className="text-md text-center">
-                    <h4>{data[10].symbol.toUpperCase()}</h4>
+                    <h4 className="text-xl">{data[10].symbol.toUpperCase()}</h4>
                     <h4 className="">${data[10].current_price.toFixed(2)}</h4>
-                    <h6> {data[10].price_change_percentage_24h.toFixed(2)}%</h6>
+                    <h6 className="font-normal">
+                      {data[10].price_change_percentage_24h.toFixed(2)}%
+                    </h6>
                   </div>
                 </div>
 
@@ -584,8 +617,10 @@ function Heatmap({ data }) {
                     }
                   >
                     <div className="text-md text-center">
-                      <h4>{data[12].symbol.toUpperCase()}</h4>
-                      <h6>
+                      <h4 className="text-xl font-bold">
+                        {data[12].symbol.toUpperCase()}
+                      </h4>
+                      <h6 className="font-normal">
                         {data[12].price_change_percentage_24h.toFixed(2)}%
                       </h6>
                     </div>
@@ -599,8 +634,10 @@ function Heatmap({ data }) {
                       }
                     >
                       <div className="text-md text-center">
-                        <h4>{data[18].symbol.toUpperCase()}</h4>
-                        <h6>
+                        <h4 className="font-bold">
+                          {data[18].symbol.toUpperCase()}
+                        </h4>
+                        <h6 className="font-normal">
                           {data[18].price_change_percentage_24h.toFixed(2)}%
                         </h6>
                       </div>
@@ -613,8 +650,10 @@ function Heatmap({ data }) {
                       }
                     >
                       <div className="text-md text-center">
-                        <h4>{data[94].symbol.toUpperCase()}</h4>
-                        <h6>
+                        <h4 className="text-md font-bold">
+                          {data[94].symbol.toUpperCase()}
+                        </h4>
+                        <h6 className="font-normal">
                           {data[94].price_change_percentage_24h.toFixed(2)}%
                         </h6>
                       </div>
@@ -633,9 +672,14 @@ function Heatmap({ data }) {
                           : "flex h-full w-full items-center justify-center border-r-4 border-b-4 border-zinc-800 bg-[#ED7171]"
                       }
                     >
-                      <div className="text-md text-center">
-                        <h4>{data[56].symbol.toUpperCase()}</h4>
-                        <h6>
+                      <div className="text-center text-xs">
+                        <h4 className="font-normal">
+                          {data[56].symbol.toUpperCase()}
+                        </h4>
+                        <h6 className="my-1 font-normal">
+                          ${data[56].current_price.toFixed(2)}
+                        </h6>
+                        <h6 className="font-normal">
                           {data[56].price_change_percentage_24h.toFixed(2)}%
                         </h6>
                       </div>
@@ -650,8 +694,11 @@ function Heatmap({ data }) {
                     }
                   >
                     <div className="flex w-full items-center justify-center">
-                      <div className="text-md text-center">
+                      <div className="text-center text-xs font-normal">
                         <h4>{data[23].symbol.toUpperCase()}</h4>
+                        <h6 className="my-1 font-normal">
+                          ${data[23].current_price.toFixed(2)}
+                        </h6>
                         <h6>
                           {data[23].price_change_percentage_24h.toFixed(2)}%
                         </h6>
@@ -667,14 +714,14 @@ function Heatmap({ data }) {
                         : "flex w-1/2 items-center justify-center border-b-4 border-r-4 border-zinc-800 bg-[#ED7171]"
                     }
                   >
-                    <div className="text-md text-center">
+                    <div className="text-center text-xs font-normal">
                       <h4>{data[27].symbol.toUpperCase()}</h4>
                       <h6>
                         {data[27].price_change_percentage_24h.toFixed(2)}%
                       </h6>
                     </div>
                   </div>
-                  <div className="flex w-1/2">
+                  <div className="flex w-1/2 text-xs font-normal">
                     <div
                       className={
                         data[41].price_change_percentage_24h > 0
@@ -682,7 +729,7 @@ function Heatmap({ data }) {
                           : "flex h-full w-full items-center justify-center border-b-4 border-zinc-800 bg-[#ED7171]"
                       }
                     >
-                      <div className="text-md text-center">
+                      <div className="text-center text-xs font-normal">
                         <h4>{data[41].symbol.toUpperCase()}</h4>
                         <h6>
                           {data[41].price_change_percentage_24h.toFixed(2)}%
@@ -696,11 +743,11 @@ function Heatmap({ data }) {
                     <div
                       className={
                         data[52].price_change_percentage_24h > 0
-                          ? "flex w-1/2 items-center justify-center bg-[#7ec17e]"
+                          ? "flex w-1/2 items-center justify-center border-r-4 border-zinc-800 bg-[#7ec17e] "
                           : "flex w-1/2 items-center justify-center bg-[#ED7171]"
                       }
                     >
-                      <div className="text-md text-center">
+                      <div className="w-full text-center text-xs font-normal">
                         <h4>{data[52].symbol.toUpperCase()}</h4>
                         <h6>
                           {data[52].price_change_percentage_24h.toFixed(2)}%
@@ -714,7 +761,7 @@ function Heatmap({ data }) {
                           : "flex w-1/2 items-center justify-center bg-[#ED7171]"
                       }
                     >
-                      <div className="text-md text-center">
+                      <div className="text-center text-xs font-normal">
                         <h4>{data[45].symbol.toUpperCase()}</h4>
                         <h6>
                           {data[45].price_change_percentage_24h.toFixed(2)}%
@@ -729,8 +776,10 @@ function Heatmap({ data }) {
                         : "flex h-1/2 items-center justify-center bg-[#ED7171]"
                     }
                   >
-                    <div className="text-md text-center">
-                      <h4>{data[43].symbol.toUpperCase()}</h4>
+                    <div className="text-md text-center text-xs font-normal">
+                      <h4 className="text-xl font-bold">
+                        {data[43].symbol.toUpperCase()}
+                      </h4>
                       <h6>
                         {data[43].price_change_percentage_24h.toFixed(2)}%
                       </h6>
@@ -740,6 +789,7 @@ function Heatmap({ data }) {
               </div>
             </div>
           </div>
+          {/* Other Tokens Section */}
           <div className="flex h-12 w-full items-center bg-zinc-800 text-center">
             <div className="w-full">
               <div>
@@ -756,10 +806,14 @@ function Heatmap({ data }) {
                   : "flex h-full w-full items-center justify-center bg-[#ED7171]"
               }
             >
-              <div className="text-md text-center">
+              <div className="text-center text-5xl">
                 <h4>{data[2].symbol.toUpperCase()}</h4>
-                <h4 className="">${data[14].current_price.toFixed(2)}</h4>
-                <h6>{data[2].price_change_percentage_24h.toFixed(2)}%</h6>
+                <h4 className="my-3 font-semibold">
+                  ${data[14].current_price.toFixed(2)}
+                </h4>
+                <h6 className="text-xl font-normal">
+                  {data[2].price_change_percentage_24h.toFixed(2)}%
+                </h6>
               </div>
             </div>
           </div>
@@ -771,10 +825,12 @@ function Heatmap({ data }) {
                   : "flex w-1/2 items-center justify-center border-r-4 border-zinc-800 bg-[#ED7171]"
               }
             >
-              <div className="text-md text-center">
-                <h4>{data[6].symbol.toUpperCase()}</h4>
+              <div className="text-center text-lg">
+                <h4 className="text-2xl">{data[6].symbol.toUpperCase()}</h4>
                 <h4 className="">${data[6].current_price.toFixed(2)}</h4>
-                <h6>{data[6].price_change_percentage_24h.toFixed(2)}%</h6>
+                <h6 className="font-normal">
+                  {data[6].price_change_percentage_24h.toFixed(2)}%
+                </h6>
               </div>
             </div>
             <div className="h-full w-full">
@@ -792,10 +848,14 @@ function Heatmap({ data }) {
                       : "flex w-1/2 items-center justify-center border-r-4 border-zinc-800 bg-[#ED7171]"
                   }
                 >
-                  <div className="text-md text-center">
-                    <h4>{data[15].symbol.toUpperCase()}</h4>
+                  <div className="text-center text-lg">
+                    <h4 className="text-2xl">
+                      {data[15].symbol.toUpperCase()}
+                    </h4>
                     <h4 className="">${data[15].current_price.toFixed(2)}</h4>
-                    <h6>{data[15].price_change_percentage_24h.toFixed(2)}%</h6>
+                    <h6 className="font-normal">
+                      {data[15].price_change_percentage_24h.toFixed(2)}%
+                    </h6>
                   </div>
                 </div>
 
@@ -807,10 +867,14 @@ function Heatmap({ data }) {
                         : "flex w-1/2 items-center justify-center border-r-4 border-zinc-800 bg-[#ED7171]"
                     }
                   >
-                    <div className="text-md text-center">
-                      <h4>{data[20].symbol.toUpperCase()}</h4>
-                      <h4 className="">${data[20].current_price.toFixed(2)}</h4>
-                      <h6>
+                    <div className="text-center">
+                      <h4 className="text-2xl font-bold">
+                        {data[20].symbol.toUpperCase()}
+                      </h4>
+                      <h4 className="text-normal my-1">
+                        ${data[20].current_price.toFixed(2)}
+                      </h4>
+                      <h6 className="font-normal">
                         {data[20].price_change_percentage_24h.toFixed(2)}%
                       </h6>
                     </div>
@@ -823,9 +887,13 @@ function Heatmap({ data }) {
                     }
                   >
                     <div className="text-md text-center">
-                      <h4>{data[21].symbol.toUpperCase()}</h4>
-                      <h4 className="">${data[21].current_price.toFixed(2)}</h4>
-                      <h6>
+                      <h4 className="text-2xl font-bold">
+                        {data[21].symbol.toUpperCase()}
+                      </h4>
+                      <h4 className="text-normal my-1">
+                        ${data[21].current_price.toFixed(2)}
+                      </h4>
+                      <h6 className="font-normal">
                         {data[21].price_change_percentage_24h.toFixed(2)}%
                       </h6>
                     </div>
