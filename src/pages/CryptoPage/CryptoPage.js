@@ -11,7 +11,7 @@ import {
 } from "@tanstack/react-query";
 
 function CryptoPage() {
-  const [moveToTopButton, setBackToTopButton] = useState(false);
+  const [backToTopButton, setBackToTopButton] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {

@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import IosShareIcon from "@mui/icons-material/IosShare";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import "./NewsBanner.scss";
 
 function NewsBanner({ title, description, img, date, source }) {
+  const [active, setActive] = useState(false);
+
+  const handleClick = () => {
+    setActive(!active);
+  };
   return (
     <div className="newsBanner mx-4 mb-4 h-48 rounded-sm bg-[#1B2028]">
       <div className="flex">
@@ -33,8 +38,14 @@ function NewsBanner({ title, description, img, date, source }) {
           <IosShareIcon className="text-[#0768B5] hover:text-green-500" />
           Share
         </button>
-        <button className="text-white">
-          <BookmarkBorderIcon className="text-[#0768B5] hover:text-green-500" />
+        <button onClick={handleClick} className="text-white">
+          <BookmarkBorderIcon
+            className={
+              active
+                ? " text-green-500 hover:scale-110 "
+                : "text-[#0768B5] hover:scale-110 hover:text-green-500"
+            }
+          />
           Read Later
         </button>
       </div>

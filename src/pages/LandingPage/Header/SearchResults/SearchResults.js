@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function SearchResults({ coins, loading, showSearchResults }) {
   //destructured object into arrays again and sliced to get the top 9 results
@@ -29,7 +30,7 @@ function SearchResults({ coins, loading, showSearchResults }) {
     return (
       <div className="search-results fixed z-20 mr-28 mt-20 hidden w-1/3 rounded-xl border-2 border-sky-400 bg-[#1B2028] px-4 py-2 font-bold text-[#9E9E9E]">
         <button
-          className="duration-400 text-white ease-in hover:scale-110 hover:text-sky-400"
+          className="duration-400 text-white transition delay-150 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-sky-400"
           onClick={handleClick}
         >
           [ESC]
@@ -52,9 +53,11 @@ function SearchResults({ coins, loading, showSearchResults }) {
             {coinNames.map((coinName) => {
               return (
                 <>
-                  <button className=" mt-5 rounded px-2 hover:bg-[#3A6FF8] hover:text-white">
-                    {coinName}
-                  </button>
+                  <Link to="/crypto-tab">
+                    <button className="border-box mt-5 rounded px-4 text-left transition ease-in-out hover:-translate-y-1 hover:bg-[#262e39] hover:shadow-2xl">
+                      {String(coinName).slice(0, 16)}
+                    </button>
+                  </Link>
                   <br />
                 </>
               );

@@ -1,7 +1,7 @@
 import React from "react";
 
 function Heatmap({ data }) {
-  // Don't try to understand this stupid bro, this is the worst idea I had lol! check the rest, not this file 😂
+  // Don't try to understand this stupid code, this is the worst idea I had lol! check the rest, not this file 😂
   return (
     <div className="flex h-full w-full justify-around font-bold text-white">
       <div className="h-full w-1/3">

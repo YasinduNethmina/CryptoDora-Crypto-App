@@ -37,6 +37,10 @@ function Coin({
       String(Math.round(circulationSupply / 1000000)) + "M";
   }
 
+  const handleClick = () => {
+    console.log(id);
+  };
+
   return (
     <>
       <Link
@@ -47,7 +51,10 @@ function Coin({
         }
         state={{ data: id }}
       >
-        <div className="mx-4 flex cursor-pointer items-center justify-between rounded-xl py-2 font-semibold text-white transition ease-in-out hover:-translate-y-1 hover:bg-[#262e39] hover:shadow-2xl">
+        <div
+          onClick={handleClick}
+          className="mx-4 flex cursor-pointer items-center justify-between rounded-xl py-2 font-semibold text-white transition ease-in-out hover:-translate-y-1 hover:bg-[#262e39] hover:shadow-2xl"
+        >
           <div className="flex w-20 items-center pl-2">
             {rank < 10 ? (
               <h4 className="text-[#b5b5b5]">#00{rank}</h4>
