@@ -8,13 +8,18 @@ function CardLoadingState({ img }) {
           <div className="card-heading-logo-img my-7 ml-7 mr-5 flex h-11 w-11 items-center justify-center rounded-xl bg-[#31353f]"></div>
           <div className="card-heading-logo-text ml-2">
             <img
-              className="mb-2 h-2 w-5/6 opacity-20"
-              src={img}
+              className="mb-2 mt-8 h-6 w-5/6 opacity-20"
+              src={require("../../../../../assets/images/loading-state-bar.png")}
               alt="loading"
             />
             <img
-              className="mb-2 h-2 w-4/6 opacity-20"
-              src={img}
+              className="mb-2 h-4 w-4/6 opacity-20"
+              src={require("../../../../../assets/images/loading-state-bar.png")}
+              alt="loading"
+            />
+            <img
+              className="mb-6 h-6 w-5/6 opacity-20"
+              src={require("../../../../../assets/images/loading-state-bar.png")}
               alt="loading"
             />
           </div>

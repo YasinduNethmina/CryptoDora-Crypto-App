@@ -4,6 +4,7 @@ import LeftSidebar from "./LeftSidebar/LeftSidebar";
 import Main from "./Main/Main";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Footer from "./Footer/Footer";
+import NewsTabLeft from "../NewsPage/NewsTabLeft/NewsTabLeft";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,6 +35,7 @@ function LandingPage() {
           <div className="flex w-full">
             <div className="leftSidebar w-2/12">
               <LeftSidebar />
+              <NewsTabLeft />
             </div>
             <div className="main w-7/12">
               <Main />

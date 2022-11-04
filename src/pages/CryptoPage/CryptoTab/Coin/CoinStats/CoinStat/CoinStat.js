@@ -3,6 +3,7 @@ import { useQueries } from "@tanstack/react-query";
 import axios from "axios";
 import CoinChart from "./CoinChart/CoinChart";
 import CoinHeader from "./CoinHeader/CoinHeader";
+import CardLoadingState from "../../../../../LandingPage/Main/Cards/Card/CardLoadingState";
 
 function CoinStat({ coin }) {
   const [
@@ -77,7 +78,23 @@ function CoinStat({ coin }) {
     threeMonthChartQuery.isLoading ||
     maxChartQuery.isLoading
   ) {
-    return;
+    return (
+      <>
+        <div className="mt-20">
+          <div className="my-2">
+            <CardLoadingState
+              img={require("../../../../../../assets/images/loading-state-bar.png")}
+            />
+            <CardLoadingState
+              img={require("../../../../../../assets/images/loading-state-bar.png")}
+            />
+            <CardLoadingState
+              img={require("../../../../../../assets/images/loading-state-bar.png")}
+            />
+          </div>
+        </div>
+      </>
+    );
   } else {
     return (
       <>
