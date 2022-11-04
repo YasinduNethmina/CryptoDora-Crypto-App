@@ -757,8 +757,8 @@ function Heatmap({ data }) {
                     <div
                       className={
                         data[45].price_change_percentage_24h > 0
-                          ? "flex w-1/2 items-center justify-center bg-[#7ec17e]"
-                          : "flex w-1/2 items-center justify-center bg-[#ED7171]"
+                          ? "flex w-1/2 items-center justify-center border-l-4 border-zinc-800 bg-[#7ec17e]"
+                          : "flex w-1/2 items-center justify-center border-l-4 border-zinc-800 bg-[#ED7171]"
                       }
                     >
                       <div className="text-center text-xs font-normal">

@@ -21,11 +21,7 @@ function CardLoadingState({ img }) {
         </div>
       </div>
 
-      <div className="card-bottom my-5 ml-7 items-center justify-between">
-        <img className="mb-2 w-11/12 pr-4 opacity-20" src={img} alt="loading" />
-        <img className="mb-2 w-8/12 opacity-20" src={img} alt="loading" />
-        <img className="mb-2 h-4 w-9/12 opacity-20" src={img} alt="loading" />
-      </div>
+      <div className="card-bottom my-5 ml-7 h-16 items-center justify-between"></div>
     </div>
   );
 }

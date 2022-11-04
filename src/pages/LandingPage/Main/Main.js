@@ -6,7 +6,7 @@ import { useQueries } from "@tanstack/react-query";
 import axios from "axios";
 import CardLoadingState from "./Cards/Card/CardLoadingState";
 import Stats from "./Stats/Stats";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import ChartLoadingState from "./Chart/ChartLoadingState";
 import Market from "./Market/Market";
 import News from "./News/News";
@@ -126,7 +126,7 @@ function Main() {
         queryFn: () =>
           axios
             .get(
-              "https://newsapi.org/v2/everything?language=en&from=2022-10-20&to=2024-01-01&domains=coindesk.com&sortBy=popularity&pageSize=30&apiKey=56591b716be3406fa65c0b587fbd74c0"
+              "https://newsapi.org/v2/everything?language=en&from=2022-10-20&to=2024-01-01&domains=coindesk.com&sortBy=popularity&pageSize=30&apiKey=d22fa49d219e45048ed523d99210a9a9"
             )
             .then((res) => res.data),
       },
@@ -213,13 +213,14 @@ function Main() {
 
         {/* Show More button */}
         <div className="my-10 flex justify-center">
-          {" "}
-          <button
-            type="button"
-            className="rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Show More <ExpandMoreIcon />
-          </button>
+          <Link to="/news-tab">
+            <button
+              type="button"
+              className="rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Show More <ExpandMoreIcon />
+            </button>
+          </Link>
         </div>
 
         {/* Partners */}
