@@ -10,6 +10,7 @@ import CoinStats from "./pages/CryptoPage/CryptoTab/Coin/CoinStats/CoinStats";
 import CryptoBubblePage from "./pages/CryptoBubblePage/CryptoBubblePage";
 import HeatMapPage from "./pages/HeatMapPage/HeatMapPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
+import NewsDescription from "./pages/LandingPage/Main/News/NewsDescription/NewsDescription";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -23,6 +24,7 @@ root.render(
         <Route path="/bubbles-tab" element={<CryptoBubblePage />}></Route>
         <Route path="/heatmap-tab" element={<HeatMapPage />}></Route>
         <Route path="/news-tab" element={<NewsPage />}></Route>
+        <Route path="news-description" element={<NewsDescription />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

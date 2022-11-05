@@ -743,7 +743,7 @@ function Heatmap({ data }) {
                     <div
                       className={
                         data[52].price_change_percentage_24h > 0
-                          ? "flex w-1/2 items-center justify-center border-r-4 border-zinc-800 bg-[#7ec17e] "
+                          ? "flex w-1/2 items-center justify-center  bg-[#7ec17e] "
                           : "flex w-1/2 items-center justify-center bg-[#ED7171]"
                       }
                     >

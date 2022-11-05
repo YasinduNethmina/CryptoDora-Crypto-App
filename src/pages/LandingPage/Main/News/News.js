@@ -22,6 +22,7 @@ function News({ newsData }) {
           img={newsData.articles[randomNumbersToArray[0]].urlToImage}
           date={newsData.articles[randomNumbersToArray[0]].publishedAt}
           description={newsData.articles[randomNumbersToArray[0]].description}
+          source={newsData.articles[randomNumbersToArray[0]].source.name}
         />
       </div>
 
@@ -32,6 +33,7 @@ function News({ newsData }) {
           img={newsData.articles[randomNumbersToArray[1]].urlToImage}
           date={newsData.articles[randomNumbersToArray[1]].publishedAt}
           description={newsData.articles[randomNumbersToArray[1]].description}
+          source={newsData.articles[randomNumbersToArray[1]].source.name}
         />
       </div>
 
@@ -42,6 +44,7 @@ function News({ newsData }) {
           img={newsData.articles[randomNumbersToArray[2]].urlToImage}
           date={newsData.articles[randomNumbersToArray[2]].publishedAt}
           description={newsData.articles[randomNumbersToArray[2]].description}
+          source={newsData.articles[randomNumbersToArray[2]].source.name}
         />{" "}
       </div>
 
@@ -51,6 +54,7 @@ function News({ newsData }) {
           img={newsData.articles[randomNumbersToArray[3]].urlToImage}
           date={newsData.articles[randomNumbersToArray[3]].publishedAt}
           description={newsData.articles[randomNumbersToArray[3]].description}
+          source={newsData.articles[randomNumbersToArray[3]].source.name}
         />{" "}
       </div>
 
