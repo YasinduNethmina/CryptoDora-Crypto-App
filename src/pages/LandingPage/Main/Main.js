@@ -16,6 +16,11 @@ import NewsLoadingState from "./News/NewsLoadingState/NewsLoadingState";
 
 export const coinPriceContext = createContext();
 
+const today = new Date();
+let day = today.getDate();
+let month = today.getMonth() + 1;
+let year = today.getFullYear();
+
 function Main() {
   const [
     statsQuery,
@@ -126,7 +131,9 @@ function Main() {
         queryFn: () =>
           axios
             .get(
-              "https://newsapi.org/v2/everything?language=en&from=2022-10-20&to=2024-01-01&domains=coindesk.com&sortBy=popularity&pageSize=30&apiKey=d22fa49d219e45048ed523d99210a9a9"
+              `https://newsapi.org/v2/everything?language=en&from=${year}-${month}-${
+                day - 2
+              }&to=${year}-${month}-${day}&domains=coindesk.com&sortBy=popularity&pageSize=30&apiKey=d22fa49d219e45048ed523d99210a9a9`
             )
             .then((res) => res.data),
       },

@@ -229,21 +229,6 @@ function CoinChart({
     ],
   };
 
-  const maxData = {
-    labels: [...maxArray],
-    datasets: [
-      {
-        data: [...maxChartMap],
-        fill: true,
-        backgroundColor: "#3a6ff805",
-        borderColor: "#3A6FF8",
-        pointBorderColor: "transparent",
-        borderWidth: 2,
-        tension: 0,
-      },
-    ],
-  };
-
   //chart Js options (used this in all charts)
   const options = {
     animation: {
@@ -306,14 +291,6 @@ function CoinChart({
     document.querySelector(".oneMonthChart").classList.add("hidden");
     document.querySelector(".threeMonthChart").classList.remove("hidden");
     document.querySelector(".maxChart").classList.add("hidden");
-  };
-
-  const handleMaxChart = () => {
-    document.querySelector(".dayChart").classList.add("hidden");
-    document.querySelector(".oneWeekChart").classList.add("hidden");
-    document.querySelector(".oneMonthChart").classList.add("hidden");
-    document.querySelector(".threeMonthChart").classList.add("hidden");
-    document.querySelector(".maxChart").classList.remove("hidden");
   };
 
   //activeRef used to focus the chart button

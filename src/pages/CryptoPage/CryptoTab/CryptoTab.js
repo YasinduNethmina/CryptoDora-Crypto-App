@@ -28,6 +28,8 @@ function CryptoTab() {
       setSearch(e.target.value);
     };
 
+    console.log(cryptoTabQuery);
+
     const filteredCoins = coins.filter((coin) =>
       coin.name.toLowerCase().includes(search.toLowerCase())
     );
@@ -37,7 +39,7 @@ function CryptoTab() {
     };
 
     return (
-      <div className="mb-5 mt-24 h-full justify-center rounded-xl bg-[#1B2028]">
+      <div className="mt-24 h-full justify-center rounded-xl bg-[#1B2028]">
         <div className="flex items-center justify-between">
           <h1 className="p-8 text-xl font-semibold text-white">Live Market</h1>
           <input
