@@ -3,6 +3,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import { Link } from "react-router-dom";
 
 function Footer() {
   const [subscribe, setSubscribe] = useState(
@@ -50,7 +51,7 @@ function Footer() {
           <h6>Contact Us</h6>
         </div>
 
-        <div className="w-1/5 ">
+        <div className="w-1/5">
           {/* Form */}
           <h4 className="mb-4 cursor-pointer text-lg text-sky-200 hover:text-sky-400">
             Subscribe
@@ -79,11 +80,13 @@ function Footer() {
 
       <div className="flex items-center justify-around py-2">
         <div>
-          <img
-            className="w-8 rotate-12"
-            src={require("../../../assets/images/dogecoin-logo.png")}
-            alt=""
-          />
+          <Link to="/">
+            <img
+              className="w-8 rotate-12"
+              src={require("../../../assets/images/dogecoin-logo.png")}
+              alt=""
+            />
+          </Link>
         </div>
         <div className="flex text-gray-300">
           <h4 className="cursor-pointer hover:text-[#9e9e9e]">Terms</h4>

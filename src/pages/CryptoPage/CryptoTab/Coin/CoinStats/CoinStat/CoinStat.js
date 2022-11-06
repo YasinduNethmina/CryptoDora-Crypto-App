@@ -98,16 +98,20 @@ function CoinStat({ coin }) {
   } else {
     return (
       <>
-        <div className="mt-20 flex">
-          {<CoinHeader coin={coin} coinStats={coinStatQuery.data} />}
-          <CoinChart
-            coin={coin}
-            dailyChart={dailyChartQuery.data}
-            weeklyChart={weeklyChartQuery.data}
-            monthlyChart={monthlyChartQuery.data}
-            threeMonthChart={threeMonthChartQuery.data}
-            maxChart={maxChartQuery.data}
-          />
+        <div className="mt-20 flex w-full justify-center">
+          <div className="w-4/12">
+            <CoinHeader coin={coin} coinStats={coinStatQuery.data} />
+          </div>
+          <div className="w-7/12">
+            <CoinChart
+              coin={coin}
+              dailyChart={dailyChartQuery.data}
+              weeklyChart={weeklyChartQuery.data}
+              monthlyChart={monthlyChartQuery.data}
+              threeMonthChart={threeMonthChartQuery.data}
+              maxChart={maxChartQuery.data}
+            />
+          </div>
         </div>
       </>
     );

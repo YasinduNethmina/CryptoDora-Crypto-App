@@ -8,6 +8,7 @@ import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDown
 import SearchResults from "./SearchResults/SearchResults";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import Notifictions from "./Notifications/Notifictions";
 
 function Header() {
   const [coinsData, setCoinsData] = useState({
@@ -17,7 +18,11 @@ function Header() {
     img: [],
   });
 
+  const [searchValue, setSearchValue] = useState("");
+
   const [showSearchResults, setShowSearchResults] = useState(false);
+
+  const [showNotifications, setShowNotifications] = useState(false);
 
   //all specific array store search data input
   let coinNameArray = [];
@@ -26,11 +31,9 @@ function Header() {
   let coinImageArray = [];
 
   //gets search input
-  let searchValue = "";
-
   const handleSearchResults = async (e) => {
-    searchValue = document.getElementById("search-input").value;
-
+    setSearchValue(e.target.value);
+    document.getElementById("search-input").value = searchValue;
     //whenever input value changes react query updates the result from api
     await refetch();
 
@@ -54,7 +57,15 @@ function Header() {
     });
 
     //hide or show search results ui
-    setShowSearchResults(true);
+    if (searchValue !== "") {
+      setShowSearchResults(true);
+    } else {
+      setShowSearchResults(false);
+    }
+  };
+
+  const handleNotifications = () => {
+    setShowNotifications(!showNotifications);
   };
 
   //get search data from api when search input value changes
@@ -66,7 +77,7 @@ function Header() {
 
   return (
     <>
-      <div className="header fixed z-50 flex w-full items-center justify-between">
+      <div className="notifications header fixed z-50 flex w-full items-center justify-between">
         {/* Brand */}
         <Link to="/">
           <div className="brand flex items-center justify-center">
@@ -78,6 +89,7 @@ function Header() {
         {/* Searchbar */}
         <div className="searchbar ml-20 flex items-center justify-center">
           <input
+            value={searchValue}
             id="search-input"
             size={25}
             type="search"
@@ -97,6 +109,7 @@ function Header() {
           <button className="stats-notifications ">
             <NotificationsOutlinedIcon
               className="rounded-lg bg-[#1B2028] text-[#9E9E9E] hover:bg-[#9E9E9E] hover:text-[#1b2028]"
+              onClick={handleNotifications}
               style={{
                 width: "2.7rem",
                 height: "2.7rem",
@@ -104,7 +117,7 @@ function Header() {
               }}
             />
           </button>
-          <button className="stats-profile ml-8 flex items-center ">
+          <button className="stats-profile ml-8 flex items-center">
             <PersonOutlineOutlinedIcon
               className="rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E]"
               style={{
@@ -131,13 +144,22 @@ function Header() {
           </label>
         </div>
       </div>
-      <div className="flex justify-center">
+      <div className="fixed right-16 z-40 flex w-full justify-center">
         {/* search results ui */}
         <SearchResults
           coins={coinsData}
           loading={isLoading}
           showSearchResults={showSearchResults}
         />
+      </div>
+      <div
+        className={
+          showNotifications
+            ? "fixed right-60 top-16 z-40 w-60"
+            : "fixed right-60 top-16 z-40 hidden w-60"
+        }
+      >
+        <Notifictions />
       </div>
     </>
   );

@@ -301,8 +301,8 @@ function CoinChart({
 
   return (
     <>
-      <div className="h-full w-2/3 rounded-xl bg-[#1B2028]">
-        <h4 className="ml-6 mt-4 text-2xl font-bold text-white">
+      <div className="rounded-xl bg-[#1B2028]">
+        <h4 className="ml-6 mt-10 pt-4 text-2xl font-bold text-white">
           {String(coin).toUpperCase().slice(0, 1) + String(coin).slice(1)} Chart
         </h4>
         {/* Crypto DropDown */}
@@ -349,6 +349,19 @@ function CoinChart({
           <Line data={threeMonthData} options={options} />
         </div>
       </div>
+
+      <a
+        href="https://ftx.com/trade/DOGE-PERP"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img
+          src={require("../../../../../../../assets/images/advertisement.gif")}
+          alt="Advertisement"
+          className="h-32 w-full object-cover px-4"
+        ></img>
+        <h6 className="mt-1 text-center text-[#9e9e9e]">(Advertisement 🤑)</h6>
+      </a>
     </>
   );
 }

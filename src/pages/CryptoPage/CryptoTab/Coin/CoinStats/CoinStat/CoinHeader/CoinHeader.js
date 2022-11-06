@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import StarIcon from "@mui/icons-material/Star";
@@ -10,8 +10,11 @@ import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
 import SearchIcon from "@mui/icons-material/Search";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import CodeIcon from "@mui/icons-material/Code";
+import ShareModal from "../../../../../../LandingPage/Main/News/ShareModal/ShareModal";
 
 function CoinHeader({ coinStats, coin }) {
+  const [starIcon, setStarIcon] = useState(false);
+
   let circulationSupplyPercentage =
     String(
       Math.round(
@@ -21,11 +24,20 @@ function CoinHeader({ coinStats, coin }) {
       )
     ) + "%";
 
+  const handleClick = () => {
+    setStarIcon(!starIcon);
+  };
+
+  const handleShareModal = () => {
+    document.querySelector(".share-modal").classList.remove("hidden");
+    console.log("clicked");
+  };
+
   return (
     <>
-      <div className="mr-4 w-1/3 items-center rounded-xl bg-[#1B2028] text-center text-[#9E9E9E]">
+      <div className="mr-4 items-center rounded-xl bg-[#1B2028] pb-4 text-center text-[#9E9E9E]">
         <Link to="/crypto-tab">
-          <button className="goBackBtn mr-10 mt-4 mb-4 text-left hover:text-white">
+          <button className="goBackBtn mr-24 mt-4 text-left hover:text-white">
             Crypto Tab
             <ArrowForwardIosIcon
               style={{ fontSize: ".85rem" }}
@@ -37,8 +49,7 @@ function CoinHeader({ coinStats, coin }) {
 
         {/* Head */}
         <div className="mt-6 flex items-center justify-between">
-          <div className="ml-4 flex">
-            {" "}
+          <div className="ml-4 mt-4 flex items-center">
             <img
               className="h-8 w-8"
               src={coinStats.image.large}
@@ -51,9 +62,16 @@ function CoinHeader({ coinStats, coin }) {
               {String(coinStats.symbol).toUpperCase()}
             </h4>
           </div>
-          <div className="mr-4 cursor-pointer">
-            <StarIcon className="mr-4  hover:text-yellow-400" />
-            <IosShareIcon className="hover:text-green-500" />
+          <div className="mr-4 ml-8 mt-4 flex cursor-pointer flex-wrap items-center">
+            <StarIcon
+              onClick={handleClick}
+              className={
+                starIcon ? "mr-4 text-yellow-400" : "mr-4 hover:text-green-500"
+              }
+            />
+            <button onClick={handleShareModal}>
+              <IosShareIcon className="hover:text-green-500" />
+            </button>
           </div>
         </div>
 
@@ -216,14 +234,40 @@ function CoinHeader({ coinStats, coin }) {
       {/* Coin Stat Description */}
       <div
         style={{ position: "absolute", right: "2.3rem", top: "48rem" }}
-        className="coinDescription mt-4 w-4/5 rounded-xl bg-[#1B2028] p-4 font-mono font-semibold"
+        className="coinDescription mt-10 w-4/5 rounded-xl bg-[#1B2028] p-4 font-mono font-semibold"
       >
         <h4 className="my-4 bg-gradient-to-br from-gray-400 to-zinc-600 bg-clip-text text-3xl text-transparent">
           {coinStats.name}
         </h4>
         <h4 className="bg-gradient-to-br from-gray-300 to-gray-500 bg-clip-text text-transparent">
-          ❝ {String(coinStats.description.en).slice(0, 1750)} ❞
+          ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+          posuere fringilla molestie. Nunc lobortis nisi non ante commodo, in
+          tristique lorem hendrerit. Vestibulum ante ipsum primis in faucibus
+          orci luctus et ultrices posuere cubilia curae; Sed sed gravida velit,
+          ac gravida nunc.
+          <br />
+          <br />
+          Nullam velit quam, posuere id venenatis porttitor, convallis lobortis
+          neque. Cras vitae tempus lectus. Proin tempus risus ut mi tempor
+          imperdiet. Fusce aliquam leo malesuada, elementum est sit amet,
+          elementum justo. Aliquam sed commodo mauris. Cras tempor pulvinar est
+          eu hendrerit. Curabitur id lorem vitae massa iaculis commodo. Fusce
+          posuere ligula id nulla dapibus tincidunt. Nunc diam mauris, viverra
+          in nulla eleifend, interdum volutpat massa. Morbi sit amet venenatis
+          diam. Integer sit amet arcu tortor. Cras imperdiet odio turpis, nec
+          faucibus tortor ornare vel.
+          <br />
+          <br />
+          In ut tincidunt eros. Sed vestibulum nisi vestibulum tincidunt
+          lobortis. Ut et odio a sem cursus hendrerit. Nullam ultrices nibh
+          enim. Aenean eleifend sit amet risus a ullamcorper. Integer elementum
+          ligula sed nunc laoreet faucibus. Mauris maximus sem eu elit molestie
+          congue. ❞
         </h4>
+      </div>
+
+      <div className="share-modal fixed top-1/4 left-4 z-40 hidden h-full w-full">
+        <ShareModal />
       </div>
     </>
   );

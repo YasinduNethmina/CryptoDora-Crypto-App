@@ -79,7 +79,7 @@ function LeftSidebar() {
           className="sidebarBtn border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white"
         >
           <TrendingUpOutlinedIcon className="mr-5 ml-6" />
-          <h1 className="text-left">Trending Coins</h1>
+          <h1 className="text-left">Blockchain Explorer</h1>
         </button>
         <button
           onClick={handleFocus}
