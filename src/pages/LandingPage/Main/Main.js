@@ -18,7 +18,7 @@ export const coinPriceContext = createContext();
 
 const today = new Date();
 let day = today.getDate();
-let month = today.getMonth() + 1;
+let month = today.getMonth();
 let year = today.getFullYear();
 
 function Main() {
@@ -131,9 +131,11 @@ function Main() {
         queryFn: () =>
           axios
             .get(
-              `https://newsapi.org/v2/everything?language=en&from=${year}-${month}-${
-                day - 2
-              }&to=${year}-${month}-${day}&domains=coindesk.com&sortBy=popularity&pageSize=30&apiKey=d22fa49d219e45048ed523d99210a9a9`
+              `https://newsapi.org/v2/everything?language=en&from=${year}-${
+                month + 1
+              }-${day - 2}&to=${year}-${
+                month + 1
+              }-${day}&domains=coindesk.com&sortBy=popularity&pageSize=30&apiKey=d22fa49d219e45048ed523d99210a9a9`
             )
             .then((res) => res.data),
       },

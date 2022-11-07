@@ -5,9 +5,18 @@ import CardLoadingState from "../../../Cards/Card/CardLoadingState";
 import NewsCard from "../../../../Main/News/NewsCard/NewsCard";
 
 function MoreNews() {
+  const today = new Date();
+  let day = today.getDate();
+  let month = today.getMonth();
+  let year = today.getFullYear();
+
   const { data, isLoading } = useQuery(["news"], () => {
     return axios(
-      "https://newsapi.org/v2/everything?language=en&from=2022-10-20&to=2024-01-01&domains=coindesk.com&sortBy=popularity&pageSize=2&apiKey=d22fa49d219e45048ed523d99210a9a9"
+      `https://newsapi.org/v2/everything?language=en&from=${year}-${
+        month + 1
+      }-${day - 2}&to=${year}-${
+        month + 1
+      }-${day}&domains=coindesk.com&sortBy=popularity&pageSize=2&apiKey=d22fa49d219e45048ed523d99210a9a9`
     ).then((res) => res.data);
   });
 

@@ -21,7 +21,6 @@ function NewsCard01({ title, img, date, description, source }) {
 
   const handleShareModal = () => {
     document.querySelector(".share-modal").classList.remove("hidden");
-    console.log("clicked");
   };
 
   return (
