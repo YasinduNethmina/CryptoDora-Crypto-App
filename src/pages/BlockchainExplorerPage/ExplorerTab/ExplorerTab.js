@@ -1,0 +1,210 @@
+import React from "react";
+import Explorer from "./Explorer.scss";
+import SearchIcon from "@mui/icons-material/Search";
+import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
+import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
+import PaidIcon from "@mui/icons-material/Paid";
+import Paid from "@mui/icons-material/Paid";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import axios from "axios";
+import { useQueries } from "@tanstack/react-query";
+
+function ExplorerTab() {
+  const [lastBlockQuery, ethereumQuery, gasQuery] = useQueries({
+    queries: [
+      {
+        queryKey: ["lastBlock"],
+        queryFn: () =>
+          axios
+            .get("https://api.ethplorer.io/getLastBlock?apiKey=freekey")
+            .then((res) => res.data),
+      },
+      {
+        queryKey: ["ethereum"],
+        queryFn: () =>
+          axios
+            .get(
+              "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=ethereum&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+            )
+            .then((res) => res.data),
+      },
+      {
+        queryKey: ["gas"],
+        queryFn: () =>
+          axios
+            .get(
+              "https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=8PUERY974IQXPVGSN99GFBADQP8WW42QSJ"
+            )
+            .then((res) => res.data),
+      },
+    ],
+  });
+
+  if (
+    lastBlockQuery.isLoading ||
+    ethereumQuery.isLoading ||
+    gasQuery.isLoading
+  ) {
+    return;
+  } else {
+    console.log(gasQuery);
+    return (
+      <>
+        {/* Header section */}
+        <div className="explorer-bg mt-24 h-1/4 w-full rounded-xl bg-green-500 opacity-90">
+          <h1 className="pl-10 pt-16 text-center text-xl font-semibold text-green-500">
+            The Ethereum Blockchain Explorer
+          </h1>
+          <div className="ml-10 flex justify-center">
+            <select
+              name="category"
+              className="mt-6 h-10 border-r-2 border-gray-300 px-1 outline-none"
+            >
+              <option value="all">All Filters</option>
+              <option value="addresses">Addresses</option>
+              <option value="tokens">Tokens</option>
+              <option value="names">Name Tags</option>
+              <option value="labels">Labels</option>
+              <option value="websites">Websites</option>
+            </select>
+            <input
+              className="mt-6 h-10 w-1/2 pl-4 text-[#9e9e9e] caret-[#9e9e9e] outline-none"
+              placeholder="Search by Address / Txn Hash / Block / Token"
+              type="search"
+            />
+            <button>
+              <SearchIcon
+                style={{ fontSize: "2.5rem", color: "white" }}
+                className="mt-6 rounded-r-xl bg-sky-500 hover:bg-blue-500"
+              />
+            </button>
+          </div>
+          <h1 className="mt-10 ml-10 text-center font-bold text-yellow-400 ">
+            CryptoDora is now a Top validator on the Smart Chain. &nbsp;
+            <a
+              href="https://ethereum.org/en/"
+              className="text-red-600 underline underline-offset-4 hover:text-red-500"
+              rel="noreferrer"
+              target="_blank"
+            >
+              {" "}
+              Delegate ETH to Cryptodora now!
+            </a>
+          </h1>
+        </div>
+
+        <div className="relative bottom-2 flex h-4/6 flex-wrap justify-center rounded-b-xl bg-[#1B2028] pt-4">
+          {/* ETH Price */}
+          <div className="duration-800 mr-4 mt-2 h-20 w-1/5 cursor-default rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
+            <div className="mx-4 flex items-center justify-center">
+              <img
+                className="mr-2 mt-4 w-10"
+                src={require("../../../assets/images/ethereum-logo.png")}
+                alt="ethereum-logo"
+              />
+              <div className="mt-4 text-left">
+                <h1 className="text-[#9e9e9e]">ETH Price</h1>
+                <div className="flex">
+                  <h4>${ethereumQuery.data[0].current_price}</h4>
+                  <h4
+                    className={
+                      ethereumQuery.data[0].price_change_percentage_24h > 0
+                        ? "pl-2 text-green-500"
+                        : "pl-2 text-red-500"
+                    }
+                  >
+                    $
+                    {Number(
+                      ethereumQuery.data[0].price_change_percentage_24h
+                    ).toFixed(2)}
+                    %
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Transactions Count */}
+          <div className="duration-800 mt-2 h-20 w-1/5 cursor-default rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
+            <div className="mx-4 flex items-center justify-center">
+              <ReceiptLongIcon
+                style={{ fontSize: "40px" }}
+                className="mr-2 mt-4 w-10 text-sky-500"
+              />
+              <div className="mt-4 text-left">
+                <h1 className="text-[#9e9e9e]">Transactions</h1>
+                <div className="flex">
+                  <h4>1,823,90M</h4>
+                  <h4 className="pl-2 text-gray-400">(12TPS)</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* AVG Gas Price */}
+          <div className="duration-800 mt-2 ml-4 h-20 w-1/5 cursor-default rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
+            <div className="mx-4 flex items-center justify-center">
+              <LocalGasStationIcon
+                style={{ fontSize: "40px" }}
+                className="mr-2 mt-4 w-10 text-yellow-500"
+              />
+              <div className="mt-4 text-left">
+                <h1 className="text-[#9e9e9e]">Average Gas</h1>
+                <div className="flex">
+                  <h4>{gasQuery.data.result.SafeGasPrice}Gwei</h4>
+                  <h4 className="pl-2 text-gray-400">$0.40</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* MarketCap */}
+          <div className="duration-800 mt-2 ml-4 h-20 w-1/5 cursor-default rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
+            <div className="mx-4 flex items-center justify-center">
+              <Paid
+                style={{ fontSize: "40px" }}
+                className="mr-2 mt-4 w-10 text-green-500"
+              />
+              <div className="mt-4 text-left">
+                <h1 className="text-[#9e9e9e]">Market Cap</h1>
+                <div className="flex">
+                  <h4>
+                    ${Math.round(ethereumQuery.data[0].market_cap / 1000000000)}
+                    B
+                  </h4>
+                  <h4
+                    className={
+                      ethereumQuery.data[0].market_cap_change_percentage_24h > 0
+                        ? "pl-2 text-green-500"
+                        : "pl-2 text-red-500"
+                    }
+                  >
+                    {ethereumQuery.data[0].market_cap_change_percentage_24h.toFixed(
+                      2
+                    )}
+                    %
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Last Block */}
+          <div className="duration-800 mt-2 ml-4 h-20 w-32 cursor-default rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
+            <div className="mx-4 flex items-center justify-center">
+              <div className="mt-4 text-left">
+                <h1 className="text-center text-[#9e9e9e]">Last Block</h1>
+
+                <h4 className="flex items-center justify-center text-center">
+                  {lastBlockQuery.data.lastBlock} <CheckBoxIcon />
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+}
+
+export default ExplorerTab;

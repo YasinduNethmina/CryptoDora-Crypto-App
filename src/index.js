@@ -11,6 +11,7 @@ import CryptoBubblePage from "./pages/CryptoBubblePage/CryptoBubblePage";
 import HeatMapPage from "./pages/HeatMapPage/HeatMapPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import NewsDescription from "./pages/LandingPage/Main/News/NewsDescription/NewsDescription";
+import BlockchainExplorerPage from "./pages/BlockchainExplorerPage/BlockchainExplorerPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -25,6 +26,10 @@ root.render(
         <Route path="/heatmap-tab" element={<HeatMapPage />}></Route>
         <Route path="/news-tab" element={<NewsPage />}></Route>
         <Route path="news-description" element={<NewsDescription />}></Route>
+        <Route
+          path="blockchain-explorer"
+          element={<BlockchainExplorerPage />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

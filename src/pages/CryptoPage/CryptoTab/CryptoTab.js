@@ -27,9 +27,6 @@ function CryptoTab() {
     const handleChange = (e) => {
       setSearch(e.target.value);
     };
-
-    console.log(cryptoTabQuery);
-
     const filteredCoins = coins.filter((coin) =>
       coin.name.toLowerCase().includes(search.toLowerCase())
     );

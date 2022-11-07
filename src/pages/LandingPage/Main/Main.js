@@ -48,7 +48,9 @@ function Main() {
         queryKey: ["ethGas"],
         queryFn: () =>
           axios
-            .get("https://ethgasstation.info/api/ethgasAPI.json?")
+            .get(
+              "https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=8PUERY974IQXPVGSN99GFBADQP8WW42QSJ"
+            )
             .then((res) => res.data),
       },
       {

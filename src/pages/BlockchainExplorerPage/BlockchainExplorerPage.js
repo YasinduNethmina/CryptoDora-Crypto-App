@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../LandingPage/Header/Header";
 import Footer from "../LandingPage/Footer/Footer";
 import LeftSidebar from "../LandingPage/LeftSidebar/LeftSidebar";
+import ExplorerTab from "./ExplorerTab/ExplorerTab";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import {
   QueryClient,
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
-import Explorer from "../BlockchainExplorerPage/ExplorerTab/ExplorerTab";
 
-function CryptoPage() {
+function BlockchainExplorerPage() {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -28,7 +29,7 @@ function CryptoPage() {
             <LeftSidebar />
           </div>
           <div className="main mb-20 mr-6 w-10/12">
-            <Explorer />
+            <ExplorerTab />
           </div>
         </div>
         <Footer />
@@ -37,4 +38,4 @@ function CryptoPage() {
   );
 }
 
-export default CryptoPage;
+export default BlockchainExplorerPage;

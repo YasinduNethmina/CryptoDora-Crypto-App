@@ -3,7 +3,6 @@ import Stats from "../Stats/Stats";
 
 function Cards({ stats, gas, cards, randomNumber }) {
   //used to generate cards randomly with a ternary
-
   return (
     <>
       <div className="cards-section">
@@ -13,7 +12,7 @@ function Cards({ stats, gas, cards, randomNumber }) {
           btcVolume={stats.total_volume.btc}
           btcDominance={stats.market_cap_percentage.btc}
           ethDominance={stats.market_cap_percentage.eth}
-          ethGas={gas.fast}
+          ethGas={gas.result.ProposeGasPrice}
         />
         <div className="cards flex justify-between">
           {/* Bitcoin Card */}

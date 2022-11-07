@@ -9,8 +9,6 @@ function News({ newsData }) {
   for (let i = 0; i < 13; i++) {
     randomNumbers[i] = Math.floor(Math.random() * 10);
   }
-
-  console.log(randomNumbers);
   return (
     <>
       {/* News Top 01 */}
