@@ -31,6 +31,15 @@ function LeftSidebar() {
             <h1 className="text-left">Overview</h1>
           </button>
         </Link>
+        <Link to="/news-tab">
+          <button
+            onClick={handleFocus}
+            className="sidebarBtn border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white"
+          >
+            <ChatOutlinedIcon className="mr-5 ml-6" />
+            <h1 className="text-left">Crypto News</h1>
+          </button>
+        </Link>
         <Link to="/crypto-tab">
           <button
             onClick={handleFocus}
@@ -38,6 +47,15 @@ function LeftSidebar() {
           >
             <CandlestickChartOutlinedIcon className="mr-5 ml-6" />
             <h1 className="text-left">CryptoTab</h1>
+          </button>
+        </Link>
+        <Link to="/blockchain-explorer">
+          <button
+            onClick={handleFocus}
+            className="sidebarBtn border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white"
+          >
+            <TrendingUpOutlinedIcon className="mr-5 ml-6" />
+            <h1 className="text-left">Blockchain Explorer</h1>
           </button>
         </Link>
         <button
@@ -63,24 +81,6 @@ function LeftSidebar() {
           >
             <MapIcon className="mr-5 ml-6" />
             <h1 className="text-left">Crypto Heatmap</h1>
-          </button>
-        </Link>
-        <Link to="/news-tab">
-          <button
-            onClick={handleFocus}
-            className="sidebarBtn border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white"
-          >
-            <ChatOutlinedIcon className="mr-5 ml-6" />
-            <h1 className="text-left">Crypto News</h1>
-          </button>
-        </Link>
-        <Link to="/blockchain-explorer">
-          <button
-            onClick={handleFocus}
-            className="sidebarBtn border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white"
-          >
-            <TrendingUpOutlinedIcon className="mr-5 ml-6" />
-            <h1 className="text-left">Blockchain Explorer</h1>
           </button>
         </Link>
         <button

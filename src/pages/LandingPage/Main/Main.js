@@ -137,7 +137,7 @@ function Main() {
                 month + 1
               }-${day - 2}&to=${year}-${
                 month + 1
-              }-${day}&domains=coindesk.com&sortBy=popularity&pageSize=30&apiKey=d22fa49d219e45048ed523d99210a9a9`
+              }-${day}&domains=coindesk.com&sortBy=popularity&pageSize=16&apiKey=d22fa49d219e45048ed523d99210a9a9`
             )
             .then((res) => res.data),
       },

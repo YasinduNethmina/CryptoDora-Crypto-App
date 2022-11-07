@@ -7,7 +7,7 @@ import {
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
-import Explorer from "../BlockchainExplorerPage/ExplorerTab/ExplorerTab";
+import CryptoTab from "./CryptoTab/CryptoTab";
 
 function CryptoPage() {
   const queryClient = new QueryClient({
@@ -28,7 +28,7 @@ function CryptoPage() {
             <LeftSidebar />
           </div>
           <div className="main mb-20 mr-6 w-10/12">
-            <Explorer />
+            <CryptoTab />
           </div>
         </div>
         <Footer />

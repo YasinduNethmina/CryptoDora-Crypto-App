@@ -215,14 +215,14 @@ function Heatmap({ data }) {
             <div className="w-1/4 border-r-4 border-zinc-800 font-light">
               <div
                 className={
-                  data[22].price_change_percentage_24h > 0
+                  data[9].price_change_percentage_24h > 0
                     ? "flex h-1/4 items-center justify-center border-b-4 border-zinc-800 bg-[#7ec17e]"
                     : "flex h-1/4 items-center justify-center border-b-4 border-zinc-800 bg-[#ED7171]"
                 }
               >
                 <div
                   className={
-                    data[22].price_change_percentage_24h > 0
+                    data[9].price_change_percentage_24h > 0
                       ? "text-md bg-[#7ec17e] text-center"
                       : "text-md bg-[#ED7171] text-center"
                   }

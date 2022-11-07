@@ -25,7 +25,7 @@ function NewsCard02({ title, img, date, description, source }) {
             }}
           >
             <img
-              className="h-1/2 w-full rounded-sm object-cover hover:scale-105  hover:border-2"
+              className="h-20 w-full rounded-sm object-cover hover:scale-105  hover:border-2"
               src={img}
               alt=""
             />
@@ -37,7 +37,7 @@ function NewsCard02({ title, img, date, description, source }) {
       </div>
 
       <div className="relative bottom-2 mx-4 flex items-center justify-between text-xs text-[#9E9E9E]">
-        <p>{String(source).slice(0, 10)} •</p>
+        <p>{String(source).slice(0, 6)} •</p>
         <p>{date.slice(0, 10)}</p>
       </div>
     </div>
