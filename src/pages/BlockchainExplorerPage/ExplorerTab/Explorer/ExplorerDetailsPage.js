@@ -1,23 +1,28 @@
 import React from "react";
-import Header from "../LandingPage/Header/Header";
-import Footer from "../LandingPage/Footer/Footer";
-import LeftSidebar from "../LandingPage/LeftSidebar/LeftSidebar";
-import BlockchainExplorerTab from "./ExplorerTab/BlockchainExplorerTab";
+import Header from "../../../LandingPage/Header/Header";
+import LeftSidebar from "../../../LandingPage/LeftSidebar/LeftSidebar";
+import Footer from "../../../LandingPage/Footer/Footer";
+import ExplorerDetailsTab from "./ExplorerDetailsTab/ExplorerDetailsTab";
+import { useLocation } from "react-router-dom";
+
 import {
   QueryClient,
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
 
-function BlockchainExplorerPage() {
+function ExplorerDetailsPage() {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        refetchOnWindowFocus: true,
+        refetchOnWindowFocus: false,
         refetchInterval: 180000,
       },
     },
   });
+
+  const location = useLocation();
+  const text = location.state.data;
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -28,7 +33,7 @@ function BlockchainExplorerPage() {
             <LeftSidebar />
           </div>
           <div className="main mb-20 mr-6 w-10/12">
-            <BlockchainExplorerTab />
+            <ExplorerDetailsTab text={text} />
           </div>
         </div>
         <Footer />
@@ -37,4 +42,4 @@ function BlockchainExplorerPage() {
   );
 }
 
-export default BlockchainExplorerPage;
+export default ExplorerDetailsPage;

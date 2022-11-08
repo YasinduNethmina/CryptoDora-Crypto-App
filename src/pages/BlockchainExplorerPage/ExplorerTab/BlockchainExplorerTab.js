@@ -1,15 +1,17 @@
-import React from "react";
-import Explorer from "./Explorer.scss";
+import React, { useState } from "react";
+import BlockchainExplorer from "./BlockchainExplorerTab.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
-import PaidIcon from "@mui/icons-material/Paid";
 import Paid from "@mui/icons-material/Paid";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import axios from "axios";
 import { useQueries } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
-function ExplorerTab() {
+function BlockchainExplorerTab() {
+  const [search, setSearch] = useState("");
+
   const [
     lastBlockQuery,
     ethereumQuery,
@@ -79,6 +81,10 @@ function ExplorerTab() {
     let holders = holdersQuery.data.holders;
     let transactions = transactionQuery.data;
 
+    const handleSearchInput = (e) => {
+      setSearch(e.target.value);
+    };
+
     return (
       <>
         {/* Header section */}
@@ -102,13 +108,19 @@ function ExplorerTab() {
               className="mt-6 h-12 w-1/2 pl-4 text-[#9e9e9e] caret-[#9e9e9e] outline-none"
               placeholder="Search by Address / Txn Hash / Block / Token"
               type="search"
+              onChange={handleSearchInput}
             />
-            <button>
-              <SearchIcon
-                style={{ fontSize: "3rem", color: "white" }}
-                className="mt-6 rounded-r-xl bg-sky-500 hover:bg-blue-500"
-              />
-            </button>
+            <Link
+              to={`/blockchain-explorer/${search}`}
+              state={{ data: search }}
+            >
+              <button>
+                <SearchIcon
+                  style={{ fontSize: "3rem", color: "white" }}
+                  className="mt-6 rounded-r-xl bg-sky-500 hover:bg-blue-500"
+                />
+              </button>
+            </Link>
           </div>
           <h1 className="mt-1 text-center font-light text-[#9e9e9e]">
             (example: 0xE92d1A43df510F82C66382592a047d288f85226f)
@@ -346,4 +358,4 @@ function ExplorerTab() {
   }
 }
 
-export default ExplorerTab;
+export default BlockchainExplorerTab;
