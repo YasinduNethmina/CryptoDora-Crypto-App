@@ -33,7 +33,7 @@ function ExplorerDetailsPage() {
             <LeftSidebar />
           </div>
           <div className="main mb-20 mr-6 w-10/12">
-            <ExplorerDetailsTab text={text} />
+            <ExplorerDetailsTab text={String(text)} />
           </div>
         </div>
         <Footer />

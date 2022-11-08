@@ -14,7 +14,7 @@ function NewsTabLeft() {
       .get(
         `https://newsapi.org/v2/everything?language=en&from=${year}-${month}-${
           day - 2
-        }&to=${year}-${month}-${day}&q="blockchain"&sortBy=popularity&page=10&pageSize=5&apiKey=56591b716be3406fa65c0b587fbd74c0`
+        }&to=${year}-${month}-${day}&q="blockchain"&sortBy=popularity&page=10&pageSize=6&apiKey=56591b716be3406fa65c0b587fbd74c0`
       )
       .then((res) => res.data);
   });
