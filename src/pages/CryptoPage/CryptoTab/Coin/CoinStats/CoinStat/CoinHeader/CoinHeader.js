@@ -62,7 +62,7 @@ function CoinHeader({ coinStats, coin }) {
               {String(coinStats.symbol).toUpperCase()}
             </h4>
           </div>
-          <div className="mr-4 ml-8 mt-4 flex cursor-pointer flex-wrap items-center">
+          <div className="mr-4 mt-4 flex cursor-pointer flex-wrap items-center">
             <StarIcon
               onClick={handleClick}
               className={

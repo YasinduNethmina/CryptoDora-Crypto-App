@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../LandingPage/Header/Header";
 import Footer from "../LandingPage/Footer/Footer";
 import LeftSidebar from "../LandingPage/LeftSidebar/LeftSidebar";
@@ -8,6 +8,7 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import CryptoTab from "./CryptoTab/CryptoTab";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 function CryptoPage() {
   const queryClient = new QueryClient({
@@ -18,6 +19,29 @@ function CryptoPage() {
       },
     },
   });
+
+  const [backToTopButton, setBackToTopButton] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.screenY > 10) {
+        setBackToTopButton(true);
+      } else {
+        setBackToTopButton(false);
+      }
+    });
+  }, []);
+
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    scrollUp();
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -32,6 +56,22 @@ function CryptoPage() {
           </div>
         </div>
         <Footer />
+        {setBackToTopButton && (
+          <button
+            className="rounded-lg border-2 border-sky-500"
+            onClick={scrollUp}
+            style={{
+              position: "fixed",
+              bottom: "2rem",
+              right: "2.5rem",
+            }}
+          >
+            <KeyboardArrowUpIcon
+              sx={{ fontSize: "2rem" }}
+              className="rounded bg-[#1B2028] text-white"
+            />
+          </button>
+        )}
       </div>
     </QueryClientProvider>
   );

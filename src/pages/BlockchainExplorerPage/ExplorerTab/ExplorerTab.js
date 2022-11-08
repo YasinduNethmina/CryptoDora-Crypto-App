@@ -147,7 +147,6 @@ function ExplorerTab() {
                         : "pl-2 text-red-500"
                     }
                   >
-                    $
                     {Number(
                       ethereumQuery.data[0].price_change_percentage_24h
                     ).toFixed(2)}

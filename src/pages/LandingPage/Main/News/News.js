@@ -10,11 +10,11 @@ function News({ newsData }) {
       {/* News Top 01 */}
       <div className="NewsTop1">
         <NewsTop
-          title={newsData.articles[0].title}
-          img={newsData.articles[0].urlToImage}
-          date={newsData.articles[0].publishedAt}
-          description={newsData.articles[0].description}
-          source={newsData.articles[0].source.name}
+          title={newsData.articles[14].title}
+          img={newsData.articles[14].urlToImage}
+          date={newsData.articles[14].publishedAt}
+          description={newsData.articles[14].description}
+          source={newsData.articles[14].source.name}
         />
       </div>
 
