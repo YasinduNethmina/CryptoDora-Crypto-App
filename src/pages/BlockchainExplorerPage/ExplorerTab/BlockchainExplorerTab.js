@@ -123,7 +123,7 @@ function BlockchainExplorerTab() {
             </Link>
           </div>
           <h1 className="mt-1 text-center font-light text-[#9e9e9e]">
-            (example: 0xE92d1A43df510F82C66382592a047d288f85226f)
+            (example: 0x2f5C57ADcFCF7968dcEe63e02Db326ABD6E722C5)
           </h1>
           <h1 className="mt-10 ml-10 text-center font-bold text-yellow-400 ">
             CryptoDora is now a Top validator on the Smart Chain. &nbsp;

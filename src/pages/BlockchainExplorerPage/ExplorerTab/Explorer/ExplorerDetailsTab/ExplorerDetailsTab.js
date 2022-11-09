@@ -108,7 +108,8 @@ function ExplorerDetailsTab({ text }) {
               <MonetizationOnIcon style={{ color: "green" }} />
               &nbsp; Balance:{" "}
               {(
-                Number(balanceQuery.data.result.balance) / 1000000000000000000
+                Number(balanceQuery.data.result[0].balance) /
+                1000000000000000000
               ).toFixed(2)}{" "}
               Ether
             </h4>
@@ -116,7 +117,8 @@ function ExplorerDetailsTab({ text }) {
               <AttachMoneyIcon style={{ color: "green" }} /> &nbsp;ETH Value: $
               {(
                 priceQuery.data.ethereum.usd *
-                (Number(balanceQuery.data.result.balance) / 1000000000000000000)
+                (Number(balanceQuery.data.result[0].balance) /
+                  1000000000000000000)
               ).toFixed(2)}
             </h4>
           </div>
@@ -210,7 +212,9 @@ function ExplorerDetailsTab({ text }) {
                 {latestTransactions.map((transaction) => {
                   return (
                     <h6 className="relative left-8 mt-4 mb-8 w-1 text-center text-sm text-sky-500">
-                      {transaction.value}
+                      {(
+                        Number(transaction.value) / 1000000000000000000
+                      ).toFixed(2)}
                     </h6>
                   );
                 })}
