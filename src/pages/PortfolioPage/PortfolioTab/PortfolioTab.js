@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import AddTransaction from "./AddTransaction/AddTransaction";
@@ -6,6 +6,10 @@ import axios from "axios";
 import { useQueries } from "@tanstack/react-query";
 
 function PortfolioTab() {
+  const [symbol, setSymbol] = useState();
+  const [quantity, setQuantity] = useState();
+  const [spent, setSpent] = useState();
+  const [price, setPrice] = useState();
   const [coinsQuery] = useQueries({
     queries: [
       {
@@ -24,6 +28,15 @@ function PortfolioTab() {
     document.querySelector(".addTransaction").classList.remove("hidden");
   };
 
+  // Used to get data from child components (AddTransaction)
+  const dataFromChild = (symbol, quantity, spent, price) => {
+    setSymbol(symbol);
+    setQuantity(quantity);
+    setSpent(spent);
+    setPrice(price);
+  };
+  console.log(symbol, quantity, spent, price);
+
   if (coinsQuery.isLoading) {
     return;
   } else {
@@ -31,7 +44,7 @@ function PortfolioTab() {
       <>
         <div className="h-full w-full rounded bg-[#1B2028] p-4 text-[#9e9e9e]">
           <div className="addTransaction fixed left-1/3 flex hidden justify-center">
-            <AddTransaction coins={coinsQuery} />
+            <AddTransaction coins={coinsQuery} data={dataFromChild} />
           </div>
 
           {/* Header Section */}
@@ -48,7 +61,9 @@ function PortfolioTab() {
               </div>
               <div className="flex items-center">
                 <h4 className="text-green-600">+$301.93</h4>
-                <h4 className="ml-4 rounded border-2 px-2 text-white">24h</h4>
+                <h4 className="ml-4 rounded-lg border-2 px-2 text-white">
+                  24h
+                </h4>
               </div>
             </div>
 
