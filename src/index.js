@@ -12,8 +12,8 @@ import HeatMapPage from "./pages/HeatMapPage/HeatMapPage";
 import NewsPage from "./pages/NewsPage/NewsPage";
 import NewsDescription from "./pages/LandingPage/Main/News/NewsDescription/NewsDescription";
 import BlockchainExplorerPage from "./pages/BlockchainExplorerPage/BlockchainExplorerPage";
-import Explorer from "./pages/BlockchainExplorerPage/ExplorerTab/Explorer/ExplorerDetailsPage";
 import ExplorerDetailsPage from "./pages/BlockchainExplorerPage/ExplorerTab/Explorer/ExplorerDetailsPage";
+import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -36,6 +36,7 @@ root.render(
           path="blockchain-explorer/:address"
           element={<ExplorerDetailsPage />}
         ></Route>
+        <Route path="/portfolio-tab" element={<PortfolioPage />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

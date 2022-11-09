@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../../../LandingPage/Header/Header";
 import LeftSidebar from "../../../LandingPage/LeftSidebar/LeftSidebar";
 import Footer from "../../../LandingPage/Footer/Footer";
@@ -20,6 +20,17 @@ function ExplorerDetailsPage() {
       },
     },
   });
+
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    scrollUp();
+  }, []);
 
   const location = useLocation();
   const text = location.state.data;

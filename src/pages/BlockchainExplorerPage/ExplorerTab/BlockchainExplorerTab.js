@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BlockchainExplorer from "./BlockchainExplorerTab.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
@@ -11,6 +11,17 @@ import { Link } from "react-router-dom";
 
 function BlockchainExplorerTab() {
   const [search, setSearch] = useState("");
+
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    scrollUp();
+  }, []);
 
   const [
     lastBlockQuery,
