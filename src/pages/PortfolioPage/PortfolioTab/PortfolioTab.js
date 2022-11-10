@@ -4,12 +4,24 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import AddTransaction from "./AddTransaction/AddTransaction";
 import axios from "axios";
 import { useQueries } from "@tanstack/react-query";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function PortfolioTab() {
-  const [symbol, setSymbol] = useState();
-  const [quantity, setQuantity] = useState();
-  const [spent, setSpent] = useState();
-  const [price, setPrice] = useState();
+  const [symbolArray, setSymbolArray] = useState([]);
+  const [quantityArray, setQuantityArray] = useState([]);
+  const [spentArray, setSpentArray] = useState([]);
+  const [priceArray, setPriceArray] = useState([]);
+  const [coinIndexArray, setCoinIndexArray] = useState([]);
+
+  // Used to get data from child components (AddTransaction)
+  const dataFromChild = (symbol, quantity, spent, price, coinIndex) => {
+    setSymbolArray((prev) => [...prev, symbol]);
+    setQuantityArray((prev) => [...prev, quantity]);
+    setSpentArray((prev) => [...prev, spent]);
+    setPriceArray((prev) => [...prev, price]);
+    setCoinIndexArray((prev) => [...prev, coinIndex]);
+  };
+
   const [coinsQuery] = useQueries({
     queries: [
       {
@@ -28,18 +40,48 @@ function PortfolioTab() {
     document.querySelector(".addTransaction").classList.remove("hidden");
   };
 
-  // Used to get data from child components (AddTransaction)
-  const dataFromChild = (symbol, quantity, spent, price) => {
-    setSymbol(symbol);
-    setQuantity(quantity);
-    setSpent(spent);
-    setPrice(price);
-  };
-  console.log(symbol, quantity, spent, price);
-
   if (coinsQuery.isLoading) {
     return;
+  } else if (coinsQuery.error) {
+    return;
   } else {
+    // Store all required prices of all added transactions
+    let filteredCoinPrices = [];
+    coinIndexArray.map((i) => {
+      filteredCoinPrices.push(coinsQuery.data[i].current_price);
+    });
+
+    // Store all required price change values of all added transactions
+    let filtered24Change = [];
+    coinIndexArray.map((i) => {
+      filtered24Change.push(coinsQuery.data[i].price_change_percentage_24h);
+    });
+
+    //Store all required profit loss values of all added transactions
+    let profitArray = [];
+    coinIndexArray.map((i) => {
+      let quantity = Number(quantityArray[i]);
+      let coinPrice = Number(coinsQuery.data[i].current_price);
+      let profit = coinPrice * quantity - spentArray[i];
+      profitArray.push(profit);
+    });
+
+    const handleDelete = () => {
+      let elVal = Number(document.querySelector(".deleteBtn").value);
+
+      let symbolRemoveIndex = symbolArray.indexOf(elVal);
+      let quantityRemoveIndex = quantityArray.indexOf(elVal);
+      let spentRemoveIndex = spentArray.indexOf(elVal);
+      let priceRemoveIndex = priceArray.indexOf(elVal);
+      let removeIndex = coinIndexArray.indexOf(elVal);
+
+      setSymbolArray(symbolArray.splice(symbolRemoveIndex, 1));
+      setQuantityArray(quantityArray.slice(quantityRemoveIndex, 1));
+      setSpentArray(spentArray.slice(spentRemoveIndex, 1));
+      setPriceArray(priceArray.slice(priceRemoveIndex, 1));
+      setCoinIndexArray(coinIndexArray.slice(removeIndex, 1));
+    };
+
     return (
       <>
         <div className="h-full w-full rounded bg-[#1B2028] p-4 text-[#9e9e9e]">
@@ -98,32 +140,91 @@ function PortfolioTab() {
 
             {/* Name Tags */}
             <div className="mt-4 flex justify-between">
-              <div>
+              <div className="">
                 <h6>Name</h6>
+                {symbolArray.map((symbol) => {
+                  return (
+                    <h4 className="mt-4 text-white">
+                      {String(symbol.toUpperCase())}
+                    </h4>
+                  );
+                })}
               </div>
 
               <div>
-                <h6>Price</h6>
+                <h6 className="ml-4">Price</h6>
+                {filteredCoinPrices.map((price) => {
+                  return <h4 className="mt-4 text-white">${price}</h4>;
+                })}
               </div>
 
               <div>
                 <h6>24h Change(%)</h6>
+                {filtered24Change.map((change) => {
+                  return (
+                    <h4
+                      className={
+                        change > 0
+                          ? "mt-4 mr-4 text-center text-green-500"
+                          : "mt-4 mr-4 text-center text-red-500"
+                      }
+                    >
+                      {change.toFixed(2)}%
+                    </h4>
+                  );
+                })}
               </div>
 
               <div>
                 <h6>Holdings</h6>
+                {quantityArray.map((quantity) => {
+                  return (
+                    <h4 className="mt-4 mr-2 text-center text-white">
+                      {quantity}
+                    </h4>
+                  );
+                })}
               </div>
 
               <div>
                 <h6>AVG. Buy Price</h6>
+                {priceArray.map((price) => {
+                  return <h4 className="ml-4 mt-4 text-white">${price}</h4>;
+                })}
               </div>
 
               <div>
                 <h6>Profit/Loss</h6>
+                {profitArray.map((profit) => {
+                  return (
+                    <h4
+                      className={
+                        Number(profit) >= 0
+                          ? "relative right-1 mt-4 mr-1 text-green-500"
+                          : "relative right-1 mt-4 text-red-500"
+                      }
+                    >
+                      ${Number(profit).toFixed(2)}
+                    </h4>
+                  );
+                })}
               </div>
 
               <div>
                 <h6>Actions</h6>
+                {coinIndexArray.map((index) => {
+                  return (
+                    <div>
+                      <button
+                        onClick={handleDelete}
+                        value={index}
+                        className="deleteBtn mt-3 ml-5 text-red-500 transition-all hover:scale-125 hover:animate-pulse"
+                      >
+                        <DeleteIcon />
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

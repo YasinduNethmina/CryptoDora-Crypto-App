@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 
 function AddTransaction({ coins, data }) {
   const [selectedOption, setSelectedOption] = useState("btc");
-  const [selectedOptionIndex, setSelectedOptionIndex] = useState("");
-  const [quantity, setQuantity] = useState();
+  const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
+  const [quantity, setQuantity] = useState(0);
   const [spent, setSpent] = useState();
 
   // Hide transaction on click
@@ -19,38 +19,51 @@ function AddTransaction({ coins, data }) {
     coinPricesArray[i] = coins.data[i].current_price;
   }
 
+  const [pricePerCoin, setPricePerCoin] = useState(0);
+
   // Get the index of the selected coin in the dropdown menu; used to get it's price value
   useEffect(() => {
-    setSelectedOptionIndex(coinSymbolsArray.indexOf(selectedOption));
+    setSelectedOptionIndex(Number(coinSymbolsArray.indexOf(selectedOption)));
   }, [selectedOption]);
+
+  useEffect(() => {
+    setPricePerCoin(coinPricesArray[selectedOptionIndex]);
+  }, [selectedOptionIndex]);
+
+  const handleQuantity = (e) => {
+    setQuantity(Number(e.target.value));
+  };
 
   const handleDropdown = (e) => {
     setSelectedOption(e.target.value);
   };
 
-  const handleQuantity = (e) => {
-    setQuantity(e.target.value);
-  };
-
-  const handleSpent = (e) => {
-    setSpent(e.target.value);
-  };
-
   const handlePricePerCoin = (e) => {
-    setPricePerCoin(e.target.value);
+    setPricePerCoin(Number(e.target.value));
   };
 
-  const [pricePerCoin, setPricePerCoin] = useState(
-    coinPricesArray[selectedOptionIndex]
-  );
+  useEffect(() => {
+    if (typeof pricePerCoin === "number" && typeof quantity === "number") {
+      setSpent(pricePerCoin * quantity);
+    }
+  }, [selectedOption, quantity, pricePerCoin]);
 
   // Child to parent pass data on click
-  const handleTransaction = () => {
-    data(selectedOption, quantity, spent, pricePerCoin);
+  const handleTransaction = (e) => {
+    e.preventDefault();
+    if (spent > 0) {
+      data(selectedOption, quantity, spent, pricePerCoin, selectedOptionIndex);
+      document.querySelector(".addTransaction").classList.add("hidden");
+    } else {
+      document.querySelector(".errorText").classList.remove("hidden");
+    }
   };
 
   return (
-    <div className="addTransaction rounded-xl border-2 border-sky-500 bg-[#1B2028]">
+    <form
+      type="submit"
+      className="addTransaction rounded-xl border-2 border-sky-500 bg-[#1B2028]"
+    >
       <div className="mx-4 flex items-center justify-between pt-4">
         <h1 className="text-2xl font-bold text-white">Add Transaction</h1>
         <button
@@ -59,11 +72,6 @@ function AddTransaction({ coins, data }) {
         >
           X
         </button>
-      </div>
-
-      <div className="my-4 flex justify-around">
-        <h4>Buy</h4>
-        <h4>Sell</h4>
       </div>
 
       <select
@@ -81,19 +89,23 @@ function AddTransaction({ coins, data }) {
         <div className="my-4 mr-4">
           <h1 className="mb-2">Quantity</h1>
           <input
+            name="name"
+            required
             onChange={handleQuantity}
             type="number"
             className="w-40 rounded-lg border-2 border-zinc-800 py-2 pl-2 outline-none"
-            placeholder="10"
+            value={quantity}
           />
         </div>
 
         <div className="my-4">
           <h1 className="mb-2">Price Per Coin</h1>
           <input
+            required
+            name="name"
             onChange={handlePricePerCoin}
             value={pricePerCoin}
-            type="text"
+            type="number"
             className="priceCoin w-40 rounded-lg border-2 border-zinc-800 py-2 pl-2 outline-none"
             placeholder="0.00"
           />
@@ -103,23 +115,29 @@ function AddTransaction({ coins, data }) {
         <div className="">
           <h1 className="text-center">Total Spent</h1>
           <input
-            onChange={handleSpent}
-            type="number"
+            required
+            name="name"
+            type="text"
             className="w-full rounded-lg border-2 border-zinc-800 px-6 py-1 text-center text-2xl font-bold text-zinc-800 outline-none"
             placeholder="$0"
+            value={`$ ${Number(spent).toFixed(2)}`}
           />
         </div>
       </div>
 
       <div className="mb-4 flex justify-center">
         <button
+          type="submit"
           onClick={handleTransaction}
           className=" rounded bg-sky-500 px-2 py-2 text-white hover:bg-blue-500"
         >
           Add Transaction
         </button>
       </div>
-    </div>
+      <h1 className="errorText mb-2 hidden text-center text-red-500">
+        Enter all data properly!
+      </h1>
+    </form>
   );
 }
 
