@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 function AddTransaction({ coins, data }) {
   const [selectedOption, setSelectedOption] = useState("btc");
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
-  const [quantity, setQuantity] = useState(0);
-  const [spent, setSpent] = useState();
+  const [quantity, setQuantity] = useState(1);
+  const [spent, setSpent] = useState(0.0);
 
   // Hide transaction on click
   const handleCloseBtn = () => {
@@ -31,7 +31,9 @@ function AddTransaction({ coins, data }) {
   }, [selectedOptionIndex]);
 
   const handleQuantity = (e) => {
-    setQuantity(Number(e.target.value));
+    if (Number(e.target.value) >= 0) {
+      setQuantity(Number(e.target.value));
+    }
   };
 
   const handleDropdown = (e) => {
@@ -39,19 +41,19 @@ function AddTransaction({ coins, data }) {
   };
 
   const handlePricePerCoin = (e) => {
-    setPricePerCoin(Number(e.target.value));
+    if (Number(e.target.value) >= 0) {
+      setPricePerCoin(Number(e.target.value));
+    }
   };
 
   useEffect(() => {
-    if (typeof pricePerCoin === "number" && typeof quantity === "number") {
-      setSpent(pricePerCoin * quantity);
-    }
+    setSpent(Number(pricePerCoin * quantity));
   }, [selectedOption, quantity, pricePerCoin]);
 
   // Child to parent pass data on click
   const handleTransaction = (e) => {
     e.preventDefault();
-    if (spent > 0) {
+    if (spent > 0 || !quantity) {
       data(selectedOption, quantity, spent, pricePerCoin, selectedOptionIndex);
       document.querySelector(".addTransaction").classList.add("hidden");
     } else {
@@ -120,7 +122,7 @@ function AddTransaction({ coins, data }) {
             type="text"
             className="w-full rounded-lg border-2 border-zinc-800 px-6 py-1 text-center text-2xl font-bold text-zinc-800 outline-none"
             placeholder="$0"
-            value={`$ ${Number(spent).toFixed(2)}`}
+            value={`$ ${spent.toFixed(2)}`}
           />
         </div>
       </div>

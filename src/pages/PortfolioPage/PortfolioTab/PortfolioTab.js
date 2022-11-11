@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import AddTransaction from "./AddTransaction/AddTransaction";
@@ -12,6 +12,8 @@ function PortfolioTab() {
   const [spentArray, setSpentArray] = useState([]);
   const [priceArray, setPriceArray] = useState([]);
   const [coinIndexArray, setCoinIndexArray] = useState([]);
+  const [profitArray, setProfitArray] = useState([]);
+  const [allIndexesArray, setAllIndexesArray] = useState([]);
 
   // Used to get data from child components (AddTransaction)
   const dataFromChild = (symbol, quantity, spent, price, coinIndex) => {
@@ -45,41 +47,51 @@ function PortfolioTab() {
   } else if (coinsQuery.error) {
     return;
   } else {
-    // Store all required prices of all added transactions
     let filteredCoinPrices = [];
+    let filtered24Change = [];
+    let filteredImages = [];
+
     coinIndexArray.map((i) => {
       filteredCoinPrices.push(coinsQuery.data[i].current_price);
-    });
-
-    // Store all required price change values of all added transactions
-    let filtered24Change = [];
-    coinIndexArray.map((i) => {
       filtered24Change.push(coinsQuery.data[i].price_change_percentage_24h);
+      filteredImages.push(coinsQuery.data[i].image);
     });
 
-    //Store all required profit loss values of all added transactions
     let profitArray = [];
-    coinIndexArray.map((i) => {
-      let quantity = Number(quantityArray[i]);
-      let coinPrice = Number(coinsQuery.data[i].current_price);
-      let profit = coinPrice * quantity - spentArray[i];
+    let currentInvestmentValueArray = [];
+    let allIndexes = [];
+
+    for (let i = 0; i < filteredCoinPrices.length; i++) {
+      allIndexes.push(i);
+      let currentPrice = filteredCoinPrices[i] * quantityArray[i];
+      let spentPrice = spentArray[i];
+      let profit = currentPrice - spentPrice;
       profitArray.push(profit);
-    });
+      currentInvestmentValueArray.push(currentPrice);
+    }
 
-    const handleDelete = () => {
-      let elVal = Number(document.querySelector(".deleteBtn").value);
+    // const handleClick = (e) => {
+    //   console.log(e.target.getAttribute("key"));
+    //   // let symbolRemoveIndex = symbolArray.indexOf(elVal);
+    //   // let quantityRemoveIndex = quantityArray.indexOf(elVal);
+    //   // let spentRemoveIndex = spentArray.indexOf(elVal);
+    //   // let priceRemoveIndex = priceArray.indexOf(elVal);
+    //   // let removeIndex = coinIndexArray.indexOf(elVal);
 
-      let symbolRemoveIndex = symbolArray.indexOf(elVal);
-      let quantityRemoveIndex = quantityArray.indexOf(elVal);
-      let spentRemoveIndex = spentArray.indexOf(elVal);
-      let priceRemoveIndex = priceArray.indexOf(elVal);
-      let removeIndex = coinIndexArray.indexOf(elVal);
+    //   // setSymbolArray(symbolArray.splice(symbolRemoveIndex, 1));
+    //   // setQuantityArray(quantityArray.slice(quantityRemoveIndex, 1));
+    //   // setSpentArray(spentArray.slice(spentRemoveIndex, 1));
+    //   // setPriceArray(priceArray.slice(priceRemoveIndex, 1));
+    //   // setCoinIndexArray(coinIndexArray.slice(removeIndex, 1));
+    // };
 
-      setSymbolArray(symbolArray.splice(symbolRemoveIndex, 1));
-      setQuantityArray(quantityArray.slice(quantityRemoveIndex, 1));
-      setSpentArray(spentArray.slice(spentRemoveIndex, 1));
-      setPriceArray(priceArray.slice(priceRemoveIndex, 1));
-      setCoinIndexArray(coinIndexArray.slice(removeIndex, 1));
+    const handleDelete = (event, indexVal) => {
+      setQuantityArray(symbolArray.splice(indexVal));
+      setSpentArray(spentArray.splice(indexVal));
+      setPriceArray(priceArray.splice(indexVal));
+      setCoinIndexArray(coinIndexArray.splice(indexVal));
+      filteredCoinPrices.splice(indexVal);
+      console.log(indexVal);
     };
 
     return (
@@ -139,22 +151,28 @@ function PortfolioTab() {
             <h1 className="text-2xl font-semibold text-white">Your Assets</h1>
 
             {/* Name Tags */}
-            <div className="mt-4 flex justify-between">
-              <div className="">
-                <h6>Name</h6>
-                {symbolArray.map((symbol) => {
-                  return (
-                    <h4 className="mt-4 text-white">
-                      {String(symbol.toUpperCase())}
-                    </h4>
-                  );
-                })}
+            <div className="mt-4 flex h-2 justify-between">
+              <div>
+                <h6>Coin</h6>
+                <div className="mt-4">
+                  {filteredImages.map((img) => {
+                    return (
+                      <>
+                        <img
+                          className="mb-4 h-8 w-8 rounded-full"
+                          src={img}
+                          alt="coin-logo"
+                        />
+                      </>
+                    );
+                  })}
+                </div>
               </div>
 
               <div>
                 <h6 className="ml-4">Price</h6>
                 {filteredCoinPrices.map((price) => {
-                  return <h4 className="mt-4 text-white">${price}</h4>;
+                  return <h4 className="mt-6 text-white">${price}</h4>;
                 })}
               </div>
 
@@ -165,8 +183,8 @@ function PortfolioTab() {
                     <h4
                       className={
                         change > 0
-                          ? "mt-4 mr-4 text-center text-green-500"
-                          : "mt-4 mr-4 text-center text-red-500"
+                          ? "mt-6 mr-4 text-center text-green-500"
+                          : "mt-6 mr-4 text-center text-red-500"
                       }
                     >
                       {change.toFixed(2)}%
@@ -176,10 +194,21 @@ function PortfolioTab() {
               </div>
 
               <div>
+                <h6>AVG. Buy Price</h6>
+                {priceArray.map((price) => {
+                  return (
+                    <h4 className="ml-4 mt-6 text-white">
+                      ${Number(price).toFixed(2)}
+                    </h4>
+                  );
+                })}
+              </div>
+
+              <div>
                 <h6>Holdings</h6>
                 {quantityArray.map((quantity) => {
                   return (
-                    <h4 className="mt-4 mr-2 text-center text-white">
+                    <h4 className="mt-6 mr-2 text-center text-white">
                       {quantity}
                     </h4>
                   );
@@ -187,9 +216,38 @@ function PortfolioTab() {
               </div>
 
               <div>
-                <h6>AVG. Buy Price</h6>
-                {priceArray.map((price) => {
-                  return <h4 className="ml-4 mt-4 text-white">${price}</h4>;
+                <h6>Total Spent</h6>
+                {spentArray.map((spentValue) => {
+                  return (
+                    <h4
+                      className={
+                        Number(spentValue) >= 0
+                          ? "relative right-1 mt-6 mr-1 text-green-500"
+                          : "relative right-1 mt-6 text-red-500"
+                      }
+                    >
+                      ${Number(spentValue).toFixed(2)}
+                    </h4>
+                  );
+                })}
+              </div>
+
+              <div>
+                <h6>Current Value</h6>
+                {currentInvestmentValueArray.map((price) => {
+                  let i = -1;
+                  i++;
+                  return (
+                    <h4
+                      className={
+                        price > spentArray[i]
+                          ? "relative right-1 mt-6 mr-1 text-green-500"
+                          : "relative right-1 mt-6 text-red-500"
+                      }
+                    >
+                      ${Number(price).toFixed(2)}
+                    </h4>
+                  );
                 })}
               </div>
 
@@ -200,8 +258,8 @@ function PortfolioTab() {
                     <h4
                       className={
                         Number(profit) >= 0
-                          ? "relative right-1 mt-4 mr-1 text-green-500"
-                          : "relative right-1 mt-4 text-red-500"
+                          ? "relative right-1 mt-6 mr-1 text-green-500"
+                          : "relative right-1 mt-6 text-red-500"
                       }
                     >
                       ${Number(profit).toFixed(2)}
@@ -212,13 +270,14 @@ function PortfolioTab() {
 
               <div>
                 <h6>Actions</h6>
-                {coinIndexArray.map((index) => {
+
+                {allIndexes.map((indexVal) => {
                   return (
                     <div>
                       <button
-                        onClick={handleDelete}
-                        value={index}
-                        className="deleteBtn mt-3 ml-5 text-red-500 transition-all hover:scale-125 hover:animate-pulse"
+                        onClick={(event) => handleDelete(event, indexVal)}
+                        key={indexVal}
+                        className="deleteBtn mt-6 ml-5 text-red-500 transition-all hover:scale-125 hover:animate-pulse"
                       >
                         <DeleteIcon />
                       </button>
