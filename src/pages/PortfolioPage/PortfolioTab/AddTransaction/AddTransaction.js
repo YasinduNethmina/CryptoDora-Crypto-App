@@ -1,38 +1,62 @@
 import React, { useEffect, useState } from "react";
+import { useQueries } from "@tanstack/react-query";
+import axios from "axios";
 
-function AddTransaction({ coins, data }) {
+function AddTransaction({ coinData, data }) {
+  const [pricePerCoin, setPricePerCoin] = useState(0);
   const [selectedOption, setSelectedOption] = useState("btc");
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [spent, setSpent] = useState(0.0);
+  const [image, setImage] = useState(null);
+  const [change, setChange] = useState(0);
+  const [coinCurrentPrice, setCoinCurrentPrice] = useState(0);
+  const [currentValue, setCurrentValue] = useState(0);
+  const [profit, setProfit] = useState(0);
+  const [count, setCount] = useState(0);
 
   // Hide transaction on click
   const handleCloseBtn = () => {
     document.querySelector(".addTransaction").classList.add("hidden");
   };
 
-  // Add all prop data into each arrays
   let coinSymbolsArray = [];
   let coinPricesArray = [];
-  for (let i = 0; i < 100; i++) {
-    coinSymbolsArray[i] = coins.data[i].symbol;
-    coinPricesArray[i] = coins.data[i].current_price;
-  }
+  let coinImagesArray = [];
+  let coinChangesArray = [];
 
-  const [pricePerCoin, setPricePerCoin] = useState(0);
-
-  // Get the index of the selected coin in the dropdown menu; used to get it's price value
   useEffect(() => {
-    setSelectedOptionIndex(Number(coinSymbolsArray.indexOf(selectedOption)));
+    setSelectedOptionIndex(coinSymbolsArray.indexOf(selectedOption));
   }, [selectedOption]);
 
   useEffect(() => {
     setPricePerCoin(coinPricesArray[selectedOptionIndex]);
+    setImage(coinImagesArray[selectedOptionIndex]);
+    setChange(coinChangesArray[selectedOptionIndex]);
+    setCoinCurrentPrice(coinPricesArray[selectedOptionIndex]);
   }, [selectedOptionIndex]);
 
+  useEffect(() => {
+    setSpent(pricePerCoin * quantity);
+    setCurrentValue(Number(coinCurrentPrice) * Number(quantity));
+  }, [quantity, pricePerCoin, coinCurrentPrice]);
+
+  useEffect(() => {
+    setProfit(Number(currentValue) - Number(spent));
+  }, [spent, currentValue]);
+
+  // Add all prop data into each arrays
+
+  for (let i = 0; i < 100; i++) {
+    coinSymbolsArray[i] = coinData.data[i].symbol;
+    coinPricesArray[i] = coinData.data[i].current_price;
+    coinImagesArray[i] = coinData.data[i].image;
+    coinChangesArray[i] = coinData.data[i].price_change_percentage_24h;
+  }
+
   const handleQuantity = (e) => {
-    if (Number(e.target.value) >= 0) {
-      setQuantity(Number(e.target.value));
+    if (e.target.value >= 0) {
+      setQuantity(e.target.value);
     }
   };
 
@@ -41,20 +65,27 @@ function AddTransaction({ coins, data }) {
   };
 
   const handlePricePerCoin = (e) => {
-    if (Number(e.target.value) >= 0) {
-      setPricePerCoin(Number(e.target.value));
+    if (e.target.value >= 0) {
+      setPricePerCoin(e.target.value);
     }
   };
-
-  useEffect(() => {
-    setSpent(Number(pricePerCoin * quantity));
-  }, [selectedOption, quantity, pricePerCoin]);
 
   // Child to parent pass data on click
   const handleTransaction = (e) => {
     e.preventDefault();
+    setCount(count + 1);
     if (spent > 0 || !quantity) {
-      data(selectedOption, quantity, spent, pricePerCoin, selectedOptionIndex);
+      data(
+        image,
+        coinCurrentPrice,
+        change,
+        pricePerCoin,
+        quantity,
+        spent,
+        currentValue,
+        profit,
+        count
+      );
       document.querySelector(".addTransaction").classList.add("hidden");
     } else {
       document.querySelector(".errorText").classList.remove("hidden");

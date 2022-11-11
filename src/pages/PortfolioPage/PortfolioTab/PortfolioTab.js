@@ -7,23 +7,6 @@ import { useQueries } from "@tanstack/react-query";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 function PortfolioTab() {
-  const [symbolArray, setSymbolArray] = useState([]);
-  const [quantityArray, setQuantityArray] = useState([]);
-  const [spentArray, setSpentArray] = useState([]);
-  const [priceArray, setPriceArray] = useState([]);
-  const [coinIndexArray, setCoinIndexArray] = useState([]);
-  const [profitArray, setProfitArray] = useState([]);
-  const [allIndexesArray, setAllIndexesArray] = useState([]);
-
-  // Used to get data from child components (AddTransaction)
-  const dataFromChild = (symbol, quantity, spent, price, coinIndex) => {
-    setSymbolArray((prev) => [...prev, symbol]);
-    setQuantityArray((prev) => [...prev, quantity]);
-    setSpentArray((prev) => [...prev, spent]);
-    setPriceArray((prev) => [...prev, price]);
-    setCoinIndexArray((prev) => [...prev, coinIndex]);
-  };
-
   const [coinsQuery] = useQueries({
     queries: [
       {
@@ -38,67 +21,61 @@ function PortfolioTab() {
     ],
   });
 
+  const [pricePerCoin, setPricePerCoin] = useState([]);
+  const [selectedOption, setSelectedOption] = useState([]);
+  const [selectedOptionIndex, setSelectedOptionIndex] = useState([]);
+  const [quantity, setQuantity] = useState([]);
+  const [spent, setSpent] = useState([]);
+  const [image, setImage] = useState([]);
+  const [change, setChange] = useState([]);
+  const [coinCurrentPrice, setCoinCurrentPrice] = useState([]);
+  const [currentValue, setCurrentValue] = useState([]);
+  const [profit, setProfit] = useState([]);
+  const [count, setCount] = useState([]);
+
+  // Used to get data from child components (AddTransaction)
+  const dataFromChild = (
+    image,
+    coinCurrentPrice,
+    change,
+    pricePerCoin,
+    quantity,
+    spent,
+    currentValue,
+    profit,
+    count
+  ) => {
+    setPricePerCoin((prev) => [...prev, pricePerCoin]);
+    setSelectedOption((prev) => [...prev, selectedOption]);
+    setChange((prev) => [...prev, change]);
+    setSelectedOptionIndex((prev) => [...prev, selectedOptionIndex]);
+    setQuantity((prev) => [...prev, quantity]);
+    setSpent((prev) => [...prev, spent]);
+    setImage((prev) => [...prev, image]);
+    setCoinCurrentPrice((prev) => [...prev, coinCurrentPrice]);
+    setCurrentValue((prev) => [...prev, currentValue]);
+    setProfit((prev) => [...prev, profit]);
+    setCount((prev) => [...prev, count]);
+  };
+
   const handleTransactionMenu = () => {
     document.querySelector(".addTransaction").classList.remove("hidden");
   };
 
+  const handleDeleteBtn = (count) => {
+    // Find a way to delete ll items
+    let x = pricePerCoin[count];
+  };
+  console.log(pricePerCoin);
+
   if (coinsQuery.isLoading) {
     return;
-  } else if (coinsQuery.error) {
-    return;
   } else {
-    let filteredCoinPrices = [];
-    let filtered24Change = [];
-    let filteredImages = [];
-
-    coinIndexArray.map((i) => {
-      filteredCoinPrices.push(coinsQuery.data[i].current_price);
-      filtered24Change.push(coinsQuery.data[i].price_change_percentage_24h);
-      filteredImages.push(coinsQuery.data[i].image);
-    });
-
-    let profitArray = [];
-    let currentInvestmentValueArray = [];
-    let allIndexes = [];
-
-    for (let i = 0; i < filteredCoinPrices.length; i++) {
-      allIndexes.push(i);
-      let currentPrice = filteredCoinPrices[i] * quantityArray[i];
-      let spentPrice = spentArray[i];
-      let profit = currentPrice - spentPrice;
-      profitArray.push(profit);
-      currentInvestmentValueArray.push(currentPrice);
-    }
-
-    // const handleClick = (e) => {
-    //   console.log(e.target.getAttribute("key"));
-    //   // let symbolRemoveIndex = symbolArray.indexOf(elVal);
-    //   // let quantityRemoveIndex = quantityArray.indexOf(elVal);
-    //   // let spentRemoveIndex = spentArray.indexOf(elVal);
-    //   // let priceRemoveIndex = priceArray.indexOf(elVal);
-    //   // let removeIndex = coinIndexArray.indexOf(elVal);
-
-    //   // setSymbolArray(symbolArray.splice(symbolRemoveIndex, 1));
-    //   // setQuantityArray(quantityArray.slice(quantityRemoveIndex, 1));
-    //   // setSpentArray(spentArray.slice(spentRemoveIndex, 1));
-    //   // setPriceArray(priceArray.slice(priceRemoveIndex, 1));
-    //   // setCoinIndexArray(coinIndexArray.slice(removeIndex, 1));
-    // };
-
-    const handleDelete = (event, indexVal) => {
-      setQuantityArray(symbolArray.splice(indexVal));
-      setSpentArray(spentArray.splice(indexVal));
-      setPriceArray(priceArray.splice(indexVal));
-      setCoinIndexArray(coinIndexArray.splice(indexVal));
-      filteredCoinPrices.splice(indexVal);
-      console.log(indexVal);
-    };
-
     return (
       <>
         <div className="h-full w-full rounded bg-[#1B2028] p-4 text-[#9e9e9e]">
-          <div className="addTransaction fixed left-1/3 flex hidden justify-center">
-            <AddTransaction coins={coinsQuery} data={dataFromChild} />
+          <div className="addTransaction fixed left-1/3 z-40 flex hidden justify-center">
+            <AddTransaction coinData={coinsQuery} data={dataFromChild} />
           </div>
 
           {/* Header Section */}
@@ -155,7 +132,7 @@ function PortfolioTab() {
               <div>
                 <h6>Coin</h6>
                 <div className="mt-4">
-                  {filteredImages.map((img) => {
+                  {image.map((img) => {
                     return (
                       <>
                         <img
@@ -171,14 +148,14 @@ function PortfolioTab() {
 
               <div>
                 <h6 className="ml-4">Price</h6>
-                {filteredCoinPrices.map((price) => {
+                {coinCurrentPrice.map((price) => {
                   return <h4 className="mt-6 text-white">${price}</h4>;
                 })}
               </div>
 
               <div>
                 <h6>24h Change(%)</h6>
-                {filtered24Change.map((change) => {
+                {change.map((change) => {
                   return (
                     <h4
                       className={
@@ -195,7 +172,7 @@ function PortfolioTab() {
 
               <div>
                 <h6>AVG. Buy Price</h6>
-                {priceArray.map((price) => {
+                {pricePerCoin.map((price) => {
                   return (
                     <h4 className="ml-4 mt-6 text-white">
                       ${Number(price).toFixed(2)}
@@ -206,7 +183,7 @@ function PortfolioTab() {
 
               <div>
                 <h6>Holdings</h6>
-                {quantityArray.map((quantity) => {
+                {quantity.map((quantity) => {
                   return (
                     <h4 className="mt-6 mr-2 text-center text-white">
                       {quantity}
@@ -217,7 +194,7 @@ function PortfolioTab() {
 
               <div>
                 <h6>Total Spent</h6>
-                {spentArray.map((spentValue) => {
+                {spent.map((spentValue) => {
                   return (
                     <h4
                       className={
@@ -234,13 +211,11 @@ function PortfolioTab() {
 
               <div>
                 <h6>Current Value</h6>
-                {currentInvestmentValueArray.map((price) => {
-                  let i = -1;
-                  i++;
+                {currentValue.map((price) => {
                   return (
                     <h4
                       className={
-                        price > spentArray[i]
+                        profit > 0
                           ? "relative right-1 mt-6 mr-1 text-green-500"
                           : "relative right-1 mt-6 text-red-500"
                       }
@@ -253,7 +228,7 @@ function PortfolioTab() {
 
               <div>
                 <h6>Profit/Loss</h6>
-                {profitArray.map((profit) => {
+                {profit.map((profit) => {
                   return (
                     <h4
                       className={
@@ -271,12 +246,12 @@ function PortfolioTab() {
               <div>
                 <h6>Actions</h6>
 
-                {allIndexes.map((indexVal) => {
+                {count.map((count) => {
                   return (
                     <div>
                       <button
-                        onClick={(event) => handleDelete(event, indexVal)}
-                        key={indexVal}
+                        onClick={() => handleDeleteBtn(count)}
+                        key={count}
                         className="deleteBtn mt-6 ml-5 text-red-500 transition-all hover:scale-125 hover:animate-pulse"
                       >
                         <DeleteIcon />
