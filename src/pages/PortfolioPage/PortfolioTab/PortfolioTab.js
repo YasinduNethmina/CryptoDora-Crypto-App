@@ -7,9 +7,10 @@ import { useQueries } from "@tanstack/react-query";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 function PortfolioTab() {
-  const [coinsQuery] = useQueries({
+  const [coinsQuery, marketQuery] = useQueries({
     queries: [
       {
+        // Used to get coin data
         queryKey: ["coinsData"],
         queryFn: () =>
           axios
@@ -18,9 +19,20 @@ function PortfolioTab() {
             )
             .then((res) => res.data),
       },
+      // Used to get 30 days data
+      {
+        queryKey: ["marketData"],
+        queryFn: () =>
+          axios
+            .get(
+              `https://api.coingecko.com/api/v3/coins/${lastCoinName}/market_chart?vs_currency=usd&days=30&interval=daily`
+            )
+            .then((res) => res.data),
+      },
     ],
   });
 
+  // All States
   const [pricePerCoin, setPricePerCoin] = useState([]);
   const [selectedOption, setSelectedOption] = useState([]);
   const [selectedOptionIndex, setSelectedOptionIndex] = useState([]);
@@ -33,7 +45,9 @@ function PortfolioTab() {
   const [profit, setProfit] = useState([]);
   const [count, setCount] = useState([]);
   const [total, setTotal] = useState();
+  const [lastCoinName, setLastCoinName] = useState("bitcoin");
 
+  // Arrays
   let imageArray = image;
   let priceArray = pricePerCoin;
   let changeArray = change;
@@ -43,16 +57,31 @@ function PortfolioTab() {
   let currentValueArray = currentValue;
   let profitArray = profit;
   let countArray = count;
+  let indexArray = selectedOptionIndex;
+  let monthlyPrices = [];
+  let monthlyPricesArray = [];
+  let coinNamesArray = [];
 
+  // used to get the total from all coins current valuation
   let initialValue = 0;
   const totalVar = currentValueArray.reduce(
     (previousValue, currentValue) => previousValue + currentValue,
     initialValue
   );
 
+  // Update total whenever new value added
   useEffect(() => {
     setTotal(totalVar);
   }, [currentValueArray]);
+
+  // Store all coin names of the used coins and
+  useEffect(() => {
+    if (selectedOptionIndex.length >= 1) {
+      setLastCoinName(coinNamesArray[coinNamesArray.length - 1]);
+    } else {
+      return;
+    }
+  }, [selectedOptionIndex]);
 
   // Used to get data from child components (AddTransaction)
   const dataFromChild = (
@@ -65,15 +94,17 @@ function PortfolioTab() {
     currentValue,
     profit,
     buyBtn,
-    sellBtn
+    sellBtn,
+    coinId
   ) => {
     let indexNumber = Number(imageArray.indexOf(img));
 
+    // Only add new line of coins if the coin doesnt exist
     if (image.indexOf(img) === -1) {
+      setSelectedOptionIndex((prev) => [...prev, coinId]);
       setPricePerCoin((prev) => [...prev, pricePerCoin]);
       setSelectedOption((prev) => [...prev, selectedOption]);
       setChange((prev) => [...prev, change]);
-      setSelectedOptionIndex((prev) => [...prev, selectedOptionIndex]);
       setQuantity((prev) => [...prev, Number(quantity)]);
       setSpent((prev) => [...prev, spent]);
       setImage((prev) => [...prev, img]);
@@ -81,6 +112,7 @@ function PortfolioTab() {
       setCurrentValue((prev) => [...prev, currentValue]);
       setProfit((prev) => [...prev, profit]);
 
+      // Used to set count array (it's used to setup delete buttons of each coin rows)
       if (countArray.length <= 0) {
         countArray.push(0);
       } else {
@@ -88,6 +120,7 @@ function PortfolioTab() {
         setCount(countArray);
       }
     } else {
+      // If coin already exists and it's a buy transaction then add values
       if (buyBtn) {
         priceArray[indexNumber] =
           (Number(priceArray[indexNumber]) + Number(pricePerCoin)) / 2;
@@ -108,6 +141,7 @@ function PortfolioTab() {
         setSpent([...spentArray]);
         setCurrentValue([...currentValueArray]);
       } else if (sellBtn) {
+        // If coin already exists and it's a sell transaction then substract values
         priceArray[indexNumber] =
           (Number(priceArray[indexNumber]) + Number(pricePerCoin)) / 2;
 
@@ -127,8 +161,12 @@ function PortfolioTab() {
         setSpent([...spentArray]);
         setCurrentValue([...currentValueArray]);
 
+        //used to fix the bug of not removing the last item
         if (quantityArray[indexNumber] === 0) {
           let removeIndex = quantityArray.indexOf(0);
+
+          indexArray.splice(removeIndex, 1);
+          setSelectedOptionIndex([...indexArray]);
 
           quantityArray.splice(removeIndex, 1);
           setQuantity([...quantityArray]);
@@ -168,10 +206,12 @@ function PortfolioTab() {
     document.querySelector(".addTransaction").classList.remove("hidden");
   };
 
-  const handleDeleteBtn = (count, e) => {
+  // Remove coin rows on click
+  const handleDeleteBtn = (count) => {
     let indexValue = priceArray[count];
     let index = priceArray.indexOf(indexValue);
 
+    indexArray.splice(index, 1);
     priceArray.splice(index, 1);
     imageArray.splice(index, 1);
     currentPriceArray.splice(index, 1);
@@ -191,11 +231,30 @@ function PortfolioTab() {
     setCurrentValue([...currentValueArray]);
     setProfit([...profitArray]);
     setCount([...countArray]);
+    setSelectedOptionIndex([...indexArray]);
   };
 
-  if (coinsQuery.isLoading) {
+  if (coinsQuery.isLoading || marketQuery.isLoading) {
     return;
   } else {
+    // Save added coin names to array (used to get market data for each using these name values)
+    countArray.map((num) => {
+      coinNamesArray[num] = coinsQuery.data[num].id;
+    });
+
+    //all monthly prices of the coin added to this array
+    let marketPrices = marketQuery.data.prices;
+    marketPrices.map((price) => {
+      monthlyPrices.push(price);
+    });
+
+    let myMap = coinNamesArray.map((name, index) => ({
+      [name]: monthlyPricesArray[index],
+    }));
+
+    // Find a way to store all monthly prices
+    console.log(myMap);
+
     return (
       <>
         <div className="h-full w-full rounded bg-[#1B2028] p-4 text-[#9e9e9e]">
@@ -213,7 +272,7 @@ function PortfolioTab() {
               <h4>Current Balance</h4>
               <div className="flex items-center py-2">
                 <h1 className="mr-4 text-4xl font-bold text-white">
-                  $ {total}
+                  $ {Number(total).toFixed(2)}
                 </h1>
                 <h4 className="rounded bg-green-500 py-1 pl-1 pr-2 text-center text-white">
                   <ArrowDropUpIcon /> 25.67%
@@ -256,7 +315,6 @@ function PortfolioTab() {
           <div className="mt-6">
             <h1 className="text-2xl font-semibold text-white">Your Assets</h1>
 
-            {/* Name Tags */}
             <div className="mt-4 flex h-2 justify-between">
               <div>
                 <h6>Coin</h6>

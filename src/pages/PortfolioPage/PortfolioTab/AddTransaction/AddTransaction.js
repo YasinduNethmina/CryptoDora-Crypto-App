@@ -11,7 +11,6 @@ function AddTransaction({ coinData, data, holdings }) {
   const [coinCurrentPrice, setCoinCurrentPrice] = useState(0);
   const [currentValue, setCurrentValue] = useState(0);
   const [profit, setProfit] = useState(0);
-
   const [buyBtn, setBuyBtn] = useState(true);
   const [sellBtn, setSellBtn] = useState(false);
 
@@ -119,7 +118,8 @@ function AddTransaction({ coinData, data, holdings }) {
         currentValue,
         profit,
         buyBtn,
-        sellBtn
+        sellBtn,
+        selectedOptionIndex
       );
       document.querySelector(".errorQuantity").classList.add("hidden");
       document.querySelector(".errorText").classList.add("hidden");
