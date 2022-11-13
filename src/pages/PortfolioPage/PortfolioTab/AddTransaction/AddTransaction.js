@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useQueries } from "@tanstack/react-query";
-import axios from "axios";
 
-function AddTransaction({ coinData, data }) {
+function AddTransaction({ coinData, data, holdings }) {
   const [pricePerCoin, setPricePerCoin] = useState(0);
   const [selectedOption, setSelectedOption] = useState("btc");
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(0);
@@ -13,11 +11,38 @@ function AddTransaction({ coinData, data }) {
   const [coinCurrentPrice, setCoinCurrentPrice] = useState(0);
   const [currentValue, setCurrentValue] = useState(0);
   const [profit, setProfit] = useState(0);
-  const [count, setCount] = useState(0);
+
+  const [buyBtn, setBuyBtn] = useState(true);
+  const [sellBtn, setSellBtn] = useState(false);
 
   // Hide transaction on click
+  let buyEl = document.querySelector(".buy");
+  let sellEl = document.querySelector(".sell");
+
   const handleCloseBtn = () => {
     document.querySelector(".addTransaction").classList.add("hidden");
+  };
+
+  const handleBuy = () => {
+    setBuyBtn(true);
+    setSellBtn(false);
+
+    buyEl.classList.remove("bg-blue-700", "text-white", "text-blue-700");
+    buyEl.classList.add("text-white", "bg-blue-700");
+
+    sellEl.classList.remove("text-white", "bg-blue-700");
+    sellEl.classList.add("text-blue-700");
+  };
+
+  const handleSell = () => {
+    setSellBtn(true);
+    setBuyBtn(false);
+
+    buyEl.classList.remove("bg-blue-700", "text-white");
+    buyEl.classList.add("text-blue-700");
+
+    sellEl.classList.remove("text-blue-700");
+    sellEl.classList.add("bg-blue-700", "text-white");
   };
 
   let coinSymbolsArray = [];
@@ -37,7 +62,7 @@ function AddTransaction({ coinData, data }) {
   }, [selectedOptionIndex]);
 
   useEffect(() => {
-    setSpent(pricePerCoin * quantity);
+    setSpent(Number(pricePerCoin * quantity));
     setCurrentValue(Number(coinCurrentPrice) * Number(quantity));
   }, [quantity, pricePerCoin, coinCurrentPrice]);
 
@@ -56,7 +81,7 @@ function AddTransaction({ coinData, data }) {
 
   const handleQuantity = (e) => {
     if (e.target.value >= 0) {
-      setQuantity(e.target.value);
+      setQuantity(Number(e.target.value));
     }
   };
 
@@ -65,16 +90,25 @@ function AddTransaction({ coinData, data }) {
   };
 
   const handlePricePerCoin = (e) => {
-    if (e.target.value >= 0) {
-      setPricePerCoin(e.target.value);
+    if (Number(e.target.value >= 0)) {
+      setPricePerCoin(Number(e.target.value));
     }
   };
 
   // Child to parent pass data on click
   const handleTransaction = (e) => {
     e.preventDefault();
-    setCount(count + 1);
-    if (spent > 0 || !quantity) {
+
+    if (
+      spent > 0 &&
+      quantity > 0 &&
+      sellBtn &&
+      Number(holdings[holdings.length - 1]) < Number(quantity)
+    ) {
+      document.querySelector(".errorQuantity").classList.remove("hidden");
+    } else if (holdings.length <= 0 && sellBtn) {
+      document.querySelector(".buyFirst").classList.remove("hidden");
+    } else if (spent > 0 && quantity > 0) {
       data(
         image,
         coinCurrentPrice,
@@ -84,8 +118,12 @@ function AddTransaction({ coinData, data }) {
         spent,
         currentValue,
         profit,
-        count
+        buyBtn,
+        sellBtn
       );
+      document.querySelector(".errorQuantity").classList.add("hidden");
+      document.querySelector(".errorText").classList.add("hidden");
+      document.querySelector(".buyFirst").classList.add("hidden");
       document.querySelector(".addTransaction").classList.add("hidden");
     } else {
       document.querySelector(".errorText").classList.remove("hidden");
@@ -93,7 +131,7 @@ function AddTransaction({ coinData, data }) {
   };
 
   return (
-    <form
+    <div
       type="submit"
       className="addTransaction rounded-xl border-2 border-sky-500 bg-[#1B2028]"
     >
@@ -107,11 +145,26 @@ function AddTransaction({ coinData, data }) {
         </button>
       </div>
 
+      <div className="my-4 flex justify-around">
+        <button
+          onClick={handleBuy}
+          className="buy rounded-lg border border-blue-700 bg-blue-700 px-5 py-1 text-center text-xl font-medium text-white hover:bg-blue-800 hover:text-white"
+        >
+          Buy
+        </button>
+        <button
+          onClick={handleSell}
+          className="sell rounded-lg border border-blue-700 px-5 py-1 text-center text-xl font-medium text-blue-700 hover:bg-blue-800 hover:text-white"
+        >
+          Sell
+        </button>
+      </div>
+
       <select
         onChange={handleDropdown}
         name="coins"
         id="coins"
-        className="my-4 mx-auto flex w-4/5 justify-center rounded-lg border-2 border-zinc-800 py-2 px-4 outline-none"
+        className="mx-auto my-4 flex w-4/5 rounded-lg border-2 border-gray-100 bg-gray-50 p-2.5 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
       >
         {coinSymbolsArray.map((coinSymbol) => {
           return <option value={coinSymbol}>{coinSymbol.toUpperCase()}</option>;
@@ -126,7 +179,7 @@ function AddTransaction({ coinData, data }) {
             required
             onChange={handleQuantity}
             type="number"
-            className="w-40 rounded-lg border-2 border-zinc-800 py-2 pl-2 outline-none"
+            className="w-40 rounded-lg border-2 border-gray-300 bg-gray-50 py-3 pl-4 pr-2 text-gray-900 outline-none focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700  dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500"
             value={quantity}
           />
         </div>
@@ -139,7 +192,7 @@ function AddTransaction({ coinData, data }) {
             onChange={handlePricePerCoin}
             value={pricePerCoin}
             type="number"
-            className="priceCoin w-40 rounded-lg border-2 border-zinc-800 py-2 pl-2 outline-none"
+            className="priceCoin w-40 rounded-lg border-2 border-gray-300 bg-gray-50 py-3 pl-4 pr-2 text-gray-900 outline-none focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700  dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500"
             placeholder="0.00"
           />
         </div>
@@ -149,9 +202,10 @@ function AddTransaction({ coinData, data }) {
           <h1 className="text-center">Total Spent</h1>
           <input
             required
+            disabled
             name="name"
             type="text"
-            className="w-full rounded-lg border-2 border-zinc-800 px-6 py-1 text-center text-2xl font-bold text-zinc-800 outline-none"
+            className="w-full rounded-lg border-2 border-gray-300 bg-gray-50 px-6 py-2 pl-4 pr-2 text-center text-2xl font-bold text-gray-900 outline-none focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700  dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500"
             placeholder="$0"
             value={`$ ${spent.toFixed(2)}`}
           />
@@ -162,15 +216,23 @@ function AddTransaction({ coinData, data }) {
         <button
           type="submit"
           onClick={handleTransaction}
-          className=" rounded bg-sky-500 px-2 py-2 text-white hover:bg-blue-500"
+          className="group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 group-hover:from-cyan-500 group-hover:to-blue-500 dark:text-white dark:focus:ring-cyan-800"
         >
-          Add Transaction
+          <span className="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
+            Add Transaction
+          </span>
         </button>
       </div>
       <h1 className="errorText mb-2 hidden text-center text-red-500">
         Enter all data properly!
       </h1>
-    </form>
+      <h1 className="errorQuantity mb-2 hidden text-center text-red-500">
+        You can't sell more than you own, don't be like FTX 🤦‍♂️
+      </h1>
+      <h1 className="buyFirst mb-2 hidden text-center text-red-500">
+        Add some coins, before selling them {`;-)`}
+      </h1>
+    </div>
   );
 }
 

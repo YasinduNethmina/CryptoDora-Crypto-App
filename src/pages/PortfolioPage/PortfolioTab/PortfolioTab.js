@@ -32,10 +32,31 @@ function PortfolioTab() {
   const [currentValue, setCurrentValue] = useState([]);
   const [profit, setProfit] = useState([]);
   const [count, setCount] = useState([]);
+  const [total, setTotal] = useState();
+
+  let imageArray = image;
+  let priceArray = pricePerCoin;
+  let changeArray = change;
+  let quantityArray = quantity;
+  let spentArray = spent;
+  let currentPriceArray = coinCurrentPrice;
+  let currentValueArray = currentValue;
+  let profitArray = profit;
+  let countArray = count;
+
+  let initialValue = 0;
+  const totalVar = currentValueArray.reduce(
+    (previousValue, currentValue) => previousValue + currentValue,
+    initialValue
+  );
+
+  useEffect(() => {
+    setTotal(totalVar);
+  }, [currentValueArray]);
 
   // Used to get data from child components (AddTransaction)
   const dataFromChild = (
-    image,
+    img,
     coinCurrentPrice,
     change,
     pricePerCoin,
@@ -43,30 +64,134 @@ function PortfolioTab() {
     spent,
     currentValue,
     profit,
-    count
+    buyBtn,
+    sellBtn
   ) => {
-    setPricePerCoin((prev) => [...prev, pricePerCoin]);
-    setSelectedOption((prev) => [...prev, selectedOption]);
-    setChange((prev) => [...prev, change]);
-    setSelectedOptionIndex((prev) => [...prev, selectedOptionIndex]);
-    setQuantity((prev) => [...prev, quantity]);
-    setSpent((prev) => [...prev, spent]);
-    setImage((prev) => [...prev, image]);
-    setCoinCurrentPrice((prev) => [...prev, coinCurrentPrice]);
-    setCurrentValue((prev) => [...prev, currentValue]);
-    setProfit((prev) => [...prev, profit]);
-    setCount((prev) => [...prev, count]);
+    let indexNumber = Number(imageArray.indexOf(img));
+
+    if (image.indexOf(img) === -1) {
+      setPricePerCoin((prev) => [...prev, pricePerCoin]);
+      setSelectedOption((prev) => [...prev, selectedOption]);
+      setChange((prev) => [...prev, change]);
+      setSelectedOptionIndex((prev) => [...prev, selectedOptionIndex]);
+      setQuantity((prev) => [...prev, Number(quantity)]);
+      setSpent((prev) => [...prev, spent]);
+      setImage((prev) => [...prev, img]);
+      setCoinCurrentPrice((prev) => [...prev, coinCurrentPrice]);
+      setCurrentValue((prev) => [...prev, currentValue]);
+      setProfit((prev) => [...prev, profit]);
+
+      if (countArray.length <= 0) {
+        countArray.push(0);
+      } else {
+        countArray.push(Number(countArray.length - 1) + 1);
+        setCount(countArray);
+      }
+    } else {
+      if (buyBtn) {
+        priceArray[indexNumber] =
+          (Number(priceArray[indexNumber]) + Number(pricePerCoin)) / 2;
+
+        quantityArray[indexNumber] =
+          Number(quantityArray[indexNumber]) + Number(quantity);
+
+        spentArray[indexNumber] =
+          Number(spentArray[indexNumber]) + Number(spent);
+
+        currentValueArray[indexNumber] =
+          Number(currentValueArray[indexNumber]) + Number(currentValue);
+
+        profitArray[indexNumber] =
+          Number(profitArray[indexNumber]) + Number(profit);
+
+        setQuantity([...quantityArray]);
+        setSpent([...spentArray]);
+        setCurrentValue([...currentValueArray]);
+      } else if (sellBtn) {
+        priceArray[indexNumber] =
+          (Number(priceArray[indexNumber]) + Number(pricePerCoin)) / 2;
+
+        quantityArray[indexNumber] =
+          Number(quantityArray[indexNumber]) - Number(quantity);
+
+        spentArray[indexNumber] =
+          Number(priceArray[indexNumber]) * quantityArray[indexNumber];
+
+        currentValueArray[indexNumber] =
+          Number(currentValueArray[indexNumber]) - Number(currentValue);
+
+        profitArray[indexNumber] =
+          Number(profitArray[indexNumber]) - Number(profit);
+
+        setQuantity([...quantityArray]);
+        setSpent([...spentArray]);
+        setCurrentValue([...currentValueArray]);
+
+        if (quantityArray[indexNumber] === 0) {
+          let removeIndex = quantityArray.indexOf(0);
+
+          quantityArray.splice(removeIndex, 1);
+          setQuantity([...quantityArray]);
+
+          priceArray.splice(removeIndex, 1);
+          setPricePerCoin([...priceArray]);
+
+          spentArray.splice(removeIndex, 1);
+          setSpent([...spentArray]);
+
+          currentPriceArray.splice(removeIndex, 1);
+          setCoinCurrentPrice([...currentPriceArray]);
+
+          imageArray.splice(removeIndex, 1);
+          setImage([...imageArray]);
+
+          changeArray.splice(removeIndex, 1);
+          setChange([...changeArray]);
+
+          currentValueArray.splice(removeIndex, 1);
+          setCurrentValue([...currentValueArray]);
+
+          profitArray.splice(removeIndex, 1);
+          setProfit([...profitArray]);
+
+          changeArray.splice(removeIndex, 1);
+          setChange([...changeArray]);
+
+          countArray.splice(removeIndex, 1);
+          setCount([...countArray]);
+        }
+      }
+    }
   };
 
   const handleTransactionMenu = () => {
     document.querySelector(".addTransaction").classList.remove("hidden");
   };
 
-  const handleDeleteBtn = (count) => {
-    // Find a way to delete ll items
-    let x = pricePerCoin[count];
+  const handleDeleteBtn = (count, e) => {
+    let indexValue = priceArray[count];
+    let index = priceArray.indexOf(indexValue);
+
+    priceArray.splice(index, 1);
+    imageArray.splice(index, 1);
+    currentPriceArray.splice(index, 1);
+    changeArray.splice(index, 1);
+    quantityArray.splice(index, 1);
+    spentArray.splice(index, 1);
+    currentValueArray.splice(index, 1);
+    profitArray.splice(index, 1);
+    countArray.splice(index, 1);
+
+    setPricePerCoin([...priceArray]);
+    setImage([...imageArray]);
+    setCoinCurrentPrice([...currentPriceArray]);
+    setChange([...changeArray]);
+    setQuantity([...quantityArray]);
+    setSpent([...spentArray]);
+    setCurrentValue([...currentValueArray]);
+    setProfit([...profitArray]);
+    setCount([...countArray]);
   };
-  console.log(pricePerCoin);
 
   if (coinsQuery.isLoading) {
     return;
@@ -75,7 +200,11 @@ function PortfolioTab() {
       <>
         <div className="h-full w-full rounded bg-[#1B2028] p-4 text-[#9e9e9e]">
           <div className="addTransaction fixed left-1/3 z-40 flex hidden justify-center">
-            <AddTransaction coinData={coinsQuery} data={dataFromChild} />
+            <AddTransaction
+              coinData={coinsQuery}
+              data={dataFromChild}
+              holdings={quantity}
+            />
           </div>
 
           {/* Header Section */}
@@ -84,7 +213,7 @@ function PortfolioTab() {
               <h4>Current Balance</h4>
               <div className="flex items-center py-2">
                 <h1 className="mr-4 text-4xl font-bold text-white">
-                  $ 1,474.91
+                  $ {total}
                 </h1>
                 <h4 className="rounded bg-green-500 py-1 pl-1 pr-2 text-center text-white">
                   <ArrowDropUpIcon /> 25.67%
@@ -215,7 +344,7 @@ function PortfolioTab() {
                   return (
                     <h4
                       className={
-                        profit > 0
+                        profit >= 0
                           ? "relative right-1 mt-6 mr-1 text-green-500"
                           : "relative right-1 mt-6 text-red-500"
                       }
@@ -252,7 +381,7 @@ function PortfolioTab() {
                       <button
                         onClick={() => handleDeleteBtn(count)}
                         key={count}
-                        className="deleteBtn mt-6 ml-5 text-red-500 transition-all hover:scale-125 hover:animate-pulse"
+                        className={`deleteBtn mt-6 ml-5 text-red-500 transition-all hover:scale-125 hover:animate-pulse`}
                       >
                         <DeleteIcon />
                       </button>
