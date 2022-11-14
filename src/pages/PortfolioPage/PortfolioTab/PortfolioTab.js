@@ -5,9 +5,10 @@ import AddTransaction from "./AddTransaction/AddTransaction";
 import axios from "axios";
 import { useQueries } from "@tanstack/react-query";
 import DeleteIcon from "@mui/icons-material/Delete";
+import PortfolioChart from "./PortfolioChart";
 
 function PortfolioTab() {
-  const [coinsQuery, marketQuery] = useQueries({
+  const [coinsQuery] = useQueries({
     queries: [
       {
         // Used to get coin data
@@ -16,16 +17,6 @@ function PortfolioTab() {
           axios
             .get(
               "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
-            )
-            .then((res) => res.data),
-      },
-      // Used to get 30 days data
-      {
-        queryKey: ["marketData"],
-        queryFn: () =>
-          axios
-            .get(
-              `https://api.coingecko.com/api/v3/coins/${lastCoinName}/market_chart?vs_currency=usd&days=30&interval=daily`
             )
             .then((res) => res.data),
       },
@@ -45,7 +36,7 @@ function PortfolioTab() {
   const [profit, setProfit] = useState([]);
   const [count, setCount] = useState([]);
   const [total, setTotal] = useState();
-  const [lastCoinName, setLastCoinName] = useState("bitcoin");
+  const [selectedCoin, setSelectedCoin] = useState([]);
 
   // Arrays
   let imageArray = image;
@@ -58,8 +49,6 @@ function PortfolioTab() {
   let profitArray = profit;
   let countArray = count;
   let indexArray = selectedOptionIndex;
-  let monthlyPrices = [];
-  let monthlyPricesArray = [];
   let coinNamesArray = [];
 
   // used to get the total from all coins current valuation
@@ -73,15 +62,6 @@ function PortfolioTab() {
   useEffect(() => {
     setTotal(totalVar);
   }, [currentValueArray]);
-
-  // Store all coin names of the used coins and
-  useEffect(() => {
-    if (selectedOptionIndex.length >= 1) {
-      setLastCoinName(coinNamesArray[coinNamesArray.length - 1]);
-    } else {
-      return;
-    }
-  }, [selectedOptionIndex]);
 
   // Used to get data from child components (AddTransaction)
   const dataFromChild = (
@@ -202,6 +182,12 @@ function PortfolioTab() {
     }
   };
 
+  useEffect(() => {
+    setSelectedCoin(
+      coinNamesArray[selectedOptionIndex[selectedOptionIndex.length - 1]]
+    );
+  }, [selectedOptionIndex]);
+
   const handleTransactionMenu = () => {
     document.querySelector(".addTransaction").classList.remove("hidden");
   };
@@ -234,26 +220,12 @@ function PortfolioTab() {
     setSelectedOptionIndex([...indexArray]);
   };
 
-  if (coinsQuery.isLoading || marketQuery.isLoading) {
+  if (coinsQuery.isLoading) {
     return;
   } else {
-    // Save added coin names to array (used to get market data for each using these name values)
-    countArray.map((num) => {
-      coinNamesArray[num] = coinsQuery.data[num].id;
-    });
-
-    //all monthly prices of the coin added to this array
-    let marketPrices = marketQuery.data.prices;
-    marketPrices.map((price) => {
-      monthlyPrices.push(price);
-    });
-
-    let myMap = coinNamesArray.map((name, index) => ({
-      [name]: monthlyPricesArray[index],
-    }));
-
-    // Find a way to store all monthly prices
-    console.log(myMap);
+    for (let i = 0; i < 100; i++) {
+      coinNamesArray[i] = coinsQuery.data[i].id;
+    }
 
     return (
       <>
@@ -311,7 +283,9 @@ function PortfolioTab() {
             </button>
           </div>
 
-          <div className="mt-4 h-72 bg-green-500"></div>
+          <div className="mt-4 h-72 bg-green-500">
+            <PortfolioChart coin={selectedCoin} />
+          </div>
           <div className="mt-6">
             <h1 className="text-2xl font-semibold text-white">Your Assets</h1>
 
