@@ -1,37 +1,75 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
+import { Line } from "react-chartjs-2";
+import { Chart as ChartJS } from "chart.js/auto";
 
-function PortfolioChart({ coin }) {
-  const [marketData, setMarketData] = useState([]);
-  const [monthlyPricesArray, setMonthlyPricesArray] = useState("");
+function PortfolioChart({ totalArray }) {
+  let totalArraySpread = [0];
+  totalArray.map((i) => {
+    totalArraySpread.push(...i);
+  });
 
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=usd&days=30&interval=daily`
-      )
-      .then((res) => {
-        setMarketData(res.data.prices);
-      });
-  }, [coin]);
-
-  let monthlyPricesVar = [];
-  for (let i = 0; i < 30; i++) {
-    monthlyPricesVar[i] = marketData[i];
+  let labelsArray = [];
+  for (let i = 0; i < totalArraySpread.length; i++) {
+    labelsArray[i] = i;
   }
 
-  const handleMonthlyPrices = () => {
-    setMonthlyPricesArray((prev) => [...prev, monthlyPricesVar]);
+  const data = {
+    labels: [...labelsArray],
+    datasets: [
+      {
+        data: [...totalArraySpread],
+        fill: true,
+        backgroundColor: "#3a6ff810",
+        borderColor: "#3A6FF8",
+        pointBorderColor: "transparent",
+        borderWidth: 2,
+        tension: 0.4,
+      },
+    ],
   };
 
-  handleMonthlyPrices();
+  //chart Js options (used this in all charts)
+  const options = {
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        display: false,
+        grid: {
+          display: false,
+        },
 
-  console.log(monthlyPricesArray);
+        ticks: {
+          autoSkip: false,
+        },
+      },
+      y: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          autoSkip: true,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
 
   return (
-    <div>
-      <h1 className="text-white">{coin}</h1>
-    </div>
+    <>
+      {/* <div className="flex justify-between">
+          <h1 className="p-8 text-xl font-semibold text-white">Chart</h1>
+        </div> */}
+
+      {/* <div className="flex items-center justify-between pl-8"></div> */}
+      {/* Chart */}
+      <div className="dayChart h-72 w-full">
+        <Line data={data} options={options} />
+      </div>
+    </>
   );
 }
 

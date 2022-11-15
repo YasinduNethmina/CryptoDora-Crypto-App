@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import AddTransaction from "./AddTransaction/AddTransaction";
 import axios from "axios";
@@ -36,7 +37,9 @@ function PortfolioTab() {
   const [profit, setProfit] = useState([]);
   const [count, setCount] = useState([]);
   const [total, setTotal] = useState();
+  const [totalArray, setTotalArray] = useState([]);
   const [selectedCoin, setSelectedCoin] = useState([]);
+  const [totalPercentage, setTotalPercentage] = useState(0);
 
   // Arrays
   let imageArray = image;
@@ -50,6 +53,7 @@ function PortfolioTab() {
   let countArray = count;
   let indexArray = selectedOptionIndex;
   let coinNamesArray = [];
+  let totalArrayVar = [];
 
   // used to get the total from all coins current valuation
   let initialValue = 0;
@@ -58,10 +62,32 @@ function PortfolioTab() {
     initialValue
   );
 
+  // Used to display total profit
+  const profitDisplay = profitArray.reduce(
+    (previousValue, currentValue) => previousValue + currentValue,
+    initialValue
+  );
+
   // Update total whenever new value added
   useEffect(() => {
     setTotal(totalVar);
   }, [currentValueArray]);
+
+  useEffect(
+    () => {
+      if (total >= 0) {
+        totalArrayVar.push(total);
+      }
+      if (totalArrayVar.length >= 1) {
+        setTotalArray((prev) => [...prev, totalArrayVar]);
+      }
+      if (total > 0) {
+        setTotalPercentage((Number(profitDisplay) / Number(total)) * 100);
+      }
+    },
+    [total],
+    quantity
+  );
 
   // Used to get data from child components (AddTransaction)
   const dataFromChild = (
@@ -244,14 +270,37 @@ function PortfolioTab() {
               <h4>Current Balance</h4>
               <div className="flex items-center py-2">
                 <h1 className="mr-4 text-4xl font-bold text-white">
-                  $ {Number(total).toFixed(2)}
+                  {total.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  })}
                 </h1>
-                <h4 className="rounded bg-green-500 py-1 pl-1 pr-2 text-center text-white">
-                  <ArrowDropUpIcon /> 25.67%
+                <h4
+                  className={
+                    Number(totalPercentage) >= 0
+                      ? "rounded bg-green-500 py-1 pl-1 pr-2 text-center text-white"
+                      : "rounded bg-red-500 py-1 pl-1 pr-2 text-center text-white"
+                  }
+                >
+                  {totalPercentage >= 0 ? (
+                    <ArrowDropUpIcon />
+                  ) : (
+                    <ArrowDropDownIcon />
+                  )}{" "}
+                  {Number(totalPercentage).toFixed(2)}%
                 </h4>
               </div>
               <div className="flex items-center">
-                <h4 className="text-green-600">+$301.93</h4>
+                <h4
+                  className={
+                    profitDisplay >= 0 ? "text-green-600" : "text-red-600"
+                  }
+                >
+                  {profitDisplay.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  })}
+                </h4>
                 <h4 className="ml-4 rounded-lg border-2 px-2 text-white">
                   24h
                 </h4>
@@ -283,8 +332,8 @@ function PortfolioTab() {
             </button>
           </div>
 
-          <div className="mt-4 h-72 bg-green-500">
-            <PortfolioChart coin={selectedCoin} />
+          <div className="mt-4 h-72 ">
+            <PortfolioChart totalArray={totalArray} />
           </div>
           <div className="mt-6">
             <h1 className="text-2xl font-semibold text-white">Your Assets</h1>
