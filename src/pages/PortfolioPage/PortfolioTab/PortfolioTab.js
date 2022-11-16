@@ -6,7 +6,9 @@ import AddTransaction from "./AddTransaction/AddTransaction";
 import axios from "axios";
 import { useQueries } from "@tanstack/react-query";
 import DeleteIcon from "@mui/icons-material/Delete";
-import PortfolioChart from "./PortfolioChart";
+import PortfolioChart from "../PortfolioTab/PortfolioChart/PortfolioChart";
+import DoughnutChart from "./DoughnutChart/DoughnutChart";
+import PaidIcon from "@mui/icons-material/Paid";
 
 function PortfolioTab() {
   const [coinsQuery] = useQueries({
@@ -38,8 +40,11 @@ function PortfolioTab() {
   const [count, setCount] = useState([]);
   const [total, setTotal] = useState();
   const [totalArray, setTotalArray] = useState([]);
-  const [selectedCoin, setSelectedCoin] = useState([]);
+  const [selectedCoins, setSelectedCoins] = useState([]);
   const [totalPercentage, setTotalPercentage] = useState(0);
+  const [totalProfit, setTotalProfit] = useState(0);
+  const [bestPerformer, setBestPerformer] = useState();
+  const [worstPerformer, setWorstPerformer] = useState();
 
   // Arrays
   let imageArray = image;
@@ -52,11 +57,16 @@ function PortfolioTab() {
   let profitArray = profit;
   let countArray = count;
   let indexArray = selectedOptionIndex;
+  let selectedCoinsArray = selectedCoins;
   let coinNamesArray = [];
   let totalArrayVar = [];
+  let bestPerformerValue = Math.max(...profitArray);
+  let bestPerformerIndex = profitArray.indexOf(bestPerformerValue);
+  let worstPerformerValue = Math.min(...profitArray);
+  let worstPerformerIndex = profitArray.indexOf(worstPerformerValue);
+  let initialValue = 0;
 
   // used to get the total from all coins current valuation
-  let initialValue = 0;
   const totalVar = currentValueArray.reduce(
     (previousValue, currentValue) => previousValue + currentValue,
     initialValue
@@ -69,9 +79,28 @@ function PortfolioTab() {
   );
 
   // Update total whenever new value added
-  useEffect(() => {
-    setTotal(totalVar);
-  }, [currentValueArray]);
+  useEffect(
+    () => {
+      setTotal(totalVar);
+      setTotalProfit(profitDisplay);
+      if (profitDisplay <= 0) {
+        setTotalPercentage(0);
+      }
+
+      // Used to get statistics
+      setBestPerformer([
+        imageArray[bestPerformerIndex],
+        profitArray[bestPerformerIndex],
+      ]);
+      setWorstPerformer([
+        imageArray[worstPerformerIndex],
+        profitArray[worstPerformerIndex],
+      ]);
+    },
+    [currentValueArray],
+    [total],
+    quantity
+  );
 
   useEffect(
     () => {
@@ -163,6 +192,11 @@ function PortfolioTab() {
         profitArray[indexNumber] =
           Number(profitArray[indexNumber]) - Number(profit);
 
+        if (spentArray[indexNumber] <= 0) {
+          selectedCoinsArray.pop();
+        }
+
+        setSelectedCoins([...selectedCoinsArray]);
         setQuantity([...quantityArray]);
         setSpent([...spentArray]);
         setCurrentValue([...currentValueArray]);
@@ -170,6 +204,9 @@ function PortfolioTab() {
         //used to fix the bug of not removing the last item
         if (quantityArray[indexNumber] === 0) {
           let removeIndex = quantityArray.indexOf(0);
+
+          selectedCoinsArray.splice(removeIndex, 1);
+          setSelectedCoins([...selectedCoinsArray]);
 
           indexArray.splice(removeIndex, 1);
           setSelectedOptionIndex([...indexArray]);
@@ -208,14 +245,39 @@ function PortfolioTab() {
     }
   };
 
+  // Used to get the names of the added coins
   useEffect(() => {
-    setSelectedCoin(
-      coinNamesArray[selectedOptionIndex[selectedOptionIndex.length - 1]]
-    );
+    if (indexArray?.length >= 1) {
+      setSelectedCoins((prev) => [
+        ...prev,
+        coinNamesArray[indexArray[indexArray.length - 1]]
+          .charAt(0)
+          .toUpperCase() +
+          coinNamesArray[indexArray[indexArray.length - 1]].slice(1),
+      ]);
+    }
   }, [selectedOptionIndex]);
 
   const handleTransactionMenu = () => {
     document.querySelector(".addTransaction").classList.remove("hidden");
+  };
+
+  const handleChart = () => {
+    document.querySelector(".doughnutChart").classList.add("hidden");
+    document.querySelector(".statistics").classList.add("hidden");
+    document.querySelector(".lineChart").classList.remove("hidden");
+  };
+
+  const handleAllocation = () => {
+    document.querySelector(".lineChart").classList.add("hidden");
+    document.querySelector(".statistics").classList.add("hidden");
+    document.querySelector(".doughnutChart").classList.remove("hidden");
+  };
+
+  const handleStatistics = () => {
+    document.querySelector(".lineChart").classList.add("hidden");
+    document.querySelector(".doughnutChart").classList.add("hidden");
+    document.querySelector(".statistics").classList.remove("hidden");
   };
 
   // Remove coin rows on click
@@ -224,6 +286,7 @@ function PortfolioTab() {
     let index = priceArray.indexOf(indexValue);
 
     indexArray.splice(index, 1);
+    selectedCoinsArray.splice(index, 1);
     priceArray.splice(index, 1);
     imageArray.splice(index, 1);
     currentPriceArray.splice(index, 1);
@@ -234,6 +297,7 @@ function PortfolioTab() {
     profitArray.splice(index, 1);
     countArray.splice(index, 1);
 
+    setSelectedCoins([...selectedCoinsArray]);
     setPricePerCoin([...priceArray]);
     setImage([...imageArray]);
     setCoinCurrentPrice([...currentPriceArray]);
@@ -249,6 +313,7 @@ function PortfolioTab() {
   if (coinsQuery.isLoading) {
     return;
   } else {
+    // Store all top 100 coins in coinNamesArray
     for (let i = 0; i < 100; i++) {
       coinNamesArray[i] = coinsQuery.data[i].id;
     }
@@ -270,10 +335,12 @@ function PortfolioTab() {
               <h4>Current Balance</h4>
               <div className="flex items-center py-2">
                 <h1 className="mr-4 text-4xl font-bold text-white">
-                  {total.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
+                  {total <= 0
+                    ? "---"
+                    : Number(total).toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                      })}
                 </h1>
                 <h4
                   className={
@@ -293,13 +360,10 @@ function PortfolioTab() {
               <div className="flex items-center">
                 <h4
                   className={
-                    profitDisplay >= 0 ? "text-green-600" : "text-red-600"
+                    totalProfit >= 0 ? "text-green-600" : "text-red-600"
                   }
                 >
-                  {profitDisplay.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                  })}
+                  ${totalProfit.toFixed(2)}
                 </h4>
                 <h4 className="ml-4 rounded-lg border-2 px-2 text-white">
                   24h
@@ -321,24 +385,149 @@ function PortfolioTab() {
 
           {/* Chart / Allocation / Stats Buttons */}
           <div className="ml-4 mt-8 flex text-white">
-            <button className="mr-2 rounded-lg bg-purple-500 px-4 py-1 hover:bg-purple-700">
+            <button
+              onClick={handleChart}
+              className="mr-2 rounded-lg bg-purple-500 px-4 py-1 hover:bg-purple-700"
+            >
               Chart
             </button>
-            <button className="mr-2 rounded-lg bg-purple-500 px-4 py-1 hover:bg-purple-700">
+            <button
+              onClick={handleAllocation}
+              className="mr-2 rounded-lg bg-purple-500 px-4 py-1 hover:bg-purple-700"
+            >
               Allocation
             </button>
-            <button className="rounded-lg bg-purple-500 px-4 py-1 hover:bg-purple-700">
+            <button
+              onClick={handleStatistics}
+              className="rounded-lg bg-purple-500 px-4 py-1 hover:bg-purple-700"
+            >
               Statistics
             </button>
           </div>
 
-          <div className="mt-4 h-72 ">
+          {/* Chart */}
+          <div className="lineChart mt-4 h-72">
             <PortfolioChart totalArray={totalArray} />
           </div>
+
+          {/* Allocation */}
+          <div className="doughnutChart mt-4 hidden h-96">
+            <DoughnutChart
+              selectedCoins={selectedCoins}
+              values={currentValueArray}
+              quantity={quantityArray}
+            />
+          </div>
+
+          {/* Statistics */}
+          <div className="statistics hidden">
+            {/* Statistics */}
+            {bestPerformer[1] === worstPerformer[1] ? (
+              <h1 className="mt-8 text-center text-xl text-red-500">
+                Add 2 more coins with different profit values to see
+                statistics...
+              </h1>
+            ) : (
+              <div
+                className={
+                  bestPerformer[1] === worstPerformer[1]
+                    ? "mt-4 flex hidden justify-around"
+                    : "my-8 flex justify-around"
+                }
+              >
+                {/* All Time Profit */}
+                <div className="duration-800 mr-4 mt-2 h-20 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
+                  <div className="mx-4 flex items-center justify-center">
+                    <div className="mt-4 flex items-center text-left">
+                      <div className="mr-2">
+                        <PaidIcon
+                          style={{
+                            color: "#0ea5e9",
+                            fontSize: "2.8rem",
+                          }}
+                        />
+                      </div>
+                      <div>
+                        <h1 className="text-[#9e9e9e]">All Time Profit</h1>
+
+                        <div className="flex justify-center ">
+                          <h4
+                            className={
+                              totalProfit >= 0
+                                ? "ml-2 text-green-500"
+                                : "ml-2 text-red-500"
+                            }
+                          >
+                            {"$" + Number(totalProfit).toFixed(2)}{" "}
+                            {totalProfit < 0 ? (
+                              <ArrowDropDownIcon />
+                            ) : (
+                              <ArrowDropUpIcon />
+                            )}
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Best Performer */}
+                <div className="duration-800 mr-4 mt-2 h-20 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
+                  <div className="mx-4 flex items-center justify-center">
+                    <img
+                      className="mr-2 mt-4 w-10"
+                      src={bestPerformer[0]}
+                      alt="coin-logo"
+                    />
+                    <div className="mt-4 text-left">
+                      <h1 className="text-[#9e9e9e]">Best Performer</h1>
+                      <div className="flex justify-center">
+                        <h4
+                          className={
+                            bestPerformer[1] >= 0
+                              ? "mr-2 text-green-500"
+                              : "mr-2 text-red-500"
+                          }
+                        >
+                          {"$" + Number(bestPerformer[1]).toFixed(2)}
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Worst Performer */}
+                <div className="duration-800 mr-4 mt-2 h-20 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
+                  <div className="mx-4 flex items-center justify-center">
+                    <img
+                      className="mr-2 mt-4 w-10"
+                      src={worstPerformer[0]}
+                      alt="coin-logo"
+                    />
+                    <div className="mt-4 text-left">
+                      <h1 className="text-[#9e9e9e]">Worst Performer</h1>
+                      <div className="flex justify-center">
+                        <h4
+                          className={
+                            worstPerformer[1] >= 0
+                              ? "mr-2 text-green-500"
+                              : "mr-2 text-red-500"
+                          }
+                        >
+                          {"$" + Number(worstPerformer[1]).toFixed(2)}
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
           <div className="mt-6">
             <h1 className="text-2xl font-semibold text-white">Your Assets</h1>
 
-            <div className="mt-4 flex h-2 justify-between">
+            <div className="mt-4 flex justify-between">
               <div>
                 <h6>Coin</h6>
                 <div className="mt-4">
@@ -359,7 +548,9 @@ function PortfolioTab() {
               <div>
                 <h6 className="ml-4">Price</h6>
                 {coinCurrentPrice.map((price) => {
-                  return <h4 className="mt-6 text-white">${price}</h4>;
+                  return (
+                    <h4 className="mt-6 text-center text-white">${price}</h4>
+                  );
                 })}
               </div>
 
@@ -384,7 +575,7 @@ function PortfolioTab() {
                 <h6>AVG. Buy Price</h6>
                 {pricePerCoin.map((price) => {
                   return (
-                    <h4 className="ml-4 mt-6 text-white">
+                    <h4 className="mt-6 text-center text-white">
                       ${Number(price).toFixed(2)}
                     </h4>
                   );
@@ -409,8 +600,8 @@ function PortfolioTab() {
                     <h4
                       className={
                         Number(spentValue) >= 0
-                          ? "relative right-1 mt-6 mr-1 text-green-500"
-                          : "relative right-1 mt-6 text-red-500"
+                          ? "mt-6 mr-1 text-center text-green-500"
+                          : "mt-6 text-center text-red-500"
                       }
                     >
                       ${Number(spentValue).toFixed(2)}
@@ -426,8 +617,8 @@ function PortfolioTab() {
                     <h4
                       className={
                         profit >= 0
-                          ? "relative right-1 mt-6 mr-1 text-green-500"
-                          : "relative right-1 mt-6 text-red-500"
+                          ? "mt-6 mr-1 text-center text-green-500"
+                          : "mt-6 text-center text-red-500"
                       }
                     >
                       ${Number(price).toFixed(2)}
@@ -437,14 +628,14 @@ function PortfolioTab() {
               </div>
 
               <div>
-                <h6>Profit/Loss</h6>
+                <h6 className="ml-2">Profit/Loss</h6>
                 {profit.map((profit) => {
                   return (
                     <h4
                       className={
                         Number(profit) >= 0
-                          ? "relative right-1 mt-6 mr-1 text-green-500"
-                          : "relative right-1 mt-6 text-red-500"
+                          ? "mt-6 text-center text-green-500"
+                          : "mt-6 text-center text-red-500"
                       }
                     >
                       ${Number(profit).toFixed(2)}
@@ -458,13 +649,13 @@ function PortfolioTab() {
 
                 {count.map((count) => {
                   return (
-                    <div>
+                    <div className="">
                       <button
                         onClick={() => handleDeleteBtn(count)}
                         key={count}
-                        className={`deleteBtn mt-6 ml-5 text-red-500 transition-all hover:scale-125 hover:animate-pulse`}
+                        className={`deleteBtn mt-5 ml-5 text-red-500 transition-all hover:scale-125 hover:animate-pulse`}
                       >
-                        <DeleteIcon />
+                        <DeleteIcon style={{ fontSize: "1.775rem" }} />
                       </button>
                     </div>
                   );

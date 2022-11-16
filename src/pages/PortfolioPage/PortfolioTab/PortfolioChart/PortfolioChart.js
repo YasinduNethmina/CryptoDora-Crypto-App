@@ -60,12 +60,6 @@ function PortfolioChart({ totalArray }) {
 
   return (
     <>
-      {/* <div className="flex justify-between">
-          <h1 className="p-8 text-xl font-semibold text-white">Chart</h1>
-        </div> */}
-
-      {/* <div className="flex items-center justify-between pl-8"></div> */}
-      {/* Chart */}
       <div className="dayChart h-72 w-full">
         <Line data={data} options={options} />
       </div>
