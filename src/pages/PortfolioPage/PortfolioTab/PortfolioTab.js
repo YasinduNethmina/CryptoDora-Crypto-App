@@ -104,6 +104,7 @@ function PortfolioTab() {
 
   useEffect(
     () => {
+      let newTotal = profitDisplay + total;
       if (total >= 0) {
         totalArrayVar.push(total);
       }
@@ -111,7 +112,7 @@ function PortfolioTab() {
         setTotalArray((prev) => [...prev, totalArrayVar]);
       }
       if (total > 0) {
-        setTotalPercentage((Number(profitDisplay) / Number(total)) * 100);
+        setTotalPercentage(((newTotal - total) / total) * 100);
       }
     },
     [total],
@@ -410,13 +411,21 @@ function PortfolioTab() {
             <PortfolioChart totalArray={totalArray} />
           </div>
 
-          {/* Allocation */}
-          <div className="doughnutChart mt-4 hidden h-96">
-            <DoughnutChart
-              selectedCoins={selectedCoins}
-              values={currentValueArray}
-              quantity={quantityArray}
-            />
+          <div className="doughnutChart hidden">
+            {/* Allocation */}
+            {total === 0 ? (
+              <h1 className="mt-8 text-center text-xl text-red-500">
+                Add at least one coin to see allocation data...
+              </h1>
+            ) : (
+              <div className={"mt-4 h-96"}>
+                <DoughnutChart
+                  selectedCoins={selectedCoins}
+                  values={currentValueArray}
+                  quantity={quantityArray}
+                />
+              </div>
+            )}
           </div>
 
           {/* Statistics */}

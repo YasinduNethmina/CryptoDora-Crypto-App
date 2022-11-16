@@ -13,6 +13,7 @@ import News from "./News/News";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Partners from "./Partners/Partners";
 import NewsLoadingState from "./News/NewsLoadingState/NewsLoadingState";
+import Converter from "./Converter/Converter";
 
 export const coinPriceContext = createContext();
 
@@ -35,6 +36,7 @@ function Main() {
     maxChartQuery,
     marketQuery,
     newsQuery,
+    convertQuery,
   ] = useQueries({
     queries: [
       {
@@ -196,6 +198,10 @@ function Main() {
   else {
     return (
       <>
+        <div className="mt-20">
+          <Converter data={marketQuery.data} />
+        </div>
+
         <Cards
           stats={statsQuery.data.data}
           gas={ethGasQuery.data}

@@ -6,8 +6,6 @@ function DoughnutChart({ selectedCoins, values, quantity }) {
   let selectedCoinsWithoutDuplicates = [];
   const [selected, setSelected] = useState([]);
 
-  console.log(quantity);
-
   useEffect(() => {
     // Hide chart if quantity is 0
     if (quantity.length >= 1) {

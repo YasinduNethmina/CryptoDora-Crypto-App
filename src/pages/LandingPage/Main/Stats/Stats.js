@@ -68,7 +68,7 @@ function Stats({
         <h4
           className={
             active
-              ? "card-section-stat mt-6 ml-6 flex h-10 w-44 cursor-pointer items-center justify-center rounded-full bg-[#1B2028] text-white"
+              ? "card-section-stat mt-6 ml-6 flex h-10 w-40 cursor-pointer items-center justify-center rounded-full bg-white text-[#072D4B]"
               : "hidden"
           }
         >
