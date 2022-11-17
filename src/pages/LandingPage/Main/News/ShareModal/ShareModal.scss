@@ -1,0 +1,12 @@
+.share-modal {
+  animation: fadeAnimation 1s;
+}
+
+@keyframes fadeAnimation {
+  0% {
+    transform: translateY(2rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

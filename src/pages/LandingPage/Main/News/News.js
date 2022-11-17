@@ -3,6 +3,7 @@ import NewsTop from "./NewsTop/NewsTop";
 import NewsCard from "./NewsCard/NewsCard";
 import NewsBanner from "./NewsBanner/NewsBanner";
 import "./News.scss";
+import Converter from "../Converter/Converter";
 
 function News({ newsData }) {
   return (
@@ -49,8 +50,7 @@ function News({ newsData }) {
         </div>
       </div>
 
-      {/* News Banner 01 */}
-
+      {/* News Banner 01 Main Section */}
       <div className="flex justify-center">
         <NewsBanner
           title={newsData.articles[4].title}
@@ -118,6 +118,7 @@ function News({ newsData }) {
         />
       </div>
 
+      {/* News Cards Right Side */}
       <div className="NewsCard1">
         <NewsCard
           title={newsData.articles[11].title}
@@ -135,6 +136,14 @@ function News({ newsData }) {
           date={newsData.articles[12].publishedAt}
           description={newsData.articles[12].description}
           source={newsData.articles[12].source.name}
+        />
+
+        <NewsCard
+          title={newsData.articles[13].title}
+          img={newsData.articles[13].urlToImage}
+          date={newsData.articles[13].publishedAt}
+          description={newsData.articles[13].description}
+          source={newsData.articles[13].source.name}
         />
       </div>
     </>

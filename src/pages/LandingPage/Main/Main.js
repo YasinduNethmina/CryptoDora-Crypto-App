@@ -198,10 +198,6 @@ function Main() {
   else {
     return (
       <>
-        <div className="mt-20">
-          <Converter data={marketQuery.data} />
-        </div>
-
         <Cards
           stats={statsQuery.data.data}
           gas={ethGasQuery.data}
@@ -225,6 +221,9 @@ function Main() {
         </div>
         <div className="flex justify-center">
           <Market list={marketQuery.data} />
+        </div>
+        <div className="converter">
+          <Converter data={marketQuery.data} />
         </div>
         <News newsData={newsQuery.data} />
 

@@ -1,4 +1,5 @@
 import React from "react";
+import "./ShareModal.scss";
 
 function ShareModal() {
   const handleClick = () => {
@@ -7,7 +8,7 @@ function ShareModal() {
 
   return (
     <div className="share-modal z-60 flex items-center justify-center">
-      <div className="mx-4 w-full rounded-xl bg-[#1B2028] p-4 md:w-1/2 lg:w-1/3">
+      <div className="mx-4 w-full rounded-xl border-2 border-sky-500 bg-[#1B2028] p-4 md:w-1/2 lg:w-1/3">
         <div className="items center flex justify-between border-b border-gray-200 py-3">
           <div className="flex items-center justify-center">
             <p className="text-xl font-bold text-white">Share Modal</p>
