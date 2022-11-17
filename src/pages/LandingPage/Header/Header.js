@@ -81,7 +81,7 @@ function Header() {
         {/* Brand */}
         <Link to="/">
           <div className="brand flex items-center justify-center">
-            <h1 className="brand-title m-4 bg-gradient-to-r from-cyan-500 to-blue-500  bg-clip-text text-3xl font-semibold text-transparent">
+            <h1 className="brand-title m-4 bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-3xl font-semibold text-transparent">
               crypto dora
             </h1>
           </div>

@@ -25,7 +25,6 @@ function PortfolioPage() {
   useEffect(() => {
     scrollUp();
   }, []);
-
   return (
     <>
       <QueryClientProvider client={queryClient}>

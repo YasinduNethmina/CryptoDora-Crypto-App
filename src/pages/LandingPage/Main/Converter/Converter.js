@@ -40,8 +40,8 @@ function Converter({ data }) {
   return (
     <>
       <div className="h-96 w-full rounded-lg bg-[#1B2028] px-4 py-2">
-        <h1 className="ml-2 mt-4 mb-2 text-2xl font-bold leading-relaxed text-white">
-          Cryptocurrency Converter
+        <h1 className="ml-2 mt-4 mb-2 text-center text-2xl font-bold leading-relaxed tracking-wider text-white">
+          Cryptocurrency <br></br> Converter
         </h1>
         <div className="flex">
           <select
