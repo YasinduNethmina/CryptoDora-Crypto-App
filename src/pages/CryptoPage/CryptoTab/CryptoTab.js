@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useQueries } from "@tanstack/react-query";
 import Coin from "./Coin/Coin";
@@ -21,8 +21,19 @@ function CryptoTab() {
     ],
   });
 
-  if (cryptoTabQuery.isLoading) {
-    <div className="mt-24 h-full w-full animate-pulse justify-center rounded-xl bg-[#1B2028]"></div>;
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    scrollUp();
+  }, []);
+
+  if (setCoins.length <= 0) {
+    <div className="mt-20 h-full w-full animate-pulse rounded bg-[#1B2028] p-4 text-[#9e9e9e]"></div>;
   } else {
     const handleChange = (e) => {
       setSearch(e.target.value);
@@ -49,9 +60,9 @@ function CryptoTab() {
 
         <div className="mb-6 flex justify-between text-[#9e9e9e]">
           <h4 className="relative left-16">Coin</h4>
-          <h4 className="relative left-16">Change</h4>
-          <h4 className="relative left-8">MarketCap</h4>
-          <h4 className="relative right-8">Circulating Supply</h4>
+          <h4 className="relative left-16">Change(%)</h4>
+          <h4 className="relative left-4">MarketCap</h4>
+          <h4 className="relative right-9">Circulating Supply</h4>
           <h4 className="relative right-12">Price</h4>
         </div>
 

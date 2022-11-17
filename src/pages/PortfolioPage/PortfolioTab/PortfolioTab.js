@@ -26,6 +26,17 @@ function PortfolioTab() {
     ],
   });
 
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    scrollUp();
+  }, []);
+
   // All States
   const [pricePerCoin, setPricePerCoin] = useState([]);
   const [selectedOption, setSelectedOption] = useState([]);

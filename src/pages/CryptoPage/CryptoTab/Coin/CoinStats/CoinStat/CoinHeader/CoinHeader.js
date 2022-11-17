@@ -37,7 +37,7 @@ function CoinHeader({ coinStats, coin }) {
     <>
       <div className="mr-4 items-center rounded-xl bg-[#1B2028] pb-4 text-center text-[#9E9E9E]">
         <Link to="/crypto-tab">
-          <button className="goBackBtn mr-24 mt-4 text-left hover:text-white">
+          <button className="goBackBtn mr-32 mt-4 text-left hover:text-white">
             Crypto Tab
             <ArrowForwardIosIcon
               style={{ fontSize: ".85rem" }}

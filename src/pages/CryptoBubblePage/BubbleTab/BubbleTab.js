@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useQueries } from "@tanstack/react-query";
 import CoinBubble from "./CoinBubble/CoinBubble";
@@ -19,8 +19,21 @@ function BubbleTab() {
     ],
   });
 
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    scrollUp();
+  }, []);
+
   if (bubbleQuery.isLoading) {
-    return;
+    return (
+      <div className="mt-20 h-full w-full animate-pulse rounded bg-[#1B2028] p-4"></div>
+    );
   } else {
     allBubbles = bubbleQuery.data;
 

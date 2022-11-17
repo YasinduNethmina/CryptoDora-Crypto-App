@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useQueries } from "@tanstack/react-query";
 import axios from "axios";
 import Heatmap from "./Heatmap/Heatmap";
@@ -18,8 +18,21 @@ function HeatMapTab() {
     ],
   });
 
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    scrollUp();
+  }, []);
+
   if (heatmapQuery.isLoading) {
-    return;
+    return (
+      <div className="mt-20 h-full w-full animate-pulse rounded bg-[#1B2028] p-4 text-[#9e9e9e]"></div>
+    );
   } else {
     return (
       <>

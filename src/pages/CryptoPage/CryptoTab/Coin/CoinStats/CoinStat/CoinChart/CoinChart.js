@@ -358,7 +358,7 @@ function CoinChart({
         <img
           src={require("../../../../../../../assets/images/advertisement.gif")}
           alt="Advertisement"
-          className="h-32 w-full object-fill px-4"
+          className="h-40 w-full object-fill px-4"
         ></img>
         <h6 className="mt-2 text-center text-sm text-[#9e9e9e]">
           (Advertisement)

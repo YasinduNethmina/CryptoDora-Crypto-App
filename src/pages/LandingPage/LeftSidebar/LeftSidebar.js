@@ -18,7 +18,7 @@ function LeftSidebar() {
 
   return (
     <div className="sidebar ml-2 mr-5 mt-16 rounded-md bg-[#1B2028]">
-      <h1 className="pt-6 text-center text-lg font-semibold text-white">
+      <h1 className="mr-1 pt-6 text-center text-lg font-semibold text-white">
         😎 Logoipsum
       </h1>
       <div className="ml-2 text-[#9E9E9E]">
