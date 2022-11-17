@@ -22,7 +22,7 @@ function CryptoTab() {
   });
 
   if (cryptoTabQuery.isLoading) {
-    return;
+    <div className="mt-24 h-full w-full animate-pulse justify-center rounded-xl bg-[#1B2028]"></div>;
   } else {
     const handleChange = (e) => {
       setSearch(e.target.value);

@@ -86,7 +86,7 @@ function BlockchainExplorerTab() {
     holdersQuery.isLoading ||
     transactionQuery.isLoading
   ) {
-    return;
+    return <div className="h-full bg-[#1B2028] "></div>;
   } else {
     // Used to display the data of top holders using a map
     let holders = holdersQuery.data.holders;

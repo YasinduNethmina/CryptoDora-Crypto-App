@@ -312,7 +312,9 @@ function PortfolioTab() {
   };
 
   if (coinsQuery.isLoading) {
-    return;
+    return (
+      <div className="h-full w-full animate-pulse rounded bg-[#1B2028] p-4 text-[#9e9e9e]"></div>
+    );
   } else {
     // Store all top 100 coins in coinNamesArray
     for (let i = 0; i < 100; i++) {
@@ -322,7 +324,7 @@ function PortfolioTab() {
     return (
       <>
         <div className="h-full w-full rounded bg-[#1B2028] p-4 text-[#9e9e9e]">
-          <div className="addTransaction fixed left-1/3 z-40 flex hidden justify-center">
+          <div className="addTransaction fixed z-40 ml-72 mt-12 hidden">
             <AddTransaction
               coinData={coinsQuery}
               data={dataFromChild}
@@ -431,19 +433,13 @@ function PortfolioTab() {
           {/* Statistics */}
           <div className="statistics hidden">
             {/* Statistics */}
-            {bestPerformer[1] === worstPerformer[1] ? (
+            {selectedCoins?.length < 2 ? (
               <h1 className="mt-8 text-center text-xl text-red-500">
                 Add 2 more coins with different profit values to see
                 statistics...
               </h1>
             ) : (
-              <div
-                className={
-                  bestPerformer[1] === worstPerformer[1]
-                    ? "mt-4 flex hidden justify-around"
-                    : "my-8 flex justify-around"
-                }
-              >
+              <div className={"mt-4 flex  justify-around"}>
                 {/* All Time Profit */}
                 <div className="duration-800 mr-4 mt-2 h-20 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
                   <div className="mx-4 flex items-center justify-center">

@@ -31,6 +31,15 @@ function LeftSidebar() {
             <h1 className="text-left">Overview</h1>
           </button>
         </Link>
+        <Link to="/portfolio-tab">
+          <button
+            onClick={handleFocus}
+            className="sidebarBtn border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+          >
+            <AccountBalanceWalletOutlinedIcon className="mr-5 ml-6" />
+            <h1 className="text-left">Portfolio</h1>
+          </button>
+        </Link>
         <Link to="/news-tab">
           <button
             onClick={handleFocus}
@@ -56,15 +65,6 @@ function LeftSidebar() {
           >
             <TrendingUpOutlinedIcon className="mr-5 ml-6" />
             <h1 className="text-left">Blockchain Explorer</h1>
-          </button>
-        </Link>
-        <Link to="/portfolio-tab">
-          <button
-            onClick={handleFocus}
-            className="sidebarBtn border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
-          >
-            <AccountBalanceWalletOutlinedIcon className="mr-5 ml-6" />
-            <h1 className="text-left">Portfolio</h1>
           </button>
         </Link>
         <Link to="/bubbles-tab">
