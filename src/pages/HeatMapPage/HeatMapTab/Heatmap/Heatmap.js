@@ -25,7 +25,9 @@ function Heatmap({ data }) {
         >
           {/* BTC Section */}
           <div>
-            <h1 className="text-9xl">{data[0].symbol.toUpperCase()}</h1>
+            <h1 className="text-center text-9xl">
+              {data[0].symbol.toUpperCase()}
+            </h1>
             <h4 className="my-4 text-center text-6xl font-semibold">
               ${data[0].current_price}
             </h4>

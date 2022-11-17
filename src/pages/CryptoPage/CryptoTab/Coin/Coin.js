@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 function Coin({
@@ -36,6 +36,17 @@ function Coin({
     circulationSupplyRound =
       String(Math.round(circulationSupply / 1000000)) + "M";
   }
+
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    scrollUp();
+  }, []);
 
   return (
     <>
