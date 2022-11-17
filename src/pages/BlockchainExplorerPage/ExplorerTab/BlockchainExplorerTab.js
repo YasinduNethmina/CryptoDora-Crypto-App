@@ -86,7 +86,7 @@ function BlockchainExplorerTab() {
     holdersQuery.isLoading ||
     transactionQuery.isLoading
   ) {
-    return <div className="h-full bg-[#1B2028] "></div>;
+    return <div className="animte-pulse mt-20 h-full bg-[#1B2028] "></div>;
   } else {
     // Used to display the data of top holders using a map
     let holders = holdersQuery.data.holders;
@@ -99,7 +99,7 @@ function BlockchainExplorerTab() {
     return (
       <>
         {/* Header section */}
-        <div className="explorer-bg mt-24 h-1/4 w-full rounded-xl  opacity-90">
+        <div className="explorer-bg mt-24 h-1/4 w-full rounded-xl opacity-90">
           <h1 className="pl-10 pt-16 text-center text-4xl font-semibold text-green-300">
             The Ethereum Blockchain Explorer
           </h1>
