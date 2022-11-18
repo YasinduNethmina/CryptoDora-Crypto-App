@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cryptodora-app",
+  "private_key_id": "2ccc6cbed55f29a4001ec52bdc5e1f0de209ac1a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCjuMKfF1kYD2OK\nQizQwZl4fXSi+h7b1uhuPf8sqB16qH2FycypnSwaEmz2q5amARmagL5DaPjcTzic\nqQON3wJMtOSYUEks5UhVkLaIvDoDIYh+uU/HN2fH+KXXTf48LdK/SeHx8V402h9z\n4pLKywDPckb77jpKLFLL59c5pQACL2LTYyAUtpc2R9VHQDsxiIBIzQ2gK8iNIqG7\nryKzJhwnxvreEj2ewDP2ZMXz5VyO55GF/QCDi3nC2mutoCqMkJ70hJ4RNIyC3ucz\ncU2xFfW8fjYEINbChNqykng+dGLtrJYShjM45wfWMWAizW6re8HXVWDhGPENgCHD\nYngVO4C7AgMBAAECggEAEaklCV9N44wJa0kfJ3ey0+4IjmoXuRQyJ241n/4Ui/4v\n6CYwFx3Wu4tASM2Spx6YQfPgUko5Ch7blv6eXQfw6hBbVljWw+qJxn0hS5euVFci\nL7VSt0UxQz99uD94DMrOoIbaQiyMwnvDB8+pkQmb8US9BoEYtZaZadh8/YFggluo\n3KyY6dfAB4gU0txbfzYHcXNqb/TWPXN0HCX1grqV+0J4FzU6bgJ1GpEfwYFZxZQc\n1gGxe87wKbcjJt0ecQ/+PB+SLvvDDsz+h43mmbPJLPuN8wTNuMcGc2EPTtyD5fii\nKH2bk5nRrXh2cwfCAdM67CoWNwpt+nyNpiMogfxYwQKBgQDggqsTXbDPLdC0KDOm\nuP3Z8hUMMx9WW8qE3JXDxk8Vt5W8eVtOr5lj51qTK8NhkPxrnlis/e+KgWx3JMII\nb8s43kADybm2bpZG1GPu7MdQ/ccrGgSfmZxqrDB6op3G6ofswUKVxH3M6KuqfET+\nBYOSkIkpEGk+6jEBswaMc+f4+wKBgQC6r2V7viaA4nT64jTjksIRBQxGUuAm3JCs\nbgsGb0DrUjXwRyd08iAE1jJvqtn/z4RmYDVWT2caO8mmBvdA1OSRAxCJdPIihTDE\n2l/WUREkXTTF1nAguT1YorDoX5HslZCauDR1O961qFWa30Bb4Lb1RNeJ4oPzgOEl\nEoVJil+LQQKBgGWtqC8YIohiFoBRKLtcUtOPGMsyqAGjhr/PayCEQrLyNyVpzNmB\nG7YsRFAc5NreIAPZbg3C3+bZoLcA9cN+Zgp2VYWhqbMeuH6RmETQBaD/nmE94lQp\n7LY/D6Gq3kwFUdP+3toXaGYSBhUrPM/SzXjmbsgjP5cX12QOoWug3rFbAoGASKeu\nlWRB0/NOl72l29PoF3uhdVUXy8gXviPtwolV+L+8IlFu98Kr13YNlwwlX7vByZ4z\n4+1vMPSH3EflvqOceRt6OiT7f5fajSJ4Hg7a3w4vVbfJV9MAHxjiRO28+xiSeMSs\nFdxBJu3msymkAJ4KVpZ+VDmGJSTJewYkPaTO3oECgYBGxvw/wlq3bi8Fj0cRW32B\ne4tsdpd37d3juOcox77KJBzQqfC2ORmhiPvRTIUMInK/TVC8CjcCxGkWcZwDjW1M\nloyMViS6bYN73VZ2pnIj4C8gFiOWNiogs+K443Xq29l7nf5WWDxHth6JDcVfKH+y\nnNX+N1l0NH+tHQ3NnU0hNg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-9dog6@cryptodora-app.iam.gserviceaccount.com",
+  "client_id": "117681293604155764977",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-9dog6%40cryptodora-app.iam.gserviceaccount.com"
+}

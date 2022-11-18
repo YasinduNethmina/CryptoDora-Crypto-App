@@ -36,7 +36,6 @@ function Main() {
     maxChartQuery,
     marketQuery,
     newsQuery,
-    convertQuery,
   ] = useQueries({
     queries: [
       {
@@ -68,13 +67,17 @@ function Main() {
         queryKey: ["randomNumber"],
         queryFn: () =>
           axios
-            .get("http://www.randomnumberapi.com/api/v1.0/random?min=0&max=1")
+            .get("https://www.randomnumberapi.com/api/v1.0/random?min=0&max=1")
             .then((res) => res.data),
       },
       {
         queryKey: ["flag"],
         queryFn: () =>
-          axios.get("http://ip-api.com/json").then((res) => res.data),
+          axios
+            .get(
+              "https://api.ipgeolocation.io/ipgeo?apiKey=07c6a873ce39452882d4fc28978752c4"
+            )
+            .then((res) => res.data),
       },
       {
         queryKey: ["dailyChart"],

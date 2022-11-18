@@ -69,7 +69,7 @@ function CurrencyDropdown(props) {
                 width: "2rem",
                 height: "2rem",
               }}
-              countryCode={flagCodeQuery.countryCode}
+              countryCode={flagCodeQuery.country_code2}
               svg
             />
           </label>
