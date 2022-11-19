@@ -52,11 +52,11 @@ function News({ newsData }) {
       {/* News Banner 01 Main Section */}
       <div className="flex justify-center">
         <NewsBanner
-          title={newsData[4].title}
-          img={newsData[4].urlToImage}
-          date={newsData[4].publishedAt}
-          description={newsData[4].description}
-          source={newsData[4].source.name}
+          title={newsData[15].title}
+          img={newsData[15].urlToImage}
+          date={newsData[15].publishedAt}
+          description={newsData[15].description}
+          source={newsData[15].source.name}
         />
       </div>
 
