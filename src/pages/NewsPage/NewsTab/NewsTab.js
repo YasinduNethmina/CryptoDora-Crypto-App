@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import NewsCard from "../../LandingPage/Main/News/NewsCard/NewsCard";
 import NewsBanner from "../../LandingPage/Main/News/NewsBanner/NewsBanner";
 import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
@@ -7,55 +6,69 @@ import Creators from "./Creators/Creators";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CelebrationIcon from "@mui/icons-material/Celebration";
 import CardLoadingState from "../../LandingPage/Main/Cards/Card/CardLoadingState";
+import { db } from "./../../../firebase-config";
+import { collection, getDocs } from "firebase/firestore";
 
 function NewsTab() {
-  const today = new Date();
-  let day = today.getDate();
-  let month = today.getMonth() + 1;
-  let year = today.getFullYear();
-
-  let buttonValue = "";
-  const [url, setUrl] = useState(
-    `https://newsapi.org/v2/everything?language=en&from=${year}-${month}-${
-      day - 2
-    }&to=${year}-${month}-${day}&q="blockchain"&sortBy=popularity&pageSize=60&apiKey=56591b716be3406fa65c0b587fbd74c0`
-  );
-
   const [newsData, setNewsData] = useState();
+  const [active, setActive] = useState("all");
 
-  let randomNumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-  const generateRandomNum = () => {
-    for (let i = randomNumbers.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      let temp = randomNumbers[i];
-      randomNumbers[i] = randomNumbers[j];
-      randomNumbers[j] = temp;
+  const newsTab = collection(db, "newsTab_news");
+  const newsTabBitcoin = collection(db, "newsTabBitcoin_news");
+  const newsTabEthereum = collection(db, "newsTabEthereum_news");
+  const newsTabNft = collection(db, "newsTabNft_news");
+  const newsTabDefi = collection(db, "newsTabDefi_news");
+  const newsTabAltcoins = collection(db, "newsTabAltcoins_news");
+  const newsTabTechnology = collection(db, "newsTabTechnology_news");
+
+  // Get initial news data from database
+  useEffect(() => {
+    const getUsers = async () => {
+      const newsTabData = await getDocs(newsTab);
+      setNewsData(newsTabData.docs.map((doc) => ({ ...doc.data() })));
+    };
+    getUsers();
+  }, []);
+
+  //handle all news on button click using database
+  const handleClick = async (e) => {
+    if (e.target.value === "") {
+      setActive("all");
+      const newsTabData = await getDocs(newsTab);
+      setNewsData(newsTabData.docs.map((doc) => ({ ...doc.data() })));
+      return;
+    } else if (e.target.value === "bitcoin") {
+      setActive("bitcoin");
+      const newsTabBitcoinData = await getDocs(newsTabBitcoin);
+      setNewsData(newsTabBitcoinData.docs.map((doc) => ({ ...doc.data() })));
+    } else if (e.target.value === "vitalik") {
+      setActive("ethereum");
+      const newsTabEthereumData = await getDocs(newsTabEthereum);
+      setNewsData(newsTabEthereumData.docs.map((doc) => ({ ...doc.data() })));
+    } else if (e.target.value === "nft") {
+      setActive("nft");
+      const newsTabNftData = await getDocs(newsTabNft);
+      setNewsData(newsTabNftData.docs.map((doc) => ({ ...doc.data() })));
+    } else if (e.target.value === "decentralized%20finance") {
+      setActive("defi");
+      const newsTabDefiData = await getDocs(newsTabDefi);
+      setNewsData(newsTabDefiData.docs.map((doc) => ({ ...doc.data() })));
+    } else if (e.target.value === "altcoins") {
+      setActive("altcoins");
+      const newsTabAltcoinsData = await getDocs(newsTabAltcoins);
+      setNewsData(newsTabAltcoinsData.docs.map((doc) => ({ ...doc.data() })));
+    } else if (e.target.value === "metaverse") {
+      setActive("technology");
+      const newsTabTechnologyData = await getDocs(newsTabTechnology);
+      setNewsData(newsTabTechnologyData.docs.map((doc) => ({ ...doc.data() })));
     }
   };
 
-  generateRandomNum();
-
-  //Topic buttons
-  const handleClick = (e) => {
-    buttonValue = e.target.value;
-    setUrl(
-      `https://newsapi.org/v2/everything?language=en&from=${year}-${month}-${
-        day - 2
-      }&to=${year}-${month}-${day}&q=${buttonValue}&sortBy=popularity&pageSize=60&apiKey=56591b716be3406fa65c0b587fbd74c0`
-    );
-  };
-
-  // Show more button
+  // Show more button (display more news)
   const showMoreClick = () => {
-    document.querySelector(".moreNews").classList.remove("hidden");
     document.querySelector(".moreNewsText").classList.remove("hidden");
-    document.querySelector(".moreNewsBtn").classList.add("hidden");
+    document.querySelector(".moreNewsBtn").remove();
   };
-
-  //Api request
-  useEffect(() => {
-    axios(url).then((res) => setNewsData(res.data.articles));
-  }, [url]);
 
   if (!newsData) {
     return (
@@ -96,35 +109,55 @@ function NewsTab() {
             <button
               onClick={handleClick}
               value=""
-              className="w-12 rounded-full bg-[#2F9FF8] py-1 text-white duration-300 hover:bg-white hover:text-[#072D4B]"
+              className={
+                active === "all"
+                  ? "all-btn w-12 rounded-full bg-[#2F9FF8] py-1 text-white duration-300"
+                  : "all-btn w-12 rounded-full bg-white py-1 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white"
+              }
             >
               All
             </button>
             <button
               onClick={handleClick}
               value="bitcoin"
-              className="mx-4 w-24 rounded-full bg-white py-1 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white"
+              className={
+                active === "bitcoin"
+                  ? "bitcoin-btn mx-4 w-24 rounded-full bg-[#2F9FF8] py-1 text-white duration-300 hover:bg-[#2F9FF8] hover:text-white"
+                  : "bitcoin-btn mx-4 w-24 rounded-full bg-white py-1 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white"
+              }
             >
               Bitcoin
             </button>
             <button
               onClick={handleClick}
               value="vitalik"
-              className="w-24 rounded-full bg-white py-1 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white"
+              className={
+                active === "ethereum"
+                  ? "ethereum-btn w-24 rounded-full bg-[#2F9FF8] py-1 text-white duration-300 hover:bg-[#2F9FF8] hover:text-white"
+                  : "ethereum-btn w-24 rounded-full bg-white py-1 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white"
+              }
             >
               Ethereum
             </button>
             <button
               onClick={handleClick}
               value="nft"
-              className="mx-4 w-16 rounded-full bg-white py-1 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white"
+              className={
+                active === "nft"
+                  ? "nft-btn mx-4 w-16 rounded-full bg-[#2F9FF8] py-1 text-white duration-300 hover:bg-[#2F9FF8] hover:text-white"
+                  : "nft-btn mx-4 w-16 rounded-full bg-white py-1 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white"
+              }
             >
               NFT
             </button>
             <button
               onClick={handleClick}
               value="decentralized%20finance"
-              className="w-16 rounded-full bg-white py-1 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white"
+              className={
+                active === "defi"
+                  ? "defi-btn w-16 rounded-full bg-[#2F9FF8] py-1 text-white duration-300 hover:bg-[#2F9FF8] hover:text-white"
+                  : "defi-btn w-16 rounded-full bg-white py-1 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white"
+              }
             >
               DeFi
             </button>
@@ -132,14 +165,22 @@ function NewsTab() {
             <button
               onClick={handleClick}
               value="altcoins"
-              className="mx-4 w-28 rounded-full bg-white py-1 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white"
+              className={
+                active === "altcoins"
+                  ? "altcoins-btn mx-4 w-24 rounded-full bg-[#2F9FF8] py-1 text-white duration-300 hover:bg-[#2F9FF8] hover:text-white"
+                  : "altcoins-btn mx-4 w-24 rounded-full bg-white py-1 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white"
+              }
             >
               Altcoins
             </button>
             <button
               onClick={handleClick}
               value="metaverse"
-              className="w-28 rounded-full bg-white py-1 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white"
+              className={
+                active === "technology"
+                  ? "technology-btn w-28 rounded-full bg-[#2F9FF8] py-1 text-white duration-300 hover:bg-[#2F9FF8] hover:text-white"
+                  : "technology-btn w-28 rounded-full bg-white py-1 text-[#072D4B] duration-300 hover:bg-[#2F9FF8] hover:text-white"
+              }
             >
               Technology
             </button>
@@ -150,61 +191,61 @@ function NewsTab() {
 
           <div className="mt-7 mr-8">
             <NewsBanner
-              title={newsData[randomNumbers[0]].title}
-              img={newsData[randomNumbers[0]].urlToImage}
-              date={newsData[randomNumbers[0]].publishedAt}
-              description={newsData[randomNumbers[0]].description}
-              source={newsData[randomNumbers[0]].source.name}
+              title={newsData[23].title}
+              img={newsData[23].urlToImage}
+              date={newsData[23].publishedAt}
+              description={newsData[23].description}
+              source={newsData[23].source.name}
             />
           </div>
           <div className="flex">
             <NewsCard
-              title={newsData[randomNumbers[1]].title}
-              img={newsData[randomNumbers[1]].urlToImage}
-              date={newsData[randomNumbers[1]].publishedAt}
-              description={newsData[randomNumbers[1]].description}
-              source={newsData[randomNumbers[1]].source.name}
+              title={newsData[16].title}
+              img={newsData[16].urlToImage}
+              date={newsData[16].publishedAt}
+              description={newsData[16].description}
+              source={newsData[16].source.name}
             />
             <NewsCard
-              title={newsData[randomNumbers[2]].title}
-              img={newsData[randomNumbers[2]].urlToImage}
-              date={newsData[randomNumbers[2]].publishedAt}
-              description={newsData[randomNumbers[2]].description}
-              source={newsData[randomNumbers[2]].source.name}
-            />
-          </div>
-
-          <div className="flex">
-            <NewsCard
-              title={newsData[randomNumbers[3]].title}
-              img={newsData[randomNumbers[3]].urlToImage}
-              date={newsData[randomNumbers[3]].publishedAt}
-              description={newsData[randomNumbers[3]].description}
-              source={newsData[randomNumbers[3]].source.name}
-            />
-            <NewsCard
-              title={newsData[randomNumbers[4]].title}
-              img={newsData[randomNumbers[4]].urlToImage}
-              date={newsData[randomNumbers[4]].publishedAt}
-              description={newsData[randomNumbers[4]].description}
-              source={newsData[randomNumbers[4]].source.name}
+              title={newsData[2].title}
+              img={newsData[2].urlToImage}
+              date={newsData[2].publishedAt}
+              description={newsData[2].description}
+              source={newsData[2].source.name}
             />
           </div>
 
           <div className="flex">
             <NewsCard
-              title={newsData[randomNumbers[5]].title}
-              img={newsData[randomNumbers[5]].urlToImage}
-              date={newsData[randomNumbers[5]].publishedAt}
-              description={newsData[randomNumbers[5]].description}
-              source={newsData[randomNumbers[5]].source.name}
+              title={newsData[3].title}
+              img={newsData[3].urlToImage}
+              date={newsData[3].publishedAt}
+              description={newsData[3].description}
+              source={newsData[3].source.name}
             />
             <NewsCard
-              title={newsData[randomNumbers[6]].title}
-              img={newsData[randomNumbers[6]].urlToImage}
-              date={newsData[randomNumbers[6]].publishedAt}
-              description={newsData[randomNumbers[6]].description}
-              source={newsData[randomNumbers[6]].source.name}
+              title={newsData[4].title}
+              img={newsData[4].urlToImage}
+              date={newsData[4].publishedAt}
+              description={newsData[4].description}
+              source={newsData[4].source.name}
+            />
+          </div>
+
+          <div className="flex">
+            <NewsCard
+              title={newsData[5].title}
+              img={newsData[5].urlToImage}
+              date={newsData[5].publishedAt}
+              description={newsData[5].description}
+              source={newsData[5].source.name}
+            />
+            <NewsCard
+              title={newsData[6].title}
+              img={newsData[6].urlToImage}
+              date={newsData[6].publishedAt}
+              description={newsData[6].description}
+              source={newsData[6].source.name}
             />
           </div>
 
@@ -242,79 +283,79 @@ function NewsTab() {
           </div>
           <div className="mt-7 flex">
             <NewsCard
-              title={newsData[randomNumbers[7]].title}
-              img={newsData[randomNumbers[7]].urlToImage}
-              date={newsData[randomNumbers[7]].publishedAt}
-              description={newsData[randomNumbers[7]].description}
-              source={newsData[randomNumbers[7]].source.name}
+              title={newsData[7].title}
+              img={newsData[7].urlToImage}
+              date={newsData[7].publishedAt}
+              description={newsData[7].description}
+              source={newsData[7].source.name}
             />
             <NewsCard
-              title={newsData[randomNumbers[8]].title}
-              img={newsData[randomNumbers[8]].urlToImage}
-              date={newsData[randomNumbers[8]].publishedAt}
-              description={newsData[randomNumbers[8]].description}
-              source={newsData[randomNumbers[8]].source.name}
-            />
-          </div>
-
-          <div className="flex">
-            <NewsCard
-              title={newsData[randomNumbers[9]].title}
-              img={newsData[randomNumbers[9]].urlToImage}
-              date={newsData[randomNumbers[9]].publishedAt}
-              description={newsData[randomNumbers[9]].description}
-              source={newsData[randomNumbers[9]].source.name}
-            />
-            <NewsCard
-              title={newsData[randomNumbers[10]].title}
-              img={newsData[randomNumbers[10]].urlToImage}
-              date={newsData[randomNumbers[10]].publishedAt}
-              description={newsData[randomNumbers[10]].description}
-              source={newsData[randomNumbers[10]].source.name}
+              title={newsData[8].title}
+              img={newsData[8].urlToImage}
+              date={newsData[8].publishedAt}
+              description={newsData[8].description}
+              source={newsData[8].source.name}
             />
           </div>
 
           <div className="flex">
             <NewsCard
-              title={newsData[randomNumbers[11]].title}
-              img={newsData[randomNumbers[11]].urlToImage}
-              date={newsData[randomNumbers[11]].publishedAt}
-              description={newsData[randomNumbers[11]].description}
-              source={newsData[randomNumbers[11]].source.name}
+              title={newsData[9].title}
+              img={newsData[9].urlToImage}
+              date={newsData[9].publishedAt}
+              description={newsData[9].description}
+              source={newsData[9].source.name}
             />
             <NewsCard
-              title={newsData[randomNumbers[12]].title}
-              img={newsData[randomNumbers[12]].urlToImage}
-              date={newsData[randomNumbers[12]].publishedAt}
-              description={newsData[randomNumbers[12]].description}
-              source={newsData[randomNumbers[12]].source.name}
+              title={newsData[10].title}
+              img={newsData[10].urlToImage}
+              date={newsData[10].publishedAt}
+              description={newsData[10].description}
+              source={newsData[10].source.name}
+            />
+          </div>
+
+          <div className="flex">
+            <NewsCard
+              title={newsData[11].title}
+              img={newsData[11].urlToImage}
+              date={newsData[11].publishedAt}
+              description={newsData[11].description}
+              source={newsData[11].source.name}
+            />
+            <NewsCard
+              title={newsData[12].title}
+              img={newsData[12].urlToImage}
+              date={newsData[12].publishedAt}
+              description={newsData[12].description}
+              source={newsData[12].source.name}
             />
           </div>
 
           <div className="mt-7 mr-8">
             <NewsBanner
-              title={newsData[randomNumbers[13]].title}
-              img={newsData[randomNumbers[13]].urlToImage}
-              date={newsData[randomNumbers[13]].publishedAt}
-              description={newsData[randomNumbers[13]].description}
-              source={newsData[randomNumbers[13]].source.name}
+              title={newsData[20].title}
+              img={newsData[20].urlToImage}
+              date={newsData[20].publishedAt}
+              description={newsData[20].description}
+              source={newsData[20].source.name}
             />
           </div>
 
           <div className="flex">
             <NewsCard
-              title={newsData[randomNumbers[11]].title}
-              img={newsData[randomNumbers[11]].urlToImage}
-              date={newsData[randomNumbers[11]].publishedAt}
-              description={newsData[randomNumbers[11]].description}
-              source={newsData[randomNumbers[11]].source.name}
+              title={newsData[14].title}
+              img={newsData[14].urlToImage}
+              date={newsData[14].publishedAt}
+              description={newsData[14].description}
+              source={newsData[14].source.name}
             />
             <NewsCard
-              title={newsData[randomNumbers[12]].title}
-              img={newsData[randomNumbers[12]].urlToImage}
-              date={newsData[randomNumbers[12]].publishedAt}
-              description={newsData[randomNumbers[12]].description}
-              source={newsData[randomNumbers[12]].source.name}
+              title={newsData[15].title}
+              img={newsData[15].urlToImage}
+              date={newsData[15].publishedAt}
+              description={newsData[15].description}
+              source={newsData[15].source.name}
             />
           </div>
           {/* Show More button */}
@@ -327,22 +368,7 @@ function NewsTab() {
               Show More <ExpandMoreIcon />
             </button>
           </div>
-          {/* News Map */}
-          <div className="moreNews hidden">
-            {newsData.map((news) => {
-              return (
-                <div className=" mr-8">
-                  <NewsBanner
-                    title={news.title}
-                    img={news.urlToImage}
-                    date={news.publishedAt}
-                    description={news.description}
-                    source={news.source.name}
-                  />
-                </div>
-              );
-            })}
-          </div>
+
           <h1 className="moreNewsText hidden pt-8 text-center font-semibold text-white">
             <CelebrationIcon />
             &nbsp; Great! You caught up all!

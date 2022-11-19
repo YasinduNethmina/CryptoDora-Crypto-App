@@ -1,26 +1,23 @@
-import React from "react";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
+import React, { useState, useEffect } from "react";
 import NewsTop from "../../LandingPage/Main/News/NewsTop/NewsTop";
 import NewsLoadingState from "../../LandingPage/Main/News/NewsLoadingState/NewsLoadingState";
+import { db } from "./../../../firebase-config";
+import { collection, getDocs } from "firebase/firestore";
 
 function NewsTabRight() {
-  const today = new Date();
-  let day = today.getDate();
-  let month = today.getMonth() + 1;
-  let year = today.getFullYear();
+  const [newsData, setNewsData] = useState();
+  const newsTabRight = collection(db, "newsTabRight_news");
 
-  const { data, isLoading } = useQuery(["newsTopData"], () => {
-    return axios
-      .get(
-        `https://newsapi.org/v2/everything?language=en&from=${year}-${month}-${
-          day - 2
-        }&to=${year}-${month}-${day}&q="blockchain"&sortBy=popularity&page=5&pageSize=6&apiKey=56591b716be3406fa65c0b587fbd74c0`
-      )
-      .then((res) => res.data);
-  });
+  // Get initial news data from database
+  useEffect(() => {
+    const getUsers = async () => {
+      const newsTabData = await getDocs(newsTabRight);
+      setNewsData(newsTabData.docs.map((doc) => ({ ...doc.data() })));
+    };
+    getUsers();
+  }, []);
 
-  if (isLoading) {
+  if (!newsData) {
     return (
       <>
         <div className="mb-4">
@@ -32,7 +29,6 @@ function NewsTabRight() {
       </>
     );
   } else {
-    let newsData = data.articles;
     return (
       <div className="mt-24 mr-2 ml-5">
         {newsData.map((news) => {

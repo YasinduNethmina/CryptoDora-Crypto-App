@@ -1,26 +1,30 @@
+import React, { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
 import CardLoadingState from "../../../Cards/Card/CardLoadingState";
 import NewsCard from "../../../../Main/News/NewsCard/NewsCard";
+import { db } from "../../../../../../firebase-config";
+import { collection, getDocs } from "firebase/firestore";
 
 function MoreNews() {
+  const [newsData, setNewsData] = useState();
+  const newsTab = collection(db, "newsTab_news");
+
   const today = new Date();
   let day = today.getDate();
   let month = today.getMonth();
   let year = today.getFullYear();
 
-  const { data, isLoading } = useQuery(["news"], () => {
-    return axios(
-      `https://newsapi.org/v2/everything?language=en&from=${year}-${
-        month + 1
-      }-${day - 2}&to=${year}-${
-        month + 1
-      }-${day}&domains=coindesk.com&sortBy=popularity&pageSize=2&apiKey=d22fa49d219e45048ed523d99210a9a9`
-    ).then((res) => res.data);
-  });
+  // Get initial news data from database
+  useEffect(() => {
+    const getUsers = async () => {
+      const newsTabData = await getDocs(newsTab);
+      setNewsData(newsTabData.docs.map((doc) => ({ ...doc.data() })));
+    };
+    getUsers();
+  }, []);
 
-  if (isLoading) {
+  if (!newsData) {
     return (
       <>
         <div className="mt-20">
@@ -55,19 +59,19 @@ function MoreNews() {
         </h1>
         <div className="mt-4 flex">
           <NewsCard
-            title={data.articles[0].title}
-            img={data.articles[0].urlToImage}
-            date={data.articles[0].publishedAt}
-            description={data.articles[0].description}
-            source={data.articles[0].source.name}
+            title={newsData[0].title}
+            img={newsData[0].urlToImage}
+            date={newsData[0].publishedAt}
+            description={newsData[0].description}
+            source={newsData[0].source.name}
           />
 
           <NewsCard
-            title={data.articles[1].title}
-            img={data.articles[1].urlToImage}
-            date={data.articles[1].publishedAt}
-            description={data.articles[1].description}
-            source={data.articles[1].source.name}
+            title={newsData[1].title}
+            img={newsData[1].urlToImage}
+            date={newsData[1].publishedAt}
+            description={newsData[1].description}
+            source={newsData[1].source.name}
           />
         </div>
       </>

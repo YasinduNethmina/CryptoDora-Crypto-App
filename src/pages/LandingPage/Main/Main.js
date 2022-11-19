@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import Cards from "./Cards/Cards";
 import "./Main.scss";
 import Chart from "./Chart/Chart";
@@ -14,15 +14,23 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Partners from "./Partners/Partners";
 import NewsLoadingState from "./News/NewsLoadingState/NewsLoadingState";
 import Converter from "./Converter/Converter";
+import { db } from "../../../firebase-config";
+import { collection, getDocs } from "firebase/firestore";
 
 export const coinPriceContext = createContext();
 
-const today = new Date();
-let day = today.getDate();
-let month = today.getMonth();
-let year = today.getFullYear();
-
 function Main() {
+  const [newsData, setNewsData] = useState();
+  const mainNewsTab = collection(db, "mainTab_news");
+
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(mainNewsTab);
+      setNewsData(data.docs.map((doc) => ({ ...doc.data() })));
+    };
+    getUsers();
+  }, []);
+
   const [
     statsQuery,
     ethGasQuery,
@@ -35,7 +43,6 @@ function Main() {
     threeMonthChartQuery,
     maxChartQuery,
     marketQuery,
-    newsQuery,
   ] = useQueries({
     queries: [
       {
@@ -133,19 +140,6 @@ function Main() {
             )
             .then((res) => res.data),
       },
-      {
-        queryKey: ["news"],
-        queryFn: () =>
-          axios
-            .get(
-              `https://newsapi.org/v2/everything?language=en&from=${year}-${
-                month + 1
-              }-${day - 2}&to=${year}-${
-                month + 1
-              }-${day}&domains=coindesk.com&sortBy=popularity&pageSize=16&apiKey=d22fa49d219e45048ed523d99210a9a9`
-            )
-            .then((res) => res.data),
-      },
     ],
   });
 
@@ -160,8 +154,7 @@ function Main() {
     monthlyChartQuery.isLoading ||
     threeMonthChartQuery.isLoading ||
     maxChartQuery.isLoading ||
-    marketQuery.isLoading ||
-    newsQuery.isLoading;
+    marketQuery.isLoading;
 
   const isError =
     statsQuery.error ||
@@ -174,10 +167,9 @@ function Main() {
     monthlyChartQuery.error ||
     threeMonthChartQuery.error ||
     maxChartQuery.error ||
-    marketQuery.error ||
-    newsQuery.error;
+    marketQuery.error;
 
-  if (isLoading)
+  if (isLoading || !newsData)
     return (
       <div className="cards-section overflow-hidden">
         <Stats loadingState={isLoading ? true : false} />
@@ -228,7 +220,7 @@ function Main() {
         <div className="converter">
           <Converter data={marketQuery.data} />
         </div>
-        <News newsData={newsQuery.data} />
+        <News newsData={newsData} />
 
         {/* Show More button */}
         <div className="my-10 flex justify-center">
