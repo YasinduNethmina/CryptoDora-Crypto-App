@@ -39,16 +39,21 @@ function Converter({ data }) {
 
   return (
     <>
-      <div className="h-96 w-full rounded-lg bg-gradient-to-b from-[#1B2028] to-[#31353F] px-4 py-2">
-        <h1 className="ml-2 mt-4 mb-2 text-center text-2xl font-bold leading-relaxed tracking-wider text-white">
+      <div className="h-screen w-full rounded-lg">
+        <img
+          className="newsImg rounded-t-2xl object-cover"
+          src={require("../../../../assets/images/converter.jpg")}
+          alt="converter-background"
+        />
+        <h1 className="converter-title ml-2 mb-2 text-center text-3xl font-bold leading-relaxed tracking-wider text-white">
           Cryptocurrency <br></br> Converter
         </h1>
-        <div className="flex">
+        <div className="converter-input-1 flex">
           <select
             onChange={leftSelectChange}
             name="coins"
             id="coins"
-            className="my-4 mr-4 flex w-1/2 cursor-pointer rounded-lg border-2 border-gray-100 bg-gray-50 p-2.5 text-sm text-gray-900 outline-none duration-100 hover:border-2 hover:border-sky-500  focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            className="my-4 mr-4 flex w-1/2 cursor-pointer rounded-lg border-2 border-gray-100 bg-gray-50 p-1.5 text-sm text-gray-900 outline-none duration-100 hover:border-2 hover:border-sky-500  focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
           >
             {allData.map((i) => {
               return <option value={i.current_price}>{i.name}</option>;
@@ -61,22 +66,22 @@ function Converter({ data }) {
             required
             onChange={handleLeftValue}
             type="number"
-            className="my-4 h-16 w-1/2 cursor-text rounded-lg border-2 border-gray-300 bg-gray-50 pl-4 pr-2 text-gray-900 outline-none duration-100 hover:border-2 hover:border-sky-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500"
+            className="my-4 h-10 w-1/2 cursor-text rounded-lg border-2 border-gray-300 bg-gray-50 pl-4 pr-2 text-gray-900 outline-none duration-100 hover:border-2 hover:border-sky-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500"
             // value={quantity}
           />
         </div>
-        <div className="my-2 flex items-center justify-center text-gray-400">
+        <div className="converter-icon flex items-center justify-center text-gray-400">
           <SwapHorizIcon
-            style={{ fontSize: "40px", transform: "rotate(90deg)" }}
+            style={{ fontSize: "2rem", transform: "rotate(90deg)" }}
           />
         </div>
 
-        <div className="flex">
+        <div className="converter-input-2 flex">
           <select
             onChange={rightSelectChange}
             name="coins"
             id="coins"
-            className="my-4 mr-4 flex w-1/2 cursor-pointer rounded-lg border-2 border-gray-100 bg-gray-50 p-2.5 text-sm text-gray-900 outline-none duration-100 hover:border-2 hover:border-sky-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            className="my-4 mr-4 flex w-1/2 cursor-pointer rounded-lg border-2 border-gray-100 bg-gray-50 p-1.5 text-sm text-gray-900 outline-none duration-100 hover:border-2 hover:border-sky-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
           >
             {allData.map((i) => {
               if (i.name === allData[3].name) {
@@ -98,7 +103,7 @@ function Converter({ data }) {
             required
             onChange={handleRightValue}
             type="number"
-            className="my-4 h-16 w-1/2 cursor-not-allowed rounded-lg border-2 border-gray-300 bg-gray-50 pl-4 pr-2 text-gray-900  outline-none duration-100 hover:border-2 hover:border-sky-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700  dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500"
+            className="my-4 h-10 w-1/2 cursor-not-allowed rounded-lg border-2 border-gray-300 bg-gray-50 pl-4 pr-2 text-gray-900  outline-none duration-100 hover:border-2 hover:border-sky-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700  dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500"
           />
         </div>
       </div>

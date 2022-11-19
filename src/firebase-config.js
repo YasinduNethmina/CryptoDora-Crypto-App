@@ -3,7 +3,7 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCxOHECli9zmY4gye0mqMPED5oaSir-guI",
+  apiKey: process.env.REACT_APP_FIREBASE,
   authDomain: "cryptodora-app.firebaseapp.com",
   projectId: "cryptodora-app",
   storageBucket: "cryptodora-app.appspot.com",
