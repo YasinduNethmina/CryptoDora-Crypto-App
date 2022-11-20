@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../../firebase-config";
 
 function SignupPage() {
@@ -10,6 +14,19 @@ function SignupPage() {
   const [passwordErr, setPasswordErr] = useState(false);
   const [login, setLogin] = useState(false);
 
+  // Google Auth
+  const provider = new GoogleAuthProvider();
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        setLogin(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // Email Register
   const register = async () => {
     try {
       const newUser = await createUserWithEmailAndPassword(
@@ -46,6 +63,7 @@ function SignupPage() {
             <div className="mt-8 flex justify-center">
               <div>
                 <button
+                  onClick={signInWithGoogle}
                   type="button"
                   className="dark:focus:ring-[#4285F4]/55 mr-2 mt-4 inline-flex items-center justify-center rounded-lg bg-[#4285F4] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#4285F4]/90 focus:outline-none focus:ring-4 focus:ring-[#4285F4]/50"
                 >

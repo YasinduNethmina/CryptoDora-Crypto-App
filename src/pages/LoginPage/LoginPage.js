@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../../firebase-config";
 
 function LoginPage() {
@@ -9,7 +13,21 @@ function LoginPage() {
   const [login, setLogin] = useState(false);
   const [emailErr, setEmailErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState(false);
+  const [profilePic, setProfilePic] = useState(null);
 
+  // Google Auth
+  const provider = new GoogleAuthProvider();
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        setLogin(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // Email login
   const logIn = async () => {
     try {
       const newUser = await signInWithEmailAndPassword(
@@ -38,6 +56,7 @@ function LoginPage() {
             <div className="mt-8 flex justify-center">
               <div>
                 <button
+                  onClick={signInWithGoogle}
                   type="button"
                   className="dark:focus:ring-[#4285F4]/55 mr-2 mt-4 inline-flex items-center justify-center rounded-lg bg-[#4285F4] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#4285F4]/90 focus:outline-none focus:ring-4 focus:ring-[#4285F4]/50"
                 >

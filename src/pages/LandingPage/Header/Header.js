@@ -10,7 +10,12 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Notifictions from "./Notifications/Notifictions";
 import { auth } from "../../../firebase-config";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import {
+  onAuthStateChanged,
+  signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 
 function Header() {
   // Email username
@@ -133,16 +138,24 @@ function Header() {
           {user ? (
             <div className="flex">
               <button className="stats-profile ml-8 flex items-center">
-                <PersonOutlineOutlinedIcon
-                  className="rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E]"
-                  style={{
-                    width: "2.7rem",
-                    height: "2.7rem",
-                    padding: ".5rem",
-                  }}
-                />
+                {user ? (
+                  <img
+                    src={user?.photoURL}
+                    className="h-11 w-11 rounded-lg"
+                    alt="user-pic"
+                  />
+                ) : (
+                  <PersonOutlineOutlinedIcon
+                    className="rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E]"
+                    style={{
+                      width: "2.7rem",
+                      height: "2.7rem",
+                      padding: ".5rem",
+                    }}
+                  />
+                )}
                 <h1 className="stats-profile-name ml-4 text-white transition hover:text-[#9E9E9E]">
-                  {user ? user.email : "Vitalik Buterin"}
+                  {user ? user?.displayName : "Vitalik Buterin"}
                 </h1>
                 <KeyboardArrowDownOutlinedIcon className="ml-4 mr-2 text-[#9e9e9e]" />
               </button>
