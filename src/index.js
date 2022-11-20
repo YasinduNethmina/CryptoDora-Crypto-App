@@ -14,6 +14,8 @@ import NewsDescription from "./pages/LandingPage/Main/News/NewsDescription/NewsD
 import BlockchainExplorerPage from "./pages/BlockchainExplorerPage/BlockchainExplorerPage";
 import ExplorerDetailsPage from "./pages/BlockchainExplorerPage/ExplorerTab/Explorer/ExplorerDetailsPage";
 import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import SignupPage from "./pages/SignupPage/SignupPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -37,6 +39,8 @@ root.render(
           element={<ExplorerDetailsPage />}
         ></Route>
         <Route path="/portfolio-tab" element={<PortfolioPage />}></Route>
+        <Route path="/login-page" element={<LoginPage />}></Route>
+        <Route path="/signup-page" element={<SignupPage />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

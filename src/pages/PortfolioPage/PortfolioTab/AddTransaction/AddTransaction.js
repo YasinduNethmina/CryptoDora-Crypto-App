@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./addTransaction.scss";
 
 function AddTransaction({ coinData, data, holdings }) {
   const [pricePerCoin, setPricePerCoin] = useState(0);
@@ -171,7 +172,7 @@ function AddTransaction({ coinData, data, holdings }) {
         })}
       </select>
 
-      <div className="flex justify-center">
+      <div className="mx-5 flex justify-center">
         <div className="my-4 mr-4">
           <h1 className="mb-2">Quantity</h1>
           <input

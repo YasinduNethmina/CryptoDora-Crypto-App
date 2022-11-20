@@ -335,7 +335,7 @@ function PortfolioTab() {
     return (
       <>
         <div className="h-full w-full rounded bg-[#1B2028] p-4 text-[#9e9e9e]">
-          <div className="addTransaction fixed z-40 ml-72 mt-12 hidden">
+          <div className="addTransaction z-40 mx-auto hidden">
             <AddTransaction
               coinData={coinsQuery}
               data={dataFromChild}

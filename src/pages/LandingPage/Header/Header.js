@@ -9,8 +9,21 @@ import SearchResults from "./SearchResults/SearchResults";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Notifictions from "./Notifications/Notifictions";
+import { auth } from "../../../firebase-config";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 function Header() {
+  // Email username
+  const [user, setUser] = useState(null);
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+
+  // Signout
+  const logout = async () => {
+    await signOut(auth);
+  };
+
   const [coinsData, setCoinsData] = useState({
     name: [],
     rank: [],
@@ -117,20 +130,49 @@ function Header() {
               }}
             />
           </button>
-          <button className="stats-profile ml-8 flex items-center">
-            <PersonOutlineOutlinedIcon
-              className="rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E]"
-              style={{
-                width: "2.7rem",
-                height: "2.7rem",
-                padding: ".5rem",
-              }}
-            />
-            <h1 className="stats-profile-name ml-4 text-white transition hover:text-[#9E9E9E]">
-              Vitalik Buterin
-            </h1>
-            <KeyboardArrowDownOutlinedIcon className="ml-4 mr-8 text-[#9e9e9e]" />
-          </button>
+          {user ? (
+            <div className="flex">
+              <button className="stats-profile ml-8 flex items-center">
+                <PersonOutlineOutlinedIcon
+                  className="rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E]"
+                  style={{
+                    width: "2.7rem",
+                    height: "2.7rem",
+                    padding: ".5rem",
+                  }}
+                />
+                <h1 className="stats-profile-name ml-4 text-white transition hover:text-[#9E9E9E]">
+                  {user ? user.email : "Vitalik Buterin"}
+                </h1>
+                <KeyboardArrowDownOutlinedIcon className="ml-4 mr-2 text-[#9e9e9e]" />
+              </button>
+
+              <button
+                onClick={logout}
+                className="mr-4 flex items-center text-white hover:text-[#9E9E9E]"
+              >
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <Link to="/signup-page">
+              <button className="stats-profile ml-8 flex items-center">
+                <PersonOutlineOutlinedIcon
+                  className="rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E]"
+                  style={{
+                    width: "2.7rem",
+                    height: "2.7rem",
+                    padding: ".5rem",
+                  }}
+                />
+                <h1 className="stats-profile-name ml-4 text-white transition hover:text-[#9E9E9E]">
+                  Signup or Login
+                </h1>
+                <KeyboardArrowDownOutlinedIcon className="ml-4 mr-8 text-[#9e9e9e]" />
+              </button>
+            </Link>
+          )}
+
           <label
             className="stats-theme-label relative bottom-3.5 flex w-20"
             htmlFor="theme-change"
