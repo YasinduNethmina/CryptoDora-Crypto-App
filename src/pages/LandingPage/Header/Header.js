@@ -93,6 +93,8 @@ function Header() {
     );
   });
 
+  console.log(user);
+
   return (
     <>
       <div className="notifications header fixed z-50 flex w-full items-center justify-between">
@@ -138,7 +140,7 @@ function Header() {
           {user ? (
             <div className="flex">
               <button className="stats-profile ml-8 flex items-center">
-                {user ? (
+                {user?.photoURL ? (
                   <img
                     src={user?.photoURL}
                     className="h-11 w-11 rounded-lg"
@@ -155,7 +157,7 @@ function Header() {
                   />
                 )}
                 <h1 className="stats-profile-name ml-4 text-white transition hover:text-[#9E9E9E]">
-                  {user ? user?.displayName : "Vitalik Buterin"}
+                  {user?.displayName ? user?.displayName : user.email}
                 </h1>
                 <KeyboardArrowDownOutlinedIcon className="ml-4 mr-2 text-[#9e9e9e]" />
               </button>
