@@ -14,9 +14,9 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Partners from "./Partners/Partners";
 import NewsLoadingState from "./News/NewsLoadingState/NewsLoadingState";
 import Converter from "./Converter/Converter";
+import Chat from "./ChatSection/Chat";
 import { db } from "../../../firebase-config";
 import { collection, getDocs } from "firebase/firestore";
-
 export const coinPriceContext = createContext();
 
 function Main() {
@@ -193,6 +193,7 @@ function Main() {
   else {
     return (
       <>
+        <Chat />
         <Cards
           stats={statsQuery.data.data}
           gas={ethGasQuery.data}

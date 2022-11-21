@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
@@ -8,21 +8,18 @@ import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDown
 import SearchResults from "./SearchResults/SearchResults";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import Notifictions from "./Notifications/Notifictions";
+import Notifications from "./Notifications/Notifictions";
 import { auth } from "../../../firebase-config";
-import {
-  onAuthStateChanged,
-  signOut,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 function Header() {
-  // Email username
-  const [user, setUser] = useState(null);
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+  }, []);
 
   // Signout
   const logout = async () => {
@@ -75,7 +72,7 @@ function Header() {
     });
 
     //hide or show search results ui
-    if (searchValue !== "") {
+    if (searchValue?.length >= 3) {
       setShowSearchResults(true);
     } else {
       setShowSearchResults(false);
@@ -92,8 +89,6 @@ function Header() {
       `https://api.coingecko.com/api/v3/search?query=${searchValue}`
     );
   });
-
-  console.log(user);
 
   return (
     <>
@@ -137,7 +132,7 @@ function Header() {
               }}
             />
           </button>
-          {user ? (
+          {user !== null ? (
             <div className="flex">
               <button className="stats-profile ml-8 flex items-center">
                 {user?.photoURL ? (
@@ -216,7 +211,7 @@ function Header() {
             : "fixed right-60 top-16 z-40 hidden w-60"
         }
       >
-        <Notifictions />
+        <Notifications />
       </div>
     </>
   );
