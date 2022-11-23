@@ -11,6 +11,7 @@ import axios from "axios";
 import Notifications from "./Notifications/Notifictions";
 import { auth } from "../../../firebase-config";
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import "../../../common/media/dark-mode.scss";
 
 function Header() {
   const [user, setUser] = useState({});
@@ -34,9 +35,7 @@ function Header() {
   });
 
   const [searchValue, setSearchValue] = useState("");
-
   const [showSearchResults, setShowSearchResults] = useState(false);
-
   const [showNotifications, setShowNotifications] = useState(false);
 
   //all specific array store search data input
@@ -90,9 +89,23 @@ function Header() {
     );
   });
 
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [theme]);
+
+  const handleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   return (
     <>
-      <div className="notifications header fixed z-50 flex w-full items-center justify-between">
+      <div className="notifications header fixed z-50 flex w-full items-center justify-between dark:bg-[#F0F0F0] dark:text-black">
         {/* Brand */}
         <Link to="/">
           <div className="brand flex items-center justify-center">
@@ -102,28 +115,28 @@ function Header() {
           </div>
         </Link>
         {/* Searchbar */}
-        <div className="searchbar ml-20 flex items-center justify-center">
+        <div className="searchbar ml-20 flex items-center justify-center dark:rounded-full dark:bg-[#fff] dark:text-black dark:shadow-lg">
           <input
             value={searchValue}
             id="search-input"
             size={25}
             type="search"
-            className="searchbar-input flex w-full rounded-lg py-2 pl-4 pr-10 caret-gray-500 focus:outline-none"
+            className="searchbar-input flex w-full rounded-lg py-2 pl-4 pr-10 caret-gray-500 focus:outline-none dark:rounded-full dark:bg-[#fff] dark:font-semibold dark:text-[#00cccb]"
             placeholder="Search your fav crypto..."
             spellCheck="false"
             autoComplete="off"
             onChange={handleSearchResults}
           />
           <button>
-            <SearchIcon className="relative right-8 flex w-10 rounded-xl bg-[#1B2028] text-[#9E9E9E]" />
+            <SearchIcon className="relative right-8 flex w-10 rounded-xl bg-[#1B2028] text-[#9E9E9E] dark:bg-[#fff] dark:text-black dark:hover:text-[#00cccb]" />
           </button>
         </div>
 
         {/* Profile */}
-        <div className="flex items-center justify-center">
-          <button className="stats-notifications ">
+        <div className="flex items-center justify-center rounded-full">
+          <button className="stats-notifications dark:rounded-full dark:bg-[#fff] dark:text-black dark:shadow-lg">
             <NotificationsOutlinedIcon
-              className="rounded-lg bg-[#1B2028] text-[#9E9E9E] hover:bg-[#9E9E9E] hover:text-[#1b2028]"
+              className="rounded-lg bg-[#1B2028] text-[#9E9E9E] hover:bg-[#9E9E9E] hover:text-[#1b2028] dark:rounded-full dark:bg-[#fff] dark:text-black dark:hover:text-[#00cccb]"
               onClick={handleNotifications}
               style={{
                 width: "2.7rem",
@@ -134,7 +147,7 @@ function Header() {
           </button>
           {user !== null ? (
             <div className="flex">
-              <button className="stats-profile ml-8 flex items-center">
+              <button className="stats-profile ml-8 flex items-center dark:rounded-full">
                 {user?.photoURL ? (
                   <img
                     src={user?.photoURL}
@@ -143,7 +156,7 @@ function Header() {
                   />
                 ) : (
                   <PersonOutlineOutlinedIcon
-                    className="rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E]"
+                    className="rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E] dark:rounded-full dark:text-black dark:hover:text-[#00cccb]"
                     style={{
                       width: "2.7rem",
                       height: "2.7rem",
@@ -151,7 +164,7 @@ function Header() {
                     }}
                   />
                 )}
-                <h1 className="stats-profile-name ml-4 text-white transition hover:text-[#9E9E9E]">
+                <h1 className="stats-profile-name ml-4 text-white transition hover:text-[#9E9E9E] dark:bg-[#fff] dark:text-black">
                   {user?.displayName ? user?.displayName : user.email}
                 </h1>
                 <KeyboardArrowDownOutlinedIcon className="ml-4 mr-2 text-[#9e9e9e]" />
@@ -168,17 +181,17 @@ function Header() {
             <Link to="/signup-page">
               <button className="stats-profile ml-8 flex items-center">
                 <PersonOutlineOutlinedIcon
-                  className="rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E]"
+                  className="rounded-lg bg-[#9E9E9E]  text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E] dark:rounded-full dark:bg-[#fff] dark:shadow-lg"
                   style={{
                     width: "2.7rem",
                     height: "2.7rem",
                     padding: ".5rem",
                   }}
                 />
-                <h1 className="stats-profile-name ml-4 text-white transition hover:text-[#9E9E9E]">
+                <h1 className="stats-profile-name ml-4 text-white transition hover:text-[#9E9E9E] dark:rounded-full dark:bg-[#F0F0F0] dark:px-2 dark:py-1 dark:text-lg dark:font-semibold dark:text-black dark:hover:rounded-full dark:hover:bg-[#fff]">
                   Signup or Login
                 </h1>
-                <KeyboardArrowDownOutlinedIcon className="ml-4 mr-8 text-[#9e9e9e]" />
+                <KeyboardArrowDownOutlinedIcon className="ml-4 mr-8 text-[#9e9e9e] dark:bg-[#F0F0F0] dark:text-black dark:hover:rounded-full dark:hover:bg-[#fff]" />
               </button>
             </Link>
           )}
@@ -188,6 +201,7 @@ function Header() {
             htmlFor="theme-change"
           >
             <input
+              onClick={handleTheme}
               type="checkbox"
               id="theme-change"
               className="stats-theme-input opacity-0"
@@ -196,6 +210,7 @@ function Header() {
           </label>
         </div>
       </div>
+
       <div className="fixed right-16 z-40 flex w-full justify-center">
         {/* search results ui */}
         <SearchResults

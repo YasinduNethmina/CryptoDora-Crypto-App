@@ -79,8 +79,10 @@ function Chat() {
 
   if (user) {
     return (
-      <div className="chat absolute right-2 z-40 rounded-xl bg-[#1b2028] p-3">
-        <h1 className="text-3xl font-bold text-white">Community</h1>
+      <div className="chat absolute right-2 z-40 rounded-xl bg-[#1b2028] p-3 dark:bg-[#fff] dark:pt-20">
+        <h1 className="text-3xl font-bold text-white dark:text-black">
+          Community
+        </h1>
         <h4 className="my-2 text-sm text-green-500">
           *Please don't share any of your private keys, passwords, etc!
         </h4>
@@ -108,7 +110,7 @@ function Chat() {
                 <div className="flex items-center">
                   <div className="ml-3">
                     <div className="flex">
-                      <h1 className="font-bold text-white">
+                      <h1 className="font-bold text-white dark:text-black">
                         {msg?.name
                           ? msg.name
                           : String(user.email.slice(0, 16)) + "..."}
@@ -159,8 +161,10 @@ function Chat() {
     );
   } else if (user === null) {
     return (
-      <div className="chatLogin absolute right-2 z-40 rounded-xl bg-[#1b2028] p-3">
-        <h1 className="text-3xl font-bold text-white">Community</h1>
+      <div className="chatLogin absolute right-2 z-40 rounded-xl bg-[#1b2028] p-3 dark:bg-[#fff] dark:shadow-lg">
+        <h1 className="text-3xl font-bold text-white dark:text-black">
+          Community
+        </h1>
         <div className="my-4 flex justify-center">
           <Link to="/signup-page">
             <button
@@ -204,7 +208,7 @@ function Chat() {
                   <div className="flex items-center">
                     <div className="ml-3">
                       <div className="flex">
-                        <h1 className="text-sm font-bold text-white">
+                        <h1 className="text-sm font-bold text-white dark:text-black">
                           {msg.name}{" "}
                           <VerifiedIcon
                             style={{ fontSize: "1.2rem" }}
@@ -219,7 +223,7 @@ function Chat() {
                   </div>
                 </div>
 
-                <h4 className="cursor-default rounded-lg bg-[#31353f] py-2 pl-3 text-gray-300">
+                <h4 className="cursor-default rounded-lg bg-[#31353f] py-2 pl-3 text-gray-300 dark:bg-[#fff] dark:font-semibold dark:text-black">
                   {msg.text}
                 </h4>
               </div>

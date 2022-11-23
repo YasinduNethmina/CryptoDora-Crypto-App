@@ -324,16 +324,18 @@ function Chart({
 
   return (
     <>
-      <div className="mt-5 h-full w-11/12 rounded-xl bg-[#1B2028]">
+      <div className="mt-5 h-full w-11/12 rounded-xl bg-[#1B2028] dark:bg-[#fff] dark:text-black dark:shadow-lg">
         <div className="flex justify-between">
-          <h1 className="p-8 text-xl font-semibold text-white">Chart</h1>
+          <h1 className="p-8 text-xl font-semibold text-white dark:m-4 dark:rounded-xl dark:bg-[#ffd910] dark:px-2 dark:py-1 dark:font-semibold dark:text-black">
+            Chart
+          </h1>
           <div className="mx-6 flex items-center">
             {/* Candle Type Switch Section */}
 
             <button className="">
               <CandlestickChartOutlinedIcon
                 style={{ width: "1.6rem", height: "1.6rem" }}
-                className="mr-4 rounded-md text-[#9E9E9E] hover:text-green-400"
+                className="mr-4 rounded-md text-[#9E9E9E] hover:text-green-400 dark:m-2 dark:rounded-full dark:text-[#00cccb]"
               />
             </button>
 
@@ -351,7 +353,7 @@ function Chart({
           <div className="w-1/3 justify-start">
             <CryptoDropdown />
 
-            <h1 className="ml-1 text-xl font-semibold text-white">
+            <h1 className="ml-1 text-xl font-semibold text-white dark:mt-2 dark:text-[#00cccb]">
               {currencySymbol} &nbsp;
               {bitcoinPrice}
             </h1>
@@ -360,33 +362,33 @@ function Chart({
           {/* Chart Switch Section */}
           <div className="mr-5 flex w-2/3 justify-around">
             <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
               onClick={handleDayChart}
             >
               1d
             </button>
             <button
-              className="focus-border-none h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] focus:outline-none"
+              className="focus-border-none h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] focus:outline-none dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
               onClick={handleWeekChart}
               ref={activeRef}
             >
               1w
             </button>
             <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
               onClick={handleMonthChart}
             >
               1m
             </button>
             <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
               onClick={handleThreeMonthChart}
             >
               3m
             </button>
 
             <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
               onClick={handleMaxChart}
             >
               max
@@ -397,7 +399,7 @@ function Chart({
         <div className="dayChart my-5 mx-5 hidden">
           <Line data={oneDayData} options={options} />
         </div>
-        <div className="oneWeekChart my-5 mx-5">
+        <div className="oneWeekChart my-5 mx-5 dark:text-black">
           <Line data={oneWeekData} options={options} />
         </div>
         <div className="oneMonthChart my-5 mx-5 hidden">

@@ -86,20 +86,20 @@ function Market({ list }) {
 
     return (
       <>
-        <div className="mb-5 mt-4 h-full w-11/12 justify-center rounded-xl bg-[#1B2028]">
+        <div className="mb-5 mt-4 h-full w-11/12 justify-center rounded-xl bg-[#1B2028] dark:bg-[#fff] dark:shadow-xl">
           <div className="flex items-center justify-between">
-            <h1 className="p-8 text-xl font-semibold text-white">
+            <h1 className="p-8 text-xl font-semibold text-white dark:m-4 dark:rounded-xl dark:bg-[#ffd910] dark:px-2 dark:py-1 dark:text-black">
               Live Market
             </h1>
             <input
               placeholder="search for crypto"
               type="search"
-              className="mr-10 rounded-xl border-2 border-sky-400 bg-[#1b2028] py-1 px-4 text-[#9e9e9e] outline-none focus:border-purple-500"
+              className="mr-10 rounded-xl border-2 border-sky-400 bg-[#1b2028] py-1 px-4 text-[#9e9e9e] outline-none focus:border-purple-500 dark:rounded-xl dark:border-none dark:border-black dark:bg-[#f4f5f7] dark:py-1 dark:px-2 dark:font-semibold dark:text-black"
               onChange={handleChange}
             />
           </div>
 
-          <div className="mb-6 flex w-full justify-around text-[#9e9e9e]">
+          <div className="mb-6 flex w-full justify-around text-[#9e9e9e] dark:font-semibold dark:text-black">
             <h4 className="relative left-4">Coin</h4>
             <h4 className="coinPriceChangePercentage relative left-2">
               Change
@@ -134,7 +134,7 @@ function Market({ list }) {
           })}
 
           <Link to="/crypto-tab">
-            <button className="w-full rounded-b-lg py-2 text-white hover:bg-[#3A6FF8]">
+            <button className="w-full rounded-b-lg py-2 text-white hover:bg-[#3A6FF8] dark:hover:bg-[#fff] dark:hover:font-semibold dark:hover:text-black">
               View More...
             </button>
           </Link>
