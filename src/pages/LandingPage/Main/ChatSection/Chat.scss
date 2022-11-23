@@ -1,0 +1,28 @@
+.chat {
+  height: 43rem;
+  width: 23.35%;
+  top: 49rem;
+  overflow-y: scroll;
+}
+
+.send-message {
+  position: relative;
+  width: 100%;
+  padding: 0.75rem 0;
+}
+
+.chatLogin {
+  height: 20.1rem;
+  width: 23%;
+  top: 49rem;
+}
+
+.chat::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+.chat::-webkit-scrollbar-thumb {
+  background-color: #3b82f6;
+  border-radius: 20px;
+  border: 3px solid transparent;
+}
