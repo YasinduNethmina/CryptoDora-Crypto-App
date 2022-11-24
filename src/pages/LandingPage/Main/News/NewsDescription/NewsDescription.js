@@ -93,7 +93,7 @@ function NewsDescription() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <div className="App m-0 bg-[#31353f] p-0">
+        <div className="App m-0 bg-[#31353f] p-0 dark:bg-[#f0f0f0]">
           <Header />
           <div className="flex w-full">
             <div className="leftSidebar w-2/12">
@@ -102,7 +102,7 @@ function NewsDescription() {
             </div>
             {/* News Title */}
             <div className="main w-7/12">
-              <h1 className="mt-24 text-left text-3xl font-semibold text-white">
+              <h1 className="mt-24 text-left text-3xl font-semibold text-white dark:text-black">
                 {location.state.title}
               </h1>
               {/* Tags */}
@@ -121,7 +121,7 @@ function NewsDescription() {
                 <img className="w-full rounded-xl" src={image} alt="news-pic" />
               </div>
               {/* News Content*/}
-              <div className="text-[#9e9e9e]">
+              <div className="text-[#9e9e9e] dark:text-black">
                 <p className="mt-8">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
                   vel aliquet sapien. Ut luctus odio eu nisi rhoncus vestibulum.
@@ -200,7 +200,7 @@ function NewsDescription() {
                 </p>
               </div>
               {/* News Content Bottom */}
-              <div className="text-center text-sky-500">
+              <div className="text-center text-sky-500 dark:text-[#00cccb]">
                 <h1>
                   {String(location.state.date).slice(0, 10)} &nbsp;
                   {String(location.state.date).slice(11, 16)}
@@ -212,15 +212,15 @@ function NewsDescription() {
                 <h1>By {location.state.source}</h1>
                 <button
                   onClick={scrollUp}
-                  className="mt-6 font-semibold text-white underline hover:font-bold"
+                  className="mt-6 font-semibold underline hover:font-bold dark:text-[#00cccb]"
                 >
                   Back To Top
                 </button>
               </div>
               {/* Add comment Section*/}
               <div class="mt-10 mb-4 inline-flex w-full items-center justify-center">
-                <hr class="my-8 h-px w-full border-0 bg-gray-200 dark:bg-gray-700" />
-                <span class="absolute bg-white p-2 px-3 text-gray-900 dark:bg-gray-900 dark:text-white">
+                <hr class="my-8 h-px w-full border-0 bg-gray-800 dark:bg-[#00cccb]" />
+                <span class="absolute bg-gray-900 p-2 px-3 text-white dark:bg-[#00cccb]">
                   Add your comment
                 </span>
               </div>
@@ -228,12 +228,12 @@ function NewsDescription() {
                 onChange={handleCommentInput}
                 type="text"
                 value={comment}
-                className="h-40 w-full bg-[#1B2028] p-4 text-[#9e9e9e] outline-none"
+                className="h-40 w-full bg-[#1B2028] p-4 text-[#9e9e9e] outline-none dark:bg-white"
                 placeholder="Enter your comment here..."
               />
               <button
                 onClick={handlePostBtn}
-                className="mt-4 rounded-md bg-sky-600 px-2 py-2 text-white hover:bg-blue-600"
+                className="mt-4 rounded-md bg-sky-600 px-2 py-2 text-white  hover:bg-blue-600 dark:bg-[#00cccb] dark:hover:bg-blue-500"
               >
                 Post Comment
               </button>
@@ -242,7 +242,7 @@ function NewsDescription() {
                 <div className="flex justify-center">
                   <button
                     onClick={handleCommentsBtn}
-                    className="mb-10 text-sky-600 hover:text-blue-600"
+                    className="mb-10 text-sky-600 hover:text-blue-600 dark:text-[#00cccb] dark:hover:text-blue-500"
                   >
                     {showComments ? "Hide All Comments" : "View All Comments"}{" "}
                     <ArrowDropDownCircleIcon />
@@ -250,7 +250,7 @@ function NewsDescription() {
                 </div>
 
                 {/* Comments */}
-                <div className="viewCommentsBtn mb-10 flex hidden w-full justify-center">
+                <div className="viewCommentsBtn mb-10 flex hidden w-full justify-center dark:bg-[#f0f0f0]">
                   <div>
                     <Comment
                       name="Pul Gray"
@@ -292,13 +292,13 @@ function NewsDescription() {
                         onChange={handleNewsletterInput}
                         name="email"
                         type="text"
-                        className="w-64 rounded p-2 text-[#9e9e9e] caret-[#9e9e9e] outline-none"
+                        className="w-64 rounded p-2 text-[#9e9e9e]  caret-[#9e9e9e] outline-none"
                         placeholder="Enter Email"
                       />
                       <button
                         type="submit"
                         onClick={handleSubscribeBtn}
-                        className="ml-2 mb-2 rounded bg-sky-600 p-2 font-semibold text-white hover:bg-blue-600"
+                        className="ml-2 mb-2 rounded bg-sky-600 p-2 font-semibold text-white hover:bg-blue-600 dark:bg-[#00cccb] dark:hover:bg-blue-500"
                         value="submit"
                       >
                         Subscribe

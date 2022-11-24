@@ -121,14 +121,14 @@ function Header() {
             id="search-input"
             size={25}
             type="search"
-            className="searchbar-input flex w-full rounded-lg py-2 pl-4 pr-10 caret-gray-500 focus:outline-none dark:rounded-full dark:bg-[#fff] dark:font-semibold dark:text-[#00cccb]"
+            className="searchbar-input dark:placeholder-bg-white placeholder-text-[#9e9e9e] flex w-full rounded-lg bg-[#1b2028] py-2 pl-4 pr-10 text-[#9E9E9E] caret-gray-500 focus:outline-none dark:rounded-full dark:bg-[#fff] dark:font-semibold dark:text-[#00cccb] dark:placeholder-[#00cccb]"
             placeholder="Search your fav crypto..."
             spellCheck="false"
             autoComplete="off"
             onChange={handleSearchResults}
           />
           <button>
-            <SearchIcon className="relative right-8 flex w-10 rounded-xl bg-[#1B2028] text-[#9E9E9E] dark:bg-[#fff] dark:text-black dark:hover:text-[#00cccb]" />
+            <SearchIcon className="relative right-8 flex w-10 rounded-xl bg-[#1B2028] text-[#9E9E9E] dark:bg-[#fff] dark:font-semibold dark:text-black dark:hover:text-[#00cccb]" />
           </button>
         </div>
 
@@ -164,15 +164,15 @@ function Header() {
                     }}
                   />
                 )}
-                <h1 className="stats-profile-name ml-4 text-white transition hover:text-[#9E9E9E] dark:bg-[#fff] dark:text-black">
+                <h1 className="stats-profile-name ml-4 text-white transition hover:text-[#9E9E9E] dark:font-semibold dark:text-black dark:hover:text-[#00cccb]">
                   {user?.displayName ? user?.displayName : user.email}
                 </h1>
-                <KeyboardArrowDownOutlinedIcon className="ml-4 mr-2 text-[#9e9e9e]" />
+                <KeyboardArrowDownOutlinedIcon className="ml-4 mr-2 text-[#9e9e9e] dark:font-semibold dark:text-black dark:hover:text-[#00cccb]" />
               </button>
 
               <button
                 onClick={logout}
-                className="mr-4 flex items-center text-white hover:text-[#9E9E9E]"
+                className="mr-4 flex items-center text-white hover:text-[#9E9E9E] dark:font-semibold dark:text-black  dark:hover:text-[#00cccb]"
               >
                 Sign Out
               </button>
@@ -181,17 +181,17 @@ function Header() {
             <Link to="/signup-page">
               <button className="stats-profile ml-8 flex items-center">
                 <PersonOutlineOutlinedIcon
-                  className="rounded-lg bg-[#9E9E9E]  text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E] dark:rounded-full dark:bg-[#fff] dark:shadow-lg"
+                  className="rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E] dark:rounded-full dark:bg-[#fff] dark:shadow-lg dark:hover:text-[#00cccb]"
                   style={{
                     width: "2.7rem",
                     height: "2.7rem",
                     padding: ".5rem",
                   }}
                 />
-                <h1 className="stats-profile-name ml-4 text-white transition hover:text-[#9E9E9E] dark:rounded-full dark:bg-[#F0F0F0] dark:px-2 dark:py-1 dark:text-lg dark:font-semibold dark:text-black dark:hover:rounded-full dark:hover:bg-[#fff]">
+                <h1 className="stats-profile-name ml-4  text-white transition hover:text-[#9E9E9E]  dark:bg-[#F0F0F0] dark:px-2 dark:py-1 dark:font-semibold dark:text-black  dark:hover:text-[#00cccb]">
                   Signup or Login
                 </h1>
-                <KeyboardArrowDownOutlinedIcon className="ml-4 mr-8 text-[#9e9e9e] dark:bg-[#F0F0F0] dark:text-black dark:hover:rounded-full dark:hover:bg-[#fff]" />
+                <KeyboardArrowDownOutlinedIcon className="ml-4 mr-8 text-[#9e9e9e] dark:bg-[#F0F0F0] dark:text-black dark:hover:text-[#00cccb]" />
               </button>
             </Link>
           )}

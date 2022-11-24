@@ -101,7 +101,7 @@ function NewsTab() {
     return (
       <>
         <div className="w-full">
-          <div className="mt-20 text-xl font-bold text-white">
+          <div className="mt-20 text-xl font-bold text-white dark:text-black">
             <h1>Top Stories for you</h1>
           </div>
           {/* Placed manually first couple of items */}
@@ -249,7 +249,7 @@ function NewsTab() {
             />
           </div>
 
-          <div className="mt-5 min-w-full text-xl font-bold text-white">
+          <div className="mt-5 min-w-full text-xl font-bold text-white dark:text-black">
             <h1>
               <HistoryEduIcon /> Creators you should follow
             </h1>
@@ -363,13 +363,13 @@ function NewsTab() {
             <button
               onClick={showMoreClick}
               type="button"
-              className="moreNewsBtn rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="moreNewsBtn rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-[#00cccb] dark:hover:bg-blue-500 dark:focus:ring-blue-800"
             >
               Show More <ExpandMoreIcon />
             </button>
           </div>
 
-          <h1 className="moreNewsText hidden pt-8 text-center font-semibold text-white">
+          <h1 className="moreNewsText hidden pt-8 text-center font-semibold text-white dark:text-black">
             <CelebrationIcon />
             &nbsp; Great! You caught up all!
           </h1>

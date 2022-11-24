@@ -19,7 +19,7 @@ function News({ newsData }) {
       </div>
 
       {/* Crypto Portfolio */}
-      <div className="NewsTop2">
+      <div className="NewsTop2 dark:top-96">
         <NewsTop
           title={newsData[1].title}
           img={newsData[1].urlToImage}
@@ -31,14 +31,16 @@ function News({ newsData }) {
 
       {/* News Top 02 */}
       <div className="NewsTop3">
-        <NewsTop
-          title={newsData[2].title}
-          img={newsData[2].urlToImage}
-          date={newsData[2].publishedAt}
-          description={newsData[2].description}
-          source={newsData[2].source.name}
-        />
-        <div className="NewsTop4">
+        <div className="dark:absolute dark:hidden">
+          <NewsTop
+            title={newsData[2].title}
+            img={newsData[2].urlToImage}
+            date={newsData[2].publishedAt}
+            description={newsData[2].description}
+            source={newsData[2].source.name}
+          />
+        </div>
+        <div className="NewsTop4 dark:invisible dark:top-72">
           <NewsTop
             title={newsData[3].title}
             img={newsData[3].urlToImage}
@@ -118,7 +120,7 @@ function News({ newsData }) {
       </div>
 
       {/* News Cards Right Side */}
-      <div className="NewsCard1">
+      <div className="NewsCard1 dark:absolute dark:bottom-60">
         <NewsCard
           title={newsData[11].title}
           img={newsData[11].urlToImage}

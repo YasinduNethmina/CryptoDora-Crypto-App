@@ -54,7 +54,7 @@ function MoreNews() {
   } else {
     return (
       <>
-        <h1 className="mt-12 text-xl font-bold text-white">
+        <h1 className="mt-12 text-xl font-bold text-white dark:text-black">
           More News for you
         </h1>
         <div className="mt-4 flex">

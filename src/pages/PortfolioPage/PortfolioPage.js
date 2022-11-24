@@ -28,7 +28,7 @@ function PortfolioPage() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <div className="App m-0 bg-[#31353f] p-0">
+        <div className="App m-0 bg-[#31353f] p-0 dark:bg-[#F0F0F0]">
           <Header />
           <div className="flex w-full">
             <div className="main w-2/12">

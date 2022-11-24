@@ -63,7 +63,7 @@ function Coin({
             {rank < 10 ? (
               <h4 className="text-[#b5b5b5] dark:text-[#ffd910]">#00{rank}</h4>
             ) : (
-              <h4 className="text-[#9E9E9E]">#0{rank}</h4>
+              <h4 className="text-[#9E9E9E] dark:text-[#ffd910]">#0{rank}</h4>
             )}
             <img className="mx-4 h-6 w-6" src={image} alt={name} />
             <h4>{name}</h4>

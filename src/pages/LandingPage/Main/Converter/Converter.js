@@ -39,13 +39,13 @@ function Converter({ data }) {
 
   return (
     <>
-      <div className="h-screen w-full rounded-lg">
+      <div className="h-screen w-full rounded-lg dark:relative dark:top-4">
         <img
           className="newsImg rounded-t-2xl object-cover"
           src={require("../../../../assets/images/converter.jpg")}
           alt="converter-background"
         />
-        <h1 className="converter-title ml-2 mb-2 text-center text-3xl font-bold leading-relaxed tracking-wider text-white dark:text-[#00cccb]">
+        <h1 className="converter-title ml-2 mb-2 text-center text-3xl font-bold leading-relaxed tracking-wider text-white dark:text-black">
           Cryptocurrency <br></br> Converter
         </h1>
         <div className="converter-input-1 flex">
@@ -66,11 +66,11 @@ function Converter({ data }) {
             required
             onChange={handleLeftValue}
             type="number"
-            className="my-4 mr-4  flex h-12 w-1/2 cursor-pointer rounded-lg border-2 border-gray-600 border-l-gray-700 bg-gray-700 p-1.5 text-sm text-white placeholder-gray-400 outline-none duration-100 focus:border-blue-500 focus:ring-blue-500 dark:border-2 dark:border-gray-100  dark:bg-gray-50 dark:text-gray-900 dark:shadow-lg dark:outline-none dark:hover:border-2 dark:hover:border-sky-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            className="my-4 mr-4 flex h-12 w-1/2 cursor-pointer rounded-lg border-2 border-gray-600 border-l-gray-700 bg-gray-700 p-1.5 text-sm text-white placeholder-gray-400 outline-none duration-100 focus:border-blue-500 focus:ring-blue-500 dark:border-2 dark:border-gray-100  dark:bg-gray-50 dark:text-gray-900 dark:shadow-lg dark:outline-none dark:hover:border-2 dark:hover:border-sky-500 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             // value={quantity}
           />
         </div>
-        <div className="converter-icon flex items-center justify-center text-gray-400 dark:text-black">
+        <div className="converter-icon flex items-center justify-center text-gray-400 dark:text-[#00cccb]">
           <SwapHorizIcon
             style={{ fontSize: "2rem", transform: "rotate(90deg)" }}
           />

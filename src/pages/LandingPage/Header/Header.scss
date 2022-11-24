@@ -1,9 +1,7 @@
 @import "../../../common/variables/variables.scss";
 
-.searchbar-input,
-.searchbar-input::placeholder {
-  background-color: $primary-color;
-  color: $secondary-color;
+.header {
+  z-index: 100;
 }
 
 // Theme Background Img

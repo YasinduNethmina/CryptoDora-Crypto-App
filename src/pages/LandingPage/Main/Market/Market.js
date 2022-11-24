@@ -134,7 +134,7 @@ function Market({ list }) {
           })}
 
           <Link to="/crypto-tab">
-            <button className="w-full rounded-b-lg py-2 text-white hover:bg-[#3A6FF8] dark:hover:bg-[#fff] dark:hover:font-semibold dark:hover:text-black">
+            <button className="w-full rounded-b-lg py-2 text-white hover:bg-[#3A6FF8] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white">
               View More...
             </button>
           </Link>

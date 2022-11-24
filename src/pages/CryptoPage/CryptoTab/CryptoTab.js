@@ -47,18 +47,20 @@ function CryptoTab() {
     };
 
     return (
-      <div className="mt-24 h-full justify-center rounded-xl bg-[#1B2028]">
+      <div className="mt-24 h-full justify-center rounded-xl bg-[#1B2028] dark:bg-white">
         <div className="flex items-center justify-between">
-          <h1 className="p-8 text-xl font-semibold text-white">Live Market</h1>
+          <h1 className="p-8 text-xl font-semibold text-white dark:font-semibold dark:text-black">
+            Live Market
+          </h1>
           <input
             placeholder="search for crypto"
             type="search"
-            className="mr-10 rounded-xl border-2 border-sky-400 bg-[#1b2028] py-1 px-4 text-[#9e9e9e] outline-none focus:border-purple-500"
+            className="mr-10 rounded-xl border-2 border-sky-400 bg-[#1b2028] py-1 px-4 text-[#9e9e9e] outline-none focus:border-purple-500 dark:border-[#00cccb] dark:bg-white dark:text-[#00cccb] dark:placeholder-[#00cccb] dark:shadow-lg"
             onChange={handleChange}
           />
         </div>
 
-        <div className="mb-6 flex justify-between text-[#9e9e9e]">
+        <div className="mb-6 flex justify-between text-[#9e9e9e] dark:text-black">
           <h4 className="relative left-16">Coin</h4>
           <h4 className="relative left-16">Change(%)</h4>
           <h4 className="relative left-4">MarketCap</h4>

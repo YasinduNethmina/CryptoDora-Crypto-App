@@ -35,7 +35,7 @@ function CoinHeader({ coinStats, coin }) {
 
   return (
     <>
-      <div className="mr-4 items-center rounded-xl bg-[#1B2028] pb-4 text-center text-[#9E9E9E]">
+      <div className="mr-4 items-center rounded-xl bg-[#1B2028] pb-4 text-center text-[#9E9E9E] dark:bg-white">
         <Link to="/crypto-tab">
           <button className="goBackBtn mr-32 mt-4 text-left hover:text-white">
             Crypto Tab
@@ -55,10 +55,10 @@ function CoinHeader({ coinStats, coin }) {
               src={coinStats.image.large}
               alt="coin-logo"
             />
-            <h1 className="mx-4 text-2xl font-semibold text-white">
+            <h1 className="mx-4 text-2xl font-semibold text-white dark:font-semibold dark:text-black">
               {String(coinStats.name).slice(0, 20)}
             </h1>
-            <h4 className="mr-4 flex items-center rounded-md bg-[#4e4e4e] px-2 font-bold text-[#c3c3c3]">
+            <h4 className="mr-4 flex items-center rounded-md bg-[#4e4e4e] px-2 font-bold text-[#c3c3c3] dark:bg-[#00cccb] dark:font-semibold dark:text-white dark:text-black">
               {String(coinStats.symbol).toUpperCase()}
             </h4>
           </div>
@@ -66,18 +66,20 @@ function CoinHeader({ coinStats, coin }) {
             <StarIcon
               onClick={handleClick}
               className={
-                starIcon ? "mr-4 text-yellow-400" : "mr-4 hover:text-green-500"
+                starIcon
+                  ? "mr-4 text-yellow-400"
+                  : "mr-4 hover:text-green-500 dark:text-green-400"
               }
             />
             <button onClick={handleShareModal}>
-              <IosShareIcon className="hover:text-green-500" />
+              <IosShareIcon className="hover:text-green-500 dark:text-black" />
             </button>
           </div>
         </div>
 
         {/* Tags */}
         <div className="mx-4 mt-4 flex flex-wrap items-center text-sm">
-          <h4 className="mr-2 mb-2 rounded-lg bg-gradient-to-r from-teal-200 to-lime-200 px-2 py-1 text-center text-sm font-semibold text-gray-900 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:outline-none focus:ring-4 focus:ring-lime-200 dark:focus:ring-teal-700">
+          <h4 className="mr-2 mb-2 rounded-lg bg-gradient-to-r from-teal-200 to-lime-200 px-2 py-1 text-center text-sm font-semibold text-gray-900 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:outline-none focus:ring-4 focus:ring-lime-200 dark:text-black dark:focus:ring-teal-700">
             Rank #{coinStats.market_cap_rank}
           </h4>
 

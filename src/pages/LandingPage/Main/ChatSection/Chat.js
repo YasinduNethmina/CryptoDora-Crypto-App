@@ -79,7 +79,7 @@ function Chat() {
 
   if (user) {
     return (
-      <div className="chat absolute right-2 z-40 rounded-xl bg-[#1b2028] p-3 dark:bg-[#fff] dark:pt-20">
+      <div className="chat absolute right-2 z-40 rounded-xl bg-[#1b2028] p-3 dark:mt-24 dark:h-3/4 dark:bg-[#fff]">
         <h1 className="text-3xl font-bold text-white dark:text-black">
           Community
         </h1>
@@ -127,8 +127,8 @@ function Chat() {
               <h4
                 className={
                   msg.uid !== user.uid
-                    ? "cursor-default rounded-lg bg-[#31353f] px-2 py-2 text-gray-300"
-                    : "cursor-default rounded-lg bg-slate-600 px-2 py-2 font-semibold text-white"
+                    ? "cursor-default rounded-lg bg-[#31353f] px-2 py-2 text-gray-300 dark:bg-[#f4f5f7] dark:text-lg dark:font-semibold dark:text-black"
+                    : "cursor-default rounded-lg bg-slate-600 px-2 py-2 font-semibold text-white dark:bg-[#f4f5f7] dark:text-lg dark:font-semibold dark:text-[#00cccb]"
                 }
               >
                 {msg.text}
@@ -142,7 +142,7 @@ function Chat() {
               Please add at least 10 characters and less than 40 characters...
             </h1>
             <input
-              className="mt-2 mb-4 h-10 w-full rounded-xl border-2 border-transparent bg-slate-800 pl-4 text-stone-400 outline-none focus:border-sky-500"
+              className="mt-2 mb-4 h-10 w-full rounded-xl border-2 border-transparent bg-slate-800 pl-4 text-stone-400 outline-none focus:border-sky-500 dark:bg-[#f4f5f7] dark:text-[#7e818c]"
               type="text"
               placeholder="Type a message"
               onChange={handleInput}
@@ -161,15 +161,33 @@ function Chat() {
     );
   } else if (user === null) {
     return (
-      <div className="chatLogin absolute right-2 z-40 rounded-xl bg-[#1b2028] p-3 dark:bg-[#fff] dark:shadow-lg">
-        <h1 className="text-3xl font-bold text-white dark:text-black">
-          Community
-        </h1>
-        <div className="my-4 flex justify-center">
+      <div className="chatLogin absolute right-2 z-40 rounded-xl bg-[#1b2028] p-3 dark:mt-24 dark:h-60 dark:bg-[#fff] dark:shadow-lg">
+        <div className="flex dark:items-center dark:justify-between">
+          <h1 className="text-3xl font-bold text-white dark:text-black">
+            Community
+          </h1>
           <Link to="/signup-page">
             <button
               type="button"
-              className="mr-6 rounded-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 px-5 py-1 text-center font-semibold text-white shadow-lg shadow-blue-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-blue-300 dark:shadow-lg dark:shadow-blue-800/80 dark:focus:ring-blue-800 "
+              className="invisible mr-6 rounded-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 px-5 py-1 text-center font-semibold text-white shadow-lg shadow-blue-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-blue-300 dark:visible dark:mt-0 dark:shadow-lg dark:shadow-blue-800/80 dark:focus:ring-blue-800"
+            >
+              Signup
+            </button>
+          </Link>
+        </div>
+        <Link to="/signup-page">
+          <button
+            type="button"
+            className="mr-6 hidden rounded-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 px-5 py-1 text-center font-semibold text-white shadow-lg shadow-blue-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-blue-300 dark:mt-0 dark:shadow-lg dark:shadow-blue-800/80 dark:focus:ring-blue-800"
+          >
+            Signup
+          </button>
+        </Link>
+        <div className="my-4 flex justify-center dark:my-1">
+          <Link to="/signup-page">
+            <button
+              type="button"
+              className="mr-6 rounded-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 px-5 py-1 text-center font-semibold text-white shadow-lg shadow-blue-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-blue-300 dark:mt-0 dark:hidden dark:shadow-lg dark:shadow-blue-800/80 dark:focus:ring-blue-800"
             >
               Signup
             </button>
@@ -177,7 +195,7 @@ function Chat() {
           <Link to="/login-page">
             <button
               type="button"
-              className="ml-6 rounded-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 px-5 py-1 text-center font-semibold text-white shadow-lg shadow-blue-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-blue-300 dark:shadow-lg dark:shadow-blue-800/80 dark:focus:ring-blue-800 "
+              className="ml-6 rounded-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 px-5 py-1 text-center font-semibold text-white shadow-lg shadow-blue-500/50 hover:bg-gradient-to-br focus:outline-none focus:ring-4 focus:ring-blue-300 dark:mb-0 dark:hidden dark:shadow-lg dark:shadow-blue-800/80 dark:focus:ring-blue-800"
             >
               Login
             </button>
@@ -187,8 +205,8 @@ function Chat() {
         {messages.map((msg, index) => {
           if (index < 2) {
             return (
-              <div className="mb-2">
-                <div className="mb-2 flex items-center">
+              <div className="mb-2 dark:mb-0">
+                <div className="mb-2 flex items-center dark:mb-0">
                   {msg?.photo ? (
                     <img
                       src={msg.photo}
