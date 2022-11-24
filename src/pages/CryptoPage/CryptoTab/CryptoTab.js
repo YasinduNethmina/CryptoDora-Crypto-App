@@ -81,7 +81,7 @@ function CryptoTab() {
                 circulationSupply={coin.circulating_supply}
                 price={coin.current_price}
               />
-              <button onClick={handleScrollTop}></button>
+              <button className="" onClick={handleScrollTop}></button>
             </div>
           );
         })}

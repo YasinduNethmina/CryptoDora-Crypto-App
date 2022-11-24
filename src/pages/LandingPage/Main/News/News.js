@@ -40,7 +40,7 @@ function News({ newsData }) {
             source={newsData[2].source.name}
           />
         </div>
-        <div className="NewsTop4 dark:invisible dark:top-72">
+        <div className="NewsTop4 dark:top-72">
           <NewsTop
             title={newsData[3].title}
             img={newsData[3].urlToImage}

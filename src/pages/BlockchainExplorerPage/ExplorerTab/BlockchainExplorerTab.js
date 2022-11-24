@@ -86,7 +86,9 @@ function BlockchainExplorerTab() {
     holdersQuery.isLoading ||
     transactionQuery.isLoading
   ) {
-    return <div className="mt-20 h-full animate-pulse bg-[#1B2028] "></div>;
+    return (
+      <div className="mt-20 h-full animate-pulse bg-[#1B2028] dark:bg-white"></div>
+    );
   } else {
     // Used to display the data of top holders using a map
     let holders = holdersQuery.data.holders;
@@ -100,7 +102,7 @@ function BlockchainExplorerTab() {
       <>
         {/* Header section */}
         <div className="explorer-bg mt-24 h-1/4 w-full rounded-xl opacity-90">
-          <h1 className="pl-10 pt-16 text-center text-4xl font-semibold text-green-300">
+          <h1 className="pl-10 pt-16 text-center text-4xl font-semibold text-green-300 dark:text-[#00cccb]">
             The Ethereum Blockchain Explorer
           </h1>
           <div className="ml-10 flex justify-center">
@@ -133,7 +135,7 @@ function BlockchainExplorerTab() {
               </button>
             </Link>
           </div>
-          <h1 className="mt-1 text-center font-light text-[#9e9e9e]">
+          <h1 className="mt-1 text-center font-light text-[#9e9e9e] dark:text-[#7e818c]">
             (example: 0x2f5C57ADcFCF7968dcEe63e02Db326ABD6E722C5)
           </h1>
           <h1 className="mt-10 ml-10 text-center font-bold text-yellow-400 ">
@@ -150,9 +152,9 @@ function BlockchainExplorerTab() {
           </h1>
         </div>
 
-        <div className="h-9/12 relative bottom-2 mb-16 flex flex-wrap justify-center rounded-b-xl bg-[#1B2028] pt-4">
+        <div className="h-9/12 relative bottom-2 mb-16 flex flex-wrap justify-center rounded-b-xl bg-[#1B2028] pt-4 dark:bg-white dark:shadow-lg">
           {/* ETH Price */}
-          <div className="duration-800 mr-4 mt-2 h-20 w-1/5 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
+          <div className="duration-800 mr-4 mt-2 h-20 w-1/5 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:border-black dark:bg-[#fff] dark:shadow-lg">
             <div className="mx-4 flex items-center justify-center">
               <img
                 className="mr-2 mt-4 w-10"
@@ -160,13 +162,15 @@ function BlockchainExplorerTab() {
                 alt="ethereum-logo"
               />
               <div className="mt-4 text-left">
-                <h1 className="text-[#9e9e9e]">ETH Price</h1>
+                <h1 className="text-[#9e9e9e] dark:text-black">ETH Price</h1>
                 <div className="flex">
-                  <h4>${ethereumQuery.data[0].current_price}</h4>
+                  <h4 className="dark:text-[#ffd910]">
+                    ${ethereumQuery.data[0].current_price}
+                  </h4>
                   <h4
                     className={
                       ethereumQuery.data[0].price_change_percentage_24h > 0
-                        ? "pl-2 text-green-500"
+                        ? "pl-2 text-green-500 dark:text-green-300"
                         : "pl-2 text-red-500"
                     }
                   >
@@ -180,48 +184,54 @@ function BlockchainExplorerTab() {
             </div>
           </div>
           {/* Transactions Count */}
-          <div className="duration-800 mt-2 h-20 w-1/5 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
+          <div className="duration-800 mt-2 h-20 w-1/5 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:border-black dark:bg-[#fff] dark:shadow-lg">
             <div className="mx-4 flex items-center justify-center">
               <ReceiptLongIcon
                 style={{ fontSize: "40px" }}
                 className="mr-2 mt-4 w-10 text-sky-500"
               />
               <div className="mt-4 text-left">
-                <h1 className="text-[#9e9e9e]">Transactions</h1>
+                <h1 className="text-[#9e9e9e] dark:text-black">Transactions</h1>
                 <div className="flex">
-                  <h4>1,823,90M</h4>
-                  <h4 className="pl-2 text-gray-400">(12TPS)</h4>
+                  <h4 className="dark:text-[#ffd910]">1,823,90M</h4>
+                  <h4 className="pl-2 text-gray-400 dark:text-green-300">
+                    (12TPS)
+                  </h4>
                 </div>
               </div>
             </div>
           </div>
           {/* AVG Gas Price */}
-          <div className="duration-800 mt-2 ml-4 h-20 w-1/5 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
+          <div className="duration-800 mt-2 ml-4 h-20 w-1/5 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:border-black dark:bg-[#fff] dark:shadow-lg">
             <div className="mx-4 flex items-center justify-center">
               <LocalGasStationIcon
                 style={{ fontSize: "40px" }}
                 className="mr-2 mt-4 w-10 text-yellow-500"
               />
               <div className="mt-4 text-left">
-                <h1 className="text-[#9e9e9e]">Average Gas</h1>
+                <h1 className="text-[#9e9e9e] dark:text-black">Average Gas</h1>
                 <div className="flex">
-                  <h4>{gasQuery.data.result.SafeGasPrice}Gwei</h4>
-                  <h4 className="pl-2 text-gray-400">$0.40</h4>
+                  <h4 className="dark:text-[#ffd910]">
+                    {gasQuery.data.result.SafeGasPrice}Gwei
+                  </h4>
+                  <h4 className="pl-2 text-gray-400 dark:text-green-300">
+                    $0.40
+                  </h4>
                 </div>
               </div>
             </div>
           </div>
           {/* MarketCap */}
-          <div className="duration-800 mt-2 ml-4 h-20 w-1/5 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
+          <div className="duration-800 mt-2 ml-4 h-20 w-1/5 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:border-black dark:bg-[#fff] dark:shadow-lg">
             <div className="mx-4 flex items-center justify-center">
               <Paid
                 style={{ fontSize: "40px" }}
                 className="mr-2 mt-4 w-10 text-green-500"
               />
               <div className="mt-4 text-left">
-                <h1 className="text-[#9e9e9e]">Market Cap</h1>
+                <h1 className="text-[#9e9e9e] dark:text-black">Market Cap</h1>
                 <div className="flex">
-                  <h4>
+                  <h4 className="dark:text-[#ffd910]">
                     ${Math.round(ethereumQuery.data[0].market_cap / 1000000000)}
                     B
                   </h4>
@@ -242,12 +252,14 @@ function BlockchainExplorerTab() {
             </div>
           </div>
           {/* Last Block */}
-          <div className="duration-800 mt-2 ml-4 h-20 w-32 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
+          <div className="duration-800 mt-2 ml-4 h-20 w-32 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:border-black dark:bg-[#fff] dark:shadow-lg">
             <div className="mx-4 flex items-center justify-center">
               <div className="mt-4 text-left">
-                <h1 className="text-center text-[#9e9e9e]">Last Block</h1>
+                <h1 className="text-center text-[#9e9e9e] dark:text-black">
+                  Last Block
+                </h1>
 
-                <h4 className="flex items-center justify-center text-center">
+                <h4 className="flex items-center justify-center text-center dark:text-[#ffd910]">
                   {lastBlockQuery.data.result.CurrentBlock} <CheckBoxIcon />
                 </h4>
               </div>
@@ -256,7 +268,7 @@ function BlockchainExplorerTab() {
           {/* Blockchain Explorer Bottom Section */}
           <div className="flex w-full justify-around">
             <div className="w-2/5">
-              <h1 className="my-4 text-center text-[#9e9e9e] hover:text-gray-400">
+              <h1 className="my-4 text-center text-[#9e9e9e] hover:text-gray-400 dark:text-black">
                 Latest Transactions
               </h1>
               <div className="flex justify-between text-white">
@@ -318,10 +330,10 @@ function BlockchainExplorerTab() {
               </div>
             </div>
 
-            <div className="h-11/12 mb-4 mt-4 w-1 bg-[#31353F]"></div>
+            <div className="h-11/12 mb-4 mt-4 w-1 bg-[#31353F] dark:bg-gray-200"></div>
 
             <div className="w-2/5">
-              <h1 className="my-4 ml-8 text-center text-[#9e9e9e] hover:text-gray-400">
+              <h1 className="my-4 ml-8 text-center text-[#9e9e9e] hover:text-gray-400 dark:text-black">
                 Top Holders
               </h1>
               <div className="flex justify-between text-white">

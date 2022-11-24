@@ -3,7 +3,7 @@ import React from "react";
 function Heatmap({ data }) {
   // Don't try to understand this stupid code, this is the worst idea I had lol! check the rest, not this file 😂
   return (
-    <div className="flex h-full w-full justify-around font-bold text-white">
+    <div className="flex h-full w-full justify-around font-bold text-white dark:bg-white dark:shadow-lg">
       <div className="h-full w-1/3">
         <h4 className="flex h-12 items-center justify-center bg-zinc-800">
           SHA

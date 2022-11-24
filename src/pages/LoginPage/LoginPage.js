@@ -89,9 +89,9 @@ function LoginPage() {
 
           <div className="w-full" type="submit" action="">
             <div className="mt-10 flex items-center justify-center">
-              <hr class="my-8 h-1 w-2/5 rounded-xl border-0 bg-gray-200 dark:bg-gray-700" />
+              <hr class="my-8 h-1 w-2/5 rounded-xl border-0 bg-gray-700" />
               <h6 className="mx-4 text-gray-400">or</h6>
-              <hr class="my-8 h-1 w-2/5 border-0 bg-gray-200 dark:bg-gray-700" />
+              <hr class="my-8 h-1 w-2/5 border-0  bg-gray-700" />
             </div>
 
             <div className="my-1/3 w-full text-center">
@@ -100,7 +100,7 @@ function LoginPage() {
                 placeholder="Enter your email"
                 type="email"
                 onChange={(e) => setLoginEmail(e.target.value)}
-                className="my-4 h-12 w-11/12 cursor-text rounded-lg border-2 border-gray-300 bg-gray-50 pl-4 pr-2 text-gray-900 outline-none duration-100 hover:border-2 hover:border-sky-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500"
+                className="my-4 h-12 w-11/12 cursor-text rounded-lg border-2 border-gray-600 border-l-gray-700 bg-gray-700 pl-4 pr-2 text-white placeholder-gray-400 outline-none duration-100 hover:border-2 hover:border-sky-500 focus:border-blue-500 focus:ring-blue-500"
               />
 
               <h2 className="ml-10 text-left text-gray-300">Password</h2>
@@ -108,7 +108,7 @@ function LoginPage() {
                 placeholder="••••••••"
                 type="password"
                 onChange={(e) => setLoginPassword(e.target.value)}
-                className="my-4 h-12 w-11/12 cursor-text rounded-lg border-2 border-gray-300 bg-gray-50 pl-4 pr-2 text-gray-900 outline-none duration-100 hover:border-2 hover:border-sky-500 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500"
+                className="my-4 h-12 w-11/12 cursor-text rounded-lg border-2 border-gray-600 border-l-gray-700 bg-gray-700 pl-4 pr-2 text-white placeholder-gray-400 outline-none duration-100 hover:border-2 hover:border-sky-500 focus:border-blue-500 focus:ring-blue-500"
               />
             </div>
 

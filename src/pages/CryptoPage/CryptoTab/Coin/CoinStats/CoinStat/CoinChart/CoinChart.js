@@ -301,8 +301,8 @@ function CoinChart({
 
   return (
     <>
-      <div className="rounded-xl bg-[#1B2028]">
-        <h4 className="ml-6 mt-10 pt-4 text-2xl font-bold text-white">
+      <div className="rounded-xl bg-[#1B2028] dark:bg-white dark:shadow-lg">
+        <h4 className="ml-6 mt-10 pt-4 text-2xl font-bold text-white dark:text-black">
           {String(coin).toUpperCase().slice(0, 1) + String(coin).slice(1)} Chart
         </h4>
         {/* Crypto DropDown */}
@@ -310,26 +310,26 @@ function CoinChart({
           {/* Chart Switch Section */}
 
           <button
-            className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+            className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-2 dark:border-[#00cccb] dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-white"
             onClick={handleDayChart}
           >
             1d
           </button>
           <button
-            className="focus-border-none h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] focus:outline-none"
+            className="focus-border-none h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] focus:outline-none dark:border-2 dark:border-[#00cccb] dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-white"
             onClick={handleWeekChart}
             ref={activeRef}
           >
             1w
           </button>
           <button
-            className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+            className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-2 dark:border-[#00cccb] dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-white"
             onClick={handleMonthChart}
           >
             1m
           </button>
           <button
-            className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff]"
+            className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-2 dark:border-[#00cccb] dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-white"
             onClick={handleThreeMonthChart}
           >
             3m
@@ -360,7 +360,7 @@ function CoinChart({
           alt="Advertisement"
           className="h-40 w-full object-fill px-4"
         ></img>
-        <h6 className="mt-2 text-center text-sm text-[#9e9e9e]">
+        <h6 className="mt-2 text-center text-sm text-[#9e9e9e] dark:text-black">
           (Advertisement)
         </h6>
       </a>

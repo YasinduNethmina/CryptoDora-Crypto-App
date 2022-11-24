@@ -8,22 +8,26 @@ function ShareModal() {
 
   return (
     <div className="share-modal z-60 flex items-center justify-center">
-      <div className="mx-4 w-full rounded-xl border-2 border-sky-500 bg-[#1B2028] p-4 md:w-1/2 lg:w-1/3">
+      <div className="mx-4 w-full rounded-xl border-2 border-sky-500 bg-[#1B2028] p-4 dark:bg-white md:w-1/2 lg:w-1/3">
         <div className="items center flex justify-between border-b border-gray-200 py-3">
           <div className="flex items-center justify-center">
-            <p className="text-xl font-bold text-white">Share Modal</p>
+            <p className="text-xl font-bold text-white dark:text-black">
+              Share Modal
+            </p>
           </div>
 
           <button
             onClick={handleClick}
-            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full font-sans text-xl text-white hover:text-red-600"
+            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full font-sans text-xl text-white hover:text-red-600 dark:text-green-500 dark:hover:text-red-500"
           >
             x
           </button>
         </div>
 
         <div className="my-4">
-          <p className="text-sm text-white">Share this link via</p>
+          <p className="text-sm text-white dark:text-black">
+            Share this link via
+          </p>
 
           <div className="my-4 flex justify-around">
             <a
@@ -120,7 +124,7 @@ function ShareModal() {
             </a>
           </div>
 
-          <p className="text-sm text-[#9e9e9e]">Or copy link</p>
+          <p className="text-sm text-[#9e9e9e] dark:text-black">Or copy link</p>
 
           <div className="mt-4 flex items-center justify-between border-2 border-gray-200 py-2">
             <svg
@@ -128,14 +132,14 @@ function ShareModal() {
               width="24"
               height="24"
               viewBox="0 0 24 24"
-              className="ml-2 fill-gray-500"
+              className="ml-2 fill-gray-500 dark:fill-black"
             >
               <path d="M8.465 11.293c1.133-1.133 3.109-1.133 4.242 0l.707.707 1.414-1.414-.707-.707c-.943-.944-2.199-1.465-3.535-1.465s-2.592.521-3.535 1.465L4.929 12a5.008 5.008 0 0 0 0 7.071 4.983 4.983 0 0 0 3.535 1.462A4.982 4.982 0 0 0 12 19.071l.707-.707-1.414-1.414-.707.707a3.007 3.007 0 0 1-4.243 0 3.005 3.005 0 0 1 0-4.243l2.122-2.121z"></path>
               <path d="m12 4.929-.707.707 1.414 1.414.707-.707a3.007 3.007 0 0 1 4.243 0 3.005 3.005 0 0 1 0 4.243l-2.122 2.121c-1.133 1.133-3.109 1.133-4.242 0L10.586 12l-1.414 1.414.707.707c.943.944 2.199 1.465 3.535 1.465s2.592-.521 3.535-1.465L19.071 12a5.008 5.008 0 0 0 0-7.071 5.006 5.006 0 0 0-7.071 0z"></path>
             </svg>
 
             <input
-              className="w-full bg-transparent text-[#9e9e9e] outline-none"
+              className="w-full bg-transparent text-[#9e9e9e] outline-none dark:text-black"
               type="text"
               placeholder="link"
               value="https://example.org"

@@ -75,8 +75,6 @@ function Chat() {
     }
   }, [messages, input]);
 
-  console.log(user);
-
   if (user) {
     return (
       <div className="chat absolute right-2 z-40 rounded-xl bg-[#1b2028] p-3 dark:mt-24 dark:h-3/4 dark:bg-[#fff]">

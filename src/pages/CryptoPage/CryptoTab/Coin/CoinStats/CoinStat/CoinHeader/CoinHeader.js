@@ -30,7 +30,6 @@ function CoinHeader({ coinStats, coin }) {
 
   const handleShareModal = () => {
     document.querySelector(".share-modal").classList.remove("hidden");
-    console.log("clicked");
   };
 
   return (
@@ -67,12 +66,12 @@ function CoinHeader({ coinStats, coin }) {
               onClick={handleClick}
               className={
                 starIcon
-                  ? "mr-4 text-yellow-400"
-                  : "mr-4 hover:text-green-500 dark:text-green-400"
+                  ? "mr-4  dark:text-green-400"
+                  : "mr-4 text-yellow-400 hover:text-green-500"
               }
             />
             <button onClick={handleShareModal}>
-              <IosShareIcon className="hover:text-green-500 dark:text-black" />
+              <IosShareIcon className="hover:text-green-500 dark:text-green-400 dark:hover:text-[#ffd910] dark:focus:text-[#ffd910]" />
             </button>
           </div>
         </div>
@@ -94,7 +93,7 @@ function CoinHeader({ coinStats, coin }) {
 
         {/* Price */}
         <div className="mt-8 flex w-full flex-wrap justify-center">
-          <h1 className="mr-4 text-3xl font-bold text-white shadow-cyan-500 transition duration-150 ease-in-out hover:text-green-300">
+          <h1 className="mr-4 text-3xl font-bold text-white shadow-cyan-500 transition duration-150 ease-in-out hover:text-green-300 dark:text-black">
             ${coinStats.market_data.current_price.usd.toFixed(2)}
           </h1>
           {coinStats.market_data.price_change_percentage_24h > 0 ? (
@@ -113,17 +112,17 @@ function CoinHeader({ coinStats, coin }) {
         {/* Low High */}
         <div className="mt-8 mb-20">
           <div className="flex justify-around">
-            <h4 className="text-gray-200 transition duration-150 ease-in-out hover:text-gray-300">
+            <h4 className="text-gray-200 transition duration-150 ease-in-out hover:text-gray-300 dark:text-black dark:hover:text-zinc-600">
               Low: {coinStats.market_data.low_24h.usd.toFixed(2)}
             </h4>
-            <h4 className="text-gray-200 transition duration-150 ease-in-out  hover:text-gray-300">
+            <h4 className="text-gray-200 transition duration-150 ease-in-out hover:text-gray-300  dark:text-black dark:hover:text-zinc-600">
               High: {coinStats.market_data.high_24h.usd.toFixed(2)}
             </h4>
           </div>
 
           {/* MarketCap */}
           <div className="mx-4 mt-8 flex items-center justify-center">
-            <h4 className="mr-2 text-center transition duration-150 ease-in-out hover:text-gray-300">
+            <h4 className="mr-2 text-center transition duration-150 ease-in-out hover:text-gray-300 dark:text-black dark:hover:text-zinc-600">
               M.Cap:{" "}
               {Math.round(coinStats.market_data.market_cap.usd).toLocaleString(
                 "us-US",
@@ -153,7 +152,7 @@ function CoinHeader({ coinStats, coin }) {
 
           {/* Fully Diluted Valuation */}
           <div className="mt-8 flex items-center justify-center">
-            <h4 className="text-center transition duration-150 ease-in-out hover:text-gray-300">
+            <h4 className="text-center transition duration-150 ease-in-out hover:text-gray-300 dark:text-black dark:hover:text-zinc-600">
               Fully Diluted Valuation:{" "}
               {Math.round(
                 coinStats.market_data.fully_diluted_valuation.usd
@@ -163,13 +162,13 @@ function CoinHeader({ coinStats, coin }) {
 
           {/* Circulating Supply */}
           <div className="mt-8 ml-6">
-            <h4 className="mr-6 text-center transition duration-150 ease-in-out hover:text-gray-300">
+            <h4 className="mr-6 text-center transition duration-150 ease-in-out hover:text-gray-300 dark:text-black dark:hover:text-zinc-600">
               Circulating Supply: {coinStats.market_data.circulating_supply}{" "}
               {coinStats.symbol.toUpperCase()} ({circulationSupplyPercentage})
             </h4>
 
             {/* Circulation Supply Bar */}
-            <div className="mr-6 mt-4 h-2.5 rounded-full bg-gray-200 dark:bg-gray-700">
+            <div className="mr-6 mt-4 h-2.5 rounded-full bg-gray-200 dark:bg-gray-400">
               <div
                 className="h-2.5 rounded-full bg-blue-600"
                 style={{ width: circulationSupplyPercentage }}
@@ -186,9 +185,9 @@ function CoinHeader({ coinStats, coin }) {
             href={coinStats.links.homepage[0]}
             target="_blank"
             rel="noreferrer"
-            className="gple-600 group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 group-hover:to-blue-500 dark:text-white dark:focus:ring-blue-800"
+            className="gple-600 group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 text-sm font-medium text-white hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-800 group-hover:to-blue-500 dark:bg-white"
           >
-            <span className="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
+            <span className="rounded-mdpx-5 relative rounded-lg bg-gray-900 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-white dark:text-black dark:hover:text-white">
               <LinkIcon className="rotate-45" />
               HomePage
               <ArrowOutwardIcon />
@@ -196,12 +195,12 @@ function CoinHeader({ coinStats, coin }) {
           </a>
           {/* Explorer */}
           <a
-            className="gple-600 group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 group-hover:to-blue-500 dark:text-white dark:focus:ring-blue-800"
+            className="gple-600 group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300 group-hover:to-blue-500 dark:bg-white dark:text-white dark:focus:ring-blue-800"
             href="https://etherscan.io/"
             target="_blank"
             rel="noreferrer"
           >
-            <span className="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
+            <span className="relative rounded-md bg-gray-900 px-5 py-2.5 text-white transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-white dark:text-black dark:hover:text-white">
               <SearchIcon />
               Explorers
             </span>
@@ -213,7 +212,7 @@ function CoinHeader({ coinStats, coin }) {
             target="_blank"
             rel="noreferrer"
           >
-            <span className="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
+            <span className="relative rounded-md bg-gray-900 px-5 py-2.5 text-white transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-white dark:text-black dark:hover:text-white">
               <TwitterIcon />
               Twitter
             </span>
@@ -225,7 +224,7 @@ function CoinHeader({ coinStats, coin }) {
             target="_blank"
             rel="noreferrer"
           >
-            <span className="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
+            <span className="relative rounded-md bg-gray-900 px-5 py-2.5 text-white transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-white dark:text-black dark:hover:text-white">
               <CodeIcon />
               Source Code
             </span>
@@ -236,12 +235,12 @@ function CoinHeader({ coinStats, coin }) {
       {/* Coin Stat Description */}
       <div
         style={{ position: "absolute", right: "2.3rem", top: "48rem" }}
-        className="coinDescription mt-10 w-4/5 rounded-xl bg-[#1B2028] p-4 font-mono font-semibold"
+        className="coinDescription mt-10 w-4/5 rounded-xl bg-[#1B2028] p-4 font-mono font-semibold dark:bg-white dark:shadow-lg"
       >
-        <h4 className="my-4 bg-gradient-to-br from-gray-400 to-zinc-600 bg-clip-text text-3xl text-transparent">
+        <h4 className="my-4 bg-gradient-to-br from-gray-400 to-zinc-600 bg-clip-text text-3xl text-transparent dark:text-black">
           {coinStats.name}
         </h4>
-        <h4 className="bg-gradient-to-br from-gray-300 to-gray-500 bg-clip-text text-transparent">
+        <h4 className="bg-gradient-to-br from-gray-300 to-gray-500 bg-clip-text text-transparent dark:text-zinc-700">
           ❝ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
           posuere fringilla molestie. Nunc lobortis nisi non ante commodo, in
           tristique lorem hendrerit. Vestibulum ante ipsum primis in faucibus

@@ -184,7 +184,7 @@ function NewsTab() {
             >
               Technology
             </button>
-            <button className="w-12 rounded-full py-1 font-semibold text-white hover:font-bold  hover:text-[#072D4B]">
+            <button className="w-12 rounded-full py-1 font-semibold text-white hover:font-bold hover:text-[#072D4B] dark:text-black dark:hover:text-[#2F9FF8]">
               ...
             </button>
           </div>

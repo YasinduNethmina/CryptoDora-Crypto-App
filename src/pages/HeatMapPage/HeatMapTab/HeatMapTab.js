@@ -36,7 +36,7 @@ function HeatMapTab() {
   } else {
     return (
       <>
-        <div className="heatmap mt-20 flex h-3/4 w-full flex-wrap ">
+        <div className="heatmap mt-20 flex h-3/4 w-full flex-wrap">
           <Heatmap data={heatmapQuery.data} />
         </div>
       </>

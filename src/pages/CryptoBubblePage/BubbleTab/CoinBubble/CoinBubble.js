@@ -7,8 +7,8 @@ function CoinBubble({ name, image, change }) {
       <div
         className={
           change > 0
-            ? "bubble bubble-green m-1 flex h-40 w-40 justify-center rounded-full text-white  hover:border-2"
-            : "bubble bubble-red flex h-40 w-40 justify-center rounded-full text-white hover:border-2"
+            ? "bubble bubble-green m-1 flex h-40 w-40 justify-center rounded-full text-white hover:border-2 dark:text-black"
+            : "bubble bubble-red flex h-40 w-40 justify-center rounded-full text-white hover:border-2 dark:text-black"
         }
       >
         <div className="text-center">
@@ -17,8 +17,12 @@ function CoinBubble({ name, image, change }) {
             src={image}
             alt="coin-logo"
           />
-          <h1 className="text-4xl font-bold">{String(name).toUpperCase()}</h1>
-          <h4 className="text-xl font-semibold">{change.toFixed(2)}%</h4>
+          <h1 className="text-4xl font-bold dark:text-black">
+            {String(name).toUpperCase()}
+          </h1>
+          <h4 className="text-xl font-semibold dark:text-black">
+            {change.toFixed(2)}%
+          </h4>
         </div>
       </div>
     );
@@ -27,8 +31,8 @@ function CoinBubble({ name, image, change }) {
       <div
         className={
           change > 0
-            ? "bubble1 bubble-green m-1 flex h-32 w-32 justify-center rounded-full text-white hover:border-2"
-            : "bubble1 bubble-red m-1 flex h-32 w-32 justify-center rounded-full text-white hover:border-2"
+            ? "bubble1 bubble-green m-1 flex h-32 w-32 justify-center rounded-full text-white hover:border-2 dark:text-black"
+            : "bubble1 bubble-red m-1 flex h-32 w-32 justify-center rounded-full text-white hover:border-2 dark:text-black"
         }
       >
         <div className="text-center">
@@ -47,8 +51,8 @@ function CoinBubble({ name, image, change }) {
       <div
         className={
           change > 0
-            ? "bubble2 bubble-green m-1 flex h-24 w-24 justify-center rounded-full text-white hover:border-2"
-            : "bubble2 bubble-red m-1 flex h-24 w-24 justify-center rounded-full text-white hover:border-2"
+            ? "bubble2 bubble-green m-1 flex h-24 w-24 justify-center rounded-full text-white hover:border-2 dark:text-black"
+            : "bubble2 bubble-red m-1 flex h-24 w-24 justify-center rounded-full text-white hover:border-2 dark:text-black"
         }
       >
         <div className="text-center">
@@ -67,8 +71,8 @@ function CoinBubble({ name, image, change }) {
       <div
         className={
           change > 0
-            ? "bubble3 bubble-green m-1 flex h-20 w-20 justify-center rounded-full text-white hover:border-2"
-            : "bubble3 bubble-red m-1 flex h-20 w-20 justify-center rounded-full text-white hover:border-2"
+            ? "bubble3 bubble-green m-1 flex h-20 w-20 justify-center rounded-full text-white hover:border-2 dark:text-black"
+            : "bubble3 bubble-red m-1 flex h-20 w-20 justify-center rounded-full text-white hover:border-2 dark:text-black"
         }
       >
         <div className="text-center">
@@ -89,8 +93,8 @@ function CoinBubble({ name, image, change }) {
       <div
         className={
           change > 0
-            ? "bubble4 bubble-green m-1 flex h-16 w-16 justify-center rounded-full text-white hover:border-2"
-            : "bubble4 bubble-red m-1 flex h-16 w-16 justify-center rounded-full text-white hover:border-2"
+            ? "bubble4 bubble-green m-1 flex h-16 w-16 justify-center rounded-full text-white hover:border-2 dark:text-black"
+            : "bubble4 bubble-red m-1 flex h-16 w-16 justify-center rounded-full text-white hover:border-2 dark:text-black"
         }
       >
         <div className="text-center">
@@ -109,8 +113,8 @@ function CoinBubble({ name, image, change }) {
       <div
         className={
           change > 0
-            ? "bubble5 bubble-green m-1 flex h-10 w-10 justify-center rounded-full text-white hover:border-2"
-            : "bubble5 bubble-red m-1 flex h-10 w-10 justify-center rounded-full text-white hover:border-2"
+            ? "bubble5 bubble-green m-1 flex h-10 w-10 justify-center rounded-full text-white hover:border-2 dark:text-black"
+            : "bubble5 bubble-red m-1 flex h-10 w-10 justify-center rounded-full text-white hover:border-2 dark:text-black"
         }
       >
         <div className="text-center">

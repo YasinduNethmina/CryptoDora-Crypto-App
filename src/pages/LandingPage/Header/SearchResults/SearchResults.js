@@ -28,9 +28,9 @@ function SearchResults({ coins, loading, showSearchResults }) {
     return;
   } else {
     return (
-      <div className="search-results mt-20 hidden rounded-xl border-2 border-sky-400 bg-[#1B2028] px-4 py-2 font-bold text-[#9E9E9E]">
+      <div className="search-results mt-20 hidden rounded-xl border-2 border-sky-400 bg-[#1B2028] px-4 py-2 font-bold text-[#9E9E9E] dark:bg-white dark:text-black">
         <button
-          className="duration-400 text-white transition delay-150 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-sky-400"
+          className="duration-400 text-white transition delay-150 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-sky-400 dark:text-black dark:hover:text-red-500"
           onClick={handleClick}
         >
           [ESC]
@@ -55,7 +55,7 @@ function SearchResults({ coins, loading, showSearchResults }) {
                 return (
                   <>
                     <Link to="/crypto-tab">
-                      <button className="border-box mt-5 rounded px-4 text-left transition ease-in-out hover:-translate-y-1 hover:bg-[#262e39] hover:shadow-2xl">
+                      <button className="border-box mt-5 rounded px-4 text-left transition ease-in-out hover:-translate-y-1 hover:bg-[#262e39] hover:shadow-2xl dark:hover:bg-gray-200 dark:hover:shadow-lg">
                         {String(coinName).slice(0, 16)}
                       </button>
                     </Link>
@@ -74,9 +74,11 @@ function SearchResults({ coins, loading, showSearchResults }) {
             <div>
               {coinRanks.map((coinRank) => {
                 if (coinRank == null) {
-                  return <p className="mt-5">{coinRank}</p>;
+                  return <p className=" mt-5">{coinRank}</p>;
                 } else {
-                  return <p className="mt-5">#{coinRank}</p>;
+                  return (
+                    <p className="mt-5 dark:text-[#00cccb]">#{coinRank}</p>
+                  );
                 }
               })}
             </div>

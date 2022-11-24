@@ -222,8 +222,8 @@ function Header() {
       <div
         className={
           showNotifications
-            ? "fixed right-60 top-16 z-40 w-60"
-            : "fixed right-60 top-16 z-40 hidden w-60"
+            ? "notificationsTab fixed right-60 top-20 w-60"
+            : "fixed right-60 top-16 hidden w-60"
         }
       >
         <Notifications />

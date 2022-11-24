@@ -69,7 +69,7 @@ function NewsCard01({ title, img, date, description, source }) {
             <BookmarkBorderIcon
               className={
                 active
-                  ? " text-green-500 transition-all duration-300 hover:scale-110 dark:text-[#00cccb]"
+                  ? " text-green-500 transition-all duration-300 hover:scale-110 dark:text-[#00cccb] dark:hover:text-green-500"
                   : "text-[#0768B5] transition-all duration-300 hover:scale-110 hover:text-green-500 dark:font-semibold dark:text-[#00cccb] dark:hover:text-green-500"
               }
             />

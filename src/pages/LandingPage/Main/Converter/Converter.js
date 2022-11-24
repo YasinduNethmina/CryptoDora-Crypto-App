@@ -39,13 +39,13 @@ function Converter({ data }) {
 
   return (
     <>
-      <div className="h-screen w-full rounded-lg dark:relative dark:top-4">
+      <div className="h-screen w-full rounded-lg dark:relative dark:top-6">
         <img
           className="newsImg rounded-t-2xl object-cover"
           src={require("../../../../assets/images/converter.jpg")}
           alt="converter-background"
         />
-        <h1 className="converter-title ml-2 mb-2 text-center text-3xl font-bold leading-relaxed tracking-wider text-white dark:text-black">
+        <h1 className="converter-title ml-2 mb-2 text-center text-3xl font-bold leading-relaxed tracking-wider text-white dark:text-[#00cccb]">
           Cryptocurrency <br></br> Converter
         </h1>
         <div className="converter-input-1 flex">

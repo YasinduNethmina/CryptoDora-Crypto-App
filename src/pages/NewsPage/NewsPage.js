@@ -63,7 +63,7 @@ function NewsPage() {
           <Footer />
           {setBackToTopButton && (
             <button
-              className="rounded-lg border-2 border-sky-500"
+              className="rounded-lg border-2 border-sky-500 dark:rounded dark:border-black"
               onClick={scrollUp}
               style={{
                 position: "fixed",
@@ -73,7 +73,7 @@ function NewsPage() {
             >
               <KeyboardArrowUpIcon
                 sx={{ fontSize: "2rem" }}
-                className="rounded bg-[#1B2028] text-white"
+                className="rounded bg-[#1B2028] text-white dark:bg-white dark:text-black dark:shadow-lg"
               />
             </button>
           )}
