@@ -63,7 +63,7 @@ function News({ newsData }) {
       </div>
 
       {/* News Cards 01 */}
-      <div className="flex w-full">
+      <div className="newsCards flex w-full">
         <NewsCard
           title={newsData[5].title}
           img={newsData[5].urlToImage}
@@ -82,7 +82,7 @@ function News({ newsData }) {
       </div>
 
       {/* News Cards 02 */}
-      <div className="flex w-full">
+      <div className="newsCards flex w-full">
         <NewsCard
           title={newsData[7].title}
           img={newsData[7].urlToImage}
@@ -101,7 +101,7 @@ function News({ newsData }) {
       </div>
 
       {/* News Cards 03 */}
-      <div className="flex w-full">
+      <div className="newsCards flex w-full">
         <NewsCard
           title={newsData[9].title}
           img={newsData[9].urlToImage}

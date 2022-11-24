@@ -5,6 +5,7 @@ import Coin from "../../../CryptoPage/CryptoTab/Coin/Coin";
 import { Link } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
+import "./Market.scss";
 
 function Market({ list }) {
   const [search, setSearch] = useState("");
@@ -86,8 +87,8 @@ function Market({ list }) {
 
     return (
       <>
-        <div className="mb-5 mt-4 h-full w-11/12 justify-center rounded-xl bg-[#1B2028] dark:bg-[#fff] dark:shadow-xl">
-          <div className="flex items-center justify-between">
+        <div className="market-box mb-5 mt-4 h-full w-11/12 justify-center rounded-xl bg-[#1B2028] dark:bg-[#fff] dark:shadow-xl">
+          <div className="market-header flex items-center justify-between">
             <h1 className="p-8 text-xl font-semibold text-white dark:m-4 dark:rounded-xl dark:bg-[#ffd910] dark:px-2 dark:py-1 dark:text-black">
               Live Market
             </h1>
@@ -101,19 +102,19 @@ function Market({ list }) {
 
           <div className="mb-6 flex w-full justify-around text-[#9e9e9e] dark:font-semibold dark:text-black">
             <h4 className="relative left-4">Coin</h4>
-            <h4 className="coinPriceChangePercentage relative left-2">
+            <h4 className="coinPriceChangePercentage market-change-heading relative left-2">
               Change
             </h4>
-            <h4 className="relative right-6">M.Cap</h4>
-            <h4 className="relative right-8">Supply</h4>
-            <h4 className="relative right-4">Price</h4>
+            <h4 className="market-cap-heading relative right-6">M.Cap</h4>
+            <h4 className="market-supply-heading relative right-8">Supply</h4>
+            <h4 className="market-price-heading relative right-4">Price</h4>
             <h4 className="marketChart relative right-4">Chart</h4>
           </div>
 
           {filteredCoins.slice(0, 8).map((coin) => {
             return (
               <Link to="/crypto-tab">
-                <div className="flex items-center">
+                <div className="coin-list flex items-center">
                   <div className="w-10/12">
                     <Coin
                       rank={coin.market_cap_rank}

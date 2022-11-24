@@ -39,3 +39,40 @@
   background-color: #ffc187;
   transform: translateX(-1.2rem);
 }
+
+@media (max-width: 640px) {
+  .brand-title {
+    font-size: larger;
+    margin-left: 20%;
+  }
+
+  .stats-notifications {
+    display: none;
+  }
+
+  .header-dropdown {
+    display: none;
+  }
+
+  .searchbar {
+    margin-left: 0;
+  }
+
+  .stats-profile-name {
+    display: none;
+    margin: 0;
+  }
+
+  .stats-theme-label {
+    margin-right: 15%;
+  }
+
+  .stats-profile {
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .header-signout {
+    font-size: 1rem;
+  }
+}

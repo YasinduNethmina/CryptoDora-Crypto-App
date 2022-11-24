@@ -1,3 +1,9 @@
+@media (max-width: 640px) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
 @media (max-width: 1150px) {
   .heatmap {
     margin-bottom: 4rem;

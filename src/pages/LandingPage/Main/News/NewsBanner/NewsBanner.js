@@ -57,7 +57,7 @@ function NewsBanner({ title, description, img, date, source }) {
         </div>
       </div>
 
-      <div className="relative bottom-10 mx-4 flex items-center justify-between text-xs text-[#9E9E9E] dark:font-semibold  dark:text-[#00cccb]">
+      <div className="news-banner-footer relative bottom-10 mx-4 flex items-center justify-between text-xs text-[#9E9E9E] dark:font-semibold  dark:text-[#00cccb]">
         <p>{String(source).slice(0, 10)} •</p>
         <p>{date.slice(0, 10)}</p>
         <button onClick={handleShareModal} className="text-white">

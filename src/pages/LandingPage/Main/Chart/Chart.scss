@@ -1,0 +1,31 @@
+@media (max-width: 640px) {
+  .chart-box {
+    width: 90%;
+    margin-right: 4rem;
+  }
+
+  .chart-buttons {
+    width: 70%;
+  }
+
+  .chart-header {
+    margin-right: 2%;
+  }
+
+  .chart-btn {
+    margin: 0 5px;
+  }
+
+  .chart-price {
+    font-size: large;
+  }
+
+  .crypto-dropdown {
+    margin-left: -6.5%;
+    font-size: smaller;
+  }
+
+  .crypto-dropdown-arrow {
+    margin-right: 20%;
+  }
+}

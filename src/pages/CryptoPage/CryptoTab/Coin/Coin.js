@@ -61,15 +61,19 @@ function Coin({
         <div className="mx-4 flex cursor-pointer items-center justify-between rounded-xl py-2 font-semibold text-white transition ease-in-out hover:-translate-y-1 hover:bg-[#262e39] hover:shadow-2xl dark:text-black dark:hover:bg-[#f4f5f7] dark:hover:text-black">
           <div className="flex w-20 items-center pl-2">
             {rank < 10 ? (
-              <h4 className="text-[#b5b5b5] dark:text-[#ffd910]">#00{rank}</h4>
+              <h4 className="market-coin-rank text-[#b5b5b5] dark:text-[#ffd910]">
+                #00{rank}
+              </h4>
             ) : (
-              <h4 className="text-[#9E9E9E] dark:text-[#ffd910]">#0{rank}</h4>
+              <h4 className="market-coin-rank text-[#9E9E9E]  dark:text-[#ffd910]">
+                #0{rank}
+              </h4>
             )}
             <img className="mx-4 h-6 w-6" src={image} alt={name} />
-            <h4>{name}</h4>
+            <h4 className="market-coin-symbol">{name}</h4>
           </div>
 
-          <div className="coinPriceChangePercentage relative w-20 text-right">
+          <div className="coinPriceChangePercentage market-percentage relative w-20 text-right">
             {change > 0 ? (
               <h4 className="text-green-500">{Number(change).toFixed(2)}%</h4>
             ) : (
@@ -77,11 +81,11 @@ function Coin({
             )}
           </div>
 
-          <div className="w-20 text-left">
+          <div className="market-coin-cap w-20 text-left">
             <h4>{marketCapRound}</h4>
           </div>
 
-          <div className="w-20 text-left">
+          <div className="market-supply w-20 text-left">
             <h4>{circulationSupplyRound}</h4>
           </div>
 

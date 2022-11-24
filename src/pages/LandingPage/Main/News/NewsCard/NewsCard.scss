@@ -1,0 +1,24 @@
+@media (max-width: 640px) {
+  .news-card {
+    position: relative;
+    right: 6.5%;
+    width: 50%;
+  }
+
+  .news-card-description {
+    width: 100%;
+  }
+
+  .news-card-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .news-card-footer {
+    display: none;
+  }
+
+  .newsCards {
+    display: none;
+  }
+}

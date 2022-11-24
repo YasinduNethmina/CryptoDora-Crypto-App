@@ -1,0 +1,48 @@
+@media (max-width: 640px) {
+  .market-box {
+    width: 95%;
+    margin-right: 4rem;
+  }
+
+  .market-supply {
+    display: none;
+  }
+
+  .market-coin-rank {
+    display: none;
+  }
+
+  .market-coin-symbol {
+    display: none;
+  }
+
+  .market-percentage {
+    margin-right: 4rem;
+  }
+
+  .market-cap-heading {
+    display: none;
+  }
+
+  .market-coin-cap {
+    display: none;
+  }
+
+  .market-supply-heading {
+    display: none;
+  }
+
+  .market-header {
+    text-align: center;
+    width: 95%;
+    margin-right: 5%;
+  }
+
+  .market-change-heading {
+    margin-right: 7%;
+  }
+
+  .coin-list {
+    margin-right: 6%;
+  }
+}

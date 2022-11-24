@@ -1,5 +1,6 @@
 import Card from "./Card/Card";
 import Stats from "../Stats/Stats";
+import "./Cards.scss";
 
 function Cards({ stats, gas, cards, randomNumber }) {
   //used to generate cards randomly with a ternary

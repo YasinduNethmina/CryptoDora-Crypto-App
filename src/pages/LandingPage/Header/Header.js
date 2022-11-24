@@ -11,7 +11,6 @@ import axios from "axios";
 import Notifications from "./Notifications/Notifictions";
 import { auth } from "../../../firebase-config";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import "../../../common/media/dark-mode.scss";
 
 function Header() {
   const [user, setUser] = useState({});
@@ -172,7 +171,7 @@ function Header() {
 
               <button
                 onClick={logout}
-                className="mr-4 flex items-center text-white hover:text-[#9E9E9E] dark:font-semibold dark:text-black  dark:hover:text-[#00cccb]"
+                className="header-signout mr-4 flex items-center text-white hover:text-[#9E9E9E] dark:font-semibold dark:text-black  dark:hover:text-[#00cccb]"
               >
                 Sign Out
               </button>
@@ -188,10 +187,11 @@ function Header() {
                     padding: ".5rem",
                   }}
                 />
-                <h1 className="stats-profile-name ml-4  text-white transition hover:text-[#9E9E9E]  dark:bg-[#F0F0F0] dark:px-2 dark:py-1 dark:font-semibold dark:text-black  dark:hover:text-[#00cccb]">
+                <h1 className="ml-4 text-white transition hover:text-[#9E9E9E]  dark:bg-[#F0F0F0] dark:px-2 dark:py-1 dark:font-semibold dark:text-black  dark:hover:text-[#00cccb]">
                   Signup or Login
                 </h1>
-                <KeyboardArrowDownOutlinedIcon className="ml-4 mr-8 text-[#9e9e9e] dark:bg-[#F0F0F0] dark:text-black dark:hover:text-[#00cccb]" />
+
+                <KeyboardArrowDownOutlinedIcon className=" ml-4 mr-8 text-[#9e9e9e] dark:bg-[#F0F0F0] dark:text-black dark:hover:text-[#00cccb]" />
               </button>
             </Link>
           )}

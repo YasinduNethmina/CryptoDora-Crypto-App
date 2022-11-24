@@ -4,6 +4,7 @@ import { Chart as ChartJS } from "chart.js/auto";
 import CandlestickChartOutlinedIcon from "@mui/icons-material/CandlestickChartOutlined";
 import CurrencyDropdown from "./CurrencyDropdown/CurrencyDropdown";
 import CryptoDropdown from "./CryptoDropdown/CryptoDropdown";
+import "./Chart.scss";
 
 function Chart({
   //api data passed as props
@@ -324,8 +325,8 @@ function Chart({
 
   return (
     <>
-      <div className="mt-5 h-full w-11/12 rounded-xl bg-[#1B2028] dark:bg-[#fff] dark:text-black dark:shadow-lg">
-        <div className="flex justify-between">
+      <div className="chart-box mt-5 h-full w-11/12 rounded-xl bg-[#1B2028] dark:bg-[#fff] dark:text-black dark:shadow-lg">
+        <div className="chart-header flex justify-between">
           <h1 className="p-8 text-xl font-semibold text-white dark:m-4 dark:rounded-xl dark:bg-[#ffd910] dark:px-2 dark:py-1 dark:font-semibold dark:text-black">
             Chart
           </h1>
@@ -350,45 +351,45 @@ function Chart({
         </div>
         {/* Crypto DropDown */}
         <div className="flex items-center justify-between pl-8">
-          <div className="w-1/3 justify-start">
+          <div className="crypto-dropdown w-1/3 justify-start">
             <CryptoDropdown />
 
-            <h1 className="ml-1 text-xl font-semibold text-white dark:mt-2 dark:text-[#00cccb]">
+            <h1 className="chart-price ml-1 text-xl font-semibold text-white dark:mt-2 dark:text-[#00cccb]">
               {currencySymbol} &nbsp;
               {bitcoinPrice}
             </h1>
           </div>
 
           {/* Chart Switch Section */}
-          <div className="mr-5 flex w-2/3 justify-around">
+          <div className="chart-buttons mr-5 flex w-2/3 justify-around">
             <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
+              className="chart-btn h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
               onClick={handleDayChart}
             >
               1d
             </button>
             <button
-              className="focus-border-none h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] focus:outline-none dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
+              className="chart-btn focus-border-none h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] focus:outline-none dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
               onClick={handleWeekChart}
               ref={activeRef}
             >
               1w
             </button>
             <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
+              className="chart-btn h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
               onClick={handleMonthChart}
             >
               1m
             </button>
             <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
+              className="chart-btn h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
               onClick={handleThreeMonthChart}
             >
               3m
             </button>
 
             <button
-              className="h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
+              className="chart-btn h-8 w-16 rounded-full border-2 border-sky-400 text-[#E4E4E4] hover:border-none hover:bg-sky-600 hover:text-[#ffff] focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:border-[#00cccb] dark:font-semibold dark:text-black dark:hover:bg-[#00cccb] dark:hover:text-white dark:focus:bg-[#00cccb] dark:focus:text-[#fff]"
               onClick={handleMaxChart}
             >
               max
