@@ -12,7 +12,7 @@ function ShareModal() {
         <div className="items center flex justify-between border-b border-gray-200 py-3">
           <div className="flex items-center justify-center">
             <p className="text-xl font-bold text-white dark:text-black">
-              Share Modal
+              Share
             </p>
           </div>
 

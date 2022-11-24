@@ -105,7 +105,7 @@ function Header() {
 
   return (
     <>
-      <div className="notifications header fixed z-50 flex w-full items-center justify-between dark:bg-[#F0F0F0] dark:text-black">
+      <div className="header notifications fixed z-50 flex w-full items-center justify-between dark:bg-[#F0F0F0] dark:text-black">
         {/* Brand */}
         <Link to="/">
           <div className="brand flex items-center justify-center">
