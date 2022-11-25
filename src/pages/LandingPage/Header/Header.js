@@ -126,13 +126,13 @@ function Header() {
             autoComplete="off"
             onChange={handleSearchResults}
           />
-          <button>
+          <button className="searchbar-btn">
             <SearchIcon className="relative right-8 flex w-10 rounded-xl bg-[#1B2028] text-[#9E9E9E] dark:bg-[#fff] dark:font-semibold dark:text-black dark:hover:text-[#00cccb]" />
           </button>
         </div>
 
         {/* Profile */}
-        <div className="flex items-center justify-center rounded-full">
+        <div className="profile-section flex items-center justify-center rounded-full">
           <button className="stats-notifications dark:rounded-full dark:bg-[#fff] dark:text-black dark:shadow-lg">
             <NotificationsOutlinedIcon
               className="rounded-lg bg-[#1B2028] text-[#9E9E9E] hover:bg-[#9E9E9E] hover:text-[#1b2028] dark:rounded-full dark:bg-[#fff] dark:text-black dark:hover:text-[#00cccb]"
@@ -155,7 +155,7 @@ function Header() {
                   />
                 ) : (
                   <PersonOutlineOutlinedIcon
-                    className="rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E] dark:rounded-full dark:text-black dark:hover:text-[#00cccb]"
+                    className="stats-profile rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E] dark:rounded-full dark:text-black dark:hover:text-[#00cccb]"
                     style={{
                       width: "2.7rem",
                       height: "2.7rem",
@@ -166,7 +166,10 @@ function Header() {
                 <h1 className="stats-profile-name ml-4 text-white transition hover:text-[#9E9E9E] dark:font-semibold dark:text-black dark:hover:text-[#00cccb]">
                   {user?.displayName ? user?.displayName : user.email}
                 </h1>
-                <KeyboardArrowDownOutlinedIcon className="ml-4 mr-2 text-[#9e9e9e] dark:font-semibold dark:text-black dark:hover:text-[#00cccb]" />
+
+                <div className="profile-arrow-down">
+                  <KeyboardArrowDownOutlinedIcon className="profile-arrow-down ml-4 mr-2 text-[#9e9e9e] dark:font-semibold dark:text-black dark:hover:text-[#00cccb]" />
+                </div>
               </button>
 
               <button
@@ -187,11 +190,12 @@ function Header() {
                     padding: ".5rem",
                   }}
                 />
-                <h1 className="ml-4 text-white transition hover:text-[#9E9E9E]  dark:bg-[#F0F0F0] dark:px-2 dark:py-1 dark:font-semibold dark:text-black  dark:hover:text-[#00cccb]">
+                <h1 className="header-signout ml-4 text-white transition hover:text-[#9E9E9E]  dark:bg-[#F0F0F0] dark:px-2 dark:py-1 dark:font-semibold dark:text-black  dark:hover:text-[#00cccb]">
                   Signup or Login
                 </h1>
-
-                <KeyboardArrowDownOutlinedIcon className=" ml-4 mr-8 text-[#9e9e9e] dark:bg-[#F0F0F0] dark:text-black dark:hover:text-[#00cccb]" />
+                <div className="profile-arrow-down">
+                  <KeyboardArrowDownOutlinedIcon className="profile-arrow-down ml-4 mr-8 text-[#9e9e9e] dark:bg-[#F0F0F0] dark:text-black dark:hover:text-[#00cccb]" />
+                </div>
               </button>
             </Link>
           )}

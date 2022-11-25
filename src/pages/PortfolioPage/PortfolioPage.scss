@@ -1,0 +1,104 @@
+@media (max-width: 640px) {
+  .sidebar {
+    display: none;
+  }
+
+  .portfolio-tab {
+    width: 100%;
+    margin-left: 3%;
+    margin-right: 0;
+  }
+
+  .portfolio-section {
+    position: relative;
+    top: 17%;
+    right: 18.5%;
+  }
+
+  .portfolio-coin-logo {
+    position: relative;
+    right: 35%;
+  }
+
+  .portfolio-your-assets-text {
+    margin-left: 2%;
+  }
+
+  .portfolio-balance-text {
+    position: relative;
+    padding-top: 1%;
+  }
+
+  .portfolio-total {
+    position: relative;
+    right: 8%;
+  }
+
+  .portfolio-coin-logo {
+    margin-left: 2rem;
+  }
+
+  .portfolio-buy-price {
+    display: none;
+  }
+
+  .portfolio-change-percentage {
+    display: none;
+  }
+
+  .portfolio-profit-loss {
+    display: none;
+  }
+
+  .portfolio-holdings {
+    display: none;
+  }
+
+  .portfolio-price {
+    display: none;
+  }
+
+  .add-crypto-btn {
+    margin-left: 2%;
+    height: 5%;
+  }
+
+  .stats-coin-logo {
+    width: 25%;
+    height: 25%;
+  }
+
+  .stats-text {
+    font-size: small;
+  }
+
+  .portfolio-actions {
+    margin-right: 1rem;
+  }
+
+  .portfolio-tab {
+    margin-bottom: 2rem;
+  }
+
+  .add-transaction-dropdown {
+    height: 3rem;
+  }
+
+  .addTransaction {
+    margin-top: 5%;
+  }
+
+  .stats-symbol-logo {
+    font-size: 10px;
+    margin-bottom: 2rem;
+    width: 10px;
+  }
+
+  .paid-icon {
+    font-size: 5px;
+  }
+
+  .all-time-profit {
+    margin-left: 2.5rem;
+  }
+}

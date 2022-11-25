@@ -9,7 +9,7 @@ function Card({ logo, title, symbol, price, priceChange }) {
 
   return (
     <>
-      <div className="duration-800 mx-1 mt-5 w-full cursor-default rounded-xl bg-[#1B2028] transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:bg-[#00cccb] dark:shadow-xl">
+      <div className="card duration-800 mx-1 mt-5 w-full cursor-default rounded-xl bg-[#1B2028] transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:bg-[#00cccb] dark:shadow-xl">
         <div className="card-heading flex items-center justify-between">
           <div className="card-heading-logo flex items-center">
             <div className="card-heading-logo-img my-7 ml-7 mr-5 flex h-11 w-11 items-center justify-center rounded-xl bg-[#31353f] dark:bg-transparent">
@@ -28,42 +28,46 @@ function Card({ logo, title, symbol, price, priceChange }) {
               </h6>
             </div>
           </div>
-          {priceChangeToNumber <= 0 ? (
-            <ArrowDropDownIcon className="mr-3 text-[#C82E2E] dark:text-[#ffd910]" />
-          ) : (
-            <ArrowDropUpIcon className="mr-3 text-[#1ECB4F] dark:text-[#ffd910]" />
-          )}
+          <div className="trending-up-arrow">
+            {priceChangeToNumber <= 0 ? (
+              <ArrowDropDownIcon className="card-price-change-arrow mr-3 text-[#C82E2E] dark:text-[#ffd910]" />
+            ) : (
+              <ArrowDropUpIcon className="card-price-change-arrow mr-3 text-[#1ECB4F] dark:text-[#ffd910]" />
+            )}
+          </div>
         </div>
 
         <div className="card-bottom mt-1 mb-2 ml-7 flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-semibold text-white dark:text-black">
+            <h1 className="card-price-text text-2xl font-semibold text-white dark:text-black">
               ${price}
             </h1>
 
             <h4
-              className="dark:hidden"
+              className="card-price-change-percentage dark:hidden"
               style={{
                 color: priceChangeToNumber <= 0 ? "#C82E2E" : "#1ECB4F",
               }}
             >
               {priceChange}
             </h4>
-            <h4 className="hidden dark:visible dark:text-white">
+            <h4 className="card-price-change-percentage hidden dark:visible dark:text-white">
               {priceChange}
             </h4>
           </div>
-          {priceChangeToNumber <= 0 ? (
-            <TrendingDownIcon
-              sx={{ fontSize: 60 }}
-              className="relative right-2 text-[#C82E2E] dark:text-[#ffd910]"
-            />
-          ) : (
-            <TrendingUpIcon
-              sx={{ fontSize: 60 }}
-              className="relative right-2 text-[#1ECB4F] dark:text-[#ffd910]"
-            />
-          )}
+          <div className="trending-up-arrow">
+            {priceChangeToNumber <= 0 ? (
+              <TrendingDownIcon
+                sx={{ fontSize: 60 }}
+                className="relative right-2 text-[#C82E2E] dark:text-[#ffd910]"
+              />
+            ) : (
+              <TrendingUpIcon
+                sx={{ fontSize: 60 }}
+                className=" relative right-2 text-[#1ECB4F] dark:text-[#ffd910]"
+              />
+            )}
+          </div>
         </div>
       </div>
     </>

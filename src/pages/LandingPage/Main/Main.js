@@ -224,7 +224,7 @@ function Main() {
         <News newsData={newsData} />
 
         {/* Show More button */}
-        <div className="my-10 flex justify-center">
+        <div className="show-more my-10 flex justify-center">
           <Link to="/news-tab">
             <button
               type="button"
@@ -236,7 +236,7 @@ function Main() {
         </div>
 
         {/* Partners */}
-        <div>
+        <div className="">
           <Partners />
         </div>
       </>

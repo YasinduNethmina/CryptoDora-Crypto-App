@@ -142,7 +142,7 @@ function AddTransaction({ coinData, data, holdings }) {
         </h1>
         <button
           onClick={handleCloseBtn}
-          className="rounded-md px-2 text-xl text-white hover:text-red-500"
+          className="rounded-md px-2 text-xl text-white hover:text-red-500 dark:text-green-500 dark:hover:text-red-500"
         >
           X
         </button>
@@ -167,7 +167,7 @@ function AddTransaction({ coinData, data, holdings }) {
         onChange={handleDropdown}
         name="coins"
         id="coins"
-        className="mx-auto my-4 flex w-4/5 rounded-lg border-2 border-gray-700 border-l-gray-700 bg-gray-700 p-2.5 text-sm text-white outline-none focus:border-blue-500 focus:ring-blue-500 dark:border-[#00cccb] dark:bg-white dark:font-semibold dark:text-black dark:placeholder-gray-400 dark:shadow-lg dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        className="add-transaction-dropdown mx-auto my-4 flex w-4/5 rounded-lg border-2 border-gray-700 border-l-gray-700 bg-gray-700 p-2.5 text-sm text-white outline-none focus:border-blue-500 focus:ring-blue-500 dark:border-[#00cccb] dark:bg-white dark:font-semibold dark:text-black dark:placeholder-gray-400 dark:shadow-lg dark:focus:border-blue-500 dark:focus:ring-blue-500"
       >
         {coinSymbolsArray.map((coinSymbol) => {
           return <option value={coinSymbol}>{coinSymbol.toUpperCase()}</option>;

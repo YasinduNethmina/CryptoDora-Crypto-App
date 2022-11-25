@@ -1,3 +1,14 @@
+@media (max-width: 640px) {
+  .NewsTop1,
+  .NewsTop2,
+  .NewsTop3,
+  .NewsTop4,
+  .NewsCard2,
+  .NewsCard1 {
+    display: none;
+  }
+}
+
 .NewsTop1 {
   position: absolute;
   top: 0;

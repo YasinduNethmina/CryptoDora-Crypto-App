@@ -8,3 +8,9 @@
   margin-left: 100%;
   margin-top: 5rem;
 }
+
+@media (max-width: 640px) {
+  .show-more {
+    margin-right: 4rem;
+  }
+}

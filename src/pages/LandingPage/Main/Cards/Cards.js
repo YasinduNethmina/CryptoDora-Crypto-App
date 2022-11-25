@@ -45,6 +45,7 @@ function Cards({ stats, gas, cards, randomNumber }) {
             />
           )}
           {/* Random Card ETH or DOT */}
+
           {randomNumber.data[0] === 1 ? (
             <Card
               title="Ethereum"

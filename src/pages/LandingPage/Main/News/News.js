@@ -62,6 +62,28 @@ function News({ newsData }) {
         />
       </div>
 
+      {/* Mobile only visible */}
+      <div className="news-banner-mobile flex justify-center sm:hidden">
+        <NewsBanner
+          title={newsData[2].title}
+          img={newsData[2].urlToImage}
+          date={newsData[2].publishedAt}
+          description={newsData[2].description}
+          source={newsData[2].source.name}
+        />
+      </div>
+
+      {/* Mobile only visible */}
+      <div className="news-banner-mobile flex justify-center sm:hidden">
+        <NewsBanner
+          title={newsData[6].title}
+          img={newsData[6].urlToImage}
+          date={newsData[6].publishedAt}
+          description={newsData[6].description}
+          source={newsData[6].source.name}
+        />
+      </div>
+
       {/* News Cards 01 */}
       <div className="newsCards flex w-full">
         <NewsCard

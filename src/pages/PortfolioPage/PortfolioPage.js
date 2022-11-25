@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Footer from "../LandingPage/Footer/Footer";
 import PortfolioTab from "./PortfolioTab/PortfolioTab";
 import LeftSidebar from "../LandingPage/LeftSidebar/LeftSidebar";
+import "./PortfolioPage.scss";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -34,7 +35,7 @@ function PortfolioPage() {
             <div className="main w-2/12">
               <LeftSidebar />
             </div>
-            <div className="main mt-20 mr-5 w-10/12">
+            <div className="main portfolio-tab mt-20 mr-5 w-10/12">
               <PortfolioTab />
             </div>
           </div>

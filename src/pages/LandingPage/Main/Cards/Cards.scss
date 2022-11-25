@@ -1,7 +1,54 @@
 @media (max-width: 640px) {
+  .card {
+    height: 8rem;
+  }
+
   .cards-section {
     position: relative;
-    top: 0.5%;
-    margin-bottom: 2%;
+    width: 30%;
+    right: 5%;
+    top: 1%;
+
+    margin-bottom: 5%;
+  }
+
+  .card-heading {
+    position: relative;
+    right: 15%;
+    bottom: 10%;
+  }
+
+  .card-heading-logo-text {
+    position: relative;
+    font-size: small;
+    right: 15%;
+  }
+
+  .card-price-change-arrow {
+    display: none;
+  }
+
+  .trending-up-arrow {
+    display: none;
+  }
+
+  .card-bottom {
+    text-align: center;
+  }
+
+  .card-price-text {
+    font-size: medium;
+    position: relative;
+    right: 2%;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0;
+    bottom: 2rem;
+  }
+
+  .card-price-change-percentage {
+    position: relative;
+    bottom: 2rem;
+    font-size: small;
   }
 }

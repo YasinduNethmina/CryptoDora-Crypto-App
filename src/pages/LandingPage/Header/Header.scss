@@ -41,9 +41,17 @@
 }
 
 @media (max-width: 640px) {
+  .header {
+    text-align: center;
+  }
+
+  .profile-section {
+    margin-right: 10%;
+  }
+
   .brand-title {
     font-size: larger;
-    margin-left: 20%;
+    margin-left: 25%;
   }
 
   .stats-notifications {
@@ -55,24 +63,40 @@
   }
 
   .searchbar {
-    margin-left: 0;
+    width: 100%;
+    margin-left: 1rem;
+  }
+
+  .searchbar-input {
+    width: 10rem;
   }
 
   .stats-profile-name {
     display: none;
-    margin: 0;
   }
 
   .stats-theme-label {
-    margin-right: 15%;
+    position: relative;
+    left: 3%;
   }
 
   .stats-profile {
-    margin-left: 0;
-    padding: 0;
+    height: 4rem;
+    width: 4rem;
+    margin-left: 20%;
   }
 
   .header-signout {
-    font-size: 1rem;
+    display: none;
+    font-size: small;
+  }
+
+  .profile-arrow-down {
+    display: none;
+  }
+
+  .searchbar-btn {
+    position: relative;
+    left: 0.5rem;
   }
 }

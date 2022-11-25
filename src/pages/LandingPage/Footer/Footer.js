@@ -4,6 +4,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { Link } from "react-router-dom";
+import "./Footer.scss";
 
 function Footer() {
   const [subscribe, setSubscribe] = useState(
@@ -16,9 +17,9 @@ function Footer() {
   };
 
   return (
-    <div className="bg-[#1B2028] text-sm text-[#9E9E9a] dark:bg-white dark:font-semibold dark:text-black dark:shadow-lg">
+    <div className="footer-section bg-[#1B2028] text-sm text-[#9E9E9a] dark:bg-white dark:font-semibold dark:text-black dark:shadow-lg">
       <div className="mt-20 flex justify-around py-10">
-        <div className="w-1/5">
+        <div className="footer-products w-1/5">
           {/* Products */}
           <h4 className="mb-4 cursor-pointer text-lg text-sky-200 hover:text-sky-400 dark:font-semibold dark:text-[#00cccb]">
             Products
@@ -53,14 +54,14 @@ function Footer() {
 
         <div className="w-1/5">
           {/* Form */}
-          <h4 className="mb-4 cursor-pointer text-lg text-sky-200 hover:text-sky-400 dark:font-semibold dark:text-[#00cccb]">
+          <h4 className="footer-subscribe mb-4 cursor-pointer text-lg text-sky-200 hover:text-sky-400 dark:font-semibold dark:text-[#00cccb]">
             Subscribe
           </h4>
 
           <form action="submit" className="flex">
             <input
               pattern=".+@globex\.com"
-              className="h-10 rounded-lg bg-[#31353f] pl-4 outline-none dark:bg-[#fff] dark:font-semibold dark:text-black dark:shadow-lg"
+              className="footer-input h-10 rounded-lg bg-[#31353f] pl-4 outline-none dark:bg-[#fff] dark:font-semibold dark:text-black dark:shadow-lg"
               type="email"
               placeholder="enter your email..."
               required
@@ -68,11 +69,11 @@ function Footer() {
             <button type="submit" onClick={handleButton}>
               <ArrowForwardIcon
                 style={{ fontSize: 38 }}
-                className="ml-2 rounded-lg bg-[#188CFF] text-xl text-white hover:bg-gray-600 hover:text-black dark:bg-[#00cccb] dark:text-white dark:shadow-lg dark:hover:scale-105"
+                className="footer-btn ml-2 rounded-lg bg-[#188CFF] text-xl text-white hover:bg-gray-600 hover:text-black dark:bg-[#00cccb] dark:text-white dark:shadow-lg dark:hover:scale-105"
               />
             </button>
           </form>
-          <p className="mt-4">{subscribe}</p>
+          <p className="footer-subscribe-bottom mt-4">{subscribe}</p>
         </div>
       </div>
 

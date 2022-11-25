@@ -4,7 +4,7 @@ import "./Partners.scss";
 function Partners() {
   return (
     <>
-      <h1 className="mb-10 bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text pt-20 text-center text-4xl font-bold text-transparent">
+      <h1 className="partners-header mb-10 bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text pt-20 text-center text-4xl font-bold text-transparent">
         Our Partners.
       </h1>
       <div className="partners flex h-40">
