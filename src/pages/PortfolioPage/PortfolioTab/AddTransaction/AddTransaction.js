@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./addTransaction.scss";
+import "./AddTransaction.scss";
 
 function AddTransaction({ coinData, data, holdings }) {
   const [pricePerCoin, setPricePerCoin] = useState(0);

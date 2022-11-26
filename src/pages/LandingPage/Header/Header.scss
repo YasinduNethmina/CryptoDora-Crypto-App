@@ -43,60 +43,52 @@
 @media (max-width: 640px) {
   .header {
     text-align: center;
+    height: 5.5rem;
   }
 
-  .profile-section {
-    margin-right: 10%;
+  .header-brand-title {
+    font-size: large;
   }
 
-  .brand-title {
-    font-size: larger;
-    margin-left: 25%;
+  .header-search {
+    margin: 0 1rem 0 0;
   }
 
-  .stats-notifications {
+  .header-searchbar-btn {
+    width: 0;
+  }
+
+  .header-profile-section {
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .header-profile-btn {
+    margin: 0;
+  }
+
+  .header-notifications-btn {
     display: none;
   }
 
-  .header-dropdown {
+  .header-profile-img {
+    width: 8rem;
+  }
+
+  .header-profile-name {
     display: none;
   }
 
-  .searchbar {
-    width: 100%;
-    margin-left: 1rem;
-  }
-
-  .searchbar-input {
-    width: 10rem;
-  }
-
-  .stats-profile-name {
+  .header-profile-arrow-down {
     display: none;
   }
 
-  .stats-theme-label {
-    position: relative;
-    left: 3%;
-  }
-
-  .stats-profile {
-    height: 4rem;
-    width: 4rem;
-    margin-left: 20%;
-  }
-
-  .header-signout {
-    display: none;
+  .header-signout-text {
+    margin: 0 1rem;
     font-size: small;
   }
 
-  .profile-arrow-down {
-    display: none;
-  }
-
-  .searchbar-btn {
-    position: relative;
-    left: 0.5rem;
+  .header-theme-label {
+    margin: 0 1rem 0 0;
   }
 }

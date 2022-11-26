@@ -1,0 +1,19 @@
+@media (max-width: 640px) {
+  .coin-header {
+    position: relative;
+    right: 2.7rem;
+    width: 25rem;
+  }
+
+  .coin-chart {
+    display: none;
+  }
+
+  .chart-ad {
+    display: none;
+  }
+
+  .goBackBtn {
+    display: none;
+  }
+}

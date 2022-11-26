@@ -7,6 +7,7 @@ import NewsTab from "./NewsTab/NewsTab";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import NewsTabRight from "./NewsTabRight/NewsTabRight";
 import NewsTabLeft from "./NewsTabLeft/NewsTabLeft";
+import "./NewsPage.scss";
 
 const queryClient = new QueryClient({
   defaultOptions: {

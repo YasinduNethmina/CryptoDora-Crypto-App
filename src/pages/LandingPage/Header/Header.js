@@ -107,33 +107,33 @@ function Header() {
       <div className="header notifications fixed z-50 flex w-full items-center justify-between dark:bg-[#F0F0F0] dark:text-black">
         {/* Brand */}
         <Link to="/">
-          <div className="brand flex items-center justify-center">
-            <h1 className="brand-title m-4 bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-3xl font-semibold text-transparent">
+          <div className="flex items-center justify-center">
+            <h1 className="header-brand-title m-4 bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-3xl font-semibold text-transparent">
               crypto dora
             </h1>
           </div>
         </Link>
         {/* Searchbar */}
-        <div className="searchbar ml-20 flex items-center justify-center dark:rounded-full dark:bg-[#fff] dark:text-black dark:shadow-lg">
+        <div className="header-search ml-20 flex items-center justify-center dark:rounded-full dark:bg-[#fff] dark:text-black dark:shadow-lg">
           <input
             value={searchValue}
             id="search-input"
             size={25}
             type="search"
-            className="searchbar-input dark:placeholder-bg-white placeholder-text-[#9e9e9e] flex w-full rounded-lg bg-[#1b2028] py-2 pl-4 pr-10 text-[#9E9E9E] caret-gray-500 focus:outline-none dark:rounded-full dark:bg-[#fff] dark:font-semibold dark:text-[#00cccb] dark:placeholder-[#00cccb]"
+            className="header-searchbar dark:placeholder-bg-white placeholder-text-[#9e9e9e] flex w-full rounded-lg bg-[#1b2028] py-2 pl-4 pr-10 text-[#9E9E9E] caret-gray-500 focus:outline-none dark:rounded-full dark:bg-[#fff] dark:font-semibold dark:text-[#00cccb] dark:placeholder-[#00cccb]"
             placeholder="Search your fav crypto..."
             spellCheck="false"
             autoComplete="off"
             onChange={handleSearchResults}
           />
-          <button className="searchbar-btn">
+          <button className="header-searchbar-btn">
             <SearchIcon className="relative right-8 flex w-10 rounded-xl bg-[#1B2028] text-[#9E9E9E] dark:bg-[#fff] dark:font-semibold dark:text-black dark:hover:text-[#00cccb]" />
           </button>
         </div>
 
         {/* Profile */}
-        <div className="profile-section flex items-center justify-center rounded-full">
-          <button className="stats-notifications dark:rounded-full dark:bg-[#fff] dark:text-black dark:shadow-lg">
+        <div className="header-profile-section flex items-center justify-center rounded-full">
+          <button className="header-notifications-btn dark:rounded-full dark:bg-[#fff] dark:text-black dark:shadow-lg">
             <NotificationsOutlinedIcon
               className="rounded-lg bg-[#1B2028] text-[#9E9E9E] hover:bg-[#9E9E9E] hover:text-[#1b2028] dark:rounded-full dark:bg-[#fff] dark:text-black dark:hover:text-[#00cccb]"
               onClick={handleNotifications}
@@ -146,16 +146,16 @@ function Header() {
           </button>
           {user !== null ? (
             <div className="flex">
-              <button className="stats-profile ml-8 flex items-center dark:rounded-full">
+              <button className="header-profile-btn ml-8 flex items-center dark:rounded-full">
                 {user?.photoURL ? (
                   <img
                     src={user?.photoURL}
-                    className="h-11 w-11 rounded-lg"
+                    className="header-profile-img h-11 w-11 rounded-lg"
                     alt="user-pic"
                   />
                 ) : (
                   <PersonOutlineOutlinedIcon
-                    className="stats-profile rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E] dark:rounded-full dark:text-black dark:hover:text-[#00cccb]"
+                    className="header-profile-img rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E] dark:rounded-full dark:text-black dark:hover:text-[#00cccb]"
                     style={{
                       width: "2.7rem",
                       height: "2.7rem",
@@ -163,45 +163,45 @@ function Header() {
                     }}
                   />
                 )}
-                <h1 className="stats-profile-name ml-4 text-white transition hover:text-[#9E9E9E] dark:font-semibold dark:text-black dark:hover:text-[#00cccb]">
+                <h1 className="header-profile-name ml-4 text-white transition hover:text-[#9E9E9E] dark:font-semibold dark:text-black dark:hover:text-[#00cccb]">
                   {user?.displayName ? user?.displayName : user.email}
                 </h1>
 
-                <div className="profile-arrow-down">
-                  <KeyboardArrowDownOutlinedIcon className="profile-arrow-down ml-4 mr-2 text-[#9e9e9e] dark:font-semibold dark:text-black dark:hover:text-[#00cccb]" />
+                <div className="header-profile-arrow-down">
+                  <KeyboardArrowDownOutlinedIcon className="header-profile-arrow-down ml-4 mr-2 text-[#9e9e9e] dark:font-semibold dark:text-black dark:hover:text-[#00cccb]" />
                 </div>
               </button>
 
               <button
                 onClick={logout}
-                className="header-signout mr-4 flex items-center text-white hover:text-[#9E9E9E] dark:font-semibold dark:text-black  dark:hover:text-[#00cccb]"
+                className="header-signout-text mr-4 flex items-center text-white hover:text-[#9E9E9E] dark:font-semibold dark:text-black  dark:hover:text-[#00cccb]"
               >
                 Sign Out
               </button>
             </div>
           ) : (
             <Link to="/signup-page">
-              <button className="stats-profile ml-8 flex items-center">
+              <button className="header-profile-btn ml-8 flex items-center">
                 <PersonOutlineOutlinedIcon
-                  className="rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E] dark:rounded-full dark:bg-[#fff] dark:shadow-lg dark:hover:text-[#00cccb]"
+                  className="header-profile-img rounded-lg bg-[#9E9E9E] text-[#1b2028] hover:bg-[#1b2028] hover:text-[#9E9E9E] dark:rounded-full dark:bg-[#fff] dark:shadow-lg dark:hover:text-[#00cccb]"
                   style={{
                     width: "2.7rem",
                     height: "2.7rem",
                     padding: ".5rem",
                   }}
                 />
-                <h1 className="header-signout ml-4 text-white transition hover:text-[#9E9E9E]  dark:bg-[#F0F0F0] dark:px-2 dark:py-1 dark:font-semibold dark:text-black  dark:hover:text-[#00cccb]">
+                <h1 className="header-signout-text ml-4 text-white transition hover:text-[#9E9E9E]  dark:bg-[#F0F0F0] dark:px-2 dark:py-1 dark:font-semibold dark:text-black  dark:hover:text-[#00cccb]">
                   Signup or Login
                 </h1>
-                <div className="profile-arrow-down">
-                  <KeyboardArrowDownOutlinedIcon className="profile-arrow-down ml-4 mr-8 text-[#9e9e9e] dark:bg-[#F0F0F0] dark:text-black dark:hover:text-[#00cccb]" />
+                <div className="header-profile-arrow-down">
+                  <KeyboardArrowDownOutlinedIcon className="header-profile-arrow-down ml-4 mr-8 text-[#9e9e9e] dark:bg-[#F0F0F0] dark:text-black dark:hover:text-[#00cccb]" />
                 </div>
               </button>
             </Link>
           )}
 
           <label
-            className="stats-theme-label relative bottom-3.5 flex w-20"
+            className="header-theme-label stats-theme-label relative bottom-3.5 flex w-20"
             htmlFor="theme-change"
           >
             <input

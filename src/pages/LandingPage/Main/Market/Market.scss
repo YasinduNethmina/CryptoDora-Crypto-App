@@ -1,11 +1,20 @@
 @media (max-width: 640px) {
+  .market-header {
+    margin-right: 5%;
+    text-align: center;
+  }
+
+  .market-heading-text {
+    margin-left: 1.25rem;
+  }
+
   .market-box {
     width: 95%;
     margin-right: 4rem;
   }
 
-  .market-supply {
-    display: none;
+  .market-search-bar {
+    width: 100%;
   }
 
   .market-coin-rank {
@@ -16,30 +25,36 @@
     display: none;
   }
 
-  .market-percentage {
-    margin-right: 4rem;
+  .market-supply {
+    display: none;
   }
 
   .market-cap-heading {
     display: none;
   }
 
-  .market-coin-cap {
-    display: none;
+  .market-price-heading {
+    margin-right: 2rem;
+  }
+
+  .market-change-heading {
+    margin-left: 1.5rem;
   }
 
   .market-supply-heading {
     display: none;
   }
 
-  .market-header {
-    text-align: center;
-    width: 95%;
-    margin-right: 5%;
+  .market-change-heading {
+    margin-right: 10%;
   }
 
-  .market-change-heading {
-    margin-right: 7%;
+  .market-percentage {
+    margin-right: 4rem;
+  }
+
+  .market-coin-cap {
+    display: none;
   }
 
   .coin-list {

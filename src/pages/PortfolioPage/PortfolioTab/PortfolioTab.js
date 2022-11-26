@@ -361,8 +361,8 @@ function PortfolioTab() {
                 <h4
                   className={
                     Number(totalPercentage) >= 0
-                      ? "rounded bg-green-500 py-1 pl-1 pr-2 text-center text-white"
-                      : "rounded bg-red-500 py-1 pl-1 pr-2 text-center text-white"
+                      ? "change-percentage rounded bg-green-500 py-1 pl-1 pr-2 text-center text-white"
+                      : "change-percentage rounded bg-red-500 py-1 pl-1 pr-2 text-center text-white"
                   }
                 >
                   {totalPercentage >= 0 ? (
@@ -373,27 +373,27 @@ function PortfolioTab() {
                   {Number(totalPercentage).toFixed(2)}%
                 </h4>
               </div>
-              <div className="flex items-center">
+              <div className="price-change-text flex items-center">
                 <h4
                   className={
                     totalProfit >= 0
-                      ? "text-green-600 dark:text-green-500"
-                      : "text-red-600"
+                      ? "price-change-text text-green-600 dark:text-green-500"
+                      : "price-change-text text-red-600"
                   }
                 >
                   ${totalProfit.toFixed(2)}
                 </h4>
-                <h4 className="ml-4 rounded-lg border-2 px-2 text-white dark:border-black dark:text-black">
+                <h4 className="price-change-label ml-4 rounded-lg border-2 px-2 text-white dark:border-black dark:text-black">
                   24h
                 </h4>
               </div>
             </div>
 
             {/* Add crypto button */}
-            <div className="add-crypto-btn">
+            <div className="">
               <button
                 onClick={handleTransactionMenu}
-                className="mr-4 rounded-lg bg-green-500 px-2 py-3 font-semibold text-white hover:bg-green-600 dark:bg-[#ffd910] dark:text-black"
+                className="add-crypto-btn mr-4 rounded-lg bg-green-500 px-2 py-3 font-semibold text-white hover:bg-green-600 dark:bg-[#ffd910] dark:text-black"
               >
                 <AddCircleIcon />
                 &nbsp; Add Crypto
@@ -402,7 +402,7 @@ function PortfolioTab() {
           </div>
 
           {/* Chart / Allocation / Stats Buttons */}
-          <div className="ml-4 mt-8 flex text-white">
+          <div className="portfolio-info-btns ml-4 mt-8 flex text-white">
             <button
               onClick={handleChart}
               className="mr-2 rounded-lg bg-purple-500 px-4 py-1 hover:bg-purple-700 dark:bg-[#00cccb] dark:hover:bg-sky-500 dark:hover:font-semibold"
@@ -417,7 +417,7 @@ function PortfolioTab() {
             </button>
             <button
               onClick={handleStatistics}
-              className="rounded-lg bg-purple-500 px-4 py-1 hover:bg-purple-700 dark:bg-[#00cccb] dark:hover:bg-sky-500 dark:hover:font-semibold"
+              className="mr-2 rounded-lg bg-purple-500 px-4 py-1 hover:bg-purple-700 dark:bg-[#00cccb] dark:hover:bg-sky-500 dark:hover:font-semibold"
             >
               Statistics
             </button>
@@ -435,7 +435,7 @@ function PortfolioTab() {
                 Add at least one coin to see allocation data...
               </h1>
             ) : (
-              <div className={"mt-4 h-96"}>
+              <div className="doughnut-chart mt-4 h-96">
                 <DoughnutChart
                   selectedCoins={selectedCoins}
                   values={currentValueArray}
@@ -457,8 +457,8 @@ function PortfolioTab() {
               <div className={"mt-4 flex  justify-around"}>
                 {/* All Time Profit */}
                 <div className="all-time-profit duration-800 mr-4 mt-2 h-20 cursor-pointer rounded-xl  bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:border-2 dark:border-black dark:bg-[#ffd910]">
-                  <div className="mx-4 flex items-center justify-center">
-                    <div className="mt-4 flex items-center text-left">
+                  <div className="all-time-profit-inner mx-4 flex items-center justify-center">
+                    <div className="all-time-profit-inner-2 mt-4 flex items-center text-left">
                       <div className="stats-symbol-logo mr-2">
                         <PaidIcon
                           className="paid-icon"
@@ -469,16 +469,16 @@ function PortfolioTab() {
                         />
                       </div>
                       <div>
-                        <h1 className="stats-text text-[#9e9e9e] dark:text-black">
+                        <h1 className="all-time-profit-text text-[#9e9e9e] dark:text-black">
                           All Time Profit
                         </h1>
 
-                        <div className="flex justify-center ">
+                        <div className="flex justify-center">
                           <h4
                             className={
                               totalProfit >= 0
-                                ? "ml-2 text-green-500"
-                                : "ml-2 text-red-500"
+                                ? "arrow-icon ml-2 text-green-500"
+                                : "arrow-icon ml-2 text-red-500"
                             }
                           >
                             {"$" + Number(totalProfit).toFixed(2)}{" "}
@@ -495,15 +495,15 @@ function PortfolioTab() {
                 </div>
 
                 {/* Best Performer */}
-                <div className="duration-800 mr-4 mt-2 h-20 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:border-2 dark:border-black dark:bg-[#ffd910]">
-                  <div className="mx-4 flex items-center justify-center">
+                <div className="best-performer-outer duration-800 mr-4 mt-2 h-20 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:border-2 dark:border-black dark:bg-[#ffd910]">
+                  <div className="best-performer-inner mx-4 flex items-center justify-center">
                     <img
                       className="stats-coin-logo mr-2 mt-4 w-10"
                       src={bestPerformer[0]}
                       alt="coin-logo"
                     />
                     <div className="mt-4 text-left">
-                      <h1 className="stats-text text-[#9e9e9e] dark:text-black">
+                      <h1 className="best-performer-text stats-text text-[#9e9e9e] dark:text-black">
                         Best Performer
                       </h1>
                       <div className="flex justify-center">
@@ -522,8 +522,8 @@ function PortfolioTab() {
                 </div>
 
                 {/* Worst Performer */}
-                <div className="duration-800 mr-4 mt-2 h-20 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:border-2 dark:border-black dark:bg-[#ffd910]">
-                  <div className="mx-4 flex items-center justify-center">
+                <div className="worst-performer-outer duration-800 mr-4 mt-2 h-20 cursor-pointer rounded-xl bg-[#31353f] font-bold text-white transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:border-2 dark:border-black dark:bg-[#ffd910]">
+                  <div className="worst-performer-inner mx-4 flex items-center justify-center">
                     <img
                       className="stats-coin-logo mr-2 mt-4 w-10"
                       src={worstPerformer[0]}
@@ -586,7 +586,7 @@ function PortfolioTab() {
               </div>
 
               <div className="portfolio-change-percentage">
-                <h6 className=" dark:font-semibold">24h Change(%)</h6>
+                <h6 className="dark:font-semibold">24h Change(%)</h6>
                 {change.map((change) => {
                   return (
                     <h4
@@ -625,7 +625,7 @@ function PortfolioTab() {
               </div>
 
               <div>
-                <h6 className="portfolio-total dark:font-semibold">
+                <h6 className="portfolio-spent-text dark:font-semibold">
                   Total Spent
                 </h6>
                 {spent.map((spentValue) => {
@@ -644,7 +644,9 @@ function PortfolioTab() {
               </div>
 
               <div>
-                <h6 className="dark:font-semibold">Current Value</h6>
+                <h6 className="portfolio-current-value-text dark:font-semibold">
+                  Current Value
+                </h6>
                 {currentValue.map((price) => {
                   return (
                     <h4
@@ -678,7 +680,7 @@ function PortfolioTab() {
               </div>
 
               <div>
-                <h6 className="portfolio-actions dark:font-semibold">
+                <h6 className="portfolio-actions-text dark:font-semibold">
                   Actions
                 </h6>
 

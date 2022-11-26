@@ -301,7 +301,7 @@ function CoinChart({
 
   return (
     <>
-      <div className="rounded-xl bg-[#1B2028] dark:bg-white dark:shadow-lg">
+      <div className="coin-chart rounded-xl bg-[#1B2028] dark:bg-white dark:shadow-lg">
         <h4 className="ml-6 mt-10 pt-4 text-2xl font-bold text-white dark:text-black">
           {String(coin).toUpperCase().slice(0, 1) + String(coin).slice(1)} Chart
         </h4>
@@ -350,20 +350,22 @@ function CoinChart({
         </div>
       </div>
 
-      <a
-        href="https://youtu.be/sNteZzrMskQ?t=6"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <img
-          src={require("../../../../../../../assets/images/advertisement.gif")}
-          alt="Advertisement"
-          className="h-40 w-full object-fill px-4"
-        ></img>
-        <h6 className="mt-2 text-center text-sm text-[#9e9e9e] dark:text-black">
-          (Advertisement)
-        </h6>
-      </a>
+      <div className="chart-ad">
+        <a
+          href="https://youtu.be/sNteZzrMskQ?t=6"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src={require("../../../../../../../assets/images/advertisement.gif")}
+            alt="Advertisement"
+            className="h-40 w-full object-fill px-4"
+          ></img>
+          <h6 className="mt-2 text-center text-sm text-[#9e9e9e] dark:text-black">
+            (Advertisement)
+          </h6>
+        </a>
+      </div>
     </>
   );
 }

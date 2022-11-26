@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../LandingPage/Header/Header";
 import Footer from "../LandingPage/Footer/Footer";
 import LeftSidebar from "../LandingPage/LeftSidebar/LeftSidebar";
+import "./CryptoTab.scss";
 import {
   QueryClient,
   QueryClientProvider,

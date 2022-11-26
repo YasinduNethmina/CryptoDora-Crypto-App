@@ -35,7 +35,7 @@ function PortfolioPage() {
             <div className="main w-2/12">
               <LeftSidebar />
             </div>
-            <div className="main portfolio-tab mt-20 mr-5 w-10/12">
+            <div className="portfolio-tab main mt-20 mr-5 w-10/12">
               <PortfolioTab />
             </div>
           </div>

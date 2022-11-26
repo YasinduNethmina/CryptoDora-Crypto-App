@@ -89,26 +89,24 @@ function Market({ list }) {
       <>
         <div className="market-box mb-5 mt-4 h-full w-11/12 justify-center rounded-xl bg-[#1B2028] dark:bg-[#fff] dark:shadow-xl">
           <div className="market-header flex items-center justify-between">
-            <h1 className="p-8 text-xl font-semibold text-white dark:m-4 dark:rounded-xl dark:bg-[#ffd910] dark:px-2 dark:py-1 dark:text-black">
+            <h1 className="market-heading-text p-8 text-xl font-semibold text-white dark:m-4 dark:rounded-xl dark:bg-[#ffd910] dark:px-2 dark:py-1 dark:text-black">
               Live Market
             </h1>
             <input
               placeholder="search for crypto"
               type="search"
-              className="mr-10 rounded-xl border-2 border-sky-400 bg-[#1b2028] py-1 px-4 text-[#9e9e9e] outline-none focus:border-purple-500 dark:rounded-xl dark:border-none dark:border-black dark:bg-[#f4f5f7] dark:py-1 dark:px-2 dark:font-semibold dark:text-black"
+              className="market-search-bar mr-10 rounded-xl border-2 border-sky-400 bg-[#1b2028] py-1 px-4 text-[#9e9e9e] outline-none focus:border-purple-500 dark:rounded-xl dark:border-none dark:border-black dark:bg-[#f4f5f7] dark:py-1 dark:px-2 dark:font-semibold dark:text-black"
               onChange={handleChange}
             />
           </div>
 
           <div className="mb-6 flex w-full justify-around text-[#9e9e9e] dark:font-semibold dark:text-black">
-            <h4 className="relative left-4">Coin</h4>
-            <h4 className="coinPriceChangePercentage market-change-heading relative left-2">
-              Change
-            </h4>
+            <h4 className="market-coin-heading relative left-4">Coin</h4>
+            <h4 className="market-change-heading relative left-2">Change</h4>
             <h4 className="market-cap-heading relative right-6">M.Cap</h4>
             <h4 className="market-supply-heading relative right-8">Supply</h4>
             <h4 className="market-price-heading relative right-4">Price</h4>
-            <h4 className="marketChart relative right-4">Chart</h4>
+            <h4 className="market-chart-heading relative right-4">Chart</h4>
           </div>
 
           {filteredCoins.slice(0, 8).map((coin) => {

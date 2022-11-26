@@ -11,19 +11,19 @@ function Card({ logo, title, symbol, price, priceChange }) {
     <>
       <div className="card duration-800 mx-1 mt-5 w-full cursor-default rounded-xl bg-[#1B2028] transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:bg-[#00cccb] dark:shadow-xl">
         <div className="card-heading flex items-center justify-between">
-          <div className="card-heading-logo flex items-center">
-            <div className="card-heading-logo-img my-7 ml-7 mr-5 flex h-11 w-11 items-center justify-center rounded-xl bg-[#31353f] dark:bg-transparent">
+          <div className="flex items-center">
+            <div className="card-heading-logo my-7 ml-7 mr-5 flex h-11 w-11 items-center justify-center rounded-xl bg-[#31353f] dark:bg-transparent">
               <img
                 className="h-6 w-6 dark:h-10 dark:w-10"
                 src={logo}
                 alt="coin-logo"
               />
             </div>
-            <div className="card-heading-logo-text ml-2">
-              <h1 className="font-semibold text-white dark:text-black">
+            <div className="ml-2">
+              <h1 className="card-heading-name font-semibold text-white dark:text-black">
                 {title}
               </h1>
-              <h6 className="text-[#9E9E9E] dark:rounded-lg dark:bg-[#ffd910] dark:text-center dark:text-black">
+              <h6 className="card-heading-symbol text-[#9E9E9E] dark:rounded-lg dark:bg-[#ffd910] dark:text-center dark:text-black">
                 {symbol}
               </h6>
             </div>

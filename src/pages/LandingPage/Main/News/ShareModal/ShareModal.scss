@@ -2,6 +2,13 @@
   animation: fadeAnimation 0.5s;
 }
 
+@media (max-width: 640px) {
+  .share-modal {
+    position: relative;
+    left: 0;
+  }
+}
+
 @keyframes fadeAnimation {
   0% {
     transform: translateY(2rem);

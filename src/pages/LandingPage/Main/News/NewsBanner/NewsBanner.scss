@@ -5,11 +5,13 @@
 @media (max-width: 640px) {
   .newsBanner {
     width: 100%;
-    height: 14rem;
+    height: 16rem;
     margin-right: 16%;
+    margin-left: 0;
   }
 
   .news-banner-footer {
+    position: relative;
     margin-top: 2rem;
   }
 }

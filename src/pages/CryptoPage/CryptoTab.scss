@@ -1,0 +1,62 @@
+@media (max-width: 640px) {
+  .crypto-tab {
+    width: 100%;
+  }
+
+  .crypto-tab-search {
+    width: 100%;
+  }
+
+  .portfolio-tab-coin-supply {
+    display: none;
+  }
+
+  .crypto-tab-headings {
+    margin: 0;
+    font-size: small;
+  }
+
+  .portfolio-tab-coin-logo {
+    margin-left: -0.1rem;
+  }
+
+  .portfolio-tab-coin-change {
+    position: relative;
+    right: 2.3rem;
+  }
+
+  .portfolio-tab-coin-mcap {
+    position: relative;
+    left: 0.8rem;
+  }
+
+  .portfolio-tab-coin-price {
+    position: relative;
+    left: 0.4rem;
+    text-align: center;
+  }
+
+  .crypto-tab-coin-text {
+    position: relative;
+    left: 1.2rem;
+  }
+
+  .crypto-tab-supply-text {
+    display: none;
+  }
+
+  .crypto-tab-price-text {
+    position: relative;
+    right: 1.5rem;
+  }
+
+  .crypto-tab-change-text {
+    position: relative;
+    left: 0.3rem;
+  }
+
+  .crypto-tab-mcap-text {
+    position: relative;
+    left: -1rem;
+  }
+}

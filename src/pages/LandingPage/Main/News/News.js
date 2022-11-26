@@ -63,7 +63,7 @@ function News({ newsData }) {
       </div>
 
       {/* Mobile only visible */}
-      <div className="news-banner-mobile flex justify-center sm:hidden">
+      <div className="news-banner-mobile news-banner-fix flex justify-center sm:hidden">
         <NewsBanner
           title={newsData[2].title}
           img={newsData[2].urlToImage}
@@ -74,7 +74,7 @@ function News({ newsData }) {
       </div>
 
       {/* Mobile only visible */}
-      <div className="news-banner-mobile flex justify-center sm:hidden">
+      <div className="news-banner-mobile news-banner-fix flex justify-center sm:hidden">
         <NewsBanner
           title={newsData[6].title}
           img={newsData[6].urlToImage}

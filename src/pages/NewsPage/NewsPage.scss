@@ -1,0 +1,59 @@
+@media (max-width: 640px) {
+  .news-card-pc {
+    display: none;
+  }
+
+  .news-heading {
+    margin-top: 5.5rem;
+  }
+
+  .news-buttons {
+    display: flex-wrap;
+    justify-content: center;
+  }
+
+  .bitcoin-btn {
+    margin-bottom: 1rem;
+  }
+
+  .defi-btn {
+    margin-left: 1.5rem;
+  }
+
+  .see-more-btn {
+    display: none;
+  }
+
+  .news-banner {
+    position: relative;
+    right: 1rem;
+  }
+
+  .news-banner-mobile {
+    position: relative;
+    display: block;
+    right: 1rem;
+  }
+
+  .news-banner-mobile-left {
+    position: relative;
+    right: 0;
+    display: block;
+  }
+
+  .moreNewsBtn {
+    position: relative;
+    right: 2rem;
+  }
+
+  .news-tab-creators {
+    width: 80%;
+    position: relative;
+    right: 8%;
+  }
+
+  .moreNewsText {
+    position: relative;
+    right: 2rem;
+  }
+}

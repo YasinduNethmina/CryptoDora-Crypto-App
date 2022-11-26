@@ -5,6 +5,7 @@ import CardLoadingState from "../../../Cards/Card/CardLoadingState";
 import NewsCard from "../../../../Main/News/NewsCard/NewsCard";
 import { db } from "../../../../../../firebase-config";
 import { collection, getDocs } from "firebase/firestore";
+import NewsBanner from "./../../NewsBanner/NewsBanner";
 
 function MoreNews() {
   const [newsData, setNewsData] = useState();
@@ -57,7 +58,7 @@ function MoreNews() {
         <h1 className="mt-12 text-xl font-bold text-white dark:text-black">
           More News for you
         </h1>
-        <div className="mt-4 flex">
+        <div className="more-news-tab mt-4 flex">
           <NewsCard
             title={newsData[0].title}
             img={newsData[0].urlToImage}

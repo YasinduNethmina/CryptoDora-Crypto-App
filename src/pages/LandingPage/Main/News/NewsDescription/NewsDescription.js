@@ -101,7 +101,7 @@ function NewsDescription() {
               <NewsTabLeft />
             </div>
             {/* News Title */}
-            <div className="main w-7/12">
+            <div className="news-description-div main w-7/12">
               <h1 className="mt-24 text-left text-3xl font-semibold text-white dark:text-black">
                 {location.state.title}
               </h1>
@@ -121,7 +121,7 @@ function NewsDescription() {
                 <img className="w-full rounded-xl" src={image} alt="news-pic" />
               </div>
               {/* News Content*/}
-              <div className="text-[#9e9e9e] dark:text-black">
+              <div className="news-description-text text-[#9e9e9e] dark:text-black">
                 <p className="mt-8">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
                   vel aliquet sapien. Ut luctus odio eu nisi rhoncus vestibulum.
@@ -200,7 +200,7 @@ function NewsDescription() {
                 </p>
               </div>
               {/* News Content Bottom */}
-              <div className="text-center text-sky-500 dark:text-[#00cccb]">
+              <div className="news-description-bottom text-center text-sky-500 dark:text-[#00cccb]">
                 <h1>
                   {String(location.state.date).slice(0, 10)} &nbsp;
                   {String(location.state.date).slice(11, 16)}
@@ -218,7 +218,7 @@ function NewsDescription() {
                 </button>
               </div>
               {/* Add comment Section*/}
-              <div class="mt-10 mb-4 inline-flex w-full items-center justify-center">
+              <div class="news-description-hr mt-10 mb-4 inline-flex w-full items-center justify-center">
                 <hr class="my-8 h-px w-full border-0 bg-gray-800 dark:bg-[#00cccb]" />
                 <span class="absolute bg-gray-900 p-2 px-3 text-white dark:bg-[#00cccb]">
                   Add your comment

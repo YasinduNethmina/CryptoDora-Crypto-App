@@ -101,11 +101,11 @@ function NewsTab() {
     return (
       <>
         <div className="w-full">
-          <div className="mt-20 text-xl font-bold text-white dark:text-black">
+          <div className="news-heading mt-20 text-xl font-bold text-white dark:text-black">
             <h1>Top Stories for you</h1>
           </div>
           {/* Placed manually first couple of items */}
-          <div className="mt-5">
+          <div className="news-buttons mt-5">
             <button
               onClick={handleClick}
               value=""
@@ -184,12 +184,12 @@ function NewsTab() {
             >
               Technology
             </button>
-            <button className="w-12 rounded-full py-1 font-semibold text-white hover:font-bold hover:text-[#072D4B] dark:text-black dark:hover:text-[#2F9FF8]">
+            <button className="see-more-btn w-12 rounded-full py-1 font-semibold text-white hover:font-bold hover:text-[#072D4B] dark:text-black dark:hover:text-[#2F9FF8]">
               ...
             </button>
           </div>
 
-          <div className="mt-7 mr-8">
+          <div className="news-banner mt-7 mr-8">
             <NewsBanner
               title={newsData[23].title}
               img={newsData[23].urlToImage}
@@ -198,7 +198,29 @@ function NewsTab() {
               source={newsData[23].source.name}
             />
           </div>
-          <div className="flex">
+
+          {/* Only visible on mobile version */}
+          <div className="news-banner-mobile mt-7 mr-8 hidden">
+            <NewsBanner
+              title={newsData[3].title}
+              img={newsData[3].urlToImage}
+              date={newsData[3].publishedAt}
+              description={newsData[3].description}
+              source={newsData[3].source.name}
+            />
+          </div>
+
+          <div className="news-banner-mobile mt-7 mr-8 hidden">
+            <NewsBanner
+              title={newsData[10].title}
+              img={newsData[10].urlToImage}
+              date={newsData[10].publishedAt}
+              description={newsData[10].description}
+              source={newsData[10].source.name}
+            />
+          </div>
+
+          <div className="news-card-pc flex">
             <NewsCard
               title={newsData[16].title}
               img={newsData[16].urlToImage}
@@ -215,7 +237,7 @@ function NewsTab() {
             />
           </div>
 
-          <div className="flex">
+          <div className="news-card-pc flex">
             <NewsCard
               title={newsData[3].title}
               img={newsData[3].urlToImage}
@@ -232,7 +254,7 @@ function NewsTab() {
             />
           </div>
 
-          <div className="flex">
+          <div className="news-card-pc flex">
             <NewsCard
               title={newsData[5].title}
               img={newsData[5].urlToImage}
@@ -253,7 +275,7 @@ function NewsTab() {
             <h1>
               <HistoryEduIcon /> Creators you should follow
             </h1>
-            <div className="flex w-full items-center justify-between">
+            <div className="news-tab-creators flex w-full items-center justify-between">
               <Creators
                 name="Shan Jay"
                 company="Tech Mint"
@@ -281,7 +303,7 @@ function NewsTab() {
               />
             </div>
           </div>
-          <div className="mt-7 flex">
+          <div className="news-card-pc mt-7 flex">
             <NewsCard
               title={newsData[7].title}
               img={newsData[7].urlToImage}
@@ -298,7 +320,7 @@ function NewsTab() {
             />
           </div>
 
-          <div className="flex">
+          <div className="news-card-pc flex">
             <NewsCard
               title={newsData[9].title}
               img={newsData[9].urlToImage}
@@ -315,7 +337,7 @@ function NewsTab() {
             />
           </div>
 
-          <div className="flex">
+          <div className="news-card-pc flex">
             <NewsCard
               title={newsData[11].title}
               img={newsData[11].urlToImage}
@@ -332,7 +354,7 @@ function NewsTab() {
             />
           </div>
 
-          <div className="mt-7 mr-8">
+          <div className="news-banner-mobile mt-7 mr-8">
             <NewsBanner
               title={newsData[20].title}
               img={newsData[20].urlToImage}
@@ -340,9 +362,27 @@ function NewsTab() {
               description={newsData[20].description}
               source={newsData[20].source.name}
             />
+
+            <div className="news-banner-mobile-left hidden">
+              <NewsBanner
+                title={newsData[7].title}
+                img={newsData[7].urlToImage}
+                date={newsData[7].publishedAt}
+                description={newsData[7].description}
+                source={newsData[7].source.name}
+              />
+
+              <NewsBanner
+                title={newsData[26].title}
+                img={newsData[26].urlToImage}
+                date={newsData[26].publishedAt}
+                description={newsData[26].description}
+                source={newsData[26].source.name}
+              />
+            </div>
           </div>
 
-          <div className="flex">
+          <div className="news-card-pc flex">
             <NewsCard
               title={newsData[14].title}
               img={newsData[14].urlToImage}

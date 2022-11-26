@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../../../../LandingPage/Header/Header";
 import Footer from "../../../../LandingPage/Footer/Footer";
 import LeftSidebar from "../../../../LandingPage/LeftSidebar/LeftSidebar";
+import "./CoinStats.scss";
 import CoinStat from "./CoinStat/CoinStat";
 import { useLocation } from "react-router-dom";
 import {

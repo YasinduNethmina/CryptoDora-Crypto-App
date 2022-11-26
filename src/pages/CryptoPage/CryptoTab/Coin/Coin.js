@@ -69,27 +69,31 @@ function Coin({
                 #0{rank}
               </h4>
             )}
-            <img className="mx-4 h-6 w-6" src={image} alt={name} />
+            <img
+              className="portfolio-tab-coin-logo mx-4 h-6 w-6"
+              src={image}
+              alt={name}
+            />
             <h4 className="market-coin-symbol">{name}</h4>
           </div>
 
-          <div className="coinPriceChangePercentage market-percentage relative w-20 text-right">
+          <div className="portfolio-tab-coin-change relative w-20 text-right">
             {change > 0 ? (
-              <h4 className="text-green-500">{Number(change).toFixed(2)}%</h4>
+              <h4 className=" text-green-500">{Number(change).toFixed(2)}%</h4>
             ) : (
-              <h4 className="text-red-500">{Number(change).toFixed(2)}%</h4>
+              <h4 className=" text-red-500">{Number(change).toFixed(2)}%</h4>
             )}
           </div>
 
-          <div className="market-coin-cap w-20 text-left">
+          <div className="portfolio-tab-coin-mcap w-20 text-left">
             <h4>{marketCapRound}</h4>
           </div>
 
-          <div className="market-supply w-20 text-left">
+          <div className="portfolio-tab-coin-supply w-20 text-left">
             <h4>{circulationSupplyRound}</h4>
           </div>
 
-          <div className="w-20 text-left">
+          <div className="portfolio-tab-coin-price w-20 text-left">
             {price >= 1 ? (
               <h4>${price.toFixed(1)}</h4>
             ) : (

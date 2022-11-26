@@ -3,16 +3,30 @@
     display: none;
   }
 
-  .portfolio-tab {
+  .portfolio-section {
     width: 100%;
-    margin-left: 3%;
-    margin-right: 0;
+    position: relative;
+    margin-top: 6rem;
+    right: 14%;
   }
 
-  .portfolio-section {
-    position: relative;
-    top: 17%;
-    right: 18.5%;
+  .portfolio-tab {
+    margin-left: 0.98rem;
+    margin-bottom: 4rem;
+  }
+
+  .add-crypto-btn {
+    font-size: small;
+    margin-bottom: 0.4rem;
+  }
+
+  .lineChart {
+    padding-right: -2rem;
+  }
+
+  .portfolio-coin-text {
+    font-size: small;
+    margin-left: 0.4rem;
   }
 
   .portfolio-coin-logo {
@@ -26,16 +40,36 @@
 
   .portfolio-balance-text {
     position: relative;
-    padding-top: 1%;
+    font-size: medium;
+  }
+
+  .portfolio-spent-text {
+    font-size: small;
+  }
+
+  .portfolio-current-value-text {
+    font-size: small;
+  }
+
+  .portfolio-actions-text {
+    font-size: small;
   }
 
   .portfolio-total {
     position: relative;
-    right: 8%;
+    font-size: x-large;
   }
 
   .portfolio-coin-logo {
-    margin-left: 2rem;
+    margin-left: 1.5rem;
+  }
+
+  .chart-text {
+    margin-left: -3%;
+  }
+
+  .change-percentage {
+    margin-right: 1rem;
   }
 
   .portfolio-buy-price {
@@ -59,7 +93,6 @@
   }
 
   .add-crypto-btn {
-    margin-left: 2%;
     height: 5%;
   }
 
@@ -73,11 +106,11 @@
   }
 
   .portfolio-actions {
-    margin-right: 1rem;
+    margin-right: 0.1rem;
   }
 
-  .portfolio-tab {
-    margin-bottom: 2rem;
+  .arrow-icon {
+    display: flex;
   }
 
   .add-transaction-dropdown {
@@ -89,16 +122,54 @@
   }
 
   .stats-symbol-logo {
-    font-size: 10px;
     margin-bottom: 2rem;
-    width: 10px;
+  }
+
+  .portfolio-info-btns {
+    display: flex;
+    margin: 0;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    justify-content: space-around;
   }
 
   .paid-icon {
-    font-size: 5px;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding: 0.65rem;
+    margin-top: 1rem;
+  }
+
+  .stats-coin-logo {
+    margin-bottom: 0.5rem;
   }
 
   .all-time-profit {
-    margin-left: 2.5rem;
+    display: none;
+  }
+
+  .stats-text {
+    text-align: center;
+  }
+
+  .all-time-profit-inner {
+    margin-top: -1.2rem;
+  }
+
+  .best-performer-inner {
+    margin-top: -0.35rem;
+  }
+
+  .best-performer-outer {
+    margin-left: 1rem;
+  }
+
+  .worst-performer-inner {
+    margin-top: -0.35rem;
+    padding-right: 0.2rem;
+  }
+
+  .worst-performer-outer {
+    margin-left: 1rem;
   }
 }
