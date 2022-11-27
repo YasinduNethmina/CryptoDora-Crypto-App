@@ -54,22 +54,22 @@ function News({ newsData }) {
       {/* News Banner 01 Main Section */}
       <div className="flex justify-center">
         <NewsBanner
-          title={newsData[15].title}
-          img={newsData[15].urlToImage}
-          date={newsData[15].publishedAt}
-          description={newsData[15].description}
-          source={newsData[15].source.name}
+          title={newsData[13].title}
+          img={newsData[13].urlToImage}
+          date={newsData[13].publishedAt}
+          description={newsData[13].description}
+          source={newsData[13].source.name}
         />
       </div>
 
       {/* Mobile only visible */}
       <div className="news-banner-mobile news-banner-fix flex justify-center sm:hidden">
         <NewsBanner
-          title={newsData[2].title}
-          img={newsData[2].urlToImage}
-          date={newsData[2].publishedAt}
-          description={newsData[2].description}
-          source={newsData[2].source.name}
+          title={newsData[10].title}
+          img={newsData[10].urlToImage}
+          date={newsData[10].publishedAt}
+          description={newsData[10].description}
+          source={newsData[10].source.name}
         />
       </div>
 

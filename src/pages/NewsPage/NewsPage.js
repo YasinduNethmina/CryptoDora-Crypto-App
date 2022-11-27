@@ -8,6 +8,8 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import NewsTabRight from "./NewsTabRight/NewsTabRight";
 import NewsTabLeft from "./NewsTabLeft/NewsTabLeft";
 import "./NewsPage.scss";
+import SidebarMobile from "../LandingPage/Main/SidebarMobile/SidebarMobile";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,6 +22,12 @@ const queryClient = new QueryClient({
 
 function NewsPage() {
   const [backToTopButton, setBackToTopButton] = useState(false);
+
+  // Mobile Menu
+  const [active, setActive] = useState(false);
+  const handleMenu = () => {
+    setActive(!active);
+  };
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -45,6 +53,17 @@ function NewsPage() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
+        {/* Mobile responsive Menu */}
+
+        <MenuIcon
+          style={{ fontSize: "28px" }}
+          className="menu-icon fixed left-4 z-40 cursor-pointer rounded bg-[#1B2028] text-white transition-all duration-300 hover:scale-110"
+          onClick={handleMenu}
+        />
+
+        <div className="sidebar-mobile fixed left-1 z-20 mt-4">
+          <SidebarMobile active={active} />
+        </div>
         <div className="App m-0 bg-[#31353f] p-0 dark:bg-[#f0f0f0]">
           <Header />
 
@@ -64,7 +83,7 @@ function NewsPage() {
           <Footer />
           {setBackToTopButton && (
             <button
-              className="rounded-lg border-2 border-sky-500 dark:rounded dark:border-black"
+              className="back-to-top-btn rounded-lg border-2 border-sky-500 dark:rounded dark:border-black"
               onClick={scrollUp}
               style={{
                 position: "fixed",

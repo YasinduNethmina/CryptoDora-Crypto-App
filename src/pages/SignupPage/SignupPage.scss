@@ -1,0 +1,18 @@
+@media (max-width: 640px) {
+  .signup-page-img {
+    display: none;
+  }
+
+  .signup-page {
+    height: 100vh;
+  }
+
+  .signup-page-inner {
+    width: 100%;
+  }
+
+  .login-page-link {
+    position: relative;
+    top: -0.5rem;
+  }
+}

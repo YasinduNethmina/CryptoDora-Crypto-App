@@ -1,0 +1,33 @@
+@media (max-width: 640px) {
+  .sidebar-mobile {
+    width: 15rem;
+    padding-right: 2rem;
+    display: block;
+  }
+
+  .sidebar-mobile-div {
+    animation: fadeAnim 0.4s;
+  }
+
+  .sidebar-links {
+    width: 76rem;
+  }
+
+  .menu-icon {
+    margin-top: 5.5rem;
+  }
+
+  .sidebarBtn {
+    width: 14%;
+    margin-left: 0.3rem;
+  }
+
+  @keyframes fadeAnim {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}

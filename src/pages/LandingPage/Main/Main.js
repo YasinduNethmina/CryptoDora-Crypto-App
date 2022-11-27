@@ -11,17 +11,25 @@ import ChartLoadingState from "./Chart/ChartLoadingState";
 import Market from "./Market/Market";
 import News from "./News/News";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import MenuIcon from "@mui/icons-material/Menu";
 import Partners from "./Partners/Partners";
 import NewsLoadingState from "./News/NewsLoadingState/NewsLoadingState";
 import Converter from "./Converter/Converter";
 import Chat from "./ChatSection/Chat";
 import { db } from "../../../firebase-config";
 import { collection, getDocs } from "firebase/firestore";
+import SidebarMobile from "./SidebarMobile/SidebarMobile";
 export const coinPriceContext = createContext();
 
 function Main() {
   const [newsData, setNewsData] = useState();
   const mainNewsTab = collection(db, "mainTab_news");
+
+  const [active, setActive] = useState(false);
+  // Mobile menu
+  const handleMenu = () => {
+    setActive(!active);
+  };
 
   useEffect(() => {
     const getUsers = async () => {
@@ -171,28 +179,43 @@ function Main() {
 
   if (isLoading || !newsData)
     return (
-      <div className="cards-section overflow-hidden">
-        <Stats loadingState={isLoading ? true : false} />
-        {/* Cards Loading State */}
-        <div className="cards flex justify-between">
-          <CardLoadingState
-            img={require("../../../assets/images/loading-state-bar.png")}
-          />
-          <CardLoadingState
-            img={require("../../../assets/images/loading-state-bar.png")}
-          />
-          <CardLoadingState
-            img={require("../../../assets/images/loading-state-bar.png")}
-          />
+      <>
+        <div className="cards-section pc-main-loading overflow-hidden">
+          <Stats loadingState={isLoading ? true : false} />
+          {/* Cards Loading State */}
+          <div className="cards flex justify-between">
+            <CardLoadingState
+              img={require("../../../assets/images/loading-state-bar.png")}
+            />
+            <CardLoadingState
+              img={require("../../../assets/images/loading-state-bar.png")}
+            />
+            <CardLoadingState
+              img={require("../../../assets/images/loading-state-bar.png")}
+            />
+          </div>
+          <ChartLoadingState />
+          <NewsLoadingState />
         </div>
-        <ChartLoadingState />
-        <NewsLoadingState />
-      </div>
+
+        <div className="mobile-main-loading mt-24 h-screen w-full animate-pulse bg-[#1B2028]"></div>
+      </>
     );
   else if (isError) return <Navigate to="*" />;
   else {
     return (
       <>
+        {/* Mobile responsive Menu */}
+        <MenuIcon
+          style={{ fontSize: "28px" }}
+          className="menu-icon fixed left-4 z-40 cursor-pointer rounded bg-[#1B2028] text-white transition-all duration-300 hover:scale-110"
+          onClick={handleMenu}
+        />
+
+        <div className="sidebar-mobile fixed left-1 z-20 mt-4">
+          <SidebarMobile active={active} />
+        </div>
+
         <Chat />
         <Cards
           stats={statsQuery.data.data}

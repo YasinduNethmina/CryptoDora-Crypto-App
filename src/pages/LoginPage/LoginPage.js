@@ -6,6 +6,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../../firebase-config";
+import "./LoginPage.scss";
 
 function LoginPage() {
   const [loginEmail, setLoginEmail] = useState(undefined);
@@ -46,8 +47,8 @@ function LoginPage() {
   return (
     <>
       {login && <Navigate to="/" />}
-      <div className="loginPage flex w-full overflow-y-hidden bg-[#31353f]">
-        <div className=" w-1/2 items-center justify-center bg-[#31353F]">
+      <div className="login-page flex w-full overflow-y-hidden bg-[#31353f]">
+        <div className="login-page-inner w-1/2 items-center justify-center bg-[#31353F]">
           <div className="relative top-10">
             <h1 className="ml-10 bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-2xl font-bold text-transparent">
               Welcome Back...
@@ -145,7 +146,7 @@ function LoginPage() {
           </div>
 
           <Link to="/signup-page">
-            <div className="mb-4 flex items-center">
+            <div className="signup-page-link mb-4 flex items-center">
               <h6 className="ml-8 mr-4 text-gray-400">
                 Don't have an account?
               </h6>
@@ -156,7 +157,7 @@ function LoginPage() {
           </Link>
         </div>
 
-        <div className="h-screen w-1/2 bg-[#31353F]">
+        <div className="login-page-img h-screen w-1/2 bg-[#31353F]">
           <img
             className="mt-8 h-screen skew-y-2 bg-cover"
             src={require("../../assets/images/login-img.jpg")}

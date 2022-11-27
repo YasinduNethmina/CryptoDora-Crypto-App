@@ -1,4 +1,19 @@
 @media (max-width: 640px) {
+  .news-page-loading {
+    width: 24rem;
+    position: relative;
+    left: -1.6rem;
+  }
+
+  .back-to-top-btn {
+    display: none;
+  }
+
+  .news-description-img {
+    position: relative;
+    left: 1rem;
+  }
+
   .news-card-pc {
     display: none;
   }
@@ -55,5 +70,9 @@
   .moreNewsText {
     position: relative;
     right: 2rem;
+  }
+
+  .news-description-text {
+    text-align: center;
   }
 }

@@ -73,7 +73,7 @@ function NewsTab() {
   if (!newsData) {
     return (
       <>
-        <div className="mt-20">
+        <div className="news-page-loading mt-20">
           <div className="my-2">
             <CardLoadingState
               img={require("../../../assets/images/loading-state-bar.png")}
@@ -212,11 +212,11 @@ function NewsTab() {
 
           <div className="news-banner-mobile mt-7 mr-8 hidden">
             <NewsBanner
-              title={newsData[10].title}
-              img={newsData[10].urlToImage}
-              date={newsData[10].publishedAt}
-              description={newsData[10].description}
-              source={newsData[10].source.name}
+              title={newsData[15].title}
+              img={newsData[15].urlToImage}
+              date={newsData[15].publishedAt}
+              description={newsData[15].description}
+              source={newsData[15].source.name}
             />
           </div>
 
@@ -356,11 +356,11 @@ function NewsTab() {
 
           <div className="news-banner-mobile mt-7 mr-8">
             <NewsBanner
-              title={newsData[20].title}
-              img={newsData[20].urlToImage}
-              date={newsData[20].publishedAt}
-              description={newsData[20].description}
-              source={newsData[20].source.name}
+              title={newsData[21].title}
+              img={newsData[21].urlToImage}
+              date={newsData[21].publishedAt}
+              description={newsData[21].description}
+              source={newsData[21].source.name}
             />
 
             <div className="news-banner-mobile-left hidden">
@@ -373,11 +373,11 @@ function NewsTab() {
               />
 
               <NewsBanner
-                title={newsData[26].title}
-                img={newsData[26].urlToImage}
-                date={newsData[26].publishedAt}
-                description={newsData[26].description}
-                source={newsData[26].source.name}
+                title={newsData[18].title}
+                img={newsData[18].urlToImage}
+                date={newsData[18].publishedAt}
+                description={newsData[18].description}
+                source={newsData[18].source.name}
               />
             </div>
           </div>

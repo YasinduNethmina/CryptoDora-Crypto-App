@@ -117,7 +117,7 @@ function NewsDescription() {
                   Trending <TrendingUpIcon />
                 </h4>
               </div>
-              <div className="mr-8">
+              <div className="news-description-img mr-8">
                 <img className="w-full rounded-xl" src={image} alt="news-pic" />
               </div>
               {/* News Content*/}

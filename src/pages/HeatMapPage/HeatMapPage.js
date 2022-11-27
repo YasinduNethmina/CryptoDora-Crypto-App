@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../LandingPage/Header/Header";
 import Footer from "../LandingPage/Footer/Footer";
 import LeftSidebar from "../LandingPage/LeftSidebar/LeftSidebar";
-
+import "./HeatmapPage.scss";
 import {
   QueryClient,
   QueryClientProvider,
@@ -28,7 +28,7 @@ function HeatMapPage() {
           <div className="leftSidebar w-2/12">
             <LeftSidebar />
           </div>
-          <div className="main mb-20 mr-6 w-10/12">
+          <div className="heatmap main mb-20 mr-6 w-10/12">
             <HeatMapTab />
           </div>
         </div>
