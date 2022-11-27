@@ -54,12 +54,13 @@ function NewsPage() {
     <>
       <QueryClientProvider client={queryClient}>
         {/* Mobile responsive Menu */}
-
-        <MenuIcon
-          style={{ fontSize: "28px" }}
-          className="menu-icon fixed left-4 z-40 cursor-pointer rounded bg-[#1B2028] text-white transition-all duration-300 hover:scale-110"
-          onClick={handleMenu}
-        />
+        <div className="menu-icon-div hidden">
+          <MenuIcon
+            style={{ fontSize: "28px" }}
+            className="menu-icon fixed left-4 z-40 cursor-pointer rounded bg-[#1B2028] text-white transition-all duration-300 hover:scale-110"
+            onClick={handleMenu}
+          />
+        </div>
 
         <div className="sidebar-mobile fixed left-1 z-20 mt-4">
           <SidebarMobile active={active} />
