@@ -56,7 +56,7 @@ function ExplorerDetailsTab({ text }) {
   } else {
     let latestTransactions = transactionsQuery.data.result;
     return (
-      <div className="duration-800 mx-1 mt-20 w-full cursor-default rounded-xl bg-[#1B2028]">
+      <div className="duration-800 mx-1 mt-20 w-full cursor-default rounded-xl bg-[#1B2028] dark:bg-white dark:text-black dark:shadow-lg">
         <div className="flex justify-between">
           {/* Header */}
           <div className="m-6 flex items-center">
@@ -65,8 +65,10 @@ function ExplorerDetailsTab({ text }) {
               src={require("../../../../../assets/images/ethereum-logo.png")}
               alt=""
             />
-            <h1 className="mr-4 text-xl text-gray-300">Address</h1>
-            <p className="text-[#9e9e9e]">{text}</p>
+            <h1 className="mr-4 text-xl text-gray-300 dark:text-black">
+              Address
+            </h1>
+            <p className="text-[#9e9e9e] dark:text-black">{text}</p>
             <button className="ml-4 rounded-md bg-purple-500 px-2 py-1 text-sm text-white hover:bg-purple-700">
               Copy
             </button>
@@ -102,9 +104,11 @@ function ExplorerDetailsTab({ text }) {
           </div>
         </div>
         <div className=" flex justify-around">
-          <div className="duration-800 cursor-pointer rounded-xl bg-[#1B2028] p-4 transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
-            <h1 className="text-center font-bold text-white">Overview</h1>
-            <h4 className="mt-6 flex items-center text-center text-green-400">
+          <div className="duration-800 cursor-pointer rounded-xl bg-[#1B2028] p-4 transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:border-2 dark:border-black dark:bg-white">
+            <h1 className="text-center font-bold text-white dark:text-black">
+              Overview
+            </h1>
+            <h4 className="mt-6 flex items-center text-center text-green-400 dark:text-black">
               <MonetizationOnIcon style={{ color: "green" }} />
               &nbsp; Balance:{" "}
               {(
@@ -113,7 +117,7 @@ function ExplorerDetailsTab({ text }) {
               ).toFixed(2)}{" "}
               Ether
             </h4>
-            <h4 className="mt-4 flex items-center text-green-400">
+            <h4 className="mt-4 flex items-center text-green-400 dark:text-black">
               <AttachMoneyIcon style={{ color: "green" }} /> &nbsp;ETH Value: $
               {(
                 priceQuery.data.ethereum.usd *
@@ -123,9 +127,11 @@ function ExplorerDetailsTab({ text }) {
             </h4>
           </div>
 
-          <div className="duration-800 cursor-pointer rounded-xl bg-[#1B2028] p-4 transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold">
-            <h1 className="text-center font-bold text-white">More Info</h1>
-            <h4 className="mt-6 text-center text-yellow-400">
+          <div className="duration-800 cursor-pointer rounded-xl bg-[#1B2028] p-4 transition-transform ease-in-out hover:scale-105 hover:border-2 hover:border-gray-300 hover:bg-[#1200] hover:font-semibold dark:border-2 dark:border-black dark:bg-white">
+            <h1 className="text-center font-bold text-white dark:text-black">
+              More Info
+            </h1>
+            <h4 className="mt-6 text-center text-yellow-400 dark:text-black">
               <LocalOfferIcon style={{ color: "yellow" }} /> My Name Tag: Not
               Available
             </h4>

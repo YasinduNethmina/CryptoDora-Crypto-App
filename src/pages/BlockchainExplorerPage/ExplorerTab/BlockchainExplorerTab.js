@@ -135,7 +135,7 @@ function BlockchainExplorerTab() {
               </button>
             </Link>
           </div>
-          <h1 className="mt-1 text-center font-light text-[#9e9e9e] dark:text-[#7e818c]">
+          <h1 className="mt-1 text-center font-light text-[#9e9e9e] dark:text-[#fff]">
             (example: 0x2f5C57ADcFCF7968dcEe63e02Db326ABD6E722C5)
           </h1>
           <h1 className="mt-10 ml-10 text-center font-bold text-yellow-400 ">
