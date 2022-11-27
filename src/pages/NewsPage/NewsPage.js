@@ -57,7 +57,7 @@ function NewsPage() {
         <div className="menu-icon-div hidden">
           <MenuIcon
             style={{ fontSize: "28px" }}
-            className="menu-icon fixed left-4 z-40 cursor-pointer rounded bg-[#1B2028] text-white transition-all duration-300 hover:scale-110"
+            className="menu-icon fixed left-4 top-6 z-40 cursor-pointer rounded bg-[#1B2028] text-white transition-all duration-300 hover:scale-110 dark:bg-white dark:text-black dark:shadow-xl"
             onClick={handleMenu}
           />
         </div>
