@@ -353,9 +353,9 @@ function CoinChart({
       <div className="chart-ad">
         <a href="https://monkeyempire.net/" target="_blank" rel="noreferrer">
           <img
-            src={require("../../../../../../../assets/images/advertisement.gif")}
-            alt="Advertisement"
-            className="relative right-6 ml-8 h-40 w-full object-fill transition-all hover:scale-105 hover:border-2 hover:border-[#1B2028]"
+            src={require("../../../../../../../assets/images/monkeyempire.gif")}
+            alt="monkey-empire-sponsor"
+            className="relative right-6 ml-8 h-40 w-full object-fill transition-all hover:scale-105 hover:border-2 hover:border-[#1B2028] dark:hover:border-2 dark:hover:border-[#00cccb]"
           ></img>
           <h6 className="mt-2 text-center text-sm text-[#9e9e9e] dark:text-black">
             (Advertisement)
