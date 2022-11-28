@@ -351,11 +351,7 @@ function CoinChart({
       </div>
 
       <div className="chart-ad">
-        <a
-          href="https://youtu.be/sNteZzrMskQ?t=6"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href="https://monkeyempire.net/" target="_blank" rel="noreferrer">
           <img
             src={require("../../../../../../../assets/images/advertisement.gif")}
             alt="Advertisement"
