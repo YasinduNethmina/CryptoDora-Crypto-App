@@ -58,7 +58,7 @@ function Coin({
         }
         state={{ data: id }}
       >
-        <div className="mx-4 flex cursor-pointer items-center justify-between rounded-xl py-2 font-semibold text-white transition ease-in-out hover:-translate-y-1 hover:bg-[#262e39] hover:shadow-2xl dark:text-black dark:hover:bg-[#f4f5f7] dark:hover:text-black">
+        <div className="coin-info mx-4 flex cursor-pointer items-center justify-between rounded-xl py-2 font-semibold text-white transition ease-in-out hover:-translate-y-1 hover:bg-[#262e39] hover:shadow-2xl dark:text-black dark:hover:bg-[#f4f5f7] dark:hover:text-black">
           <div className="flex w-20 items-center pl-2">
             {rank < 10 ? (
               <h4 className="market-coin-rank text-[#b5b5b5] dark:text-[#ffd910]">

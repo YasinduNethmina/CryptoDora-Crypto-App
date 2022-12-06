@@ -271,7 +271,7 @@ function NewsTab() {
             />
           </div>
 
-          <div className="mt-5 min-w-full text-xl font-bold text-white dark:text-black">
+          <div className="creators-to-follow mt-5 min-w-full text-xl font-bold text-white dark:text-black">
             <h1>
               <HistoryEduIcon /> Creators you should follow
             </h1>

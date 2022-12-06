@@ -102,3 +102,61 @@
     left: 1rem;
   }
 }
+
+// Desktop shrink only responsive
+@media (min-width: 480px) and (max-width: 560px) {
+  .cards-section {
+    position: relative;
+    width: 30%;
+    right: -4%;
+    top: 1%;
+    margin-bottom: 5%;
+  }
+
+  .header-profile-img {
+    width: 4rem;
+  }
+
+  .news-buttons {
+    position: relative;
+    right: 2.1rem;
+    text-align: center;
+  }
+
+  .creators-to-follow {
+    position: relative;
+    left: 1.6rem;
+  }
+
+  .portfolio-section {
+    position: relative;
+    width: 101% !important;
+    margin-bottom: 2rem;
+  }
+
+  .bubble {
+    margin: 0;
+    padding: 0;
+  }
+
+  .crypto-tab {
+    position: relative;
+    right: 0.35rem;
+  }
+
+  .coin-stat {
+    position: relative;
+    left: 3.5rem;
+  }
+
+  .news-description-div {
+    position: relative;
+    left: -2.5rem;
+    padding-left: 5rem;
+  }
+
+  .more-news-tab {
+    position: relative;
+    left: 2rem !important;
+  }
+}

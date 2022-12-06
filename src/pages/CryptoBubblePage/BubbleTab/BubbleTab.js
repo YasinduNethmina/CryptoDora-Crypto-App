@@ -39,7 +39,7 @@ function BubbleTab() {
 
     return (
       <>
-        <div className="mt-20 flex h-full w-full flex-wrap ">
+        <div className="mt-20 flex h-full w-full flex-wrap">
           {allBubbles.map((bubble) => {
             return (
               <CoinBubble

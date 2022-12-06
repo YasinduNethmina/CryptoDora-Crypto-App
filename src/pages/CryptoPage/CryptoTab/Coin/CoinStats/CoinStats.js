@@ -32,7 +32,7 @@ function CryptoPage() {
           <div className="leftSidebar w-2/12">
             <LeftSidebar />
           </div>
-          <div className="main mb-20 mr-6 w-10/12">
+          <div className="main coin-stat mb-20 mr-6 w-10/12">
             <CoinStat coin={coin} />
           </div>
         </div>

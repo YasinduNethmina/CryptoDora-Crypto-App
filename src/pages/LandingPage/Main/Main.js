@@ -219,12 +219,14 @@ function Main() {
         </div>
 
         <Chat />
+
         <Cards
           stats={statsQuery.data.data}
           gas={ethGasQuery.data}
           cards={cardsQuery.data}
           randomNumber={randomNumberQuery}
         />
+
         <div className="flex justify-center">
           <coinPriceContext.Provider
             value={[cardsQuery.data, flagCodeQuery.data]} //used to get btc price for currencydropdown
