@@ -116,7 +116,7 @@ function Footer() {
             <LinkedInIcon className="mx-4 hover:text-white dark:text-black dark:hover:text-blue-600" />
           </a>
           <a
-            href="https://twitter.com/yasinduneth"
+            href="https://twitter.com/yasindu_neth"
             rel="noreferrer"
             target="_blank"
           >

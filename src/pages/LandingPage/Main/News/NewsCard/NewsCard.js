@@ -50,9 +50,9 @@ function NewsCard01({ title, img, date, description, source }) {
               {String(description).slice(0, 80)}...
             </p>
           </div>
-          <div className="news-card-img m-4 h-40 w-1/3">
+          <div className="news-card-img min-h-40 m-4 h-40 w-1/3 min-w-[40%]">
             <img
-              className="h-32 w-full rounded-sm object-cover dark:border-2 dark:hover:border-[#00cccb]"
+              className="min-h-32 min-w-32 h-32 w-full rounded-sm object-cover dark:border-2 dark:hover:border-[#00cccb]"
               src={img}
               alt="news-pic"
             />
