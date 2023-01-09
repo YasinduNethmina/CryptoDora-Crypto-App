@@ -2,7 +2,7 @@
 <br />
 <div align="center"><img src="./resources/Home.jpg" width="950" height="550"></div>
 
-#### Live Link: https://nft-marketplace-sovq9dcag-yasindunethmina.vercel.app/
+#### Live Link: https://cryptodora-app.web.app/
 
 ## Welcome to the CryptoDora GitHub project! This project is a realtime crypto website for checking prices, stats, alerts and your portfolio. This project is built using the following technologies:
 
