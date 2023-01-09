@@ -1,6 +1,6 @@
 # CryptoDora - Realtime Crypto Charts, News, Alerts, Stats
 <br />
-<div align="center"><img src="./resources/Home.png" width="950" height="550"></div>
+<div align="center"><img src="./resources/Home.jpg" width="950" height="550"></div>
 
 #### Live Link: https://nft-marketplace-sovq9dcag-yasindunethmina.vercel.app/
 
