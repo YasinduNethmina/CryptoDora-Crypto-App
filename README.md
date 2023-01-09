@@ -1,4 +1,4 @@
-# CryptoDora - Realtime Crypto Charts, News, Alerts, Stats
+# CryptoDora - Realtime Crypto Charts, News, Alerts & Stats
 <br />
 <div align="center"><img src="./resources/Home.jpg" width="950" height="550"></div>
 
