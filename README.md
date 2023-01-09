@@ -18,7 +18,7 @@
 <br />
 • Firebase: Realtime database used for hosting and authentication.
 <br />
-• Jest: Used for testing purposes
+• Jest: Used for testing purposes.
 
 # Features
 
