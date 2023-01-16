@@ -38,7 +38,7 @@ const WalletPage = () => {
           <div className="leftSidebar w-2/12">
             <LeftSidebar />
           </div>
-          <div className="main mb-20 mr-6 w-10/12">
+          <div className="flex h-screen w-full justify-center">
             <WalletData />
           </div>
         </div>

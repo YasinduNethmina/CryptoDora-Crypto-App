@@ -30,7 +30,7 @@ const WalletHead = ({ id, balance }) => {
   } else if (coin) {
     return (
       <div>
-        <h4 className="font-semibold text-gray-400">
+        <h4 className="text-2xl font-semibold text-gray-400">
           $
           {(Number(coin[selectedCoinNameVar]?.usd) * Number(balance)).toFixed(
             2

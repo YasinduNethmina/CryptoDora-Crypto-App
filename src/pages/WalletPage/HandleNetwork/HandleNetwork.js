@@ -54,27 +54,15 @@ const HandleNetwork = () => {
   return (
     <div className="notificationsTab rounded-xl border-solid border-sky-500 bg-[#1B2028] px-2 py-1 text-center text-xs font-semibold text-white shadow-xl dark:border-[#00cccb] dark:bg-white dark:text-[#00cccb]">
       <div onClick={() => exsistingChainConnect(1)}>
-        <FilterButton name="ETHER MAINNET" />
-      </div>
-
-      <div onClick={() => handleNetworkSwitch("energi")}>
-        <FilterButton name="ENERGI MAINNET" />
-      </div>
-
-      <div onClick={() => handleNetworkSwitch("polygon")}>
-        <FilterButton name="POLYGON MAINNET" />
-      </div>
-
-      <div onClick={() => handleNetworkSwitch("bsc")}>
-        <FilterButton name="BINANCE MAINNET" />
+        <FilterButton name="ETHEREUM MAINNET" />
       </div>
 
       <div onClick={() => exsistingChainConnect(5)}>
-        <FilterButton name="ETHER GOERLI" />
+        <FilterButton name="ETHEREUM GOERLI" />
       </div>
 
       <div onClick={() => exsistingChainConnect(43113)}>
-        <FilterButton name="AVAX TESTNET" />
+        <FilterButton name="AVALANCHE TESTNET" />
       </div>
     </div>
   );

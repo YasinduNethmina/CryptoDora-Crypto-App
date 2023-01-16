@@ -206,12 +206,12 @@ const WalletData = () => {
 
   if (defaultAccount === null || undefined) {
     return (
-      <div className="flex h-screen w-full items-center justify-center">
+      <div className="flex w-full items-center justify-center">
         <div>
           <div className="relative bottom-16 mb-12" ref={foxContainer}></div>
           <button
             onClick={connectWalletHandler}
-            className="relative bottom-12 flex items-center justify-center rounded-xl bg-blue-600 px-6 py-4 text-xl font-semibold text-white shadow-xl shadow-blue-500 transition-all duration-500 hover:-translate-y-2 hover:scale-105 hover:bg-[#00cccb] hover:text-white dark:bg-white dark:text-[#00cccb]"
+            className="relative bottom-12 flex items-center justify-center rounded-xl bg-blue-600 px-6 py-4 text-xl font-semibold text-white shadow-xl shadow-blue-500 transition-all duration-500 hover:-translate-y-2 hover:scale-105 hover:bg-blue-700 hover:text-white dark:bg-white dark:text-[#00cccb] dark:shadow-[#00cccb]"
           >
             CONNECT WALLET
           </button>
@@ -222,9 +222,9 @@ const WalletData = () => {
     return (
       <>
         <QueryClientProvider client={queryClient}>
-          <div className="wallet m-4 mt-24 rounded-xl bg-[#1b2028] p-8 text-center dark:bg-white">
-            <div className="relative flex justify-end sm:bottom-2">
-              <a href="/wallet-page">
+          <div className="wallet mx-4 mb-5 mt-24 w-full rounded-xl bg-[#1b2028] text-center dark:bg-white lg:mr-8">
+            <div className="relative mx-8 mt-6 flex justify-end sm:bottom-2">
+              <a href="/wallet-tab">
                 <button className="absolute -left-4 z-50 flex items-center justify-center rounded-full border-2 border-sky-400 bg-[#1b2028] px-2 py-1 text-xs font-semibold text-white dark:border-[#00cccb] dark:bg-[#00cccb] sm:-left-3">
                   🟠 DISCONNECT <KeyboardArrowDownIcon />
                 </button>
@@ -233,14 +233,14 @@ const WalletData = () => {
               <div className="absolute h-72">
                 <button
                   onClick={handleNetworkChangeComp}
-                  className="relative z-50 flex items-center justify-center rounded-full border-2 border-sky-400 bg-[#1b2028] px-2 py-1 text-xs font-semibold text-white transition-all hover:scale-105 hover:duration-300 dark:border-[#00cccb] dark:bg-[#00cccb]"
+                  className="relative left-4 z-50 flex items-center justify-center rounded-full border-2 border-sky-400 bg-[#1b2028] px-2 py-1 text-xs font-semibold text-white transition-all hover:scale-105 hover:duration-300 dark:border-[#00cccb] dark:bg-[#00cccb]"
                 >
                   ⚪ {connectedChain} <KeyboardArrowDownIcon />
                 </button>
 
                 <div
                   className={
-                    networkComponent ? "absolute top-10 z-50" : "hidden"
+                    networkComponent ? "absolute top-10 left-8 z-50" : "hidden"
                   }
                 >
                   <HandleNetwork />
@@ -249,8 +249,8 @@ const WalletData = () => {
             </div>
 
             <div>
-              <div className="relative bottom-10 rounded-xl p-1 md:mt-12">
-                <h1 className="text-xl font-bold text-white dark:text-[#00cccb]">
+              <div className="relative -bottom-16 mt-4 rounded-xl p-1 md:mt-12 lg:bottom-10">
+                <h1 className="text-2xl font-bold text-white dark:text-[#00cccb]">
                   Account
                 </h1>
                 <h4
@@ -277,75 +277,50 @@ const WalletData = () => {
                   Copied!
                 </h4>
 
-                <div className="mt-10">
-                  <h4 className="relative right-1 text-4xl font-semibold text-white dark:text-[#9e9e9e] sm:text-3xl">
+                <div className="mt-16">
+                  <h4 className="relative right-1 top-6 text-5xl font-semibold text-white dark:text-gray-500">
                     {userBalance == 0
                       ? Number(userBalance).toFixed(0)
                       : Number(userBalance).toFixed(4)}
                     &nbsp;
                     {connectedChain.substring(0, connectedChain.indexOf(" "))}
                   </h4>
-
-                  <WalletHead id={connectedChainId} balance={userBalance} />
+                  <div className="mt-12">
+                    <WalletHead id={connectedChainId} balance={userBalance} />
+                  </div>
                 </div>
               </div>
 
               <div className="">
-                <h1 className="mb-4 text-4xl font-bold text-sky-400 underline-offset-8 dark:text-[#00cccb] sm:text-3xl">
-                  Transfer Funds
-                </h1>
-                <KeyboardArrowDownIcon
-                  className="animate-bounce text-sky-400 dark:text-[#00cccb]"
-                  style={{ fontSize: "32px" }}
-                />
-                <div className="my-4 flex justify-evenly">
+                <div className="mt-24 flex justify-evenly px-8">
                   <input
-                    className="mr-2 w-1/3 rounded-xl border-2 border-sky-600 bg-[#1b2028] py-2 pl-4 text-sky-500 placeholder-[#9e9e9e] caret-sky-500 focus:border-sky-500 focus:outline-none dark:border-[#00cccb] dark:bg-white dark:text-[#00cccb] dark:caret-[#00cccb] sm:w-1/2"
+                    className="mr-2 w-1/2 rounded-xl border-2 border-sky-600 bg-[#1b2028] py-2 pl-4 text-sky-500 placeholder-[#9e9e9e] caret-sky-500 focus:border-sky-500 focus:outline-none dark:border-[#00cccb] dark:bg-white dark:text-[#00cccb] dark:caret-[#00cccb]"
                     type="text"
                     onChange={(e) => setRecepientAddress(e.target.value)}
                     placeholder="Enter address..."
                   />
 
                   <input
-                    className="ml-2 w-1/3 rounded-xl border-2 border-sky-600 bg-[#1b2028] py-2 pl-4 text-sky-500 placeholder-[#9e9e9e] caret-sky-500 focus:border-sky-500 focus:outline-none dark:border-[#00cccb] dark:bg-white dark:text-[#00cccb] dark:caret-[#00cccb] sm:w-1/2"
+                    className="ml-2 w-1/2 rounded-xl border-2 border-sky-600 bg-[#1b2028] py-2 pl-4 text-sky-500 placeholder-[#9e9e9e] caret-sky-500 focus:border-sky-500 focus:outline-none dark:border-[#00cccb] dark:bg-white dark:text-[#00cccb] dark:caret-[#00cccb]"
                     type="number"
                     onChange={(e) => setETHAmount(e.target.value)}
-                    placeholder="Enter amount of coins..."
+                    placeholder="Enter amount..."
                   />
                 </div>
 
                 <button
-                  className="mt-6 rounded-lg border-2 border-sky-400 px-4 py-2 text-xl font-extrabold text-white transition-all duration-500 hover:-translate-y-2 hover:bg-sky-600 hover:text-white dark:border-[#00cccb] dark:text-[#00cccb] dark:hover:bg-[#00cccb] md:mt-10 lg:mt-16"
+                  className="text- mt-5 ml-2 rounded-lg border-2 border-sky-600 px-4 py-2 text-xl font-extrabold text-white transition-all duration-500 hover:-translate-y-2 hover:bg-sky-600 hover:text-white dark:border-[#00cccb] dark:text-[#00cccb] dark:hover:bg-[#00cccb] dark:hover:text-white md:mt-10 lg:mt-16"
                   onClick={handlePayment}
                 >
                   SEND TRANSACTION
                 </button>
               </div>
 
-              <h4 className="mt-4 font-semibold text-[#00cccb] dark:text-blue-500 sm:text-xs">
+              <h4 className="mt-4 text-sm font-semibold text-blue-500 dark:text-[#00cccb] sm:top-20">
                 {errorMessage}
-              </h4>
-              <h4
-                className={
-                  transactionHash
-                    ? "mt-4 block font-semibold text-[#00cccb] sm:text-xs md:hidden"
-                    : "hidden"
-                }
-              >
-                Transaction Hash:{" "}
-                <span
-                  className={
-                    transactionHash
-                      ? "block font-semibold text-[#00cccb] hover:underline sm:text-xs"
-                      : "hidden"
-                  }
-                >
-                  {transactionHash}
-                </span>
               </h4>
             </div>
           </div>
-          <div className="h-96"></div>
         </QueryClientProvider>
       </>
     );
