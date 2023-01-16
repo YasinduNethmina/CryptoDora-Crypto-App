@@ -9,6 +9,7 @@ import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { Link } from "react-router-dom";
 import BubbleChartIcon from "@mui/icons-material/BubbleChart";
 import MapIcon from "@mui/icons-material/Map";
+import WalletIcon from "@mui/icons-material/Wallet";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase-config";
 
@@ -92,9 +93,18 @@ function LeftSidebar() {
             <h1 className="text-left">Crypto Heatmap</h1>
           </button>
         </Link>
+        <Link to="/wallet-tab">
+          <button
+            onClick={handleFocus}
+            className="sidebarBtn border-box mt-6 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white focus:border-none focus:bg-[#3A6FF8] focus:text-[#ffff] dark:font-semibold dark:text-black dark:hover:rounded-full dark:hover:bg-[#f4f5f7] dark:hover:text-[#00cccb]"
+          >
+            <WalletIcon className="mr-5 ml-6" />
+            <h1 className="text-left">Wallet</h1>
+          </button>
+        </Link>
         <button
           onClick={handleFocus}
-          className="sidebarBtn border-box mt-96 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white dark:font-semibold dark:text-black dark:hover:rounded-full dark:hover:bg-[#f4f5f7] dark:hover:text-[#00cccb]"
+          className="sidebarBtn border-box mt-96 flex w-11/12 rounded py-4 hover:bg-[#3A6FF8] hover:text-white dark:font-semibold dark:text-black dark:hover:rounded-full dark:hover:bg-[#f4f5f7] dark:hover:text-[#00cccb] md:hidden"
         >
           <SettingsOutlinedIcon className="mr-5 ml-6" />
           <h1 className="text-left">Settings</h1>

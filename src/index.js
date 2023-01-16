@@ -16,6 +16,7 @@ import ExplorerDetailsPage from "./pages/BlockchainExplorerPage/ExplorerTab/Expl
 import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
+import WalletPage from "./pages/WalletPage/WalletPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -41,6 +42,7 @@ root.render(
         <Route path="/portfolio-tab" element={<PortfolioPage />}></Route>
         <Route path="/login-page" element={<LoginPage />}></Route>
         <Route path="/signup-page" element={<SignupPage />}></Route>
+        <Route path="/wallet-tab" element={<WalletPage />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

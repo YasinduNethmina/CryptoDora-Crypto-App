@@ -160,3 +160,24 @@
     left: 2rem !important;
   }
 }
+
+.copy-animation {
+  animation: copyAnim forwards 4s alternate;
+}
+
+@keyframes copyAnim {
+  0% {
+    transform: translateY(1.5rem);
+    opacity: 1;
+  }
+  20% {
+    transform: translateY(0);
+  }
+
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
