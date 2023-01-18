@@ -26,7 +26,11 @@ const WalletHead = ({ id, balance }) => {
   );
 
   if (isLoading || error) {
-    return;
+    return (
+      <div>
+        <h4 className="text-2xl font-semibold text-gray-400">Fetch Error...</h4>
+      </div>
+    );
   } else if (coin) {
     return (
       <div>

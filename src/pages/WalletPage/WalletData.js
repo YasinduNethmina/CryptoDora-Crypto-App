@@ -226,7 +226,8 @@ const WalletData = () => {
             <div className="relative mx-8 mt-6 flex justify-end sm:bottom-2">
               <a href="/wallet-tab">
                 <button className="absolute -left-4 z-50 flex items-center justify-center rounded-full border-2 border-sky-400 bg-[#1b2028] px-2 py-1 text-xs font-semibold text-white dark:border-[#00cccb] dark:bg-[#00cccb] sm:-left-3">
-                  🟠 DISCONNECT <KeyboardArrowDownIcon />
+                  <span className="h-3 w-3 rounded-full bg-red-500 dark:bg-orange-500"></span>
+                  &nbsp;&nbsp;DISCONNECT <KeyboardArrowDownIcon />
                 </button>
               </a>
 
@@ -235,7 +236,9 @@ const WalletData = () => {
                   onClick={handleNetworkChangeComp}
                   className="relative left-4 z-50 flex items-center justify-center rounded-full border-2 border-sky-400 bg-[#1b2028] px-2 py-1 text-xs font-semibold text-white transition-all hover:scale-105 hover:duration-300 dark:border-[#00cccb] dark:bg-[#00cccb]"
                 >
-                  ⚪ {connectedChain} <KeyboardArrowDownIcon />
+                  <span className="h-3 w-3 rounded-full bg-green-500 dark:bg-white"></span>
+                  &nbsp;&nbsp;
+                  {connectedChain} <KeyboardArrowDownIcon />
                 </button>
 
                 <div
