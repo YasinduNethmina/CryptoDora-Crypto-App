@@ -2,7 +2,8 @@ import Card from "./Card/Card";
 import Stats from "../Stats/Stats";
 import "./Cards.scss";
 
-function Cards({ stats, gas, cards, randomNumber }) {
+function Cards({ stats, gas, cards }) {
+  let randomNumber = 1;
   //used to generate cards randomly with a ternary
   return (
     <>
@@ -25,7 +26,7 @@ function Cards({ stats, gas, cards, randomNumber }) {
             priceChange={`${String(cards.bitcoin.usd_24h_change.toFixed(3))}%`}
           />
           {/* Random Card Solana or Dogecoin */}
-          {randomNumber.data[0] === 1 ? (
+          {randomNumber === 1 ? (
             <Card
               title="Solana"
               symbol="SOL"
@@ -46,7 +47,7 @@ function Cards({ stats, gas, cards, randomNumber }) {
           )}
           {/* Random Card ETH or DOT */}
 
-          {randomNumber.data[0] === 1 ? (
+          {randomNumber === 1 ? (
             <Card
               title="Ethereum"
               symbol="ETH"

@@ -14,6 +14,13 @@
     margin-bottom: 4rem;
   }
 
+  .search-results {
+    position: fixed;
+    justify-content: center;
+    margin: 5rem 0 0 0;
+    padding: 0;
+  }
+
   .converter {
     display: none;
   }
@@ -108,7 +115,7 @@
   .cards-section {
     position: relative;
     width: 30%;
-    right: -4%;
+    right: -3%;
     top: 1%;
     margin-bottom: 5%;
   }

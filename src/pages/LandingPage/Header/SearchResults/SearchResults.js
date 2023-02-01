@@ -30,13 +30,13 @@ function SearchResults({ coins, loading, showSearchResults }) {
     return (
       <div className="search-results mt-20 hidden rounded-xl border-2 border-sky-400 bg-[#1B2028] px-4 py-2 font-bold text-[#9E9E9E] dark:bg-white dark:text-black">
         <button
-          className="duration-400 text-white transition delay-150 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-sky-400 dark:text-black dark:hover:text-red-500"
+          className="duration-400 py-2 px-2 text-white transition delay-150 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-sky-400 dark:text-black dark:hover:text-red-500"
           onClick={handleClick}
         >
           [ESC]
         </button>
         <Link to="/crypto-tab" onClick={handleClick}>
-          <div className="my-2 flex justify-between">
+          <div className="my-2 flex justify-between px-2">
             {/* Mapping each array to get the results */}
             <div>
               {coinImages.map((coinImg) => {

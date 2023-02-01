@@ -37,6 +37,7 @@ function Header() {
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
 
+  let coinList = [];
   //all specific array store search data input
   let coinNameArray = [];
   let coinSymbolArray = [];
@@ -45,20 +46,23 @@ function Header() {
 
   //gets search input
   const handleSearchResults = async (e) => {
-    setSearchValue(e.target.value);
-    document.getElementById("search-input").value = searchValue;
-    //whenever input value changes react query updates the result from api
-    await refetch();
+    let coinList = [];
+    setSearchValue(e.target.value.toLowerCase());
+    if (!isLoading && data) {
+      coinList = data.data.filter((coin) =>
+        coin.name.toLowerCase().includes(searchValue)
+      );
+    }
 
     //gets api data and assign it to allCoins
-    let allCoins = data.data.coins;
+    let allCoins = coinList;
 
     //push all api data to each array (added here because values need to get update whenever value changes)
     await allCoins.map((coin) => {
       coinNameArray.push(coin.name);
       coinMarketCapRankArray.push(coin.market_cap_rank);
-      coinSymbolArray.push(coin.symbol);
-      coinImageArray.push(coin.large);
+      coinSymbolArray.push(coin.symbol.toUpperCase());
+      coinImageArray.push(coin.image);
     });
 
     //add all those values to setCoinsData state as an object (all array values, bcz variables as props doesn't update when it passes to child element, so have to use state for this)
@@ -70,7 +74,7 @@ function Header() {
     });
 
     //hide or show search results ui
-    if (searchValue?.length >= 3) {
+    if (searchValue?.length >= 1) {
       setShowSearchResults(true);
     } else {
       setShowSearchResults(false);
@@ -82,9 +86,9 @@ function Header() {
   };
 
   //get search data from api when search input value changes
-  const { data, isLoading, refetch } = useQuery(["searchResult"], () => {
+  const { data, isLoading } = useQuery(["searchResult"], () => {
     return axios.get(
-      `https://api.coingecko.com/api/v3/search?query=${searchValue}`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false`
     );
   });
 
@@ -215,7 +219,7 @@ function Header() {
         </div>
       </div>
 
-      <div className="fixed right-16 z-40 flex w-full justify-center">
+      <div className="fixed right-28 z-40 flex w-full justify-center">
         {/* search results ui */}
         <SearchResults
           coins={coinsData}
@@ -226,7 +230,7 @@ function Header() {
       <div
         className={
           showNotifications
-            ? "notificationsTab fixed right-60 top-20 w-60"
+            ? "notificationsTab fixed right-80 top-20 mr-5 w-60"
             : "fixed right-60 top-16 hidden w-60"
         }
       >

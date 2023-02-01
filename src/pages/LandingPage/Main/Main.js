@@ -43,7 +43,6 @@ function Main() {
     statsQuery,
     ethGasQuery,
     cardsQuery,
-    randomNumberQuery,
     flagCodeQuery,
     dailyChartQuery,
     weeklyChartQuery,
@@ -76,13 +75,6 @@ function Main() {
             .get(
               "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Cethereum%2Csolana%2Cripple%2Cdogecoin%2Ccardano%2Cpolkadot%2Cbinancecoin&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=false&precision=2"
             )
-            .then((res) => res.data),
-      },
-      {
-        queryKey: ["randomNumber"],
-        queryFn: () =>
-          axios
-            .get("https://www.randomnumberapi.com/api/v1.0/random?min=0&max=1")
             .then((res) => res.data),
       },
       {
@@ -155,7 +147,6 @@ function Main() {
     statsQuery.isLoading ||
     ethGasQuery.isLoading ||
     cardsQuery.isLoading ||
-    randomNumberQuery.isLoading ||
     flagCodeQuery.isLoading ||
     dailyChartQuery.isLoading ||
     weeklyChartQuery.isLoading ||
@@ -168,7 +159,6 @@ function Main() {
     statsQuery.error ||
     ethGasQuery.error ||
     cardsQuery.error ||
-    randomNumberQuery.error ||
     flagCodeQuery.error ||
     dailyChartQuery.error ||
     weeklyChartQuery.error ||
@@ -224,7 +214,6 @@ function Main() {
           stats={statsQuery.data.data}
           gas={ethGasQuery.data}
           cards={cardsQuery.data}
-          randomNumber={randomNumberQuery}
         />
 
         <div className="flex justify-center">
