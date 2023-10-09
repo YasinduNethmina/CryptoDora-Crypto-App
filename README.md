@@ -4,7 +4,7 @@
 
 #### Live Link: https://cryptodora-app.web.app/
 
-## Welcome to the CryptoDora GitHub project! This project is a realtime crypto website for checking prices, stats, alerts and your portfolio. This project is built using the following technologies:
+## Tech Stack:
 
 • React.js: A JavaScript library used to develop SPA applications.
 <br />
