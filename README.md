@@ -4,7 +4,7 @@
 
 #### Live Link: https://cryptodora-app.web.app/
 
-## Tech Stack:
+# Tech Stack:
 
 • React.js: A JavaScript library used to develop SPA applications.
 <br />
